@@ -1,3 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TODO [project-requirement] 
+ Config a reset css
+*/
 body {
   margin: 0;
   line-height: inherit;

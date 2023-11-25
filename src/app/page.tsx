@@ -1,9 +1,8 @@
-import styles from "./page.module.css";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main className="text-cyan-500">
       <h1>Mario Brusarosco</h1>
 
       <ul>
@@ -13,7 +12,8 @@ export default function Home() {
         <li>
           <Link href={"/experience"}>experience</Link>
         </li>
-      </ul>
+      </ul>dasdsa
     </main>
   );
 }
+
