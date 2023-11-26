@@ -22,8 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-            {/* <body className={`${quicksand.className} ${quicksand.variable}`}> */}
-      <body>
+      <body className={`${quicksand.variable}`}>
         <AnimatedContainerTwoLayers>{children}</AnimatedContainerTwoLayers>
         {/* <AnimatedContainerThreeLayers>{children}</AnimatedContainerThreeLayers> */}
       </body>
