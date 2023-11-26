@@ -12,9 +12,8 @@ export const metadata: Metadata = {
 //TODO [Project]
 // Move this configuration and document it
 // Font Settings
-const quicksand = Quicksand({ subsets: ["latin"], weight: ["300", "400", "700"], variable: "--quicksand" });
+const quicksand = Quicksand({ subsets: ["latin"], weight: ["300", "400", "700"], variable: "--font-quicksand" });
 
-console.log({ quicksand })
 
 export default function RootLayout({
   children,
@@ -23,7 +22,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${quicksand.className} ${quicksand.variable}`}>
+            {/* <body className={`${quicksand.className} ${quicksand.variable}`}> */}
+      <body>
         <AnimatedContainerTwoLayers>{children}</AnimatedContainerTwoLayers>
         {/* <AnimatedContainerThreeLayers>{children}</AnimatedContainerThreeLayers> */}
       </body>

@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="text-cyan-500">
-      <h1>Mario Brusarosco</h1>
+    <main className="text-cyan-500 font-quicksand">
+      <h1 className="text-5xl">Mario Brusarosco</h1>
 
       <ul>
         <li>
