@@ -12,6 +12,9 @@ module.exports = {
     extend: {
       fontFamily: {
         quicksand: ["var(--font-quicksand)", "sans-serif"]
+      },
+       backgroundImage: {
+        "main": "url('/main-bg.svg')"
       }
     },
   },

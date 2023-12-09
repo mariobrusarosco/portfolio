@@ -23,8 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${quicksand.variable}`}>
+        <div className="bg-main">
+
         <AnimatedContainerTwoLayers>{children}</AnimatedContainerTwoLayers>
         {/* <AnimatedContainerThreeLayers>{children}</AnimatedContainerThreeLayers> */}
+        </div>
       </body>
     </html>
   );
