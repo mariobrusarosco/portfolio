@@ -11,10 +11,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        quicksand: ["var(--font-quicksand)", "sans-serif"]
+        quicksand: ["var(--font-montserrat)", "sans-serif"]
       },
        backgroundImage: {
         "main": "url('/main-bg.svg')"
+      },
+      colors: {
+        "neutral-white": "#FFF",
+        "neutral-black": "#000",
+        "primary-base": "#FF6D6D",
+        "primary-dark": "#BB2253",
+        "secondary-base": "#0D78A0",
       }
     },
   },

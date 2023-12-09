@@ -1,18 +1,10 @@
-import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="text-cyan-500 font-quicksand">
-      <h1 className="text-5xl">Mario Brusarosco</h1>
-
-      <ul>
-        <li>
-          <Link href={"/skills"}>skills</Link>
-        </li>
-        <li>
-          <Link href={"/experience"}>experience</Link>
-        </li>
-      </ul>dasdsa
+    <main className="h-screen container mx-auto grid place-content-center ">
+      <h2 className="text-6xl text-primary-base mb-3 font-thin">Mario Brusarosco</h2>
+      <h3 className="text-lg text-neutral-white">front end developer</h3>
+      <p className="mt-[50px] text-md font-semibold text-secondary-base uppercase">under construction</p>
     </main>
   );
 }

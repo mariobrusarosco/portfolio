@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google"
+import { Montserrat } from "next/font/google"
 import "./globals.css";
 import { AnimatedContainerThreeLayers } from "./domain/shared/components/animated-container-three-layers";
 import { AnimatedContainerTwoLayers } from "./domain/shared/components/animated-container-two-layers";
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 //TODO [Project]
 // Move this configuration and document it
 // Font Settings
-const quicksand = Quicksand({ subsets: ["latin"], weight: ["300", "400", "700"], variable: "--font-quicksand" });
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["100", "400", "700"], variable: "--font-montserrat" });
 
 
 export default function RootLayout({
@@ -22,11 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${quicksand.variable}`}>
-        <div className="bg-main">
-
-        <AnimatedContainerTwoLayers>{children}</AnimatedContainerTwoLayers>
-        {/* <AnimatedContainerThreeLayers>{children}</AnimatedContainerThreeLayers> */}
+      <body className={`${montserrat.variable} font-montserrat`}>
+        <div className="bg-main bg-no-repeat bg-cover">
+          {children}
         </div>
       </body>
     </html>
