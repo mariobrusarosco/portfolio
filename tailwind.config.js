@@ -10,8 +10,9 @@ module.exports = {
   ],
   theme: {
     screens: {
-      "m-only": { max: "767px" },
+      m: { max: "767px" },
       tablet: { min: "768px" },
+      "m-and-t": { max: "1279px" },
       desktop: { min: "1280px" },
     },
     extend: {

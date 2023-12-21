@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google"
 import "./globals.css";
-import { AnimatedContainerThreeLayers } from "./domain/shared/components/animated-container-three-layers";
-import { AnimatedContainerTwoLayers } from "./domain/shared/components/animated-container-two-layers";
 
 export const metadata: Metadata = {
   title: "Mario Brusarosco",
@@ -22,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} font-montserrat`}>
+      <body className={`${montserrat.variable} font-montserrat antialiased`}>
         <div className="bg-main bg-no-repeat bg-cover">
           {children}
         </div>
