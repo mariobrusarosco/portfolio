@@ -1,45 +1,31 @@
 "use client";
-import { AnimatePresence, motion, useIsPresent } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 
 export default function Skills() {
-  // const isPresent = useIsPresent();
-
-  // console.log({ isPresent });
   return (
-    // <AnimatePresence mode="wait">
-    //   {isPresent && (
-    <main data-test="skills-screen">
-      <h1>Skills</h1>
-      {/* <motion.div
-        data-test="one"
-        initial={{ scaleX: 1, backgroundColor: "red" }}
-        animate={{ scaleX: 0, backgroundColor: "green" }}
-        exit={{ scaleX: 1, backgroundColor: "orange" }}
-        transition={{ duration: 10.5, type: "spring" }}
-        style={{
-          backgroundColor: "tomato",
-          height: "100vh",
-          width: "100vw",
-          position: "fixed",
-          transformOrigin: "top left",
-          left: 0,
-          top: 0,
-          zIndex: 2,
-        }}
-      /> */}
-      <ul>
-        <li>
-          <Link href={"/skills"}>skills</Link>
-        </li>
-        <li>
-          <Link href={"/experience"}>experience</Link>
-        </li>
-      </ul>
-      a{" "}
+    <main data-test="skills-screen" className="h-screen">
+      <h2>Skills</h2>
+
+      <AppHeader />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In alias
+        deleniti aliquam? Odio officiis, nemo dolorem quos blanditiis
+        accusantium non rem fuga tempora ratione eum, enim deserunt asperiores
+        eius repudiandae!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In alias
+        deleniti aliquam? Odio officiis, nemo dolorem quos blanditiis
+        accusantium non rem fuga tempora ratione eum, enim deserunt asperiores
+        eius repudiandae!
+      </p>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In alias
+        deleniti aliquam? Odio officiis, nemo dolorem quos blanditiis
+        accusantium non rem fuga tempora ratione eum, enim deserunt asperiores
+        eius repudiandae!
+      </p>
     </main>
-    // )}
-    // </AnimatePresence>
   );
 }
