@@ -19,6 +19,7 @@ html {
 
 /* Global CSS files are inserted here */
 @import "../domain/shared/styling/scrollbar.css";
+@import "../domain/shared/styling/shadow-container-scroll.css";
 
 @layer base {
   .mario {
