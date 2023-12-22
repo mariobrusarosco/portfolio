@@ -1,13 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}", // Note the addition of the `app` directory.
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
-    // Or if using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     screens: {
       m: { max: "767px" },
@@ -17,7 +10,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        quicksand: ["var(--font-montserrat)", "sans-serif"],
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
       },
       backgroundImage: {
         main: "url('/main-bg.svg')",
@@ -28,6 +21,7 @@ module.exports = {
         "primary-base": "#FF6D6D",
         "primary-dark": "#BB2253",
         "secondary-base": "#0D78A0",
+        "secondary-dark": "#00112C",
         "light-gray": "#908F8F",
         "light-green": "#5BB494",
       },

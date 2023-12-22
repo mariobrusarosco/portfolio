@@ -16,3 +16,28 @@ body,
 html {
   height: 100%;
 }
+
+/* Global CSS files are inserted here */
+@import "../domain/shared/styling/scrollbar.css";
+
+@layer base {
+  .mario {
+    color: blue;
+  }
+}
+
+@layer components {
+  .mario {
+    color: orange;
+  }
+}
+
+@layer utilities {
+  .mario {
+    color: black;
+  }
+}
+
+.mario {
+  color: gold;
+}
