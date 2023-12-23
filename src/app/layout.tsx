@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google"
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,8 +10,11 @@ export const metadata: Metadata = {
 //TODO [Project]
 // Move this configuration and document it
 // Font Settings
-const montserrat = Montserrat({ subsets: ["latin"], weight: ["100", "400", "700"], variable: "--font-montserrat" });
-
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["100", "400", "500", "700"],
+  variable: "--font-montserrat",
+});
 
 export default function RootLayout({
   children,
@@ -21,9 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} font-montserrat antialiased`}>
-        <div className="bg-main bg-no-repeat bg-cover">
-          {children}
-        </div>
+        <div className="bg-main bg-no-repeat bg-cover">{children}</div>
       </body>
     </html>
   );
