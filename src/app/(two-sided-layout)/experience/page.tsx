@@ -6,6 +6,7 @@ import "./testing.css";
 import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import { motion } from "framer-motion";
 import { opacity } from "./animations";
+import { Carrousel } from "./carrousel";
 
 export default function ExperienceScreen() {
   const scrollElementRef = useRef(null);
@@ -30,7 +31,7 @@ export default function ExperienceScreen() {
 
   return (
     <>
-      <div className="">
+      <div className="first-section w-screen">
         <div className="pt-[90px] text-center">
           <motion.h2
             initial={{ opacity: 0, y: -10 }}
@@ -49,27 +50,16 @@ export default function ExperienceScreen() {
             Experience
           </motion.h2>
         </div>
-        <div className="mt-[115px]">
-          <div className="flex justify-center gap-5">
-            <div>&lt;</div>
-            <p>Red Ventures</p>
-            <div>&gt;</div>
-          </div>
-          <div className="mt-10 flex gap-x-8 justify-center">
-            <span>*</span>
-            <span>*</span>
-            <span>*</span>
-            <span>*</span>
-            <span>*</span>
-          </div>
-        </div>
+        {/* <div className="w-full"> */}
+        <Carrousel />
+        {/* </div> */}
       </div>
 
       <motion.div
         animate="visible"
         initial="hidden"
-        variants={opacity}
-        className="bg-primary-base flex-grow p-5 flex flex-col gap-y-2"
+        // variants={opacity}
+        className="bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto"
         // className={
         //   "bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto " +
         //   temp
