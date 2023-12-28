@@ -5,6 +5,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 // import "swiper/css/scrollbar";
 import "./styles.css";
+import { useState } from "react";
 
 const experienceData = [
   {
@@ -26,27 +27,28 @@ const experienceData = [
 ];
 
 export const CarrouselExperience = () => {
+  const [sliderisMounted, setSliderisMounted] = useState(false);
+
   return (
     <>
       <Swiper
         modules={[Navigation, Pagination, A11y]}
         slidesPerView={1}
-        navigation
+        navigation={sliderisMounted}
         pagination={{ clickable: true }}
-        // scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log({ swiper })}
+        onSwiper={() => setSliderisMounted(true)}
         onSlideChange={(swiper) => console.log("slide change", swiper)}
-        //   onNavigationNext={(swiper) => console.log(swiper)}
-        //   onNavigationPrev={(swiper) => console.log(swiper)}
-        className="carousel-experience h-[89px] relative"
+        className="carousel-experience relative"
       >
-        {experienceData.map((experience) => (
-          <SwiperSlide key={experience.companyName}>
-            <div className="h-full flex justify-center items-center">
-              <span>{experience.companyName}</span>
-            </div>
-          </SwiperSlide>
-        ))}
+        {sliderisMounted
+          ? experienceData.map((experience) => (
+              <SwiperSlide key={experience.companyName}>
+                <div className="h-full flex justify-center items-center">
+                  <span>{experience.companyName}</span>
+                </div>
+              </SwiperSlide>
+            ))
+          : null}
       </Swiper>
     </>
   );

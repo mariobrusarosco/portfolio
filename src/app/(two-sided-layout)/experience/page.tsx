@@ -4,8 +4,8 @@ import { useRef, useState } from "react";
 
 import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import { motion } from "framer-motion";
-import { opacity } from "./animations";
-import { CarrouselExperience } from "./carrousel-experience";
+import { opacity } from "../../../domain/experience/components/animations";
+import { CarrouselExperience } from "../../../domain/experience/components/carrousel-experience";
 
 export default function ExperienceScreen() {
   const scrollElementRef = useRef(null);
@@ -32,24 +32,24 @@ export default function ExperienceScreen() {
     <>
       <div className="first-section m:w-screen">
         <div className="pt-[76px] text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: -10 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: 0.5,
-                type: "spring",
-                damping: 10,
-                stiffness: 150,
-              },
-            }}
+          <h2
+            // initial={{ opacity: 0, y: -10 }}
+            // animate={{
+            //   opacity: 1,
+            //   y: 0,
+            //   transition: {
+            //     duration: 0.5,
+            //     type: "spring",
+            //     damping: 10,
+            //     stiffness: 150,
+            //   },
+            // }}
             className="text-4xl font"
           >
             Experience
-          </motion.h2>
+          </h2>
         </div>
-        <div className="pt-[110px] w-[350px]">
+        <div className="pt-[110px] w-full max-w-[270px] mx-auto">
           <CarrouselExperience />
         </div>
       </div>
@@ -57,13 +57,7 @@ export default function ExperienceScreen() {
       <motion.div
         animate="visible"
         initial="hidden"
-        // variants={opacity}
         className="bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto"
-        // className={
-        //   "bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto " +
-        //   temp
-        // }
-        // ref={scrollElementRef}
       >
         <p className="text-2xl font-medium text-secondary-dark">Red Ventures</p>
         <p className="text-sm font-normal text-neutral-white">2019 - Present</p>

@@ -1,11 +1,13 @@
 .carousel-experience {
-  --swiper-pagination-top: 70px;
-  --swiper-navigation-top-offset: 20px;
+  --swiper-navigation-top-offset: 15px;
+  --swiper-pagination-top: unset;
+  --swiper-pagination-bottom: 0;
   --swiper-pagination-bullet-size: 10px;
+  --swiper-pagination-bullet-inactive-opacity: 1;
 
+  height: 89px;
   .swiper-wrapper {
-    height: 43px;
-    /* border: 1px solid theme("colors.primary-dark"); */
+    height: 32px;
   }
 
   .swiper-button-next,
@@ -13,9 +15,15 @@
     color: theme("colors.neutral-white");
 
     &:after {
-      font-size: 32px;
+      font-size: 20px;
       font-weight: 100;
     }
+  }
+
+  .swiper-pagination-bullets {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
   }
 
   .swiper-pagination-bullet {
