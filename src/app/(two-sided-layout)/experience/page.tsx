@@ -4,8 +4,59 @@ import { useEffect, useRef, useState } from "react";
 import "./testing.css";
 
 import { AppHeader } from "@/domain/shared/components/app-header/app-header";
-import { motion } from "framer-motion";
+import { Variant, Variants, motion } from "framer-motion";
 import { opacity } from "./animations";
+import { Reveal } from "./reveal";
+
+export const list = {
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item: Variants = {
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      bounce: 0.25,
+      damping: 15,
+      stiffness: 200,
+      restDelta: 0.05,
+    },
+  },
+  hidden: { opacity: 0, x: -25 },
+};
+
+export const listOfParagraph: Variants = {
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      // delayChildren: 0.5,
+      // when: "beforeChildren",
+    },
+  },
+};
+
+export const paragraph: Variants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      // duration: 150,
+      type: "spring",
+      damping: 10,
+      stiffness: 200,
+      // restSpeed: 100,
+    },
+    // transition: { duration: 15.1, type: "spring", damping: 20, stiffness: 200 },
+  },
+
+  hidden: { opacity: 0, y: 10 },
+};
 
 export default function ExperienceScreen() {
   const scrollElementRef = useRef(null);
@@ -69,36 +120,52 @@ export default function ExperienceScreen() {
         animate="visible"
         initial="hidden"
         variants={opacity}
-        className="bg-primary-base flex-grow p-5 flex flex-col gap-y-2"
-        // className={
-        //   "bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto " +
-        //   temp
-        // }
-        // ref={scrollElementRef}
+        className="bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto"
       >
-        <p className="text-2xl font-medium text-secondary-dark">Red Ventures</p>
-        <p className="text-sm font-normal text-neutral-white">2019 - Present</p>
-        <p className="text-lg font-normal text-secondary-dark">
-          front end engineer
-        </p>
+        <motion.div
+          animate="visible"
+          initial="hidden"
+          variants={list}
+          // className={
+          //   "bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto " +
+          //   temp
+          // }
+          // ref={scrollElementRef}
+        >
+          <motion.p
+            className="text-2xl font-medium text-secondary-dark"
+            variants={item}
+          >
+            Red Ventures
+          </motion.p>
+          <motion.p
+            className="text-sm font-normal text-neutral-white"
+            variants={item}
+          >
+            2019 - Present
+          </motion.p>
+          <motion.p
+            className="text-lg font-normal text-secondary-dark"
+            variants={item}
+          >
+            front end engineer
+          </motion.p>
+        </motion.div>
 
-        <div className="mt-2 flex flex-col gap-3">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </p>
-        </div>
+        <motion.div
+          className="mt-10 flex flex-col gap-3"
+          // variants={listOfParagraph}
+          // animate="visible"
+          // initial="hidden"
+        >
+          {Array.from({ length: 20 }).map((_, i) => (
+            <Reveal key={i} iterator={i}>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+              molestias, distinctio quisquam consequuntur minima suscipit
+              accusamus
+            </Reveal>
+          ))}
+        </motion.div>
       </motion.div>
     </>
   );

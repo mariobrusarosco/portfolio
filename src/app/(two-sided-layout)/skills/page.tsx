@@ -2,6 +2,8 @@
 import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import { motion } from "framer-motion";
 import { opacity } from "../experience/animations";
+import { Reveal } from "../experience/reveal";
+import { listOfParagraph, paragraph } from "../experience/page";
 
 export default function Skills() {
   return (
@@ -42,23 +44,69 @@ export default function Skills() {
           front end engineer
         </p>
 
-        <div className="mt-2 flex flex-col gap-3">
-          <p>
+        <motion.div
+          className="mt-10 flex flex-col gap-3"
+          variants={listOfParagraph}
+          animate="visible"
+          initial="hidden"
+        >
+          <motion.p variants={paragraph}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
             molestias, distinctio quisquam consequuntur minima suscipit
             accusamus
-          </p>
-          <p>
+          </motion.p>
+
+          <motion.p variants={paragraph}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
             molestias, distinctio quisquam consequuntur minima suscipit
             accusamus
-          </p>
-          <p>
+          </motion.p>
+          <motion.p variants={paragraph}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
             molestias, distinctio quisquam consequuntur minima suscipit
             accusamus
-          </p>
-        </div>
+          </motion.p>
+
+          <motion.p variants={paragraph}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+            molestias, distinctio quisquam consequuntur minima suscipit
+            accusamus
+          </motion.p>
+          <motion.p variants={paragraph}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+            molestias, distinctio quisquam consequuntur minima suscipit
+            accusamus
+          </motion.p>
+
+          <motion.p variants={paragraph}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+            molestias, distinctio quisquam consequuntur minima suscipit
+            accusamus
+          </motion.p>
+          <motion.p variants={paragraph}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+            molestias, distinctio quisquam consequuntur minima suscipit
+            accusamus
+          </motion.p>
+
+          <motion.p variants={paragraph}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+            molestias, distinctio quisquam consequuntur minima suscipit
+            accusamus
+          </motion.p>
+
+          <motion.p variants={paragraph}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+            molestias, distinctio quisquam consequuntur minima suscipit
+            accusamus
+          </motion.p>
+
+          <motion.p variants={paragraph}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+            molestias, distinctio quisquam consequuntur minima suscipit
+            accusamus
+          </motion.p>
+        </motion.div>
       </motion.div>
 
       <AppHeader />
