@@ -1,9 +1,10 @@
 "use client";
 import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import { motion } from "framer-motion";
-import { opacity } from "../experience/animations";
-import { Reveal } from "../experience/reveal";
-import { listOfParagraph, paragraph } from "../experience/page";
+import {
+  jobDescriptionItems,
+  opacity,
+} from "../../../domain/experience/components/animations";
 
 export default function Skills() {
   return (
@@ -46,66 +47,17 @@ export default function Skills() {
 
         <motion.div
           className="mt-10 flex flex-col gap-3"
-          variants={listOfParagraph}
+          variants={jobDescriptionItems}
           animate="visible"
           initial="hidden"
         >
-          <motion.p variants={paragraph}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </motion.p>
-
-          <motion.p variants={paragraph}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </motion.p>
-          <motion.p variants={paragraph}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </motion.p>
-
-          <motion.p variants={paragraph}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </motion.p>
-          <motion.p variants={paragraph}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </motion.p>
-
-          <motion.p variants={paragraph}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </motion.p>
-          <motion.p variants={paragraph}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </motion.p>
-
-          <motion.p variants={paragraph}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </motion.p>
-
-          <motion.p variants={paragraph}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </motion.p>
-
-          <motion.p variants={paragraph}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </motion.p>
+          {Array.from({ length: 20 }).map((_, i) => (
+            <motion.p variants={jobDescriptionItems} key={i}>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+              molestias, distinctio quisquam consequuntur minima suscipit
+              accusamus
+            </motion.p>
+          ))}
         </motion.div>
       </motion.div>
 

@@ -1,67 +1,65 @@
 "use client";
+import { motion } from "framer-motion";
+import { CarrouselExperience } from "../../../domain/experience/components/carrousel-experience";
+import { opacity } from "@/domain/experience/components/animations";
+import { useState } from "react";
+import { ExperienDetail } from "@/domain/experience/components/experience-detail";
+import { experiences } from "@/domain/experience/typing/constants";
 
-import { useEffect, useRef, useState } from "react";
-import "./testing.css";
+// export const list = {
+//   visible: {
+//     transition: {
+//       staggerChildren: 0.1,
+//     },
+//   },
+// };
 
-import { AppHeader } from "@/domain/shared/components/app-header/app-header";
-import { Variant, Variants, motion } from "framer-motion";
-import { opacity } from "./animations";
-import { Reveal } from "./reveal";
+// const item: Variants = {
+//   visible: {
+//     opacity: 1,
+//     x: 0,
+//     transition: {
+//       type: "spring",
+//       bounce: 0.25,
+//       damping: 15,
+//       stiffness: 200,
+//       restDelta: 0.05,
+//     },
+//   },
+//   hidden: { opacity: 0, x: -25 },
+// };
 
-export const list = {
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+// export const listOfParagraph: Variants = {
+//   visible: {
+//     transition: {
+//       staggerChildren: 0.1,
+//       delayChildren: 0.5,
+//       when: "beforeChildren",
+//     },
+//   },
+// };
 
-const item: Variants = {
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring",
-      bounce: 0.25,
-      damping: 15,
-      stiffness: 200,
-      restDelta: 0.05,
-    },
-  },
-  hidden: { opacity: 0, x: -25 },
-};
+// export const paragraph: Variants = {
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: {
+//       // duration: 150,
+//       type: "spring",
+//       damping: 10,
+//       stiffness: 200,
+//       // restSpeed: 100,
+//     },
+//     // transition: { duration: 15.1, type: "spring", damping: 20, stiffness: 200 },
+//   },
 
-export const listOfParagraph: Variants = {
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-      // delayChildren: 0.5,
-      // when: "beforeChildren",
-    },
-  },
-};
-
-export const paragraph: Variants = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      // duration: 150,
-      type: "spring",
-      damping: 10,
-      stiffness: 200,
-      // restSpeed: 100,
-    },
-    // transition: { duration: 15.1, type: "spring", damping: 20, stiffness: 200 },
-  },
-
-  hidden: { opacity: 0, y: 10 },
-};
+//   hidden: { opacity: 0, y: 10 },
+// };
 
 export default function ExperienceScreen() {
-  const scrollElementRef = useRef(null);
-  const [scrolled, setScrolled] = useState(false);
-
+  // TODO - Fix this
+  // const scrollElementRef = useRef(null);
+  // const [scrolled, setScrolled] = useState(false);
   // useEffect(() => {
   //   const handleScroll = () => {
   //     // Check if the scroll position is greater than 0
@@ -76,13 +74,16 @@ export default function ExperienceScreen() {
   //     scrollElementRef.current.removeEventListener("scroll", handleScroll);
   //   };
   // }, []);
-
-  // const temp = scrolled ? "bg-primary-base" : "bg-primary-dark";
+  // const { experiences } = useExperience();
+  const initialSlide = experiences.length - 1;
+  const [selectedExperienceIndex, setSelectedExperienceIndex] =
+    useState(initialSlide);
+  const selectedExperience = experiences[selectedExperienceIndex];
 
   return (
     <>
-      <div className="">
-        <div className="pt-[90px] text-center">
+      <div className="first-section m:w-screen">
+        <div className="pt-[76px] text-center">
           <motion.h2
             initial={{ opacity: 0, y: -10 }}
             animate={{
@@ -100,19 +101,11 @@ export default function ExperienceScreen() {
             Experience
           </motion.h2>
         </div>
-        <div className="mt-[115px]">
-          <div className="flex justify-center gap-5">
-            <div>&lt;</div>
-            <p>Red Ventures</p>
-            <div>&gt;</div>
-          </div>
-          <div className="mt-10 flex gap-x-8 justify-center">
-            <span>*</span>
-            <span>*</span>
-            <span>*</span>
-            <span>*</span>
-            <span>*</span>
-          </div>
+        <div className="pt-[110px] w-full max-w-[270px] mx-auto">
+          <CarrouselExperience
+            onSliderChange={setSelectedExperienceIndex}
+            initialSlide={initialSlide}
+          />
         </div>
       </div>
 
@@ -122,38 +115,33 @@ export default function ExperienceScreen() {
         variants={opacity}
         className="bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto"
       >
-        <motion.div
-          animate="visible"
-          initial="hidden"
-          variants={list}
-          // className={
-          //   "bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto " +
-          //   temp
-          // }
-          // ref={scrollElementRef}
-        >
-          <motion.p
+        <ExperienDetail
+          experience={selectedExperience}
+          key={selectedExperience.companyName}
+        />
+        {/* <motion.div animate="visible" initial="hidden" variants={list}> */}
+        {/* <motion.p
             className="text-2xl font-medium text-secondary-dark"
             variants={item}
           >
-            Red Ventures
-          </motion.p>
-          <motion.p
+            {selectedExperience.companyName}
+          </motion.p> */}
+        {/* <motion.p
             className="text-sm font-normal text-neutral-white"
             variants={item}
           >
-            2019 - Present
-          </motion.p>
-          <motion.p
+            {new Date(selectedExperience.startDate).getFullYear()} - Present
+          </motion.p> */}
+        {/* <motion.p
             className="text-lg font-normal text-secondary-dark"
             variants={item}
           >
             front end engineer
-          </motion.p>
-        </motion.div>
-
+          </motion.p> */}
+        {/* </motion.div> */}
+        {/* 
         <motion.div
-          className="mt-10 flex flex-col gap-3"
+          className="mt-3 flex flex-col gap-3"
           // variants={listOfParagraph}
           // animate="visible"
           // initial="hidden"
@@ -165,7 +153,7 @@ export default function ExperienceScreen() {
               accusamus
             </Reveal>
           ))}
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </>
   );

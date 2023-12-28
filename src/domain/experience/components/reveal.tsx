@@ -1,6 +1,6 @@
-import { Variants, motion, useAnimation, useInView } from "framer-motion";
-import React, { use, useEffect, useRef } from "react";
-import { paragraph } from "./page";
+import { motion } from "framer-motion";
+import React from "react";
+import { jobDescriptionItems } from "./animations";
 
 export const Reveal = ({
   children,
@@ -10,9 +10,9 @@ export const Reveal = ({
   iterator: any;
 }) => {
   // Manual Control
-  const ref = useRef(null);
-  const isInView = useInView(ref);
-  const controls = useAnimation();
+  // const ref = useRef(null);
+  // const isInView = useInView(ref);
+  // const controls = useAnimation();
 
   //   useEffect(() => {
   //     if (isInView) {
@@ -20,37 +20,23 @@ export const Reveal = ({
   //     }
   //   }, [isInView, controls]);
   // Manual Control
+
   return (
     // <motion.div className="relative" ref={ref}>
     <motion.div
       //   ref={ref} //     For manual Manual Control
       initial="hidden"
-      variants={customItem}
-      whileInView="eita"
+      variants={jobDescriptionItems}
+      whileInView="visible"
       //   transition={{ duration: 10 }}
       //   whileInView="visible"
       //   variants={paragraph}
       className="relative"
       custom={iterator}
-      viewport={{ once: true }}
+      // viewport={{ once: true }}
     >
       {children}
     </motion.div>
     // </motion.div>
   );
-};
-
-const customItem: Variants = {
-  eita: (iterator) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      //   bounce: 0.25,
-      damping: 10,
-      stiffness: 200,
-      delay: iterator * 0.05,
-    },
-  }),
-  hidden: { opacity: 0, y: 10 },
 };
