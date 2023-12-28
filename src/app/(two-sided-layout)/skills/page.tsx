@@ -1,7 +1,7 @@
 "use client";
 import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import { motion } from "framer-motion";
-import { opacity } from "../experience/animations";
+import { opacity } from "../../../domain/experience/components/animations";
 
 export default function Skills() {
   return (

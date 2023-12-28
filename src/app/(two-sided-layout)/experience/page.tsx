@@ -1,16 +1,11 @@
 "use client";
-
-import { useEffect, useRef, useState } from "react";
-import "./testing.css";
-
-import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import { motion } from "framer-motion";
-import { opacity } from "./animations";
+import { CarrouselExperience } from "../../../domain/experience/components/carrousel-experience";
 
 export default function ExperienceScreen() {
-  const scrollElementRef = useRef(null);
-  const [scrolled, setScrolled] = useState(false);
-
+  // TODO - Fix this
+  // const scrollElementRef = useRef(null);
+  // const [scrolled, setScrolled] = useState(false);
   // useEffect(() => {
   //   const handleScroll = () => {
   //     // Check if the scroll position is greater than 0
@@ -26,12 +21,10 @@ export default function ExperienceScreen() {
   //   };
   // }, []);
 
-  // const temp = scrolled ? "bg-primary-base" : "bg-primary-dark";
-
   return (
     <>
-      <div className="">
-        <div className="pt-[90px] text-center">
+      <div className="first-section m:w-screen">
+        <div className="pt-[76px] text-center">
           <motion.h2
             initial={{ opacity: 0, y: -10 }}
             animate={{
@@ -49,32 +42,15 @@ export default function ExperienceScreen() {
             Experience
           </motion.h2>
         </div>
-        <div className="mt-[115px]">
-          <div className="flex justify-center gap-5">
-            <div>&lt;</div>
-            <p>Red Ventures</p>
-            <div>&gt;</div>
-          </div>
-          <div className="mt-10 flex gap-x-8 justify-center">
-            <span>*</span>
-            <span>*</span>
-            <span>*</span>
-            <span>*</span>
-            <span>*</span>
-          </div>
+        <div className="pt-[110px] w-full max-w-[270px] mx-auto">
+          <CarrouselExperience />
         </div>
       </div>
 
       <motion.div
         animate="visible"
         initial="hidden"
-        variants={opacity}
-        className="bg-primary-base flex-grow p-5 flex flex-col gap-y-2"
-        // className={
-        //   "bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto " +
-        //   temp
-        // }
-        // ref={scrollElementRef}
+        className="bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto"
       >
         <p className="text-2xl font-medium text-secondary-dark">Red Ventures</p>
         <p className="text-sm font-normal text-neutral-white">2019 - Present</p>
