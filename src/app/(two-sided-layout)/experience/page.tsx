@@ -1,16 +1,11 @@
 "use client";
-
-import { useRef, useState } from "react";
-
-import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import { motion } from "framer-motion";
-import { opacity } from "../../../domain/experience/components/animations";
 import { CarrouselExperience } from "../../../domain/experience/components/carrousel-experience";
 
 export default function ExperienceScreen() {
-  const scrollElementRef = useRef(null);
-  const [scrolled, setScrolled] = useState(false);
-
+  // TODO - Fix this
+  // const scrollElementRef = useRef(null);
+  // const [scrolled, setScrolled] = useState(false);
   // useEffect(() => {
   //   const handleScroll = () => {
   //     // Check if the scroll position is greater than 0
@@ -26,28 +21,26 @@ export default function ExperienceScreen() {
   //   };
   // }, []);
 
-  // const temp = scrolled ? "bg-primary-base" : "bg-primary-dark";
-
   return (
     <>
       <div className="first-section m:w-screen">
         <div className="pt-[76px] text-center">
-          <h2
-            // initial={{ opacity: 0, y: -10 }}
-            // animate={{
-            //   opacity: 1,
-            //   y: 0,
-            //   transition: {
-            //     duration: 0.5,
-            //     type: "spring",
-            //     damping: 10,
-            //     stiffness: 150,
-            //   },
-            // }}
+          <motion.h2
+            initial={{ opacity: 0, y: -10 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 0.5,
+                type: "spring",
+                damping: 10,
+                stiffness: 150,
+              },
+            }}
             className="text-4xl font"
           >
             Experience
-          </h2>
+          </motion.h2>
         </div>
         <div className="pt-[110px] w-full max-w-[270px] mx-auto">
           <CarrouselExperience />
