@@ -1,0 +1,28 @@
+.carousel-experience {
+  --swiper-pagination-top: 70px;
+  --swiper-navigation-top-offset: 20px;
+  --swiper-pagination-bullet-size: 10px;
+
+  .swiper-wrapper {
+    height: 43px;
+    /* border: 1px solid theme("colors.primary-dark"); */
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: theme("colors.neutral-white");
+
+    &:after {
+      font-size: 32px;
+      font-weight: 100;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    background-color: theme("colors.neutral-white");
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: theme("colors.light-green");
+  }
+}

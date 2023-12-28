@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import "./testing.css";
+import { useRef, useState } from "react";
 
 import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import { motion } from "framer-motion";
 import { opacity } from "./animations";
-import { Carrousel } from "./carrousel";
+import { CarrouselExperience } from "./carrousel-experience";
 
 export default function ExperienceScreen() {
   const scrollElementRef = useRef(null);
@@ -31,8 +30,8 @@ export default function ExperienceScreen() {
 
   return (
     <>
-      <div className="first-section w-screen">
-        <div className="pt-[90px] text-center">
+      <div className="first-section m:w-screen">
+        <div className="pt-[76px] text-center">
           <motion.h2
             initial={{ opacity: 0, y: -10 }}
             animate={{
@@ -50,9 +49,9 @@ export default function ExperienceScreen() {
             Experience
           </motion.h2>
         </div>
-        {/* <div className="w-full"> */}
-        <Carrousel />
-        {/* </div> */}
+        <div className="pt-[110px] w-[350px]">
+          <CarrouselExperience />
+        </div>
       </div>
 
       <motion.div
