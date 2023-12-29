@@ -1,46 +1,35 @@
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./carrousel-experience.css";
 import { useState } from "react";
+import { experiences } from "../typing/constants";
 
-const experienceData = [
-  {
-    companyName: "Enext",
-    description: "Description 1",
-  },
-  {
-    companyName: "FIAP",
-    description: "Description 2",
-  },
-  {
-    companyName: "Red Ventures",
-    description: "Description 3",
-  },
-  {
-    companyName: "Origin",
-    description: "Description 4",
-  },
-];
+interface Props {
+  initialSlide: number;
+  onSliderChange: (index: number) => void;
+}
 
-export const CarrouselExperience = () => {
+export const CarrouselExperience = (props: Props) => {
+  const { onSliderChange, initialSlide } = props;
   const [sliderisMounted, setSliderisMounted] = useState(false);
 
   return (
-    <>
+    <div className="tablet:hidden">
       <Swiper
         modules={[Navigation, Pagination, A11y]}
         slidesPerView={1}
         navigation={sliderisMounted}
         pagination={{ clickable: true }}
         onSwiper={() => setSliderisMounted(true)}
-        onSlideChange={(swiper) => console.log("slide change", swiper)}
-        className="carousel-experience relative"
+        onSlideChange={(swiper) => onSliderChange(swiper.activeIndex)}
+        className="carousel-experience relative "
+        initialSlide={initialSlide}
       >
         {sliderisMounted
-          ? experienceData.map((experience) => (
+          ? experiences.map((experience) => (
               <SwiperSlide key={experience.companyName}>
                 <div className="h-full flex justify-center items-center">
                   <span>{experience.companyName}</span>
@@ -49,6 +38,6 @@ export const CarrouselExperience = () => {
             ))
           : null}
       </Swiper>
-    </>
+    </div>
   );
 };

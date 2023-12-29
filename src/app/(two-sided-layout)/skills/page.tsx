@@ -1,7 +1,10 @@
 "use client";
 import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import { motion } from "framer-motion";
-import { opacity } from "../../../domain/experience/components/animations";
+import {
+  jobDescriptionItems,
+  opacity,
+} from "../../../domain/experience/components/animations";
 
 export default function Skills() {
   return (
@@ -42,23 +45,20 @@ export default function Skills() {
           front end engineer
         </p>
 
-        <div className="mt-2 flex flex-col gap-3">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </p>
-        </div>
+        <motion.div
+          className="mt-10 flex flex-col gap-3"
+          variants={jobDescriptionItems}
+          animate="visible"
+          initial="hidden"
+        >
+          {Array.from({ length: 20 }).map((_, i) => (
+            <motion.p variants={jobDescriptionItems} key={i}>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+              molestias, distinctio quisquam consequuntur minima suscipit
+              accusamus
+            </motion.p>
+          ))}
+        </motion.div>
       </motion.div>
 
       <AppHeader />

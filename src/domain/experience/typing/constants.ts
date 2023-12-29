@@ -1,0 +1,68 @@
+import { Experience } from "./interfaces-and-enums";
+
+export const experiences: Experience[] = [
+  {
+    companyName: "Enext",
+    description: [
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+    ],
+    endDate: "2021-01-01",
+    position: "Frontend Developer",
+    startDate: "2018-01-01",
+  },
+  {
+    companyName: "FIAP",
+    description: [
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+    ],
+    endDate: "2021-01-01",
+    position: "Frontend Developer",
+    startDate: "2019-01-01",
+  },
+  {
+    companyName: "Red Ventures",
+    description: [
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+    ],
+    endDate: "2021-01-01",
+    position: "Frontend Developer",
+    startDate: "2020-01-01",
+  },
+  {
+    companyName: "Origin",
+    description: [
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, distinctio quisquam consequuntur minima suscipit accusamus",
+    ],
+    endDate: "2021-01-01",
+    position: "Frontend Developer",
+    startDate: "2020-01-01",
+  },
+];

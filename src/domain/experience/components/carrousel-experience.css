@@ -28,6 +28,8 @@
 
   .swiper-pagination-bullet {
     background-color: theme("colors.neutral-white");
+    transition: background-color 0.3s ease-in-out;
+    will-change: background-color, transform;
   }
 
   .swiper-pagination-bullet-active {

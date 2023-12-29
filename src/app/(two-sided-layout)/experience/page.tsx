@@ -1,6 +1,60 @@
 "use client";
 import { motion } from "framer-motion";
 import { CarrouselExperience } from "../../../domain/experience/components/carrousel-experience";
+import { opacity } from "@/domain/experience/components/animations";
+import { useState } from "react";
+import { ExperienDetail } from "@/domain/experience/components/experience-detail";
+import { experiences } from "@/domain/experience/typing/constants";
+
+// export const list = {
+//   visible: {
+//     transition: {
+//       staggerChildren: 0.1,
+//     },
+//   },
+// };
+
+// const item: Variants = {
+//   visible: {
+//     opacity: 1,
+//     x: 0,
+//     transition: {
+//       type: "spring",
+//       bounce: 0.25,
+//       damping: 15,
+//       stiffness: 200,
+//       restDelta: 0.05,
+//     },
+//   },
+//   hidden: { opacity: 0, x: -25 },
+// };
+
+// export const listOfParagraph: Variants = {
+//   visible: {
+//     transition: {
+//       staggerChildren: 0.1,
+//       delayChildren: 0.5,
+//       when: "beforeChildren",
+//     },
+//   },
+// };
+
+// export const paragraph: Variants = {
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: {
+//       // duration: 150,
+//       type: "spring",
+//       damping: 10,
+//       stiffness: 200,
+//       // restSpeed: 100,
+//     },
+//     // transition: { duration: 15.1, type: "spring", damping: 20, stiffness: 200 },
+//   },
+
+//   hidden: { opacity: 0, y: 10 },
+// };
 
 export default function ExperienceScreen() {
   // TODO - Fix this
@@ -20,6 +74,11 @@ export default function ExperienceScreen() {
   //     scrollElementRef.current.removeEventListener("scroll", handleScroll);
   //   };
   // }, []);
+  // const { experiences } = useExperience();
+  const initialSlide = experiences.length - 1;
+  const [selectedExperienceIndex, setSelectedExperienceIndex] =
+    useState(initialSlide);
+  const selectedExperience = experiences[selectedExperienceIndex];
 
   return (
     <>
@@ -43,38 +102,58 @@ export default function ExperienceScreen() {
           </motion.h2>
         </div>
         <div className="pt-[110px] w-full max-w-[270px] mx-auto">
-          <CarrouselExperience />
+          <CarrouselExperience
+            onSliderChange={setSelectedExperienceIndex}
+            initialSlide={initialSlide}
+          />
         </div>
       </div>
 
       <motion.div
         animate="visible"
         initial="hidden"
+        variants={opacity}
         className="bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto"
       >
-        <p className="text-2xl font-medium text-secondary-dark">Red Ventures</p>
-        <p className="text-sm font-normal text-neutral-white">2019 - Present</p>
-        <p className="text-lg font-normal text-secondary-dark">
-          front end engineer
-        </p>
-
-        <div className="mt-2 flex flex-col gap-3">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-            molestias, distinctio quisquam consequuntur minima suscipit
-            accusamus
-          </p>
-        </div>
+        <ExperienDetail
+          experience={selectedExperience}
+          key={selectedExperience.companyName}
+        />
+        {/* <motion.div animate="visible" initial="hidden" variants={list}> */}
+        {/* <motion.p
+            className="text-2xl font-medium text-secondary-dark"
+            variants={item}
+          >
+            {selectedExperience.companyName}
+          </motion.p> */}
+        {/* <motion.p
+            className="text-sm font-normal text-neutral-white"
+            variants={item}
+          >
+            {new Date(selectedExperience.startDate).getFullYear()} - Present
+          </motion.p> */}
+        {/* <motion.p
+            className="text-lg font-normal text-secondary-dark"
+            variants={item}
+          >
+            front end engineer
+          </motion.p> */}
+        {/* </motion.div> */}
+        {/* 
+        <motion.div
+          className="mt-3 flex flex-col gap-3"
+          // variants={listOfParagraph}
+          // animate="visible"
+          // initial="hidden"
+        >
+          {Array.from({ length: 20 }).map((_, i) => (
+            <Reveal key={i} iterator={i}>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+              molestias, distinctio quisquam consequuntur minima suscipit
+              accusamus
+            </Reveal>
+          ))}
+        </motion.div> */}
       </motion.div>
     </>
   );
