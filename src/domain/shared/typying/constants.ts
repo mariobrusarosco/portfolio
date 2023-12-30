@@ -1,7 +1,8 @@
 export const AppBreakpoints = {
   mobile: 767,
   tablet: 768,
-  desktop: 1024,
+  mobileAndTablet: 1279,
+  desktop: 1280,
 };
 
 export const AppBreakpointsMediaQueries = {
