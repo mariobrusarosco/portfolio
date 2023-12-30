@@ -22,7 +22,6 @@ export const companyHeaderitems: Variants = {
       bounce: 0.25,
       damping: 15,
       stiffness: 200,
-      // duration: 0.1,
       restDelta: 0.05,
     },
   },
@@ -35,7 +34,6 @@ export const jobDescriptionItems: Variants = {
     y: 0,
     transition: {
       type: "spring",
-      // bounce: 0.01,
       damping: 15,
       stiffness: 200,
       delay: iterator * 0.05,
