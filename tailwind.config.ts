@@ -1,12 +1,14 @@
+import { AppBreakpoints } from "./src/domain/shared/typying/constants";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     screens: {
-      m: { max: "767px" },
-      tablet: { min: "768px" },
-      "m-and-t": { max: "1279px" },
-      desktop: { min: "1280px" },
+      m: { max: AppBreakpoints.mobile + "px" },
+      tablet: { min: AppBreakpoints.tablet + "px" },
+      "m-and-t": { max: AppBreakpoints.mobileAndTablet + "px" },
+      desktop: { min: AppBreakpoints.desktop + "px" },
     },
     extend: {
       fontFamily: {

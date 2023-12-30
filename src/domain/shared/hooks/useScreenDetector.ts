@@ -3,11 +3,15 @@ import { useEffect, useState } from "react";
 import { AppBreakpointsMediaQueries } from "../typying/constants";
 
 const identifyDeviceByViewport = () => {
-  const isMobile = window.matchMedia(AppBreakpointsMediaQueries.mobile).matches;
-  const isTablet = window.matchMedia(AppBreakpointsMediaQueries.tablet).matches;
-  const isDesktop = window.matchMedia(
-    AppBreakpointsMediaQueries.desktop
-  ).matches;
+  if (typeof window === "undefined")
+    return { isMobile: false, isTablet: false, isDesktop: false };
+
+  const isMobile =
+    window?.matchMedia(AppBreakpointsMediaQueries.mobile).matches || false;
+  const isTablet = window?.matchMedia(AppBreakpointsMediaQueries.tablet)
+    .matches;
+  const isDesktop =
+    window?.matchMedia(AppBreakpointsMediaQueries.desktop).matches || false;
 
   return { isMobile, isTablet, isDesktop };
 };
