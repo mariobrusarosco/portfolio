@@ -40,7 +40,7 @@ export default function Skills() {
         // ref={scrollElementRef}
       >
         <p className="text-2xl font-medium text-secondary-dark">Red Ventures</p>
-        <p className="text-sm font-normal text-neutral-white">2019 - Present</p>
+        <p className="text-sm font-normal text-primary-white">2019 - Present</p>
         <p className="text-lg font-normal text-secondary-dark">
           front end engineer
         </p>
