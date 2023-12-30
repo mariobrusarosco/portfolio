@@ -1,80 +1,48 @@
 import { motion } from "framer-motion";
-
-const Circle = () => {
-  return (
-    <motion.div
-      className="w-[20px] h-[10px] bg-primary-base absolute"
-      animate={{
-        scale: [1, 1.3, 1],
-        transition: {
-          duration: 0.5,
-          type: "spring",
-          damping: 10,
-          stiffness: 150,
-        },
-      }}
-    />
-  );
-};
-
-const Stem = () => {
-  return <motion.div className="w-[1px] h-full bg-light-gray" />;
-};
-
-const testWrapperVarians = {
-  animate: {
-    scale: [1, 1.3, 1],
-    transition: {
-      duration: 0.5,
-      type: "spring",
-      damping: 10,
-      stiffness: 150,
-    },
-  },
-};
+import React from "react";
+import { useScreenDetector } from "../../hooks/useScreenDetector";
+import { circleAnimation, stemAnimation } from "./animations";
 
 export const Pin = () => {
-  return (
-    <motion.div
-      className="relative h-[43px] flex justify-center bg-green-800"
-      whileHover={{
-        backgroundColor: "red",
-        transition: { duration: 0.5 },
-      }}
-      // variants={testWrapperVarians}
-    >
-      <motion.div
-        className="w-[20px] h-[10px] bg-primary-base"
-        whileHover={{
-          scale: 1.5,
-          transition: { duration: 0.5 },
-        }}
-      />
+  const { isDesktop } = useScreenDetector();
+  const keyToRefreshVariants = String(isDesktop);
 
-      <Stem />
-    </motion.div>
+  return (
+    <div className="relative flex justify-center">
+      <Stem
+        variants={isDesktop ? stemAnimation : undefined}
+        key={keyToRefreshVariants}
+      />
+      <Circle
+        variants={isDesktop ? circleAnimation : undefined}
+        key={keyToRefreshVariants}
+      />
+    </div>
   );
 };
 
-// export const Pin = () => {
-//   return (
-//     <motion.div className="relative flex-grow ">
-//       <motion.div
-//         // variants={circle}
-//         className="w-[1px] h-full bg-light-gray desktop:hidden"
-//       />
-//       <motion.div
-//         className="absolute top-1/2 left-1/2 w-[10px] desktop:w-[20px] h-[10px] desktop:h-[20px] rounded-full bg-primary-base hover:bg-neutral-white"
-//         variants={circle}
-//         // whileHover={{ scale: 1.3 }}
-//         // initial={{ x: "-50%", y: "-50%" }}
-//         // transition={{
-//         //   duration: 0.1,
-//         //   type: "spring",
-//         //   damping: 10,
-//         //   stiffness: 300,
-//         // }}
-//       />
-//     </motion.div>
-//   );
-// };
+const CircleWithMotion = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<{}>
+>((_, ref) => (
+  <div
+    ref={ref}
+    className="w-[10px] h-[10px] rounded-full bg-primary-base m-and-t:absolute  m-and-t:top-[15px] desktop:w-[20px] desktop:h-[20px]"
+  />
+));
+
+CircleWithMotion.displayName = "Circle";
+export const Circle = motion(CircleWithMotion);
+
+const StemWithMotion = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<{}>
+>((_, ref) => (
+  <div
+    ref={ref}
+    className="w-[1px] h-[43px] bg-light-gray desktop:opacity-0 desktop:absolute"
+  />
+));
+
+StemWithMotion.displayName = "Stem";
+export const Stem = motion(StemWithMotion);

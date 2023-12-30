@@ -1,45 +1,39 @@
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 import Link from "next/link";
 import { Pin } from "./pin";
+import { useScreenDetector } from "../../hooks/useScreenDetector";
+import { labelAnimation } from "./animations";
 
 interface Props {
   path: string;
   label: string;
 }
+
 export const HeaderLink = (props: Props) => {
   const { path, label } = props;
+  const { isDesktop } = useScreenDetector();
+  const keyToRefreshVariants = String(isDesktop);
 
   return (
-    <motion.li className="">
-      <Link href={path} className=" flex flex-col">
-        <Pin />
-        <span>{label}</span>
+    <li>
+      <Link
+        href={path}
+        className="flex flex-col text-primary-white font-light text-sm"
+      >
+        <motion.span whileHover="hover">
+          <Pin />
+          <motion.span
+            transition={{
+              x: 20,
+            }}
+            key={keyToRefreshVariants}
+            variants={isDesktop ? labelAnimation : undefined}
+            className="desktop:absolute desktop:text-lg desktop:translate-y-[10px]  desktop:invisible"
+          >
+            {label}
+          </motion.span>
+        </motion.span>
       </Link>
-    </motion.li>
+    </li>
   );
 };
-
-// Abstracted styles. Does it make sense to abstract this?
-// const mobileStyles = "bottom-0 left-0 flex";
-// const tabletStyles =
-//   "tablet:w-[400px] tablet:bottom-[50px] tablet:left-[50px] rounded-lg";
-// mobileStyles;
-// const defaultStyles = "absolute bg-neutral-white/10 w-full";
-
-// const CustomLink = ({
-//     children,
-//     className,
-//     href,
-//   }: {
-//     children: React.ReactNode;
-//     className?: string;
-//     href: string;
-//   }) => {
-//     return (
-//       <motion.li>
-//         <Link className={className} href={href}>
-//           {children}
-//         </Link>
-//       </motion.li>
-//     );
-//   };
