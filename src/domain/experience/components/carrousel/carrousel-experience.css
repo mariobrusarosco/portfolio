@@ -1,0 +1,38 @@
+.carousel-experience {
+  --swiper-navigation-top-offset: 15px;
+  --swiper-pagination-top: unset;
+  --swiper-pagination-bottom: 0;
+  --swiper-pagination-bullet-size: 10px;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+
+  height: 89px;
+  .swiper-wrapper {
+    height: 32px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: theme("colors.primary-white");
+
+    &:after {
+      font-size: 20px;
+      font-weight: 100;
+    }
+  }
+
+  .swiper-pagination-bullets {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: theme("colors.primary-white");
+    transition: background-color 0.3s ease-in-out;
+    will-change: background-color, transform;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: theme("colors.light-green");
+  }
+}
