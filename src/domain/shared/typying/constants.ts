@@ -1,6 +1,5 @@
 export const AppBreakpoints = {
   mobile: 767,
-  "mobile-lg": 768,
   tablet: 1024,
   mobileAndTablet: 1279,
   desktop: 1367,
@@ -8,7 +7,7 @@ export const AppBreakpoints = {
 
 export const AppBreakpointsMediaQueries = {
   mobile: `(max-width: ${AppBreakpoints.mobile}px)`,
-  "mobile-lg": `(max-width: ${AppBreakpoints["mobile-lg"]}px)`,
+  "mobile-lg": `(min-width: ${AppBreakpoints.mobile}px) and (max-width: ${AppBreakpoints.tablet}px)`,
   tablet: `(min-width: ${AppBreakpoints.tablet}px) and (max-width: ${AppBreakpoints.desktop}px)`,
   desktop: `(min-width: ${AppBreakpoints.desktop}px)`,
 };

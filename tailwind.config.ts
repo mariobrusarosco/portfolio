@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     screens: {
       "mobile-only": { max: AppBreakpoints.mobile + "px" },
-      "mobile-lg-only": { max: AppBreakpoints["mobile-lg"] + "px" },
-      "m-and-t": { max: AppBreakpoints.mobileAndTablet + "px" },
+      // "mobile-lg-only": { max: AppBreakpoints["mobile-lg"] + "px" },
+      // "m-and-t": { max: AppBreakpoints.mobileAndTablet + "px" },
       tablet: { min: AppBreakpoints.tablet + "px" },
       desktop: { min: AppBreakpoints.desktop + "px" },
     },
