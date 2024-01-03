@@ -10,7 +10,6 @@ module.exports = {
       // "m-and-t": { max: AppBreakpoints.mobileAndTablet + "px" },
       "mobile-lg": {
         min: AppBreakpoints.mobile + "px",
-        max: AppBreakpoints.tablet + "px",
       },
       tablet: { min: AppBreakpoints.tablet + "px" },
       desktop: { min: AppBreakpoints.desktop + "px" },

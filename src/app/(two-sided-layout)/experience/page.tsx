@@ -44,8 +44,8 @@ export default function ExperienceScreen() {
 
   return (
     <>
-      <div className="first-section m:w-screen">
-        <div className="pt-[76px] tablet:pt-[150px] text-center">
+      <div className="first-section flex flex-col items-center justify-around tablet:h-[400px] tablet:my-auto tablet:mx-0">
+        <div className="text-center">
           <motion.h2
             initial={{ opacity: 0, y: -10 }}
             animate={{
@@ -58,12 +58,12 @@ export default function ExperienceScreen() {
                 stiffness: 150,
               },
             }}
-            className="text-4xl tablet:text-5xl"
+            className="text-primary-white text-3xl tablet:text-5xl"
           >
             Experience
           </motion.h2>
         </div>
-        <section className="pt-[110px] w-full max-w-[270px] mx-auto">
+        <section className="w-full max-w-[270px]">
           {isDesktop ? (
             <CompanyList onCompanySelection={setSelectedCompany} />
           ) : (

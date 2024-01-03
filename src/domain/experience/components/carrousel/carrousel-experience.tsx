@@ -32,7 +32,7 @@ export const CarrouselExperience = (props: Props) => {
       {sliderisMounted
         ? experiences.map((experience) => (
             <SwiperSlide key={experience.companyName}>
-              <div className="h-full flex justify-center items-center">
+              <div className="h-full flex text-primary-white justify-center items-center">
                 <span>{experience.companyName}</span>
               </div>
             </SwiperSlide>

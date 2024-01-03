@@ -7,7 +7,8 @@ export const AppBreakpoints = {
 
 export const AppBreakpointsMediaQueries = {
   mobile: `(max-width: ${AppBreakpoints.mobile}px)`,
-  "mobile-lg": `(min-width: ${AppBreakpoints.mobile}px) and (max-width: ${AppBreakpoints.tablet}px)`,
+  "mobile-lg": `(min-width: ${AppBreakpoints.mobile}px)`,
+  "mobile-lg-only": `(min-width: ${AppBreakpoints.mobile}px) and (max-width: ${AppBreakpoints.tablet}px)`,
   tablet: `(min-width: ${AppBreakpoints.tablet}px) and (max-width: ${AppBreakpoints.desktop}px)`,
   desktop: `(min-width: ${AppBreakpoints.desktop}px)`,
 };
