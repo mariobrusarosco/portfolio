@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 
 export const metadata: Metadata = {
   title: "Mario Brusarosco",
@@ -24,9 +25,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} font-montserrat antialiased`}>
-        <div className="bg-main bg-no-repeat bg-cover h-screen w-screen overflow-hidden">
-          {children}
-        </div>
+        <div className="bg-main bg-no-repeat bg-cover h-full">{children}</div>
+        <AppHeader />
       </body>
     </html>
   );

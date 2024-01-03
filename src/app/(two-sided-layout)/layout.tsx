@@ -7,7 +7,7 @@ export default function TwoSidedLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="h-screen m:pb-[96px] tablet:0 text-primary-white grid m:grid-rows-2 tablet:grid-cols-2">
+    <div className="bg-main bg-no-repeat bg-cover h-full grid m:pb-[95px] m:grid-rows-2 tablet:grid-cols-2">
       {children}
       <AppHeader />
     </div>

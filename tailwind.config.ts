@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     screens: {
       m: { max: AppBreakpoints.mobile + "px" },
+      "m-lg": { max: AppBreakpoints["mobile-lg"] + "px" },
       tablet: { min: AppBreakpoints.tablet + "px" },
       "m-and-t": { max: AppBreakpoints.mobileAndTablet + "px" },
       desktop: { min: AppBreakpoints.desktop + "px" },

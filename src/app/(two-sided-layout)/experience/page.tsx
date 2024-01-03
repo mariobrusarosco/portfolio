@@ -79,7 +79,7 @@ export default function ExperienceScreen() {
         animate="visible"
         initial="hidden"
         variants={opacity}
-        className="bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto tablet:py-16 tablet:px-7 desktop:pt-[150px] desktop:px-[130px]"
+        className="second-section bg-primary-base  p-5 flex flex-col gap-y-2 overflow-auto tablet:py-16 tablet:px-7 desktop:pt-[150px] desktop:px-[130px]"
       >
         <ExperienDetail
           experience={selectedExperience}
