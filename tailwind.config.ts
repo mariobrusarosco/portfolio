@@ -5,10 +5,10 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     screens: {
-      m: { max: AppBreakpoints.mobile + "px" },
-      "m-lg": { max: AppBreakpoints["mobile-lg"] + "px" },
-      tablet: { min: AppBreakpoints.tablet + "px" },
+      "mobile-only": { max: AppBreakpoints.mobile + "px" },
+      "mobile-lg-only": { max: AppBreakpoints["mobile-lg"] + "px" },
       "m-and-t": { max: AppBreakpoints.mobileAndTablet + "px" },
+      tablet: { min: AppBreakpoints.tablet + "px" },
       desktop: { min: AppBreakpoints.desktop + "px" },
     },
     extend: {
