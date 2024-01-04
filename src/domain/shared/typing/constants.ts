@@ -17,5 +17,5 @@ export const portfolioRouting = [
   { path: "/", label: "Home" },
   { path: "/experience", label: "Experience" },
   { path: "/skills", label: "Skills" },
-  { path: "/projects", label: "Side Projects" },
+  { path: "/side-projects", label: "Side Projects" },
 ];

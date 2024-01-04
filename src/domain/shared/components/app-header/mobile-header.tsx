@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { portfolioRouting } from "../../typying/constants";
+import { portfolioRouting } from "../../typing/constants";
 
 export const MobileHeader = () => {
   return (
-    <header className="bg-primary-white/20 tablet:rounded-lg">
+    <header className="mobile bg-primary-white/20 tablet:rounded-lg desktop:hidden">
       <ul className="flex justify-around p-4">
         {portfolioRouting.map((route) => (
           <li key={route.path}>

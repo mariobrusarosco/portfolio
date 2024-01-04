@@ -7,8 +7,6 @@ import { useState } from "react";
 import { ExperienDetail } from "@/domain/experience/components/experience-detail";
 import { experiences } from "@/domain/experience/typing/constants";
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
-
-import { ComponentType } from "react";
 import CompanyList from "@/domain/experience/components/company-list";
 
 // const DynamicCompanyList = dynamic<{}>(
@@ -44,15 +42,14 @@ export default function ExperienceScreen() {
 
   return (
     <>
-      <div className="first-section flex flex-col items-center justify-around tablet:h-[400px] tablet:my-auto tablet:mx-0">
+      <div className="first-section flex flex-col items-center justify-around tablet:h-[400px] tablet:my-auto tablet:mx-0 desktop:h-full desktop:justify-start desktop:pt-24">
         <div className="text-center">
           <motion.h2
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{
               opacity: 1,
               y: 0,
               transition: {
-                duration: 0.5,
                 type: "spring",
                 damping: 10,
                 stiffness: 150,
@@ -63,6 +60,7 @@ export default function ExperienceScreen() {
             Experience
           </motion.h2>
         </div>
+
         <section className="w-full max-w-[270px]">
           {isDesktop ? (
             <CompanyList onCompanySelection={setSelectedCompany} />

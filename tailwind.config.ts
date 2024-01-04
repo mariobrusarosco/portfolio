@@ -1,4 +1,4 @@
-import { AppBreakpoints } from "./src/domain/shared/typying/constants";
+import { AppBreakpoints } from "./src/domain/shared/typing/constants";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { AppBreakpointsMediaQueries } from "../typying/constants";
+import { AppBreakpointsMediaQueries } from "../typing/constants";
 
 const identifyDeviceProperties = () => {
   if (typeof window === "undefined")

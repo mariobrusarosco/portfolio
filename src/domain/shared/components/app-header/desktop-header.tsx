@@ -1,8 +1,8 @@
+"use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { circleAnimation, labelAnimation, stemAnimation } from "./animations";
-import { portfolioRouting } from "../../typying/constants";
-
+import { portfolioRouting } from "../../typing/constants";
 interface Props {
   path: string;
   label: string;
@@ -10,7 +10,7 @@ interface Props {
 
 export const DesktopHeader = () => {
   return (
-    <header className="bg-primary-white/20 tablet:rounded-lg desktop:w-[200px]">
+    <header className="hidden bg-primary-white/20 rounded-lg desktop:w-[200px] desktop:block">
       <ul className="flex justify-around p-4">
         {portfolioRouting.map((route) => (
           <AnimatedLink
