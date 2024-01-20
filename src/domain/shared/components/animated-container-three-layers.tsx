@@ -1,6 +1,7 @@
 "use client";
 import { AnimatePresence, motion, useIsPresent } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
+import { AppHeader } from "./app-header/app-header";
 
 const transitionVariants = {
   initial: {
@@ -23,14 +24,15 @@ export const AnimatedContainerThreeLayers = ({
   return (
     <AnimatePresence mode="wait">
       <motion.div key={pathname}>
-        {children}
+        <motion.div initial="initial">{children}</motion.div>
         <motion.div
           variants={transitionVariants}
           animate="animate"
           initial="initial"
           transition={{
-            duration: 0.6,
-            delay: 0.2,
+            // type: "spring",
+            duration: 0.8,
+            // delay: 0.5,
             ease: "easeInOut",
           }}
           exit="exit"
@@ -46,67 +48,49 @@ export const AnimatedContainerThreeLayers = ({
           }}
         />
 
-        <motion.div
-          variants={transitionVariants}
-          animate="animate"
-          initial="initial"
-          transition={{
-            duration: 0.6,
-            delay: 0.4,
-            ease: "easeInOut",
-          }}
-          exit="exit"
-          style={{
-            height: "100vh",
-            width: "100vw",
-            position: "fixed",
-            right: "100%",
-            top: 0,
-            bottom: 0,
-            zIndex: 4,
-            backgroundColor: "#ce2a2d",
-          }}
-        />
-
-        <motion.div
-          variants={transitionVariants}
-          animate="animate"
-          initial="initial"
-          transition={{
-            duration: 0.6,
-            delay: 0.6,
-            ease: "easeInOut",
-          }}
-          exit="exit"
-          style={{
-            height: "100vh",
-            width: "100vw",
-            position: "fixed",
-            right: "100%",
-            top: 0,
-            bottom: 0,
-            zIndex: 3,
-            backgroundColor: "#ae1a2d",
-          }}
-        />
         {/* <motion.div
-          initial={{ x: "-100%", backgroundColor: "#CF4F4F" }}
-          animate={{ x: "100%" }}
-          transition={{
-            duration: 1.5,
-            type: "spring",
-            delay: 0.2,
-          }}
-          style={{
-            height: "100vh",
-            width: "100vw",
-            position: "fixed",
-            transformOrigin: "top left",
-            left: 0,
-            top: 0,
-            zIndex: 2,
-          }}
-        /> */}
+            variants={transitionVariants}
+            animate="animate"
+            initial="initial"
+            transition={{
+              duration: 0.6,
+              delay: 0.4,
+              ease: "easeInOut",
+            }}
+            exit="exit"
+            style={{
+              height: "100vh",
+              width: "100vw",
+              position: "fixed",
+              right: "100%",
+              top: 0,
+              bottom: 0,
+              zIndex: 4,
+              backgroundColor: "#ce2a2d",
+            }}
+          /> */}
+
+        {/* <motion.div
+            variants={transitionVariants}
+            animate="animate"
+            initial="initial"
+            transition={{
+              // duration: 0.6,
+              delay: 0.6,
+              ease: "easeInOut",
+            }}
+            exit="exit"
+            style={{
+              height: "100vh",
+              width: "100vw",
+              position: "fixed",
+              right: "100%",
+              top: 0,
+              bottom: 0,
+              zIndex: 3,
+              backgroundColor: "#ae1a2d",
+            }}
+          /> */}
       </motion.div>
     </AnimatePresence>
   );
