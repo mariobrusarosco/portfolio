@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { AppBreakpointsMediaQueries } from "../typying/constants";
+import { AppBreakpointsMediaQueries } from "../typing/constants";
 
-const identifyDeviceByViewport = () => {
+const identifyDeviceProperties = () => {
   if (typeof window === "undefined")
     return { isMobile: false, isTablet: false, isDesktop: false };
 
@@ -12,16 +12,19 @@ const identifyDeviceByViewport = () => {
     .matches;
   const isDesktop =
     window?.matchMedia(AppBreakpointsMediaQueries.desktop).matches || false;
+  const hasHover = window.matchMedia("(hover: hover)").matches;
 
-  return { isMobile, isTablet, isDesktop };
+  return { isMobile, isTablet, isDesktop, hasHover };
 };
 
 export const useScreenDetector = () => {
-  const [conditions, setConditions] = useState(identifyDeviceByViewport);
+  const [deviceProperties, setDeviceProperties] = useState(
+    identifyDeviceProperties
+  );
 
   useEffect(() => {
     const handleResize = () => {
-      setConditions(identifyDeviceByViewport);
+      setDeviceProperties(identifyDeviceProperties);
     };
 
     window.addEventListener("resize", handleResize);
@@ -32,5 +35,5 @@ export const useScreenDetector = () => {
     };
   }, []);
 
-  return conditions;
+  return deviceProperties;
 };

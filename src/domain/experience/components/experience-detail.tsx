@@ -19,7 +19,9 @@ export const ExperienDetail = ({ experience }: { experience: Experience }) => {
           variants={companyHeaderitems}
         >
           {new Date(experience.startDate).getFullYear()} -{" "}
-          {new Date(experience.endDate).getFullYear()}
+          {experience.endDate
+            ? new Date(experience.endDate).getFullYear()
+            : "present"}
         </motion.p>
 
         <motion.p
@@ -28,9 +30,16 @@ export const ExperienDetail = ({ experience }: { experience: Experience }) => {
         >
           {experience.position}
         </motion.p>
+
+        <motion.p
+          className="text-xs font-normal text-primary-white"
+          variants={companyHeaderitems}
+        >
+          {experience.location}
+        </motion.p>
       </motion.div>
 
-      <div className="mt-3 flex flex-col gap-3">
+      <div className="mt-3 flex flex-col gap-3 text-primary-white">
         {experience?.description.map((descriptionItem, i) => (
           <Reveal key={i} iterator={i}>
             {descriptionItem}

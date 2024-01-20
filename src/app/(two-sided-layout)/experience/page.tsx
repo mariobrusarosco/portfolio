@@ -7,8 +7,6 @@ import { useState } from "react";
 import { ExperienDetail } from "@/domain/experience/components/experience-detail";
 import { experiences } from "@/domain/experience/typing/constants";
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
-
-import { ComponentType } from "react";
 import CompanyList from "@/domain/experience/components/company-list";
 
 // const DynamicCompanyList = dynamic<{}>(
@@ -44,26 +42,26 @@ export default function ExperienceScreen() {
 
   return (
     <>
-      <div className="first-section m:w-screen">
-        <div className="pt-[76px] tablet:pt-[150px] text-center">
+      <div className="first-section flex flex-col items-center justify-around tablet:h-[400px] tablet:my-auto tablet:mx-0 desktop:h-full desktop:justify-start desktop:pt-24">
+        <div className="text-center">
           <motion.h2
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{
               opacity: 1,
               y: 0,
               transition: {
-                duration: 0.5,
                 type: "spring",
                 damping: 10,
                 stiffness: 150,
               },
             }}
-            className="text-4xl tablet:text-5xl"
+            className="text-primary-white text-3xl tablet:text-5xl"
           >
             Experience
           </motion.h2>
         </div>
-        <section className="pt-[110px] w-full max-w-[270px] mx-auto">
+
+        <section className="w-full max-w-[270px]">
           {isDesktop ? (
             <CompanyList onCompanySelection={setSelectedCompany} />
           ) : (
@@ -79,7 +77,7 @@ export default function ExperienceScreen() {
         animate="visible"
         initial="hidden"
         variants={opacity}
-        className="bg-primary-base flex-grow p-5 flex flex-col gap-y-2 overflow-auto tablet:py-16 tablet:px-7 desktop:pt-[150px] desktop:px-[130px]"
+        className="second-section bg-primary-base  p-5 flex flex-col gap-y-2 overflow-auto tablet:py-16 tablet:px-7 desktop:pt-[150px] desktop:px-[130px]"
       >
         <ExperienDetail
           experience={selectedExperience}
