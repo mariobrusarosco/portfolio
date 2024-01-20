@@ -1,19 +1,24 @@
-import { Experience } from "./interfaces-and-enums";
+import { Experience } from "./typing/interfaces-and-enums";
 
 export const experiences: Experience[] = [
   {
+    id: "enext",
+    queryParams: [{ id: "enext" }],
     companyName: "Enext",
     description: [
       "Development of e-commerce stores for the Brazilian market",
       "Development of landing pages",
       "Development of Email Marketing templates",
+      "Stack: HTML, CSS, SASS, CSS, Grunt, Gulp, jQuery, Invision, Photoshop, RunRun It, Github",
     ],
-    endDate: "2021-01-01",
+    endDate: "2017-07-01",
     position: "Frontend Developer",
-    startDate: "2018-01-01",
+    startDate: "2016-07-01",
     location: "São Paulo, SP, Brazil",
   },
   {
+    id: "fiap",
+    queryParams: [{ id: "fiap" }],
     companyName: "FIAP",
     description: [
       "Development of a SPA  Web-Based Platform with multi-web-browser support",
@@ -22,12 +27,14 @@ export const experiences: Experience[] = [
       "Template Creationo with Angular JS",
       "Stack: ES6+, SCSS, Gulp, Grunt, Angular, Travis CI",
     ],
-    endDate: "2021-01-01",
+    endDate: "2018-05-12",
     position: "Frontend Developer",
-    startDate: "2019-01-01",
+    startDate: "2017-07-01",
     location: "São Paulo, SP, Brazil",
   },
   {
+    id: "red-ventures",
+    queryParams: [{ id: "red-ventures" }],
     companyName: "Red Ventures",
     description: [
       "Development of Web Applications - SPA",
@@ -36,7 +43,7 @@ export const experiences: Experience[] = [
       "Configuration of Front End build tools: Webpack",
       "Migration of React Class Components to React Hooks",
       "CD/CI",
-      "Stack: ES6+, CSS Modules, Webpack, React, Redux, Recompose, Stylus, Circle CI",
+      "Stack: ES6+, CSS Modules, Webpack, React, Redux, Recompose, Stylus, Circle CI, Postman, Invision, Circle CI",
     ],
     endDate: "2019-11-01",
     position: "Frontend Engineer",
@@ -44,6 +51,8 @@ export const experiences: Experience[] = [
     location: "São Paulo, SP, Brazil",
   },
   {
+    id: "origin",
+    queryParams: [{ id: "origin" }],
     companyName: "Origin",
     description: [
       "Product development from the ground up",
@@ -55,7 +64,7 @@ export const experiences: Experience[] = [
       "Analytics: Event definitions, Reports, Funnel, and Dashboards",
       "Configuration of Front End builds tools via Webpack",
       "Node CLI - Automatization of Folders, React Elements, and JS environments with Webpack",
-      "Stack: ES6+, Typescript, Styled Components, Webpack, React, Redux, React Query, Heap Analytics, LaunchDarkly, Jest, React Testing Library, Storybook, Figma, Jira, Github",
+      "Stack: ES6+, Typescript, Styled Components, Webpack, React, Redux, React Query, Heap Analytics, LaunchDarkly, Jest, Enzime, React Testing Library, Storybook, Figma, Jira, Github",
     ],
     endDate: null,
     position: "Frontend Engineer",

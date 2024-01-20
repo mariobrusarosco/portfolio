@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import React from "react";
-import { jobDescriptionItems } from "./animations";
+import animations from "@/domain/experience/animations";
+
+const { jobDescriptionItem } = animations;
 
 export const Reveal = ({
   children,
@@ -11,7 +13,7 @@ export const Reveal = ({
 }) => {
   return (
     <motion.div
-      variants={jobDescriptionItems}
+      variants={jobDescriptionItem}
       initial="hidden"
       whileInView="visible"
       className="relative"

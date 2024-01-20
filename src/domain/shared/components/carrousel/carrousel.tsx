@@ -4,17 +4,18 @@ import { Navigation, Pagination, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "./carrousel-experience.css";
+import "./carrousel.css";
 import { useState } from "react";
-import { experiences } from "../../typing/constants";
 
 interface Props {
   initialSlide: number;
   onSliderChange: (index: number) => void;
+  list: any[];
+  ComponentForSlide: React.FC<any>; // TODO - Type this
 }
 
-export const CarrouselExperience = (props: Props) => {
-  const { onSliderChange, initialSlide } = props;
+export const Carrousel = (props: Props) => {
+  const { onSliderChange, initialSlide, list, ComponentForSlide } = props;
   const [sliderisMounted, setSliderisMounted] = useState(false);
 
   return (
@@ -23,17 +24,19 @@ export const CarrouselExperience = (props: Props) => {
       slidesPerView={1}
       navigation={sliderisMounted}
       pagination={{ clickable: true }}
-      onSwiper={() => setSliderisMounted(true)}
+      onSwiper={() => {
+        setSliderisMounted(true);
+      }}
       onSlideChange={(swiper) => onSliderChange(swiper.activeIndex)}
       className="carousel-experience relative "
       initialSlide={initialSlide}
       suppressHydrationWarning
     >
       {sliderisMounted
-        ? experiences.map((experience) => (
-            <SwiperSlide key={experience.companyName}>
-              <div className="h-full flex text-primary-white justify-center items-center">
-                <span>{experience.companyName}</span>
+        ? list?.map((item) => (
+            <SwiperSlide key={item.id}>
+              <div className="h-full flex justify-center items-center">
+                <ComponentForSlide {...item} />
               </div>
             </SwiperSlide>
           ))

@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
-import { experiences } from "../typing/constants";
+import { experiences } from "../constants";
+import animations from "@/domain/experience/animations";
+
+const { companiesList } = animations;
 
 interface Props {
   onCompanySelection: (index: number) => void;
@@ -9,75 +12,46 @@ const CompanyList = (props: Props) => {
   const { onCompanySelection } = props;
 
   return (
-    <ul className="flex flex-col gap-y-14 desktop:pt-20 desktop:w-fit desktop:my-0 desktop:mx-auto">
+    <motion.ul
+      className="flex flex-col gap-y-14 desktop:pt-20 desktop:w-fit desktop:my-0 desktop:mx-auto"
+      variants={companiesList.container}
+      animate="visible"
+      initial="hidden"
+    >
       {experiences.map((experience, key) => (
         <motion.li
           key={experience.companyName}
           onClick={() => onCompanySelection(key)}
-          className="flex gap-3 items-center cursor-pointer group"
-          whileHover="hover"
-          variants={{
-            hover: {
-              x: -10,
-              transition: {
-                duration: 0.8,
-                type: "spring",
-                stiffness: 150,
-                dumping: 20,
-              },
-            },
-          }}
+          variants={companiesList.item}
         >
-          <div className="relative flex justify-center">
-            <div className="relative flex justify-center">
-              <motion.div
-                className="w-[1px] h-[43px] bg-light-gray group-hover:bg-light-green"
-                variants={{
-                  hover: {
-                    transition: {
-                      duration: 0.8,
-                      type: "spring",
-                      stiffness: 50,
-                      dumping: 10,
-                    },
-                    rotate: 180,
-                  },
-                }}
-              />
-              <motion.div
-                variants={{
-                  hover: {
-                    scale: 1.5,
-                    transition: {
-                      type: "spring",
-                      stiffness: 150,
-                      dumping: 20,
-                    },
-                  },
-                }}
-                className="w-[10px] h-[10px] rounded-full bg-primary-base absolute top-[15px] group-hover:bg-primary-white"
-              />
-            </div>
-          </div>
-          <motion.span
-            className="text-2xl text-primary-white group-hover:text-light-green"
-            variants={{
-              hover: {
-                x: 15,
-                transition: {
-                  type: "spring",
-                  stiffness: 150,
-                  dumping: 20,
-                  from: 0,
-                },
-              },
-            }}
+          {/* IMPORTANT: Framer Motion has a bug with the usage of "whileHover" + variants with "staggerChidlren" 
+           To fix that, we need an extra motion.div to handle the "whileHover"*/}
+          <motion.div
+            whileHover="hover"
+            className="flex gap-3 items-center cursor-pointer group"
           >
-            {experience.companyName}
-          </motion.span>
+            <div className="relative flex justify-center">
+              <div className="relative flex justify-center">
+                <motion.div
+                  className="w-[1px] h-[43px] bg-light-gray group-hover:bg-light-green"
+                  variants={companiesList.stem}
+                />
+                <motion.div
+                  variants={companiesList.circle}
+                  className="w-[10px] h-[10px] rounded-full bg-primary-base absolute top-[15px] group-hover:bg-primary-white"
+                />
+              </div>
+            </div>
+            <motion.span
+              className="text-lg text-primary-white group-hover:text-light-green"
+              variants={companiesList.label}
+            >
+              {experience.companyName}
+            </motion.span>
+          </motion.div>
         </motion.li>
       ))}
-    </ul>
+    </motion.ul>
   );
 };
 
