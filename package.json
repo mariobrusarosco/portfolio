@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "clsx": "^2.1.0",
     "framer-motion": "^10.16.16",
     "next": "14.0.0",
     "react": "^18",
     "react-dom": "^18",
-    "swiper": "^11.0.5"
+    "swiper": "^11.0.5",
+    "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -25,6 +27,7 @@
     "postcss": "^8.4.31",
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
+    "sharp": "^0.33.1",
     "tailwindcss": "^3.3.5",
     "typescript": "^5"
   }
