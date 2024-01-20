@@ -1,8 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { circleAnimation, labelAnimation, stemAnimation } from "./animations";
 import { portfolioRouting } from "../../typing/constants";
+import animations from "./animations";
+
+const { desktopHeader } = animations;
+
 interface Props {
   path: string;
   label: string;
@@ -35,11 +38,11 @@ export const AnimatedLink = (props: Props) => {
       >
         <div className="relative flex justify-center">
           <motion.div
-            variants={stemAnimation}
+            variants={desktopHeader.stem}
             className="w-[1px] h-[43px] bg-light-gray desktop:opacity-0 desktop:absolute"
           />
           <motion.div
-            variants={circleAnimation}
+            variants={desktopHeader.circle}
             className="w-[10px] h-[10px] rounded-full bg-primary-base m-and-t:absolute m-and-t:top-[15px] desktop:w-[20px] desktop:h-[20px]"
           />
         </div>
@@ -47,7 +50,7 @@ export const AnimatedLink = (props: Props) => {
           transition={{
             x: 20,
           }}
-          variants={labelAnimation}
+          variants={desktopHeader.label}
           className="desktop:absolute desktop:text-lg desktop:translate-y-[10px]  desktop:invisible"
         >
           {label}
