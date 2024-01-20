@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 // Font Settings
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["100", "400", "500", "700"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
   variable: "--font-montserrat",
 });
 
