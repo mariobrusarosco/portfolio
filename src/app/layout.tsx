@@ -25,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} font-montserrat antialiased`}>
-        <div className="bg-main bg-no-repeat bg-cover h-full">{children}</div>
+        <div className="h-full bg-cover bg-no-repeat bg-main-mobile tablet:bg-main-tablet desktop:bg-main-desktop">
+          {children}
+        </div>
         <AppHeader />
       </body>
     </html>
