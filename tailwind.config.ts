@@ -19,7 +19,9 @@ module.exports = {
         montserrat: ["var(--font-montserrat)", "sans-serif"],
       },
       backgroundImage: {
-        main: "url('/main-bg.svg')",
+        "main-mobile": "url('/main-bg-mobile.jpg')",
+        "main-tablet": "url('/main-bg-tablet.jpg')",
+        "main-desktop": "url('/main-bg-desktop.jpg')",
       },
       colors: {
         "primary-black": "rgb(var(--primary-black) / <alpha-value>)",
