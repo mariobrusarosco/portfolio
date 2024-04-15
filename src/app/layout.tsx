@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { AppHeader } from "@/domain/shared/components/app-header/app-header";
+import clsx from "clsx";
+import { APP_FONTS_NEXTJS } from "@/domain/styling/nextjs";
 
 export const metadata: Metadata = {
   title: "Mario Brusarosco",
   description: "Mario Brusarosco - Front End Developer",
 };
 
-//TODO [Project]
-// Move this configuration and document it
-// Font Settings
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
-  variable: "--font-montserrat",
-});
+const bodyClasses = clsx(
+  "antialiased",
+  APP_FONTS_NEXTJS.josefinSlab.variable,
+  APP_FONTS_NEXTJS.josefinSans.variable
+);
 
 export default function RootLayout({
   children,
@@ -24,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} font-montserrat antialiased`}>
+      <body className={bodyClasses}>
         <div className="h-full bg-cover bg-no-repeat bg-main-mobile tablet:bg-main-tablet desktop:bg-main-desktop">
           {children}
         </div>
