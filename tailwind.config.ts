@@ -1,3 +1,4 @@
+import { AppFonts } from "./src/domain/styling/fonts";
 import { AppBreakpoints } from "./src/domain/shared/typing/constants";
 
 /** @type {import('tailwindcss').Config} */
@@ -16,7 +17,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        montserrat: ["var(--font-montserrat)", "sans-serif"],
+        sans: `var(--font-josefin-sans)`,
+        // serif: `var(${AppFonts.josefinSlab.variable})`,
       },
       backgroundImage: {
         "main-mobile": "url('/main-bg-mobile.jpg')",
