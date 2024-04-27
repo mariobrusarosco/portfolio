@@ -3,6 +3,7 @@ import "./globals.css";
 import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import clsx from "clsx";
 import { APP_FONTS_NEXTJS } from "@/domain/styling/nextjs";
+import { AppFooter } from "@/domain/shared/components/app-footer/app-footer";
 
 export const metadata: Metadata = {
   title: "Mario Brusarosco",
@@ -26,7 +27,8 @@ export default function RootLayout({
         <div className="h-full bg-cover bg-no-repeat bg-main-mobile tablet:bg-main-tablet desktop:bg-main-desktop">
           {children}
         </div>
-        <AppHeader />
+        <AppFooter />
+        {/* <AppHeader /> */}
       </body>
     </html>
   );
