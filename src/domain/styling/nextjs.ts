@@ -2,13 +2,13 @@ import { Josefin_Sans, Josefin_Slab } from "next/font/google";
 
 const josefinSans = Josefin_Sans({
   subsets: ["latin"],
-  weight: ["100", "400", "700"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
   variable: "--font-josefin-sans",
 });
 
 const josefinSlab = Josefin_Slab({
   subsets: ["latin"],
-  weight: ["100", "400", "700"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
   variable: "--font-josefin-slab",
 });
 
