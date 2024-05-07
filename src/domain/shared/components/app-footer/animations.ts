@@ -16,16 +16,16 @@ const listItem = {
 
 const list = {
   visible: {
-    display: "flex",
-    // visibility: "visible",
+    // display: "flex",
+    visibility: "visible",
     transition: {
       staggerChildren: 0.1,
       type: "spring",
     },
   },
   hidden: {
-    display: "none",
-    // visibility: "hidden",
+    // display: "none",
+    visibility: "hidden",
     transition: {
       staggerChildren: 0.05,
       type: "spring",
@@ -51,16 +51,18 @@ const outerCircle: Variants = {
   },
 };
 
-const labelAnimation: Variants = {
-  default: {
-    x: "-50%",
-    left: "50%",
+const label: Variants = {
+  hidden: {
+    // x: "-50%",
+    // left: "50%",
     opacity: 0,
+    visibility: "hidden",
   },
   hover: {
     visibility: "visible",
     opacity: 1,
     y: -60,
+    // backgroundColor: "#D60C4E",
     transition: {
       type: "spring",
       //A
@@ -98,7 +100,7 @@ const animations = {
     listItem,
     outerCircle,
     innerCircle,
-    label: labelAnimation,
+    label,
   },
 };
 
