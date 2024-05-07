@@ -82,14 +82,14 @@ const AnimatedLink = (props: { path: string; label: string }) => {
           <div className="relative">
             <motion.div
               className="h-[10px] w-[10px] absolute bg-pink-100 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              // variants={hasHover ? menu.innerCircle : undefined}
+              variants={hasHover ? menu.innerCircle : undefined}
             />
             <motion.svg width="40" height="40" viewBox="0 0 40 40">
               <motion.path
                 d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
                 stroke="#FFD1CA"
                 stroke-width="1"
-                // variants={hasHover ? menu.outerCircle : undefined}
+                variants={hasHover ? menu.outerCircle : undefined}
                 fill="transparent"
                 className="origin-center"
               />

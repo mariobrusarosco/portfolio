@@ -37,16 +37,13 @@ const list = {
 const outerCircle: Variants = {
   default: {
     pathLength: 1,
-    stroke: "grey",
     rotate: 120,
-    transformOrigin: "center",
     transition: { type: "spring", damping: 10, stiffness: 150 },
   },
   hover: {
     pathLength: 0.85,
     rotate: 120,
     stroke: "#D60C4E",
-    transformOrigin: "center",
     transition: { type: "spring", damping: 10, stiffness: 150 },
   },
 };
@@ -62,7 +59,6 @@ const label: Variants = {
     visibility: "visible",
     opacity: 1,
     y: -60,
-    // backgroundColor: "#D60C4E",
     transition: {
       type: "spring",
       //A
@@ -71,6 +67,9 @@ const label: Variants = {
       // B
       // damping: 12,
       // stiffness: 100,
+      color: {
+        duration: 0.3,
+      },
     },
     color: "#D60C4E",
   },
