@@ -52,7 +52,7 @@ const Menu = () => {
         // layout="position"
         // animate={isMenuOpen ? "visible" : "hidden"}
         // variants={menu.list}
-        className="w-full flex justify-center p-4 ml-8 gap-7 desktop:justify-start desktop:items-center desktop:gap-10"
+        className="w-full flex justify-center p-4 gap-7 desktop:ml-8 desktop:justify-start desktop:items-center desktop:gap-10"
       >
         {footerRoutes.map((route) => (
           <AnimatedLink key={route.path} {...route} />
