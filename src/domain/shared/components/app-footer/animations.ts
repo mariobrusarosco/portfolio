@@ -1,9 +1,41 @@
 import { Variants } from "framer-motion";
-import { init } from "next/dist/compiled/webpack/webpack";
+import { before } from "node:test";
+import { exit } from "process";
+
+const listItem = {
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+    },
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+
+const list = {
+  visible: {
+    display: "flex",
+    // visibility: "visible",
+    transition: {
+      staggerChildren: 0.1,
+      type: "spring",
+    },
+  },
+  hidden: {
+    display: "none",
+    // visibility: "hidden",
+    transition: {
+      staggerChildren: 0.05,
+      type: "spring",
+      when: "afterChildren",
+    },
+  },
+};
 
 const outerCircle: Variants = {
   default: {
-    strokeWidth: 1,
     pathLength: 1,
     stroke: "grey",
     rotate: 120,
@@ -11,7 +43,6 @@ const outerCircle: Variants = {
     transition: { type: "spring", damping: 10, stiffness: 150 },
   },
   hover: {
-    strokeWidth: 1,
     pathLength: 0.85,
     rotate: 120,
     stroke: "#D60C4E",
@@ -63,6 +94,8 @@ const innerCircle: Variants = {
 
 const animations = {
   menu: {
+    list,
+    listItem,
     outerCircle,
     innerCircle,
     label: labelAnimation,
