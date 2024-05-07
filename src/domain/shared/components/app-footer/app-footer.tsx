@@ -14,7 +14,7 @@ const footerRoutes = portfolioRouting.filter(
 const { menu } = animations;
 
 const AppFooter = () => (
-  <footer className="fixed w-screen bottom-0 bg-white/5 p-6 desktop:px-16 desktop:py-12 desktop:flex desktop:justify-start desktop:gap-x-2 desktop:my-6 desktop:bg-transparent m-w-[132px]">
+  <footer className="fixed w-screen bottom-0 bg-white/5 p-6 desktop:px-16 desktop:py-12 desktop:flex desktop:justify-start  desktop:my-6 desktop:bg-transparent m-w-[132px]">
     <Menu />
   </footer>
 );
@@ -25,7 +25,7 @@ const Menu = () => {
 
   return (
     <>
-      <div className="hidden font-light desktop:flex desktop:items-center desktop:gap-10">
+      <div className="hidden desktop:flex desktop:items-center">
         <motion.span
           className="font-sans font-semibold text-lg uppercase text-pink-100 cursor-pointer p-4"
           onClick={handleToggleMenu}
@@ -35,19 +35,24 @@ const Menu = () => {
         >
           menu
         </motion.span>
-      </div>
 
-      {/* <motion.div
-        className="hidden w-[1px] h-[53px] mx-6 bg-pink-100"
-        variants={menu.stem}
-      /> */}
+        <svg width="2" height="53" viewBox="0 0 2 53" fill="none">
+          <motion.path
+            d="M1 0V53"
+            className="mx-6 stroke-pink-100"
+            variants={menu.stem}
+            initial="hidden"
+            animate={isMenuOpen ? "visible" : "hidden"}
+          />
+        </svg>
+      </div>
 
       <motion.ul
         // initial={false ? "hidden" : "visible"}
         // layout="position"
         // animate={isMenuOpen ? "visible" : "hidden"}
         // variants={menu.list}
-        className="w-full flex justify-center gap-7 desktop:justify-start desktop:items-center desktop:gap-10"
+        className="w-full flex justify-center p-4 ml-8 gap-7 desktop:justify-start desktop:items-center desktop:gap-10"
       >
         {footerRoutes.map((route) => (
           <AnimatedLink key={route.path} {...route} />

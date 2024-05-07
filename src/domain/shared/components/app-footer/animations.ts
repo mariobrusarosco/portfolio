@@ -1,4 +1,4 @@
-import { Variants } from "framer-motion";
+import { Variants, color } from "framer-motion";
 import { before } from "node:test";
 import { exit } from "process";
 
@@ -103,13 +103,31 @@ const trigger = {
       type: "spring",
       stiffness: 200,
       damping: 10,
+      color: {
+        duration: 0.2,
+      },
     },
     color: "#D60C4E",
   },
 };
 
+const stem: Variants = {
+  visible: {
+    pathLength: 1,
+    transition: {
+      type: "spring",
+      damping: 10,
+      stiffness: 150,
+    },
+  },
+  hidden: {
+    pathLength: 0,
+  },
+};
+
 const animations = {
   menu: {
+    stem,
     trigger,
     list,
     listItem,
