@@ -94,8 +94,23 @@ const innerCircle: Variants = {
   },
 };
 
+const trigger = {
+  hover: {
+    // scale: 1.2,
+    letterSpacing: "0.4em",
+    transition: {
+      duration: 0.8,
+      type: "spring",
+      stiffness: 200,
+      damping: 10,
+    },
+    color: "#D60C4E",
+  },
+};
+
 const animations = {
   menu: {
+    trigger,
     list,
     listItem,
     outerCircle,

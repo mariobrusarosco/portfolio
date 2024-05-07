@@ -25,14 +25,17 @@ const Menu = () => {
 
   return (
     <>
-      {/* <div className="hidden font-light desktop:flex desktop:items-center desktop:gap-10">
-        <span
-          className="font-sans font-semibold text-lg uppercase text-pink-100 cursor-pointer"
+      <div className="hidden font-light desktop:flex desktop:items-center desktop:gap-10">
+        <motion.span
+          className="font-sans font-semibold text-lg uppercase text-pink-100 cursor-pointer p-4"
           onClick={handleToggleMenu}
+          layout="size"
+          whileHover="hover"
+          variants={menu.trigger}
         >
           menu
-        </span>
-      </div> */}
+        </motion.span>
+      </div>
 
       {/* <motion.div
         className="hidden w-[1px] h-[53px] mx-6 bg-pink-100"
