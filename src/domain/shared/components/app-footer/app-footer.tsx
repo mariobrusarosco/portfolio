@@ -14,22 +14,17 @@ const { menu } = animations;
 
 const list = {
   visible: {
-    opacity: 1,
     transition: {
-      staggerChildren: 0.5,
+      staggerChildren: 0.1,
+      type: "spring",
     },
   },
-  hidden: {
-    opacity: 0,
-  },
+  hidden: {},
 };
 
 const listItem = {
   visible: {
     opacity: 1,
-    // transition: {
-    //   staggerChildren: 1,
-    // },
   },
   hidden: {
     opacity: 0,
