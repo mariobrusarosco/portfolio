@@ -34,8 +34,18 @@ module.exports = {
         "secondary-dark": "rgb(var(--secondary-dark) / <alpha-value>)",
         "light-gray": "rgb(var(--light-gray) / <alpha-value>)",
         "light-green": "rgb(var(--light-green) / <alpha-value>)",
+
+        "pink-100": "rgb(var(--pink-100) / <alpha-value>)",
+        "green-600": "rgb(var(--green-600) / <alpha-value>)",
+        "orange-400": "rgb(var(--orange-400) / <alpha-value>)",
+        "pink-500": "rgb(var(--pink-500) / <alpha-value>)",
+        "blue-green-300": "rgb(var(--blue-green-300) / <alpha-value>)",
+        "red-700": "rgb(var(--red-700) / <alpha-value>)",
       },
     },
   },
   plugins: [],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 };
