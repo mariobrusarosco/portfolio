@@ -1,13 +1,84 @@
+"use client";
+import { motion } from "framer-motion";
+
 export default function Home() {
+  const firstName = "mario".split("");
+  const lastName = "brusarosco".split("");
+  const aboutMeHeading = "about me".split(" ");
+  const aboutMeText =
+    "a front end developer who enjoys creating digital products".split(" ");
+
   return (
-    <main className="h-full flex flex-col items-center justify-center mobile-lg:justify-start mobile-lg:pt-[20vh] tablet:pt-[225px] tablet:pl-[80px]">
-      <div className="max-w-[289px] mobile-lg:max-w-[408px] tablet:max-w-none font-serif">
-        <h2 className="text-6xl text-primary-base font-bold  uppercase mobile-lg:text-5xl tablet:text-7xl">
-          Mario
+    <main className="container h-full pt-[108px] pb-[116px] flex flex-col justify-around">
+      <div className=" font-serif text-6xl tablet:text-[100px] max-w-[312px] tablet:max-w-[667px] desktop:mt-[100px]">
+        <h2 className="font-semibold uppercase text-pink-500">
+          {" "}
+          {firstName.map((letter, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                type: "spring",
+                delay: index / 10,
+                duration: 4,
+              }}
+            >
+              {letter}
+            </motion.span>
+          ))}
         </h2>
-        <h3 className="text-6xl text-primary-white w-fit font-thin hover:font-sans">
-          brusarosco
+        <h3 className="font-thin text-pink-100 text-right -mt-5 tablet:-mt-8 tablet:text-left tablet:pl-[90px]">
+          {lastName.map((letter, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                type: "spring",
+                delay: index / 10,
+                duration: 4,
+              }}
+            >
+              {letter}
+            </motion.span>
+          ))}
         </h3>
+      </div>
+
+      <div className="w-full font-sans tablet:text-right desktop:max-w-[680px] desktop:ml-auto">
+        <p className="text-3xl font-light text-pink-500">
+          {aboutMeHeading.map((letter, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                type: "spring",
+                delay: index / 10,
+                duration: 4,
+              }}
+            >
+              {letter}{" "}
+            </motion.span>
+          ))}
+        </p>
+        <p className="text-pink-100 font-thin text-3xl uppercase tablet:text-5xl desktop:text-7xl">
+          {aboutMeText.map((letter, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                type: "spring",
+                delay: index / 10,
+                duration: 4,
+              }}
+            >
+              {letter}{" "}
+            </motion.span>
+          ))}
+        </p>
       </div>
     </main>
   );
