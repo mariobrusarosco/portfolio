@@ -7,12 +7,12 @@ const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     container: {
+      center: true,
       padding: {
         DEFAULT: "1rem",
         mobile: "0.5rem",
         tablet: "2rem",
         desktop: "3rem",
-        // p-6 desktop:pb-16 desktop:px-16 desktop:
       },
     },
     screens: {
@@ -20,10 +20,11 @@ const config: Config = {
       // "mobile-lg-only": { max: AppBreakpoints["mobile-lg"] + "px" },
       // "m-and-t": { max: AppBreakpoints.mobileAndTablet + "px" },
       "mobile-lg": {
-        min: AppBreakpoints.mobile + "px",
+        min: AppBreakpoints.mobile,
       },
-      tablet: { min: AppBreakpoints.tablet + "px" },
-      desktop: { min: AppBreakpoints.desktop + "px" },
+      tablet: { min: AppBreakpoints.tablet },
+      desktop: { min: AppBreakpoints.desktop },
+      "desktop-large": { min: AppBreakpoints["desktop-large"] },
     },
     extend: {
       fontFamily: {

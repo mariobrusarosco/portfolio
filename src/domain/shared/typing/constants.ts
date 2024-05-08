@@ -1,16 +1,18 @@
 export const AppBreakpoints = {
-  mobile: 767,
-  tablet: 768,
-  mobileAndTablet: 1279,
-  desktop: 1440,
+  mobile: "767px",
+  tablet: "768px",
+  mobileAndTablet: "1279px",
+  desktop: "1440px",
+  "desktop-large": "1920px",
 };
 
 export const AppBreakpointsMediaQueries = {
-  mobile: `(max-width: ${AppBreakpoints.mobile}px)`,
-  "mobile-lg": `(min-width: ${AppBreakpoints.mobile}px)`,
-  "mobile-lg-only": `(min-width: ${AppBreakpoints.mobile}px) and (max-width: ${AppBreakpoints.tablet}px)`,
-  tablet: `(min-width: ${AppBreakpoints.tablet}px) and (max-width: ${AppBreakpoints.desktop}px)`,
-  desktop: `(min-width: ${AppBreakpoints.desktop}px)`,
+  mobile: `(max-width: ${AppBreakpoints.mobile})`,
+  "mobile-lg": `(min-width: ${AppBreakpoints.mobile})`,
+  "mobile-lg-only": `(min-width: ${AppBreakpoints.mobile}) and (max-width: ${AppBreakpoints.tablet})`,
+  tablet: `(min-width: ${AppBreakpoints.tablet}) and (max-width: ${AppBreakpoints.desktop})`,
+  desktop: `(min-width: ${AppBreakpoints.desktop})`,
+  "desktop-large": `(min-width: ${AppBreakpoints["desktop-large"]}px)`,
 };
 
 export const portfolioRouting = [
