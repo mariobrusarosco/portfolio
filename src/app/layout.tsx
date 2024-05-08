@@ -24,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={bodyClasses}>
+        <AppHeader />
         <div className="h-full bg-cover bg-no-repeat bg-main-mobile tablet:bg-main-tablet desktop:bg-main-desktop">
           {children}
         </div>
         <AppFooter />
-        {/* <AppHeader /> */}
       </body>
     </html>
   );
