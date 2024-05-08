@@ -25,12 +25,18 @@ html {
   :root {
     --primary-black: 0 0 0;
     --primary-white: 255 255 255;
-    --primary-base: 255 109 109;
+    --primary-base: 214 12 78;
     --primary-dark: 187 34 83;
     --secondary-base: 13 120 160;
     --secondary-dark: 0 17 44;
     --light-gray: 144 143 143;
     --light-green: 91 180 148;
+    --pink-100: 255 209 202;
+    --green-600: 37 68 65;
+    --orange-400: 255 111 89;
+    --pink-500: 214 12 78;
+    --blue-green-300: 106 155 150;
+    --red-main: 187 34 83;
   }
 }
 
