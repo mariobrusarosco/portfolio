@@ -14,7 +14,7 @@ const footerRoutes = portfolioRouting.filter(
 const { menu } = animations;
 
 const AppFooter = () => (
-  <footer className="fixed w-screen bottom bg-white/5 p-6 desktop:bottom-10 desktop:px-16 desktop:py-12 desktop:flex desktop:justify-start items-center desktop:bg-transparent m-w-[132px]">
+  <footer className="fixed min-h-[116px] w-screen bottom-0 bg-white/5 p-6 desktop:bottom-10 desktop:px-16 desktop:py-12 desktop:flex desktop:justify-start items-center desktop:bg-transparent m-w-[132px]">
     <Menu />
   </footer>
 );
@@ -52,7 +52,7 @@ const Menu = () => {
       </div>
 
       <motion.ul
-        initial="visible"
+        initial="hidden"
         layout="position"
         animate={menuStatus}
         variants={menu.list}
