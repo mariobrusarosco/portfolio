@@ -13,8 +13,8 @@ const footerRoutes = portfolioRouting.filter(
 const { menu } = animations;
 
 const AppFooter = () => (
-  <footer className="fixed min-h-[116px] w-screen bottom-0 bg-white/5 desktop:bg-transparent m-w-[132px]">
-    <div className="container py-6 desktop:flex desktop:justify-start items-center">
+  <footer className="fixed flex min-h-[116px] w-screen bottom-0 bg-white/5 desktop:bg-transparent m-w-[132px]">
+    <div className="container flex-1 py-6 desktop:flex desktop:justify-start items-center">
       <Menu />
     </div>
   </footer>
@@ -46,6 +46,8 @@ const Menu = () => {
             d="M1 0V53"
             className="mx-6 stroke-pink-100"
             initial="hidden"
+            animate={isMenuOpen ? "visible" : "hidden"}
+            variants={menu.stem}
           />
         </svg>
       </div>
