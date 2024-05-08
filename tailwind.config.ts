@@ -1,10 +1,20 @@
 import { APP_FONTS } from "./src/domain/styling/fonts";
 import { AppBreakpoints } from "./src/domain/shared/typing/constants";
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import { Config } from "tailwindcss";
+
+const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    container: {
+      padding: {
+        DEFAULT: "1rem",
+        mobile: "0.5rem",
+        tablet: "2rem",
+        desktop: "3rem",
+        // p-6 desktop:pb-16 desktop:px-16 desktop:
+      },
+    },
     screens: {
       "mobile-only": { max: AppBreakpoints.mobile + "px" },
       // "mobile-lg-only": { max: AppBreakpoints["mobile-lg"] + "px" },
@@ -49,3 +59,5 @@ module.exports = {
     hoverOnlyWhenSupported: true,
   },
 };
+
+module.exports = config;

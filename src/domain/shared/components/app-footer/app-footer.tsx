@@ -4,7 +4,6 @@ import { portfolioRouting } from "../../typing/constants";
 import { motion } from "framer-motion";
 import animations from "./animations";
 import { useScreenDetector } from "../../hooks/useScreenDetector";
-import { transform } from "next/dist/build/swc";
 import { useState } from "react";
 
 const routeToBeIgnore = ["/"];
@@ -14,8 +13,10 @@ const footerRoutes = portfolioRouting.filter(
 const { menu } = animations;
 
 const AppFooter = () => (
-  <footer className="fixed min-h-[116px] w-screen bottom-0 bg-white/5 p-6 desktop:bottom-10 desktop:px-16 desktop:py-12 desktop:flex desktop:justify-start items-center desktop:bg-transparent m-w-[132px]">
-    <Menu />
+  <footer className="fixed min-h-[116px] w-screen bottom-0 bg-white/5 desktop:bg-transparent m-w-[132px]">
+    <div className="container py-6 desktop:flex desktop:justify-start items-center">
+      <Menu />
+    </div>
   </footer>
 );
 
@@ -44,9 +45,7 @@ const Menu = () => {
           <motion.path
             d="M1 0V53"
             className="mx-6 stroke-pink-100"
-            variants={menu.stem}
             initial="hidden"
-            animate={isMenuOpen ? "visible" : "hidden"}
           />
         </svg>
       </div>
@@ -56,7 +55,7 @@ const Menu = () => {
         layout="position"
         animate={menuStatus}
         variants={menu.list}
-        className="w-full justify-center px-4 gap-7 desktop:ml-8 desktop:justify-start desktop:items-center desktop:gap-10 hidden"
+        className="hidden w-full justify-center gap-1 desktop:ml-8 desktop:justify-start desktop:items-center desktop:gap-10 desktop:px-4"
       >
         {footerRoutes.map((route) => (
           <AnimatedLink key={route.path} {...route} />
@@ -68,10 +67,14 @@ const Menu = () => {
 
 const AnimatedLink = (props: { path: string; label: string }) => {
   const { path, label } = props;
-  const { hasHover, isDesktop } = useScreenDetector();
+  const { hasHover } = useScreenDetector();
 
   return (
-    <motion.li key={path} className="flex" variants={menu.listItem}>
+    <motion.li
+      key={path}
+      className="flex justify-center w-1/4 desktop:w-auto"
+      variants={menu.listItem}
+    >
       <Link href={path}>
         <motion.div
           className="relative flex flex-col items-center gap-y-1 cursor-pointer"
@@ -98,7 +101,6 @@ const AnimatedLink = (props: { path: string; label: string }) => {
           </div>
 
           <motion.span
-            // initial={isDesktop ? "hidden" : "visible"}
             className="font-sans font-light text-pink-100 w-max desktop:absolute desktop:text-2xl desktop:invisible"
             variants={hasHover ? menu.label : undefined}
           >
