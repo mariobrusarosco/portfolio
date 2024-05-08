@@ -1,4 +1,4 @@
-import { Variants, color } from "framer-motion";
+import { Variants } from "framer-motion";
 import { before } from "node:test";
 import { exit } from "process";
 
@@ -16,18 +16,16 @@ const listItem = {
 
 const list = {
   visible: {
-    // display: "flex",
-    visibility: "visible",
+    display: "flex",
     transition: {
       staggerChildren: 0.1,
       type: "spring",
     },
   },
   hidden: {
-    // display: "none",
-    visibility: "hidden",
+    display: "none",
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: -0.1,
       type: "spring",
       when: "afterChildren",
     },
@@ -38,6 +36,8 @@ const outerCircle: Variants = {
   default: {
     pathLength: 1,
     rotate: 120,
+    originX: "50%",
+    originY: "50%",
     transition: { type: "spring", damping: 10, stiffness: 150 },
   },
   hover: {
@@ -95,7 +95,6 @@ const innerCircle: Variants = {
 
 const trigger = {
   hover: {
-    // scale: 1.2,
     letterSpacing: "0.4em",
     transition: {
       duration: 0.8,
