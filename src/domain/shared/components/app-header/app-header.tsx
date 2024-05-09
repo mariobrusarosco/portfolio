@@ -18,21 +18,23 @@ const socialItemHover = {
 const AppHeader = () => {
   return (
     <header className="w-screen position fixed top-0 left-0 ">
-      <div className="container flex justify-between items-center py-10 tablet:py-16">
-        <motion.span
-          className="uppercase font-sans text-pink-100 font-semibold cursor-pointer text-lg"
-          whileHover={{
-            color: "#D60C4E",
-            letterSpacing: "0.4em",
-            transition: {
-              type: "spring",
-              stiffness: 200,
-              damping: 10,
-            },
-          }}
-        >
-          <Link href="./">home</Link>
-        </motion.span>
+      <div className="container flex justify-between items-center py-8 tablet:py-16 desktop:py-16">
+        <Link className="flex-1" href="./">
+          <motion.span
+            className="uppercase font-sans text-pink-100 font-semibold cursor-pointer text-lg"
+            whileHover={{
+              color: "#D60C4E",
+              letterSpacing: "0.4em",
+              transition: {
+                type: "spring",
+                stiffness: 200,
+                damping: 10,
+              },
+            }}
+          >
+            home
+          </motion.span>
+        </Link>
 
         <div className="flex gap-x-6 items-center">
           <div className="w-6 cursor-pointer">

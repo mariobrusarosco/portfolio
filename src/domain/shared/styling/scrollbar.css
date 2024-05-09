@@ -4,31 +4,32 @@
 @layer base {
   /* width */
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 2px;
+    height: 2px;
   }
 
   /* Track */
   ::-webkit-scrollbar-track {
-    background-color: theme(colors.primary-white);
-    border-radius: 5px;
+    background-color: theme(colors.blue-800);
+    border-radius: 2px;
   }
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background-color: theme(colors.secondary-dark);
-    border-radius: 5px;
+    background-color: theme(colors.pink-500);
+    border-radius: 2px;
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background-color: theme(colors.secondary-base);
+    background-color: theme(colors.green-600);
   }
 }
 
 @layer utilities {
   /* [Vendor Support]: Firefox  */
   .scrollbar {
-    scrollbar-color: theme(colors.secondary-dark) theme(colors.primary-white);
+    scrollbar-color: theme(colors.green-600) theme(colors.primary-white);
     scrollbar-width: thin;
   }
 }
