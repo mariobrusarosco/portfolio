@@ -17,7 +17,7 @@ const lastName = "brusarosco".split("");
 const NameAndFirstName = () => {
   return (
     <div className=" font-serif max-w-[312px] tablet:max-w-[667px] desktop:mt-[100px] desktop:pb-[10px]">
-      <h2 className="font-semibold uppercase text-pink-500 text-6xl tablet:text-[100px]  desktop-large:text-[150px]">
+      <h2 className="font-semibold uppercase text-pink-500 text-6xl tablet:text-[100px]  desktop-large:text-[125px]">
         {firstName.map((letter, index) => (
           <motion.span
             key={index}
@@ -34,7 +34,7 @@ const NameAndFirstName = () => {
         ))}
       </h2>
 
-      <h3 className="font-thin text-pink-100 text-6xl tablet:text-[100px] text-right -mt-5 tablet:-mt-8 tablet:text-left tablet:pl-[90px] desktop-large:text-[150px]">
+      <h3 className="font-thin text-pink-100 text-6xl tablet:text-[100px] text-right -mt-5 tablet:-mt-8 tablet:text-left tablet:pl-[90px] desktop-large:text-[100px] uppercase">
         {lastName.map((letter, index) => (
           <motion.span
             key={index}

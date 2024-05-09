@@ -37,7 +37,7 @@ export const ExperienceDetail = ({
         </motion.p>
 
         <motion.p
-          className="font-light font-sans text-4xl text-pink-100 lowercase tablet:text-5xl desktop:text-6xl"
+          className="font-light font-sans text-4xl text-pink-100 lowercase tablet:text-4xl"
           variants={company.headeritem}
         >
           {experience.position}

@@ -1,6 +1,6 @@
-export const shared = {
-  pageHeading: {
-    initial: { opacity: 0, y: -20 },
+export const screens = {
+  heading: {
+    initial: { opacity: 0, y: -30 },
     animate: {
       opacity: 1,
       y: 0,
