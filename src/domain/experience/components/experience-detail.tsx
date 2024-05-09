@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { Experience } from "../typing/interfaces-and-enums";
 import { Reveal } from "./reveal";
-import animations from "@/domain/experience/animations";
+import animations, {
+  animateChildrenInSequence,
+  revealAndMoveToRight,
+} from "@/domain/experience/animations";
+import { useMemo } from "react";
 const { company } = animations;
 
 export const ExperienceDetail = ({
@@ -9,6 +13,8 @@ export const ExperienceDetail = ({
 }: {
   experience: Experience;
 }) => {
+  const wrapperAnimation = useMemo(() => animateChildrenInSequence(0.15), []);
+
   if (!experience) return null;
 
   return (
@@ -16,19 +22,19 @@ export const ExperienceDetail = ({
       <motion.div
         animate="visible"
         initial="hidden"
-        variants={company.header}
+        variants={wrapperAnimation}
         className=""
       >
         <motion.p
           className="font-normal font-sans text-pink-500 text-5xl tablet:text-6xl desktop:text-8xl lowercase desktop:font-light desktop:leading-tight"
-          variants={company.headeritem}
+          variants={revealAndMoveToRight}
         >
           {experience.companyName}
         </motion.p>
 
         <motion.p
           className="font-light font-sans text-lg text-blue-green-300 tablet:text-xl desktop:text-2xl"
-          variants={company.headeritem}
+          variants={revealAndMoveToRight}
         >
           {new Date(experience.startDate).getFullYear()} -{" "}
           {experience.endDate
@@ -38,7 +44,7 @@ export const ExperienceDetail = ({
 
         <motion.p
           className="font-light font-sans text-4xl text-pink-100 lowercase tablet:text-4xl"
-          variants={company.headeritem}
+          variants={revealAndMoveToRight}
         >
           {experience.position}
         </motion.p>
