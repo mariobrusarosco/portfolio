@@ -9,18 +9,25 @@ export const ExperienceDetail = ({
 }: {
   experience: Experience;
 }) => {
+  if (!experience) return null;
+
   return (
-    <>
-      <motion.div animate="visible" initial="hidden" variants={company.header}>
+    <div className="flex flex-col gap-y-10">
+      <motion.div
+        animate="visible"
+        initial="hidden"
+        variants={company.header}
+        className=""
+      >
         <motion.p
-          className="text-2xl font-medium text-secondary-dark"
+          className="font-light tracking-[-0.01em]  font-serif text-pink-500 text-5xl uppercase"
           variants={company.headeritem}
         >
           {experience.companyName}
         </motion.p>
 
         <motion.p
-          className="text-sm font-normal text-primary-white"
+          className="font-light font-sans text-lg text-blue-green-300"
           variants={company.headeritem}
         >
           {new Date(experience.startDate).getFullYear()} -{" "}
@@ -30,27 +37,29 @@ export const ExperienceDetail = ({
         </motion.p>
 
         <motion.p
-          className="text-lg font-normal text-secondary-dark"
+          className="font-light font-sans text-4xl text-pink-100 lowercase"
           variants={company.headeritem}
         >
           {experience.position}
         </motion.p>
 
         <motion.p
-          className="text-xs font-normal text-primary-white"
+          className="font-light font-sans text-lg text-blue-green-300"
           variants={company.headeritem}
         >
           {experience.location}
         </motion.p>
       </motion.div>
 
-      <div className="mt-3 flex flex-col gap-3 text-primary-white font-extralight text-lg">
+      <div className="flex flex-col gap-y-6">
         {experience?.description.map((descriptionItem, i) => (
           <Reveal key={i} iterator={i}>
-            {descriptionItem}
+            <p className="font-sans font-light text-pink-100 text-xl">
+              {descriptionItem}
+            </p>
           </Reveal>
         ))}
       </div>
-    </>
+    </div>
   );
 };
