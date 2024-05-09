@@ -30,14 +30,14 @@ export default function ExperienceScreen() {
   };
 
   return (
-    <div className="h-full flex flex-col justify-start">
-      <div className="">
-        <div className="container overflow-auto">
+    <div className="h-full grid grid-cols-1 desktop:grid-cols-2 container">
+      <div className="heading-and-list-section">
+        <div className="-mt-1">
           <motion.span
             initial="initial"
             animate="animate"
             variants={shared.pageHeading}
-            className="font-serif font-semibold text-blue-green-300 text-2xl tablet:text-3xl desktop:text-4xl"
+            className="tracking-tighter font-serif font-semibold text-blue-green-300 text-2xl tablet:text-3xl desktop:text-4xl"
           >
             these are my
           </motion.span>
@@ -45,18 +45,18 @@ export default function ExperienceScreen() {
             initial="initial"
             animate="animate"
             variants={shared.pageHeading}
-            className="font-sans font-regular text-pink-500 text-6xl -mt-6 tablet:text-7xl"
+            className="font-sans font-regular text-pink-500 text-6xl -mt-6 tablet:text-7xl desktop:text-8xl"
           >
             experiences
           </motion.h2>
         </div>
 
-        <section className="mt-20 max-w-full overflow-auto tablet:container pl-4 tablet:pl-0">
-          <ul className="flex gap-8 pb-4 tablet:container">
+        <section className="mt-20 max-w-full overflow-auto">
+          <ul className="flex gap-8 pb-4 desktop:flex-col justify-start items-start">
             {experiences.map((experience) => (
               <li
                 key={experience.id}
-                className="flex flex-col items-center gap-y-4 cursor-pointer last:pr-4"
+                className="flex flex-col items-center gap-y-4 cursor-pointer last:pr-4 desktop:flex-row desktop:gap-x-4 desktop:items-center"
                 onClick={() => handleExperienceSelection(experience.id)}
               >
                 <div className="w-[6px] h-[6px]">
@@ -108,7 +108,7 @@ const DetailSection = (props: {
   return (
     <div
       ref={ref}
-      className="detail-section container overflow-x-auto pt-12 tablet:pt-16"
+      className="detail-section pr-4  my-4 overflow-x-auto mt-14 desktop:m-0"
     >
       <ExperienceDetail
         experience={props.selectedExperience}

@@ -12,7 +12,7 @@ export const ExperienceDetail = ({
   if (!experience) return null;
 
   return (
-    <div className="flex flex-col gap-y-10">
+    <div className="flex flex-col gap-y-10 ">
       <motion.div
         animate="visible"
         initial="hidden"
@@ -20,7 +20,7 @@ export const ExperienceDetail = ({
         className=""
       >
         <motion.p
-          className="font-normal font-sans text-pink-500 text-5xl  tablet:text-6xl desktop:text-6xl uppercase"
+          className="font-normal font-sans text-pink-500 text-5xl tablet:text-6xl desktop:text-8xl lowercase desktop:font-light desktop:leading-tight"
           variants={company.headeritem}
         >
           {experience.companyName}
