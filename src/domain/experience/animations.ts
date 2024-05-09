@@ -1,16 +1,16 @@
 import { Variants } from "framer-motion";
 
-const staggerChildrenWhenVisible: Variants = {
-  visible: {
-    transition: {
-      staggerChildren: 0.05,
+export const animateChildrenInSequence = (interval: number) => {
+  return {
+    visible: {
+      transition: {
+        staggerChildren: interval || 0.05,
+      },
     },
-  },
+  };
 };
-const companiesListContainer = staggerChildrenWhenVisible;
-const companyHeader = staggerChildrenWhenVisible;
 
-const revealAndMoveToRight: Variants = {
+export const revealAndMoveToRight: Variants = {
   visible: {
     opacity: 1,
     x: 0,
@@ -24,8 +24,20 @@ const revealAndMoveToRight: Variants = {
   },
   hidden: { opacity: 0, x: -25 },
 };
+
+export const companyLabel: Variants = {
+  hover: {
+    x: 15,
+    transition: {
+      type: "spring",
+      stiffness: 150,
+      dumping: 20,
+      from: 0,
+    },
+  },
+};
+
 const companyHeaderitem = revealAndMoveToRight;
-const companyListitem = revealAndMoveToRight;
 
 const jobDescriptionItem: Variants = {
   visible: (iterator) => ({
@@ -64,31 +76,17 @@ const companyListItemCircle: Variants = {
   },
 };
 
-const companyListItemLabel: Variants = {
-  hover: {
-    x: 15,
-    transition: {
-      type: "spring",
-      stiffness: 150,
-      dumping: 20,
-      from: 0,
-    },
-  },
+export const companyList = {
+  stem: companyListItemStem,
+  circle: companyListItemCircle,
 };
 
 const animations = {
   company: {
-    header: companyHeader,
     headeritem: companyHeaderitem,
   },
   jobDescriptionItem,
-  companiesList: {
-    container: companiesListContainer,
-    item: companyListitem,
-    stem: companyListItemStem,
-    circle: companyListItemCircle,
-    label: companyListItemLabel,
-  },
+  companyList,
 };
 
 export default animations;
