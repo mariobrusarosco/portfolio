@@ -26,7 +26,9 @@ export default function RootLayout({
       <body className={bodyClasses}>
         <AppHeader />
         <div className="h-full bg-cover bg-no-repeat bg-main-mobile tablet:bg-main-tablet desktop:bg-main-desktop">
-          <main className="h-full pt-[120px] pb-[116px] ">{children}</main>
+          <main className="h-full pt-[120px] pb-[116px] tablet:pt-[156px] desktop:pt-[220px]">
+            {children}
+          </main>
         </div>
         <AppFooter />
       </body>
