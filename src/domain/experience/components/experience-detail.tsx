@@ -20,7 +20,7 @@ export const ExperienceDetail = ({
         className=""
       >
         <motion.p
-          className="font-light tracking-[-0.01em]  font-serif text-pink-500 text-5xl uppercase"
+          className="font-light tracking-[-0.01em]  font-serif text-pink-500 text-5xl lowercase"
           variants={company.headeritem}
         >
           {experience.companyName}

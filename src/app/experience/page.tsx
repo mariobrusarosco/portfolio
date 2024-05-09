@@ -12,7 +12,6 @@ export default function ExperienceScreen() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const companyId = searchParams.get("id");
-
   const selectedExperience = experiences.find((experience) => {
     return experience.id === companyId;
   });
@@ -39,7 +38,7 @@ export default function ExperienceScreen() {
           variants={shared.pageHeading}
           className="font-serif font-semibold text-blue-green-300 text-2xl"
         >
-          these are mine
+          these are my
         </motion.span>
         <motion.h2
           initial="initial"
@@ -53,7 +52,7 @@ export default function ExperienceScreen() {
 
       <section className="mt-20">
         <ul className="container flex gap-8 max-w-full overflow-x-scroll overflow-y-auto pb-4">
-          {experiences.map((experience, index) => (
+          {experiences.map((experience) => (
             <li
               key={experience.id}
               className="flex flex-col items-center gap-y-4 cursor-pointer"
@@ -63,12 +62,20 @@ export default function ExperienceScreen() {
                 <svg viewBox="0 0 6 6" fill="none">
                   <path
                     d="M0 3C0 1.34315 1.34315 0 3 0C4.65685 0 6 1.34315 6 3C6 4.65685 4.65685 6 3 6C1.34315 6 0 4.65685 0 3Z"
-                    fill="#FFD1CA"
+                    fill={`${
+                      experience.id == companyId ? "#D60C4E" : "#FFD1CA"
+                    }`}
                   />
                 </svg>
               </div>
 
-              <span className="text-pink-100 uppercase font-sans font-semibold text-lg whitespace-nowrap">
+              <span
+                className={`uppercase font-sans font-semibold text-lg whitespace-nowrap
+                ${
+                  experience.id == companyId ? "text-pink-500" : "text-pink-100"
+                }
+                `}
+              >
                 {experience.companyName}
               </span>
             </li>
