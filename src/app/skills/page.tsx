@@ -16,13 +16,24 @@ const listAnimation = animateChildrenInSequence(0.05);
 export default function Skills() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const currentSkill = searchParams.get("skill_id");
-
+  const selectedSkill = skills.find((skill) => {
+    return skill.id === searchParams.get("skill_id");
+  });
   const handleSelectSkill = (skillId: string) => {
-    console.log("handleSelectSkill", skillId);
+    const selectedSkill = skills.find((skill) => {
+      return skill.id === skillId;
+    });
+
+    const queryParamsString = updateParamsOnURL({
+      searchParams,
+      queryParams: selectedSkill?.queryParams,
+    });
+    console.log("handleSelectSkill", selectedSkill?.queryParams);
+
+    router.push(`${window.location.pathname}?${queryParamsString}`);
   };
 
-  console.log({ currentSkill });
+  console.log(selectedSkill);
 
   return (
     <div className="h-full grid grid-cols-1 desktop:grid-cols-2 container">
@@ -57,11 +68,11 @@ export default function Skills() {
           >
             {skills.map((skill) => (
               <motion.li
-                className="min-w-[50px] tablet:min-w-[90px]"
+                className="min-w-[63px] tablet:min-w-[90px]"
                 key={skill.id}
                 onClick={() => handleSelectSkill(skill.id)}
               >
-                <Skill skill={skill.label} />
+                <Skill skill={skill} selectedSkillId={selectedSkill?.id} />
               </motion.li>
             ))}
           </motion.ul>
