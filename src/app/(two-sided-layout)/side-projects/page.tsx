@@ -1,12 +1,9 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { shared } from "@/domain/shared/animations";
-import SideProjectList from "@/domain/side-projects/components/side-project-list";
+import { screens } from "@/domain/shared/animations";
 import { sideProjects } from "@/domain/side-projects/constants";
 import { motion } from "framer-motion";
-import { Carrousel } from "@/domain/shared/components/carrousel/carrousel";
 import { ProjectDetail } from "@/domain/side-projects/components/project-detail";
-import { mountNextJsQueryParamsString } from "@/domain/shared/utils/url-manipulation";
 import { SideProject } from "@/domain/side-projects/typing/interfaces-and-enums";
 import { useEffect, useRef } from "react";
 
@@ -15,15 +12,12 @@ export default function SideProjects() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const handleProjectSelection = (index: number) => {
-    const queryParams = sideProjects[index].queryParams;
-    const queryParamsString = mountNextJsQueryParamsString(
-      searchParams,
-      queryParams
-    );
+  // const handleProjectSelection = (index: number) => {
+  //   const queryParams = sideProjects[index].queryParams;
+  //   const queryParamsString = updateParamsOnURL(searchParams, queryParams);
 
-    router.push(`${pathname}?${queryParamsString}`);
-  };
+  //   router.push(`${pathname}?${queryParamsString}`);
+  // };
 
   const projectId = searchParams.get("id");
   const selectedProjectIndex = sideProjects.findIndex(
@@ -38,7 +32,7 @@ export default function SideProjects() {
           <motion.h2
             initial="initial"
             animate="animate"
-            variants={shared.pageHeading}
+            variants={screens.heading}
             className="text-primary-white text-3xl tablet:text-4xl"
           >
             Side Projects
@@ -47,18 +41,18 @@ export default function SideProjects() {
 
         <section className="w-full max-w-[270px]">
           <div className="desktop:hidden">
-            <Carrousel
+            {/* <Carrousel
               initialSlide={selectedProjectIndex}
               list={sideProjects}
               ComponentForSlide={(props: SideProject) => (
                 <span className="text-primary-white">{props?.label}</span>
               )}
               onSliderChange={handleProjectSelection}
-            />
+            /> */}
           </div>
 
           <div className="hidden desktop:block">
-            <SideProjectList onProjectSelection={handleProjectSelection} />
+            {/* <SideProjectList onProjectSelection={handleProjectSelection} /> */}
           </div>
         </section>
       </div>
