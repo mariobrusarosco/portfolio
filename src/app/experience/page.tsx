@@ -62,7 +62,7 @@ export default function ExperienceScreen() {
 
         <section className="mt-20 max-w-full overflow-auto">
           <motion.ul
-            className="flex gap-8 pb-4 desktop:flex-col justify-start items-start"
+            className="flex gap-8 pb-4 desktop:flex-col justify-start items-start tablet:gap-12"
             variants={listAnimation}
             animate="visible"
             initial="hidden"

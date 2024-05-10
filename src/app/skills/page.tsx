@@ -26,7 +26,7 @@ export default function Skills() {
 
   return (
     <div className="h-full grid grid-cols-1 desktop:grid-cols-2 container">
-      <div className="heading-and-list-section">
+      <div className="heading-and-list-section desktop:max-w-[510px]">
         <div className="">
           <motion.p
             initial="initial"
@@ -48,15 +48,16 @@ export default function Skills() {
           </motion.h2>
         </div>
 
-        <section className="mt-16 pr-4 overflow-y-auto max-h-[calc(100dvh-460px)]">
+        <section className="mt-16 pr-4 overflow-y-auto max-h-[calc(100dvh-460px)] tablet:mt-18 desktop:max-h-[calc(100dvh-520px)]">
           <motion.ul
-            className="flex flex-wrap gap-10 pb-4 desktop:flex-col justify-center"
+            className="flex flex-wrap gap-10 pb-4 justify-center"
             variants={listAnimation}
             animate="visible"
             initial="hidden"
           >
             {skills.map((skill) => (
               <motion.li
+                className="min-w-[50px] tablet:min-w-[90px]"
                 key={skill.id}
                 onClick={() => handleSelectSkill(skill.id)}
               >
@@ -67,7 +68,7 @@ export default function Skills() {
         </section>
       </div>
 
-      {/* <div className="skill-details">
+      <div className="hidden skill-details">
         <div className="grid grid-cols-1 gap-y-4">
           <div className="flex flex-col gap-y-2">
             <h3 className="text-blue-green-300 text-2xl">Languages</h3>
@@ -129,7 +130,7 @@ export default function Skills() {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

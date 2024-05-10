@@ -48,10 +48,7 @@ const AnimatedLink = (props: { path: string; label: string }) => {
           </div>
         </div>
 
-        <motion.span
-          className="font-sans font-light text-pink-100 w-max desktop:absolute desktop:text-2xl desktop:invisible"
-          variants={hasHover ? menu.label : undefined}
-        >
+        <motion.span className="font-sans font-light text-pink-100">
           {label}
         </motion.span>
       </motion.div>
