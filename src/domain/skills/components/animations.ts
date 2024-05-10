@@ -1,4 +1,73 @@
-import { Variants } from "framer-motion";
+import { Variants, delay } from "framer-motion";
+import { skills } from "../constants";
+
+export const skillListContainer = {
+  default: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+    },
+  },
+  selected: {
+    opacity: 0,
+    transition: {
+      type: "spring",
+    },
+  },
+};
+
+export const skillContainer = {
+  default: {
+    display: "none",
+    opacity: 0,
+    // y: 100,
+    transition: {
+      type: "spring",
+      // duration: 0.5,
+      velocity: 1.5,
+    },
+  },
+  selected: {
+    display: "flex",
+    opacity: 1,
+    // y: 0,
+    transition: {
+      type: "spring",
+      // duration: 0.5,
+      delay: 0.5,
+    },
+  },
+};
+
+export const footerSpecialAnimations: { skills: Variants } = {
+  skills: {
+    default: {
+      scale: 1,
+      // y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        // bounce: 0.1,
+        // duration: 1.2,
+        stiffness: 50,
+        damping: 20,
+      },
+    },
+    selected: {
+      scale: 160,
+      // scale: [0, 10, 20],
+      // y: -2000,
+      opacity: 0,
+      transition: {
+        type: "spring",
+        // stiffness: 30,
+        dumping: 20,
+        bounce: 0.05,
+        duration: 1.5,
+      },
+    },
+  },
+};
 
 const listItem = {
   visible: {

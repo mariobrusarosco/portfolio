@@ -5,6 +5,11 @@ import { motion } from "framer-motion";
 import animations from "./animations";
 import { useScreenDetector } from "../../hooks/useScreenDetector";
 import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import {
+  footerSpecialAnimations,
+  selectedOuter,
+} from "@/domain/skills/components/animations";
 
 const routeToBeIgnore = ["/"];
 const footerRoutes = portfolioRouting.filter(
@@ -13,7 +18,7 @@ const footerRoutes = portfolioRouting.filter(
 const { menu } = animations;
 
 const AppFooter = () => (
-  <footer className="fixed flex min-h-[116px] w-screen bottom-0 bg-white/5 desktop:bg-transparent m-w-[132px]">
+  <footer className="fixed flex min-h-[116px] w-screen bottom-0 bg-red-700/90 desktop:bg-transparent m-w-[132px]">
     <div className="container flex-1 py-6 desktop:flex desktop:justify-start items-center">
       <Menu />
     </div>
@@ -67,9 +72,16 @@ const Menu = () => {
   );
 };
 
-const AnimatedLink = (props: { path: string; label: string }) => {
-  const { path, label } = props;
+const AnimatedLink = (props: { path: string; label: string; id: string }) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const isSkillSelected = !!searchParams.get("skill_id");
+  const { path, label, id } = props;
   const { hasHover } = useScreenDetector();
+
+  const itemAnimation = footerSpecialAnimations[id];
+
+  console.log({ label, itemAnimation });
 
   return (
     <motion.li
@@ -80,11 +92,17 @@ const AnimatedLink = (props: { path: string; label: string }) => {
       <Link href={path}>
         <motion.div
           className="relative flex flex-col items-center gap-y-1 cursor-pointer"
-          whileHover="hover"
-          initial="default"
-          animate="default"
+          // whileHover="hover"
+          // initial="default"
+          // animate="default"
         >
-          <div className="relative">
+          <motion.div
+            className="parent relative z-60"
+            initial="default"
+            variants={itemAnimation}
+            layout
+            animate={isSkillSelected ? "selected" : "default"}
+          >
             <motion.div
               className="h-[10px] w-[10px] absolute bg-pink-100 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
               variants={hasHover ? menu.innerCircle : undefined}
@@ -100,7 +118,7 @@ const AnimatedLink = (props: { path: string; label: string }) => {
                 />
               </motion.svg>
             </div>
-          </div>
+          </motion.div>
 
           <motion.span
             className="font-sans font-light text-pink-100 w-max desktop:absolute desktop:text-2xl desktop:invisible"

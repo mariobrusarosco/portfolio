@@ -15,8 +15,6 @@ const Skill = ({
   skill: Skill;
   selectedSkillId: string;
 }) => {
-  console.log("skill.id: ", skill.id);
-
   const isSelected = skill.id === selectedSkillId;
 
   return (
@@ -44,15 +42,28 @@ const AnimatedLink = ({
       animate="default"
     >
       <div className="relative">
-        <motion.div
+        <div
           className={cn(
             "h-[10px] w-[10px] absolute bg-pink-100 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
             {
               "bg-blue-green-300": isSelected,
             }
           )}
-          variants={hasHover ? menu.innerCircle : undefined}
-        />
+          // variants={hasHover ? menu.innerCircle : undefined}
+        >
+          <svg viewBox="0 0 7 6" fill="none">
+            <rect
+              x="0.5"
+              width="6"
+              height="6"
+              rx="3"
+              stroke="none"
+              className={cn("", {
+                "fill-blue-green-300": isSelected,
+              })}
+            />
+          </svg>
+        </div>
         <div className="w-[40px]">
           <motion.svg viewBox="0 0 40 40">
             <motion.path

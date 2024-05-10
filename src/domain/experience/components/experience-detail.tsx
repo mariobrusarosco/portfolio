@@ -18,7 +18,7 @@ export const ExperienceDetail = ({
   if (!experience) return null;
 
   return (
-    <div className="flex flex-col gap-y-10 ">
+    <div className="flex flex-col gap-y-10">
       <motion.div
         animate="visible"
         initial="hidden"

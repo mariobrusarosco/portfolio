@@ -4,7 +4,12 @@ import {
   revealAndMoveToRight,
 } from "@/domain/experience/animations";
 import { screens } from "@/domain/shared/animations";
+import { cn } from "@/domain/shared/utils/classnames";
 import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
+import {
+  skillContainer,
+  skillListContainer,
+} from "@/domain/skills/components/animations";
 import { Skill } from "@/domain/skills/components/skill";
 import { skills } from "@/domain/skills/constants";
 import { motion } from "framer-motion";
@@ -37,7 +42,12 @@ export default function Skills() {
 
   return (
     <div className="h-full grid grid-cols-1 desktop:grid-cols-2 container">
-      <div className="heading-and-list-section desktop:max-w-[510px]">
+      <motion.div
+        className="heading-and-list-section desktop:max-w-[510px]"
+        initial="default"
+        animate={selectedSkill ? "selected" : "default"}
+        variants={skillListContainer}
+      >
         <div className="">
           <motion.p
             initial="initial"
@@ -59,7 +69,7 @@ export default function Skills() {
           </motion.h2>
         </div>
 
-        <section className="mt-16 pr-4 overflow-y-auto max-h-[calc(100dvh-460px)] tablet:mt-18 desktop:max-h-[calc(100dvh-520px)]">
+        <section className="mt-16 pr-4 tablet:mt-18 ">
           <motion.ul
             className="flex flex-wrap gap-10 pb-4 justify-center"
             variants={listAnimation}
@@ -77,71 +87,26 @@ export default function Skills() {
             ))}
           </motion.ul>
         </section>
-      </div>
+      </motion.div>
 
-      <div className="hidden skill-details">
-        <div className="grid grid-cols-1 gap-y-4">
-          <div className="flex flex-col gap-y-2">
-            <h3 className="text-blue-green-300 text-2xl">Languages</h3>
-            <div className="flex flex-wrap gap-x-4 gap-y-2">
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                JavaScript
-              </div>
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                TypeScript
-              </div>
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                Python
-              </div>
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                HTML
-              </div>
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                CSS
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-y-2">
-            <h3 className="text-blue-green-300 text-2xl">Frameworks</h3>
-            <div className="flex flex-wrap gap-x-4 gap-y-2">
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                React
-              </div>
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                Next.js
-              </div>
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                Express
-              </div>
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                Django
-              </div>
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                Tailwind CSS
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-y-2">
-            <h3 className="text-blue-green-300 text-2xl">Tools</h3>
-            <div className="flex flex-wrap gap-x-4 gap-y-2">
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                Git
-              </div>
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                GitHub
-              </div>
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                VS Code
-              </div>
-              <div className="bg-blue-green-300 text-white rounded-lg p-2">
-                Postman
-              </div>
-            </div>
-          </div>
+      <motion.div
+        initial="default"
+        variants={skillContainer}
+        animate={selectedSkill ? "selected" : "default"}
+        className={cn(
+          "skill-details absolute left-0 top-0 bg-blue-green-300/10 h-screen w-screen z-10 p-8"
+        )}
+      >
+        <div className="grid grid-cols-1 gap-y-4 text-white pt-20 border border-blue-green-300 w-full my-20">
+          <p
+            onClick={() => {
+              router.push(window.location.pathname);
+            }}
+          >
+            close
+          </p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
