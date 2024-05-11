@@ -128,7 +128,7 @@ const DetailSection = (props: {
   return (
     <div
       ref={ref}
-      className="detail-section pr-4  my-4 overflow-x-auto mt-14 desktop:m-0"
+      className="scrollable experience-detail-section pr-4  my-4 overflow-x-auto mt-14 desktop:m-0"
     >
       <ExperienceDetail
         experience={props.selectedExperience}
