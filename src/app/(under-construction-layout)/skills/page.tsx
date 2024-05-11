@@ -1,5 +1,5 @@
 "use client";
-import { shared } from "@/domain/shared/animations";
+import { screens } from "@/domain/shared/animations";
 import { motion } from "framer-motion";
 
 export default function Skills() {
@@ -10,7 +10,7 @@ export default function Skills() {
           <motion.h2
             initial="initial"
             animate="animate"
-            variants={shared.pageHeading}
+            variants={screens.heading}
             className="text-primary-white text-3xl tablet:text-5xl"
           >
             Skills

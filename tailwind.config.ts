@@ -53,6 +53,8 @@ const config: Config = {
         "blue-green-300": "rgb(var(--blue-green-300) / <alpha-value>)",
         "red-700": "rgb(var(--red-700) / <alpha-value>)",
         "blue-800": "rgb(var(--blue-800) / <alpha-value>)",
+
+        "primary-color": "var(--primary-color)",
       },
     },
   },

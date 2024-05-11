@@ -97,13 +97,14 @@ const AnimatedLink = (props: { path: string; label: string }) => {
                   stroke-width="1"
                   variants={hasHover ? menu.outerCircle : undefined}
                   fill="transparent"
+                  className="stroke-app-primary"
                 />
               </motion.svg>
             </div>
           </div>
 
           <motion.span
-            className="font-sans font-light text-pink-100 w-max desktop:absolute desktop:text-2xl desktop:invisible"
+            className="font-sans font-light text-primary-color w-max desktop:absolute desktop:text-2xl desktop:invisible"
             variants={hasHover ? menu.label : undefined}
           >
             {label}

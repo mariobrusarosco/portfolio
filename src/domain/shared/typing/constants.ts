@@ -15,9 +15,31 @@ export const AppBreakpointsMediaQueries = {
   "desktop-large": `(min-width: ${AppBreakpoints["desktop-large"]}px)`,
 };
 
-export const portfolioRouting = [
-  { path: "/", label: "Home" },
-  { path: "/experience", label: "Experience" },
-  { path: "/skills", label: "Skills" },
-  { path: "/side-projects", label: "Side Projects" },
+export type PortfolioRoute = {
+  path: string;
+  label: string;
+  primaryColor: string;
+};
+
+export const portfolioRouting: PortfolioRoute[] = [
+  {
+    path: "/",
+    label: "Home",
+    primaryColor: "#FFD1CA",
+  },
+  {
+    path: "/experience",
+    label: "Experience",
+    primaryColor: "#d60c4e",
+  },
+  {
+    path: "/skills",
+    label: "Skills",
+    primaryColor: "#6A9B96",
+  },
+  {
+    path: "/side-projects",
+    label: "Side Projects",
+    primaryColor: "#FF6F59",
+  },
 ];

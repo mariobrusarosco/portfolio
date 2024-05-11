@@ -8,7 +8,11 @@ export const ProjectDetail = ({ project }: { project: SideProject }) => {
 
   return (
     <>
-      <motion.div animate="visible" initial="hidden" variants={company.header}>
+      <motion.div
+        animate="visible"
+        initial="hidden"
+        variants={company.headeritem}
+      >
         <Comp />
       </motion.div>
     </>
