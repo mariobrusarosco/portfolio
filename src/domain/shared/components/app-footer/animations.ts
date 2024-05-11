@@ -43,15 +43,13 @@ const outerCircle: Variants = {
   hover: {
     pathLength: 0.85,
     rotate: 120,
-    stroke: "#D60C4E",
+    stroke: "var(--primary-color)",
     transition: { type: "spring", damping: 10, stiffness: 150 },
   },
 };
 
 const label: Variants = {
   hidden: {
-    // x: "-50%",
-    // left: "50%",
     opacity: 0,
     visibility: "hidden",
   },
@@ -71,7 +69,7 @@ const label: Variants = {
         duration: 0.3,
       },
     },
-    color: "#D60C4E",
+    color: "var(--primary-color)",
   },
 };
 
@@ -89,7 +87,7 @@ const innerCircle: Variants = {
       damping: 10,
       stiffness: 150,
     },
-    backgroundColor: "#D60C4E",
+    backgroundColor: "var(--primary-color)",
   },
 };
 
@@ -105,7 +103,7 @@ const trigger = {
         duration: 0.2,
       },
     },
-    color: "#D60C4E",
+    color: "var(--primary-color)",
   },
 };
 

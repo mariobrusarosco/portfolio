@@ -1,11 +1,13 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { screens } from "@/domain/shared/animations";
 import { sideProjects } from "@/domain/side-projects/constants";
 import { motion } from "framer-motion";
 import { ProjectDetail } from "@/domain/side-projects/components/project-detail";
 import { SideProject } from "@/domain/side-projects/typing/interfaces-and-enums";
 import { useEffect, useRef } from "react";
+import { screens } from "@/domain/shared/animations";
+import { Carrousel } from "@/domain/shared/components/carrousel/carrousel";
+import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
 
 export default function SideProjects() {
   const router = useRouter();
