@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const bodyClasses = clsx(
-  "bg-center bg-no-repeat bg-cover bg-attachment-fixed bg-main-mobile tablet:bg-main-tablet desktop:bg-main-desktop",
+  "bg-center bg-no-repeat bg-cover bg-fixed bg-main-mobile tablet:bg-main-tablet desktop:bg-main-desktop",
   "antialiased",
   APP_FONTS_NEXTJS.josefinSlab.variable,
   APP_FONTS_NEXTJS.josefinSans.variable
