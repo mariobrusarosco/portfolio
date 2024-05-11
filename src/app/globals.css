@@ -38,11 +38,8 @@ html {
     --blue-green-300: 106 155 150;
     --red-700: 187 34 83;
     --blue-800: 0 17 44;
+
+    --app-primary-color: #ffd1ca;
+    --app-secondary-color: #d60c4e;
   }
 }
-
-/* @layer components {
-} */
-
-/* @layer utilities {
-} */

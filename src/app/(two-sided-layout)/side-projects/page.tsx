@@ -1,14 +1,14 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { shared } from "@/domain/shared/animations";
 import SideProjectList from "@/domain/side-projects/components/side-project-list";
 import { sideProjects } from "@/domain/side-projects/constants";
 import { motion } from "framer-motion";
-import { Carrousel } from "@/domain/shared/components/carrousel/carrousel";
 import { ProjectDetail } from "@/domain/side-projects/components/project-detail";
-import { mountNextJsQueryParamsString } from "@/domain/shared/utils/url-manipulation";
 import { SideProject } from "@/domain/side-projects/typing/interfaces-and-enums";
 import { useEffect, useRef } from "react";
+import { screens } from "@/domain/shared/animations";
+import { Carrousel } from "@/domain/shared/components/carrousel/carrousel";
+import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
 
 export default function SideProjects() {
   const router = useRouter();
@@ -17,10 +17,7 @@ export default function SideProjects() {
 
   const handleProjectSelection = (index: number) => {
     const queryParams = sideProjects[index].queryParams;
-    const queryParamsString = mountNextJsQueryParamsString(
-      searchParams,
-      queryParams
-    );
+    const queryParamsString = updateParamsOnURL({ searchParams, queryParams });
 
     router.push(`${pathname}?${queryParamsString}`);
   };
@@ -38,7 +35,7 @@ export default function SideProjects() {
           <motion.h2
             initial="initial"
             animate="animate"
-            variants={shared.pageHeading}
+            variants={screens.heading}
             className="text-primary-white text-3xl tablet:text-4xl"
           >
             Side Projects

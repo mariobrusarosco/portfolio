@@ -4,6 +4,8 @@ import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import clsx from "clsx";
 import { APP_FONTS_NEXTJS } from "@/domain/styling/nextjs";
 import { AppFooter } from "@/domain/shared/components/app-footer/app-footer";
+import { useEffect } from "react";
+import { ThemeSetup } from "@/domain/styling/theming";
 
 export const metadata: Metadata = {
   title: "Mario Brusarosco",
@@ -24,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={bodyClasses}>
+        <ThemeSetup />
         <AppHeader />
         <div className="h-full bg-cover bg-no-repeat bg-main-mobile tablet:bg-main-tablet desktop:bg-main-desktop">
           <main className="h-full pt-[120px] pb-[116px] tablet:pt-[156px] tablet:pb-[156px] desktop:pt-[180px]">
