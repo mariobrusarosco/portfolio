@@ -28,8 +28,13 @@
 
 @layer utilities {
   /* [Vendor Support]: Firefox  */
-  .scrollbar {
-    scrollbar-color: theme(colors.green-600) theme(colors.primary-white);
+  .scrollabe {
+    scrollbar-color: red brown;
     scrollbar-width: thin;
   }
+}
+
+.scrollabe {
+  scrollbar-color: red brown;
+  scrollbar-width: thin;
 }

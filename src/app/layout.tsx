@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 const bodyClasses = clsx(
+  "bg-center bg-no-repeat bg-cover bg-fixed bg-main-mobile tablet:bg-main-tablet desktop:bg-main-desktop",
   "antialiased",
   APP_FONTS_NEXTJS.josefinSlab.variable,
   APP_FONTS_NEXTJS.josefinSans.variable
@@ -28,11 +29,9 @@ export default function RootLayout({
       <body className={bodyClasses}>
         <ThemeSetup />
         <AppHeader />
-        <div className="h-full bg-cover bg-no-repeat bg-main-mobile tablet:bg-main-tablet desktop:bg-main-desktop">
-          <main className="h-full pt-[120px] pb-[116px] tablet:pt-[156px] tablet:pb-[156px] desktop:pt-[180px]">
-            {children}
-          </main>
-        </div>
+        <main className="h-full pt-[120px] pb-[116px] tablet:pt-[156px] tablet:pb-[156px] desktop:pt-[180px]">
+          {children}
+        </main>
         <AppFooter />
       </body>
     </html>

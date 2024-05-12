@@ -32,9 +32,9 @@ const config: Config = {
         serif: [`var(${APP_FONTS.josefinSlab.variable})`, "serif"],
       },
       backgroundImage: {
-        "main-mobile": "url('/main-bg-mobile.jpg')",
-        "main-tablet": "url('/main-bg-tablet.jpg')",
-        "main-desktop": "url('/main-bg-desktop.jpg')",
+        "main-mobile": "url('/main-bg-mobile.svg')",
+        "main-tablet": "url('/main-bg.svg')",
+        "main-desktop": "url('/main-bg.svg')",
       },
       colors: {
         "primary-black": "rgb(var(--primary-black) / <alpha-value>)",
