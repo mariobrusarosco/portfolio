@@ -40,14 +40,15 @@ export default function ExperienceScreen() {
     <div className="h-full grid grid-cols-1 desktop:grid-cols-2 container">
       <div className="heading-and-list-section">
         <div className="">
-          <motion.span
+          <motion.p
             initial="initial"
             animate="animate"
             variants={screens.heading}
-            className="tracking-tighter font-serif font-semibold text-blue-green-300 text-2xl tablet:text-3xl desktop:text-4xl"
+            className="mb-2 w-fit tracking-tighter font-serif font text-pink-500 text-2xl tablet:text-3xl desktop:text-4xl"
           >
-            these are my
-          </motion.span>
+            <span>these are my</span>
+            {/* <span className="desktop:hidden flex h-[1px] bg-pink-500" /> */}
+          </motion.p>
 
           <motion.h2
             initial="initial"
@@ -61,7 +62,7 @@ export default function ExperienceScreen() {
 
         <section className="mt-20 max-w-full overflow-auto">
           <motion.ul
-            className="flex gap-8 pb-4 desktop:flex-col justify-start items-start"
+            className="flex gap-8 pb-4 desktop:flex-col justify-start items-start tablet:gap-12"
             variants={listAnimation}
             animate="visible"
             initial="hidden"

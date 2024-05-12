@@ -34,7 +34,7 @@ const NameAndFirstName = () => {
         ))}
       </h2>
 
-      <h3 className="font-thin text-pink-100 text-6xl tablet:text-[100px] text-right -mt-5 tablet:-mt-8 tablet:text-left tablet:pl-[90px] desktop-large:text-[100px] uppercase">
+      <h3 className="font-thin text-pink-100 text-5xl tablet:text-[100px] text-right -mt-5 tablet:-mt-8 tablet:text-left tablet:pl-[90px] desktop-large:text-[100px] uppercase">
         {lastName.map((letter, index) => (
           <motion.span
             key={index}

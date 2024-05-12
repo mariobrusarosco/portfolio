@@ -1,6 +1,5 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import SideProjectList from "@/domain/side-projects/components/side-project-list";
 import { sideProjects } from "@/domain/side-projects/constants";
 import { motion } from "framer-motion";
 import { ProjectDetail } from "@/domain/side-projects/components/project-detail";
@@ -15,12 +14,12 @@ export default function SideProjects() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const handleProjectSelection = (index: number) => {
-    const queryParams = sideProjects[index].queryParams;
-    const queryParamsString = updateParamsOnURL({ searchParams, queryParams });
+  // const handleProjectSelection = (index: number) => {
+  //   const queryParams = sideProjects[index].queryParams;
+  //   const queryParamsString = updateParamsOnURL(searchParams, queryParams);
 
-    router.push(`${pathname}?${queryParamsString}`);
-  };
+  //   router.push(`${pathname}?${queryParamsString}`);
+  // };
 
   const projectId = searchParams.get("id");
   const selectedProjectIndex = sideProjects.findIndex(
@@ -44,18 +43,18 @@ export default function SideProjects() {
 
         <section className="w-full max-w-[270px]">
           <div className="desktop:hidden">
-            <Carrousel
+            {/* <Carrousel
               initialSlide={selectedProjectIndex}
               list={sideProjects}
               ComponentForSlide={(props: SideProject) => (
                 <span className="text-primary-white">{props?.label}</span>
               )}
               onSliderChange={handleProjectSelection}
-            />
+            /> */}
           </div>
 
           <div className="hidden desktop:block">
-            <SideProjectList onProjectSelection={handleProjectSelection} />
+            {/* <SideProjectList onProjectSelection={handleProjectSelection} /> */}
           </div>
         </section>
       </div>

@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import animations from "./animations";
 import { useScreenDetector } from "../../hooks/useScreenDetector";
 import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { footerSpecialAnimations } from "@/domain/skills/animations";
 
 const routeToBeIgnore = ["/"];
 const footerRoutes = portfolioRouting.filter(
@@ -13,7 +15,11 @@ const footerRoutes = portfolioRouting.filter(
 const { menu } = animations;
 
 const AppFooter = () => (
-  <footer className="fixed flex min-h-[116px] w-screen bottom-0 bg-white/5 desktop:bg-transparent m-w-[132px]">
+  <footer
+    className="fixed flex min-h-[116px] w-screen bottom-0 backdrop-filter 
+  backdrop-blur-md 
+  bg-opacity-10desktop:bg-transparent m-w-[132px]"
+  >
     <div className="container flex-1 py-6 desktop:flex desktop:justify-start items-center">
       <Menu />
     </div>
@@ -21,7 +27,7 @@ const AppFooter = () => (
 );
 
 const Menu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const handleToggleMenu = () => setIsMenuOpen((prev) => !prev);
   const { isDesktop } = useScreenDetector();
 
@@ -60,16 +66,25 @@ const Menu = () => {
         className="hidden w-full justify-center gap-1 desktop:ml-8 desktop:justify-start desktop:items-center desktop:gap-10 desktop:px-4"
       >
         {footerRoutes.map((route) => (
-          <AnimatedLink key={route.path} {...route} />
+          <AnimatedLink key={route.path} id={route.path} {...route} />
         ))}
       </motion.ul>
     </>
   );
 };
 
-const AnimatedLink = (props: { path: string; label: string }) => {
-  const { path, label } = props;
+const AnimatedLink = (props: { path: string; label: string; id: string }) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const isSkillSelected = !!searchParams.get("skill_id");
+  const { path, label, id } = props;
   const { hasHover } = useScreenDetector();
+
+  const itemAnimation = id.includes("skills")
+    ? footerSpecialAnimations["skills"]
+    : {};
+
+  console.log(id, itemAnimation);
 
   return (
     <motion.li
@@ -84,23 +99,30 @@ const AnimatedLink = (props: { path: string; label: string }) => {
           initial="default"
           animate="default"
         >
-          <div className="relative">
+          <motion.div
+            className="parent relative z-60"
+            initial="default"
+            variants={itemAnimation}
+            whileHover="hover"
+            layout
+            animate={isSkillSelected ? "selected" : "default"}
+          >
             <motion.div
               className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              variants={hasHover ? menu.innerCircle : undefined}
+              variants={menu.innerCircle}
             />
             <div className="w-[40px]">
               <motion.svg viewBox="0 0 40 40">
                 <motion.path
                   d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
-                  stroke-width="1"
+                  strokeWidth="1"
                   variants={hasHover ? menu.outerCircle : undefined}
                   fill="transparent"
                   className="stroke-primary-color"
                 />
               </motion.svg>
             </div>
-          </div>
+          </motion.div>
 
           <motion.span
             className="font-sans font-light text-primary-color w-max desktop:absolute desktop:text-2xl desktop:invisible"
