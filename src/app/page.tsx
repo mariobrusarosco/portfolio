@@ -56,7 +56,9 @@ const NameAndFirstName = () => {
 
 const aboutMeHeading = "about me".split(" ");
 const aboutMeText =
-  "a front end developer who enjoys creating digital products".split(" ");
+  "a front end developer who enjoys creating digital products asdsadasknas djsabjsad asjd sajd sajd sasajd sajd sajd sadsad sahdadjhsa dhj.a kkasjdksadksaj dksajdsakdjsa kdjaskdj askdjsasd asdsadsadsadsadsadsadsaa dsadsadsad akdjsakd jsakdj askdjsakdjsa as dsa d final".split(
+    " "
+  );
 
 const AboutMe = () => {
   return (

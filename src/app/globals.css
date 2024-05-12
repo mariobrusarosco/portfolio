@@ -15,6 +15,7 @@ body {
 body,
 html {
   height: 100%;
+  overflow: auto;
 }
 
 /* Global CSS files are inserted here */

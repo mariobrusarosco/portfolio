@@ -17,8 +17,7 @@ const { menu } = animations;
 const AppFooter = () => (
   <footer
     className="fixed flex min-h-[116px] w-screen bottom-0 backdrop-filter 
-  backdrop-blur-md 
-  bg-opacity-10desktop:bg-transparent m-w-[132px]"
+    backdrop-blur-md desktop:backdrop-filter-none desktop:desktop:m-w-[132px]"
   >
     <div className="container flex-1 py-6 desktop:flex desktop:justify-start items-center">
       <Menu />
