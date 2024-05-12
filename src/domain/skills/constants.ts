@@ -1,6 +1,6 @@
-import { Skill } from "./typing/interfaces-and-enums";
+import { SkillProps } from "./typing/interfaces-and-enums";
 
-export const skills: Skill[] = [
+export const skills: SkillProps[] = [
   {
     id: "typescript",
     label: "Typescript",

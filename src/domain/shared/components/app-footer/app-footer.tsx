@@ -6,10 +6,7 @@ import animations from "./animations";
 import { useScreenDetector } from "../../hooks/useScreenDetector";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import {
-  footerSpecialAnimations,
-  selectedOuter,
-} from "@/domain/skills/animations";
+import { footerSpecialAnimations } from "@/domain/skills/animations";
 
 const routeToBeIgnore = ["/"];
 const footerRoutes = portfolioRouting.filter(
@@ -30,7 +27,7 @@ const AppFooter = () => (
 );
 
 const Menu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const handleToggleMenu = () => setIsMenuOpen((prev) => !prev);
   const { isDesktop } = useScreenDetector();
 
@@ -98,20 +95,21 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
       <Link href={path}>
         <motion.div
           className="relative flex flex-col items-center gap-y-1 cursor-pointer"
-          // whileHover="hover"
-          // initial="default"
-          // animate="default"
+          whileHover="hover"
+          initial="default"
+          animate="default"
         >
           <motion.div
             className="parent relative z-60"
             initial="default"
             variants={itemAnimation}
+            whileHover="hover"
             layout
             animate={isSkillSelected ? "selected" : "default"}
           >
             <motion.div
               className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              variants={hasHover ? menu.innerCircle : undefined}
+              variants={menu.innerCircle}
             />
             <div className="w-[40px]">
               <motion.svg viewBox="0 0 40 40">

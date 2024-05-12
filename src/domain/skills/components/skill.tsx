@@ -1,19 +1,16 @@
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import animations from "../animations";
-import { ReactNode } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Skill } from "../typing/interfaces-and-enums";
 import { cn } from "@/domain/shared/utils/classnames";
+import { SkillProps } from "../typing/interfaces-and-enums";
 const { menu } = animations;
 
 const Skill = ({
   skill,
   selectedSkillId,
 }: {
-  skill: Skill;
-  selectedSkillId: string;
+  skill: SkillProps;
+  selectedSkillId: string | undefined;
 }) => {
   const isSelected = skill.id === selectedSkillId;
 
@@ -28,7 +25,7 @@ const AnimatedLink = ({
   isSelected,
   skill,
 }: {
-  skill: Skill;
+  skill: SkillProps;
   isSelected: boolean;
 }) => {
   const { hasHover } = useScreenDetector();
