@@ -9,7 +9,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import {
   footerSpecialAnimations,
   selectedOuter,
-} from "@/domain/skills/components/animations";
+} from "@/domain/skills/animations";
 
 const routeToBeIgnore = ["/"];
 const footerRoutes = portfolioRouting.filter(
@@ -18,7 +18,11 @@ const footerRoutes = portfolioRouting.filter(
 const { menu } = animations;
 
 const AppFooter = () => (
-  <footer className="fixed flex min-h-[116px] w-screen bottom-0 bg-red-700/90 desktop:bg-transparent m-w-[132px]">
+  <footer
+    className="fixed flex min-h-[116px] w-screen bottom-0 backdrop-filter 
+  backdrop-blur-md 
+  bg-opacity-10desktop:bg-transparent m-w-[132px]"
+  >
     <div className="container flex-1 py-6 desktop:flex desktop:justify-start items-center">
       <Menu />
     </div>
@@ -65,7 +69,7 @@ const Menu = () => {
         className="hidden w-full justify-center gap-1 desktop:ml-8 desktop:justify-start desktop:items-center desktop:gap-10 desktop:px-4"
       >
         {footerRoutes.map((route) => (
-          <AnimatedLink key={route.path} {...route} />
+          <AnimatedLink key={route.path} id={route.path} {...route} />
         ))}
       </motion.ul>
     </>
@@ -79,9 +83,11 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
   const { path, label, id } = props;
   const { hasHover } = useScreenDetector();
 
-  const itemAnimation = footerSpecialAnimations[id];
+  const itemAnimation = id.includes("skills")
+    ? footerSpecialAnimations["skills"]
+    : {};
 
-  console.log({ label, itemAnimation });
+  console.log(id, itemAnimation);
 
   return (
     <motion.li

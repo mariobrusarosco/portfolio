@@ -1,5 +1,5 @@
 import { Variants, delay } from "framer-motion";
-import { skills } from "../constants";
+import { skills } from "./constants";
 
 export const skillListContainer = {
   default: {

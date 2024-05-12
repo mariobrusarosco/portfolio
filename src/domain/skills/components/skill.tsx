@@ -1,7 +1,7 @@
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import animations from "./animations";
+import animations from "../animations";
 import { ReactNode } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Skill } from "../typing/interfaces-and-enums";
@@ -58,9 +58,9 @@ const AnimatedLink = ({
               height="6"
               rx="3"
               stroke="none"
-              className={cn("", {
-                "fill-blue-green-300": isSelected,
-              })}
+              // className={cn("", {
+              //   "fill-blue-green-300": isSelected,
+              // })}
             />
           </svg>
         </div>
