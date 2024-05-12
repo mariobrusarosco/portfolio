@@ -44,8 +44,8 @@ export default function Skills() {
       <motion.div
         className="heading-and-list-section desktop:max-h-[500px] desktop:overflow-auto"
         initial="default"
-        animate={selectedSkill && hasHover ? "selected" : "default"}
-        variants={hasHover ? undefined : skillListContainer}
+        animate={selectedSkill ? "selected" : "default"}
+        variants={skillListContainer}
       >
         <div className="">
           <motion.p
@@ -90,11 +90,10 @@ export default function Skills() {
 
       <motion.div
         initial="default"
-        variants={hasHover ? undefined : skillContainer}
+        variants={skillContainer}
         animate={selectedSkill ? "selected" : "default"}
         className={cn(
-          "skill-details-overlay absolute w-screen left-0 top-92 h-[calc(100%-96px-116px)] z-50 px-4 desktop:static  desktop:w-full desktop:overflow-auto desktop:h-auto desktop:max-h-[600px] desktop:z-1 "
-          // bg-blue-green-300/10
+          "skill-details-overlay absolute w-screen left-0 top-92 h-[calc(100%-96px-116px)] z-50 px-4 desktop:static  desktop:w-full desktop:overflow-auto desktop:h-auto desktop:max-h-[600px] desktop:z-1 bg-blue-green-300/10"
         )}
       >
         <div className="skill-details-content pt-20 px-6 my-20 border border-primary-color flex flex-col w-full overflow-auto desktop:my-0 desktop:px-10 desktop:border-none">

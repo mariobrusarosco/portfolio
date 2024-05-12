@@ -102,10 +102,10 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
           <motion.div
             className="parent relative z-60"
             initial="default"
-            variants={hasHover ? itemAnimation : undefined}
+            variants={itemAnimation}
             whileHover="hover"
             layout
-            animate={isSkillSelected && !hasHover ? "selected" : "default"}
+            animate={isSkillSelected ? "selected" : "default"}
           >
             <motion.div
               className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
