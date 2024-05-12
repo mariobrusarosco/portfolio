@@ -4,6 +4,7 @@ import {
   revealAndMoveToRight,
 } from "@/domain/experience/animations";
 import { screens } from "@/domain/shared/animations";
+import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { cn } from "@/domain/shared/utils/classnames";
 import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
 import { skillContainer, skillListContainer } from "@/domain/skills/animations";
@@ -34,16 +35,17 @@ export default function Skills() {
 
     router.push(`${window.location.pathname}?${queryParamsString}`);
   };
+  const { hasHover } = useScreenDetector();
 
   console.log({ selectedSkill });
 
   return (
-    <div className="h-full grid grid-cols-1 desktop:grid-cols-2 container">
+    <div className="h-full grid grid-cols-1 desktop:grid-cols-2 container ">
       <motion.div
-        className="heading-and-list-section desktop:max-w-[510px]"
+        className="heading-and-list-section desktop:max-h-[500px] desktop:overflow-auto"
         initial="default"
-        animate={selectedSkill ? "selected" : "default"}
-        variants={skillListContainer}
+        animate={selectedSkill && hasHover ? "selected" : "default"}
+        variants={hasHover ? undefined : skillListContainer}
       >
         <div className="">
           <motion.p
@@ -88,19 +90,20 @@ export default function Skills() {
 
       <motion.div
         initial="default"
-        variants={skillContainer}
+        variants={hasHover ? undefined : skillContainer}
         animate={selectedSkill ? "selected" : "default"}
         className={cn(
-          "skill-details-overlay absolute w-screen left-0 top-92 h-[calc(100%-96px-116px)] z-50 px-4"
+          "skill-details-overlay absolute w-screen left-0 top-92 h-[calc(100%-96px-116px)] z-50 px-4 desktop:static  desktop:w-full desktop:overflow-auto desktop:h-auto desktop:max-h-[600px] desktop:z-1 "
           // bg-blue-green-300/10
         )}
       >
-        <div className="skill-details-content pt-20 px-6 my-20 border border-primary-color flex flex-col w-full overflow-auto">
+        <div className="skill-details-content pt-20 px-6 my-20 border border-primary-color flex flex-col w-full overflow-auto desktop:my-0 desktop:px-10 desktop:border-none">
           <div className="heading flex justify-between items-center mb-16">
             <p className="font-serif text-2xl text-primary-color font-regular">
               {selectedSkill?.label}
             </p>
-            <div className="flex gap-2 justify-between items-center">
+
+            <div className="flex gap-2 justify-between items-center desktop:hidden">
               <p
                 className="uppercase text-pink-100 font-sans text-xs cursor-pointer"
                 onClick={() => {
