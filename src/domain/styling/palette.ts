@@ -1,8 +1,8 @@
 export const palette = {
   "pink-100": {
     css_var: "--pink-100",
-    hex: "#FFC0CB",
-    rgb: "255 192 203",
+    hex: "#FFD1CA",
+    rgb: "255 209 202",
     tailwind: "rgb(var(--pink-100) / <alpha-value>)",
   },
   "pink-500": {

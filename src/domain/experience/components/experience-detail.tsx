@@ -18,15 +18,21 @@ export const ExperienceDetail = ({
   if (!experience) return null;
 
   return (
-    <div className="flex flex-col gap-y-10">
+    <>
       <motion.div
         animate="visible"
         initial="hidden"
         variants={wrapperAnimation}
-        className=""
+        className="experience-details"
       >
+        {/* <motion.p
+          className="hidden desktop:flex font-light font-serif text-active-secondary tracking-widest text-2xl mt-6"
+          variants={revealAndMoveToRight}
+        >
+          company
+        </motion.p> */}
         <motion.p
-          className="font-normal font-sans text-pink-500 text-5xl tablet:text-6xl desktop:text-8xl lowercase desktop:font-light desktop:leading-tight"
+          className="font-light font-serif text-pink-500 text-5xl tablet:text-6xl desktop:text-8xl lowercase mt-4 mb-10"
           variants={revealAndMoveToRight}
         >
           {experience.companyName}
@@ -66,6 +72,6 @@ export const ExperienceDetail = ({
           </Reveal>
         ))}
       </div>
-    </div>
+    </>
   );
 };

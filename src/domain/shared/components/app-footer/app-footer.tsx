@@ -26,7 +26,7 @@ const AppFooter = () => (
 );
 
 const Menu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleToggleMenu = () => setIsMenuOpen((prev) => !prev);
   const { isDesktop } = useScreenDetector();
 

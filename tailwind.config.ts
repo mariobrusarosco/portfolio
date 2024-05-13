@@ -45,6 +45,8 @@ const config: Config = {
         "blue-green-300": palette["blue-green-300"].tailwind,
         "red-700": palette["red-700"].tailwind,
         "blue-800": palette["blue-800"].tailwind,
+        "active-primary": "var(--active-primary)",
+        "active-secondary": "var(--active-secondary)",
       },
     },
   },
