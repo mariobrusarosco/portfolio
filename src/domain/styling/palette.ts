@@ -19,14 +19,14 @@ export const palette = {
   },
   "orange-400": {
     css_var: "--orange-400",
-    hex: "#F97316",
-    rgb: "249 115 22",
+    hex: "#FF6F59",
+    rgb: "255 111 89",
     tailwind: "rgb(var(--orange-400) / <alpha-value>)",
   },
   "blue-green-300": {
     css_var: "--blue-green-300",
-    hex: "#2DD4BF",
-    rgb: "45 212 191",
+    hex: "#6A9B96",
+    rgb: "106 155 160",
     tailwind: "rgb(var(--blue-green-300) / <alpha-value>)",
   },
   "red-700": {

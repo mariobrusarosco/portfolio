@@ -109,13 +109,15 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
               variants={menu.innerCircle}
             />
             <div className="w-[40px]">
-              <motion.svg viewBox="0 0 40 40">
-                <motion.path
+              <motion.svg
+                viewBox="0 0 40 40"
+                stroke={`var(--active-primary)`}
+                variants={hasHover ? menu.outerCircle : undefined}
+              >
+                <path
                   d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
                   strokeWidth="1"
-                  variants={hasHover ? menu.outerCircle : undefined}
                   fill="transparent"
-                  stroke={`var(--active-primary)`}
                 />
               </motion.svg>
             </div>
