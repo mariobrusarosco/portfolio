@@ -25,12 +25,6 @@ export const ExperienceDetail = ({
         variants={wrapperAnimation}
         className="experience-details"
       >
-        {/* <motion.p
-          className="hidden desktop:flex font-light font-serif text-active-secondary tracking-widest text-2xl mt-6"
-          variants={revealAndMoveToRight}
-        >
-          company
-        </motion.p> */}
         <motion.p
           className="font-light font-serif text-pink-500 text-5xl tablet:text-6xl desktop:text-8xl lowercase mt-4 mb-10"
           variants={revealAndMoveToRight}

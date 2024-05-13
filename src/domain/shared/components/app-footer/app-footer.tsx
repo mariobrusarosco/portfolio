@@ -49,8 +49,9 @@ const Menu = () => {
         <svg width="2" height="53" viewBox="0 0 2 53" fill="none">
           <motion.path
             d="M1 0V53"
-            className="mx-6 stroke-primary-color"
+            className="mx-6"
             initial="hidden"
+            fill={`var(--active-primary)`}
             animate={isMenuOpen ? "visible" : "hidden"}
             variants={menu.stem}
           />
@@ -73,7 +74,6 @@ const Menu = () => {
 };
 
 const AnimatedLink = (props: { path: string; label: string; id: string }) => {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const isSkillSelected = !!searchParams.get("skill_id");
   const { path, label, id } = props;
@@ -82,8 +82,6 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
   const itemAnimation = id.includes("skills")
     ? footerSpecialAnimations["skills"]
     : {};
-
-  console.log(id, itemAnimation);
 
   return (
     <motion.li
@@ -117,14 +115,14 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
                   strokeWidth="1"
                   variants={hasHover ? menu.outerCircle : undefined}
                   fill="transparent"
-                  className="stroke-primary-color"
+                  stroke={`var(--active-primary)`}
                 />
               </motion.svg>
             </div>
           </motion.div>
 
           <motion.span
-            className="font-sans font-light text-primary-color w-max desktop:absolute desktop:text-2xl desktop:invisible"
+            className="font-sans font-light text-active-primary w-max desktop:absolute desktop:text-2xl desktop:invisible"
             variants={hasHover ? menu.label : undefined}
           >
             {label}
