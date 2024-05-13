@@ -11,19 +11,19 @@ export const metadata: Metadata = {
   description: "Mario Brusarosco - Front End Developer",
 };
 
-const mobileOffsets = "mt-[92px]";
 const tabletOffsets = "tablet:pt-[156px] tablet:pb-[156px]";
 const desktopOffsets = "desktop:pt-[180px]";
 const bodyClasses = clsx(
-  "bg-cover bg-no-repeat bg-fixed bg-main-mobile antialiased h-[calc(100dvh-92px-116px)] overflow-x-hidden overflow-y-auto border border-primary-color",
-  mobileOffsets,
+  "bg-cover bg-no-repeat bg-fixed bg-main-mobile antialiased",
   tabletOffsets,
   desktopOffsets,
   APP_FONTS_NEXTJS.josefinSlab.variable,
   APP_FONTS_NEXTJS.josefinSans.variable
 );
 
-const mainContainerClasses = clsx("h-full");
+const mainContainerClasses = clsx(
+  "top-[60px] overflow-auto absolute h-[calc(100dvh-92px-116px)] overflow-x-hidden overflow-y-auto w-full tablet:top-[92px] border border-primary-color"
+);
 
 export default function RootLayout({
   children,

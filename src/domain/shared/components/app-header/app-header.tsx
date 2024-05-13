@@ -17,7 +17,7 @@ const socialItemHover = {
 
 const AppHeader = () => {
   return (
-    <header className="w-screen position fixed top-0 left-0 container flex justify-between items-center py-8 tablet:py-16 desktop:py-16">
+    <header className="w-screen position fixed top-0 left-0 container flex justify-between items-center py-4 tablet:py-8">
       <Link className="flex-1" href="./">
         <motion.span
           className="uppercase font-sans text-pink-100 font-semibold cursor-pointer text-lg"
