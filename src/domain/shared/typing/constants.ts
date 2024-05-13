@@ -1,3 +1,5 @@
+import { palette } from "../../styling/palette";
+
 export const AppBreakpoints = {
   mobile: "767px",
   tablet: "768px",
@@ -19,27 +21,32 @@ export type PortfolioRoute = {
   path: string;
   label: string;
   primaryColor: string;
+  secondaryColor?: string;
 };
 
 export const portfolioRouting: PortfolioRoute[] = [
   {
     path: "/",
     label: "Home",
-    primaryColor: "#FFD1CA",
+    primaryColor: palette["pink-500"].hex,
+    secondaryColor: palette["blue-green-300"].hex,
   },
   {
     path: "/experience",
     label: "Experience",
-    primaryColor: "#d60c4e",
+    primaryColor: palette["pink-500"].hex,
+    secondaryColor: palette["blue-green-300"].hex,
   },
   {
     path: "/skills",
     label: "Skills",
-    primaryColor: "#6A9B96",
+    primaryColor: palette["pink-500"].hex,
+    secondaryColor: palette["blue-green-300"].hex,
   },
   {
     path: "/side-projects",
     label: "Side Projects",
-    primaryColor: "#FF6F59",
+    primaryColor: palette["pink-500"].hex,
+    secondaryColor: palette["blue-green-300"].hex,
   },
 ];
