@@ -26,7 +26,7 @@ const AppFooter = () => (
 );
 
 const Menu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const handleToggleMenu = () => setIsMenuOpen((prev) => !prev);
   const { isDesktop } = useScreenDetector();
 
@@ -84,54 +84,39 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
     : {};
 
   return (
-    <motion.li
-      key={path}
-      className="flex justify-center w-1/4 desktop:w-auto"
-      variants={menu.listItem}
-    >
-      <Link href={path}>
-        <motion.div
-          className="relative flex flex-col items-center gap-y-1 cursor-pointer"
-          whileHover="hover"
-          initial="default"
-          animate="default"
-        >
+    <Link href={path}>
+      <motion.li
+        key={path}
+        className="flex justify-center w-1/4 desktop:w-auto"
+        variants={menu.listItem}
+        whileHover="hover"
+        initial="default"
+      >
+        <motion.div className="relative flex flex-col items-center gap-y-1 cursor-pointer">
           <motion.div
-            className="parent relative z-60"
-            initial="default"
-            variants={itemAnimation}
-            whileHover="hover"
-            layout
-            animate={isSkillSelected ? "selected" : "default"}
-          >
-            <motion.div
-              className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              variants={menu.innerCircle}
-            />
-            <div className="w-[40px]">
-              <motion.svg
-                viewBox="0 0 40 40"
-                stroke={`var(--active-primary)`}
-                variants={hasHover ? menu.outerCircle : undefined}
-              >
-                <path
-                  d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
-                  strokeWidth="1"
-                  fill="transparent"
-                />
-              </motion.svg>
-            </div>
-          </motion.div>
-
-          <motion.span
-            className="font-sans font-light text-active-primary w-max desktop:absolute desktop:text-2xl desktop:invisible"
-            variants={hasHover ? menu.label : undefined}
-          >
-            {label}
-          </motion.span>
+            className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            variants={menu.innerCircle}
+          />
+          <div className="w-[40px]">
+            <motion.svg viewBox="0 0 40 40" stroke={`var(--active-primary)`}>
+              <motion.path
+                d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
+                strokeWidth="1"
+                fill="transparent"
+                variants={menu.outerCircle}
+              />
+            </motion.svg>
+          </div>
         </motion.div>
-      </Link>
-    </motion.li>
+
+        <motion.span
+          className="font-sans font-light text-active-primary w-max desktop:absolute desktop:text-2xl desktop:invisible"
+          variants={menu.label}
+        >
+          {label}
+        </motion.span>
+      </motion.li>
+    </Link>
   );
 };
 
