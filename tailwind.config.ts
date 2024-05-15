@@ -11,16 +11,11 @@ const config: Config = {
       center: true,
     },
     screens: {
-      // "mobile-only": { max: AppBreakpoints.mobile + "px" },
-      // "mobile-lg-only": { max: AppBreakpoints["mobile-lg"] + "px" },
-      // "m-and-t": { max: AppBreakpoints.mobileAndTablet + "px" },
-      // "mobile-lg": {
-      //   min: AppBreakpoints.mobile,
-      // },
       sm: { min: AppBreakpoints.sm },
       md: { min: AppBreakpoints.md },
       lg: { min: AppBreakpoints.lg },
       xl: { min: AppBreakpoints.xl },
+      fh: { min: AppBreakpoints.fh },
     },
     extend: {
       fontFamily: {

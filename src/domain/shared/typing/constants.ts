@@ -4,7 +4,8 @@ export const AppBreakpoints = {
   sm: "480px",
   md: "768px",
   lg: "1336px",
-  xl: "1920px",
+  xl: "1536px",
+  fh: "1920px",
 };
 
 export const AppBreakpointsMediaQueries = {
