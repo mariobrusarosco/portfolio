@@ -37,13 +37,11 @@ const outerCircle: Variants = {
     rotate: 120,
     originX: "50%",
     originY: "50%",
-    stroke: palette["pink-100"].hex,
     transition: { type: "spring", damping: 10, stiffness: 150 },
   },
   hover: {
     pathLength: 0.85,
     rotate: 120,
-    stroke: "var(--active-primary)",
     transition: { type: "spring", damping: 10, stiffness: 150 },
   },
 };
@@ -65,7 +63,6 @@ const label: Variants = {
         duration: 0.3,
       },
     },
-    color: "var(--active-primary)",
   },
 };
 
@@ -73,7 +70,6 @@ const innerCircle: Variants = {
   default: {
     y: "-50%",
     x: "-50%",
-    backgroundColor: palette["pink-100"].hex,
   },
   hover: {
     y: -45,
@@ -84,11 +80,13 @@ const innerCircle: Variants = {
       damping: 10,
       stiffness: 150,
     },
-    backgroundColor: "var(--active-primary)",
   },
 };
 
 const trigger = {
+  default: {
+    fill: palette["pink-100"].hex,
+  },
   hover: {
     letterSpacing: "0.4em",
     color: "var(--active-primary)",

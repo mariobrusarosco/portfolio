@@ -40,6 +40,7 @@ const Menu = () => {
           onClick={handleToggleMenu}
           layout="size"
           whileHover="hover"
+          initial="default"
           animate={isMenuOpen && "hover"}
           variants={menu.trigger}
         >
@@ -94,15 +95,16 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
       >
         <motion.div className="relative flex flex-col items-center gap-y-1 cursor-pointer">
           <motion.div
-            className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-active-primary"
             variants={menu.innerCircle}
           />
           <div className="w-[40px]">
-            <motion.svg viewBox="0 0 40 40" stroke={`var(--active-primary)`}>
+            <motion.svg viewBox="0 0 40 40">
               <motion.path
                 d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
                 strokeWidth="1"
                 fill="transparent"
+                stroke={`var(--active-primary)`}
                 variants={menu.outerCircle}
               />
             </motion.svg>
