@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="container y-global-spacing h-full flex flex-col justify-around lg:justify-center">
+    <div className="container y-global-spacing h-full flex flex-col justify-around lg:h-full">
       <NameAndFirstName />
 
       <AboutMe />
@@ -16,7 +16,7 @@ const lastName = "brusarosco".split("");
 
 const NameAndFirstName = () => {
   return (
-    <div className="font-serif max-w-[312px] md:max-w-[667px] lg:mt-[100px] lg:pb-[10px]">
+    <div className="font-serif max-w-[312px] md:max-w-[667px]">
       <h2 className="font-semibold uppercase text-pink-500 text-6xl md:text-7xl">
         {firstName.map((letter, index) => (
           <motion.span
@@ -61,7 +61,7 @@ const aboutMeText =
 const AboutMe = () => {
   return (
     <div className="w-full font-sans md:text-right md:ml-auto md:max-w-[610px] lg:ml-auto xl:max-w-[1080px]">
-      <p className="text-3xl font-light text-pink-500 xl:text-5xl">
+      <p className="text-3xl font-light text-pink-500">
         {aboutMeHeading.map((letter, index) => (
           <motion.span
             key={index}
@@ -78,7 +78,7 @@ const AboutMe = () => {
         ))}
       </p>
 
-      <p className="text-pink-100 font-thin text-3xl uppercase md:text-4xl lg:text-7xl xl:text-8xl">
+      <p className="text-pink-100 font-thin text-3xl uppercase md:text-4xl">
         {aboutMeText.map((letter, index) => (
           <motion.span
             key={index}

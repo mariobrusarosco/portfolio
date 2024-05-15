@@ -3,7 +3,7 @@ import { palette } from "../../styling/palette";
 export const AppBreakpoints = {
   sm: "480px",
   md: "768px",
-  lg: "1440px",
+  lg: "1336px",
   xl: "1920px",
 };
 

@@ -9,12 +9,6 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: {
-        DEFAULT: "1rem",
-        mobile: "0.5rem",
-        tablet: "2rem",
-        desktop: "3rem",
-      },
     },
     screens: {
       // "mobile-only": { max: AppBreakpoints.mobile + "px" },
