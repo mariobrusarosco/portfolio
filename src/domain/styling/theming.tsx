@@ -17,7 +17,7 @@ const routeColors = portfolioRouting.reduce(
 );
 
 export const ThemeSetup = () => {
-  const root = document.documentElement;
+  const root = document?.documentElement;
   const pathname = usePathname();
 
   useEffect(() => {
