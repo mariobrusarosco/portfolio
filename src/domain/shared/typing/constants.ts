@@ -28,7 +28,7 @@ export const portfolioRouting: PortfolioRoute[] = [
   {
     path: "/",
     label: "Home",
-    primaryColor: palette["pink-500"].hex,
+    primaryColor: palette["pink-100"].hex,
     secondaryColor: palette["blue-green-300"].hex,
   },
   {

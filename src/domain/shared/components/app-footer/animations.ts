@@ -1,6 +1,5 @@
+import { palette } from "@/domain/styling/palette";
 import { Variants } from "framer-motion";
-import { before } from "node:test";
-import { exit } from "process";
 
 const listItem = {
   visible: {
@@ -38,13 +37,13 @@ const outerCircle: Variants = {
     rotate: 120,
     originX: "50%",
     originY: "50%",
-    stroke: "var(--active-primary)",
+    stroke: palette["pink-100"].hex,
     transition: { type: "spring", damping: 10, stiffness: 150 },
   },
   hover: {
     pathLength: 0.85,
     rotate: 120,
-    stroke: "gold",
+    stroke: "var(--active-primary)",
     transition: { type: "spring", damping: 10, stiffness: 150 },
   },
 };
@@ -60,12 +59,8 @@ const label: Variants = {
     y: -60,
     transition: {
       type: "spring",
-      //A
       damping: 10,
       stiffness: 150,
-      // B
-      // damping: 12,
-      // stiffness: 100,
       color: {
         duration: 0.3,
       },
@@ -78,7 +73,7 @@ const innerCircle: Variants = {
   default: {
     y: "-50%",
     x: "-50%",
-    backgroundColor: "var(--active-primary)",
+    backgroundColor: palette["pink-100"].hex,
   },
   hover: {
     y: -45,
@@ -89,13 +84,14 @@ const innerCircle: Variants = {
       damping: 10,
       stiffness: 150,
     },
-    backgroundColor: "gold",
+    backgroundColor: "var(--active-primary)",
   },
 };
 
 const trigger = {
   hover: {
     letterSpacing: "0.4em",
+    color: "var(--active-primary)",
     transition: {
       duration: 0.8,
       type: "spring",
@@ -105,7 +101,6 @@ const trigger = {
         duration: 0.2,
       },
     },
-    color: "var(--active-primary)",
   },
 };
 

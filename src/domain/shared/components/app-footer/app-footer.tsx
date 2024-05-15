@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import animations from "./animations";
 import { useScreenDetector } from "../../hooks/useScreenDetector";
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { footerSpecialAnimations } from "@/domain/skills/animations";
 
 const routeToBeIgnore = ["/"];
@@ -97,32 +97,20 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
           animate="default"
         >
           <motion.div
-            className="parent relative z-60"
-            initial="default"
-            variants={itemAnimation}
-            whileHover="hover"
-            layout
-            animate={isSkillSelected ? "selected" : "default"}
-          >
-            <motion.div
-              className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              variants={menu.innerCircle}
-            />
-            <div className="w-[40px]">
-              <motion.svg
-                viewBox="0 0 40 40"
+            className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            variants={menu.innerCircle}
+          />
+          <div className="w-[40px] h-[40px]">
+            <svg viewBox="0 0 40 40">
+              <motion.path
+                d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
+                strokeWidth="1"
+                fill="transparent"
                 stroke={`var(--active-primary)`}
                 variants={hasHover ? menu.outerCircle : undefined}
-              >
-                <path
-                  d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
-                  strokeWidth="1"
-                  fill="transparent"
-                />
-              </motion.svg>
-            </div>
-          </motion.div>
-
+              />
+            </svg>
+          </div>
           <motion.span
             className="font-sans font-light text-active-primary w-max desktop:absolute desktop:text-2xl desktop:invisible"
             variants={hasHover ? menu.label : undefined}
