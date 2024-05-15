@@ -15,26 +15,23 @@ const footerRoutes = portfolioRouting.filter(
 const { menu } = animations;
 
 const AppFooter = () => (
-  <footer
-    className="fixed flex min-h-[116px] w-screen bottom-0 backdrop-filter 
-    backdrop-blur-md desktop:backdrop-filter-none desktop:desktop:m-w-[132px]"
-  >
-    <div className="container flex-1 py-6 desktop:flex desktop:justify-start items-center">
+  <footer className="fixed flex min-h-[116px] w-screen bottom-0 lg:m-w-[132px]">
+    <div className="container y-global-spacing flex-1 py-6 lg:flex lg:justify-start items-center">
       <Menu />
     </div>
   </footer>
 );
 
 const Menu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleToggleMenu = () => setIsMenuOpen((prev) => !prev);
-  const { isDesktop } = useScreenDetector();
+  const { hasHover } = useScreenDetector();
 
-  const menuStatus = isDesktop && !isMenuOpen ? "hidden" : "visible";
+  const menuStatus = isMenuOpen || !hasHover ? "visible" : "hidden";
 
   return (
     <>
-      <div className="hidden desktop:flex desktop:items-center">
+      <div className="hidden lg:flex lg:items-center">
         <motion.span
           className="font-sans font-semibold text-lg uppercase text-pink-100 cursor-pointer p-4"
           onClick={handleToggleMenu}
@@ -53,7 +50,7 @@ const Menu = () => {
             className="mx-6"
             initial="hidden"
             fill={`var(--active-primary)`}
-            animate={isMenuOpen ? "visible" : "hidden"}
+            animate={menuStatus}
             variants={menu.stem}
           />
         </svg>
@@ -64,7 +61,8 @@ const Menu = () => {
         layout="position"
         animate={menuStatus}
         variants={menu.list}
-        className="hidden w-full justify-center gap-1 desktop:ml-8 desktop:justify-start desktop:items-center desktop:gap-10 desktop:px-4"
+        custom={menuStatus}
+        className="hidden w-full justify-center gap-10 md:justify-around lg:ml-8 lg:justify-start lg:items-center lg:px-4"
       >
         {footerRoutes.map((route) => (
           <AnimatedLink key={route.path} id={route.path} {...route} />
@@ -88,7 +86,7 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
     <Link href={path}>
       <motion.li
         key={path}
-        className="flex justify-center w-1/4 desktop:w-auto"
+        className="flex justify-center flex-col"
         variants={menu.listItem}
         whileHover="hover"
         initial="default"
@@ -112,7 +110,7 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
         </motion.div>
 
         <motion.span
-          className="font-sans font-light text-active-primary w-max desktop:absolute desktop:text-2xl desktop:invisible"
+          className="font-sans font-light text-active-primary w-max lg:absolute lg:text-2xl lg:invisible"
           variants={menu.label}
         >
           {label}
