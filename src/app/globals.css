@@ -21,3 +21,9 @@ html {
 /* Global CSS files are inserted here */
 @import "../domain/shared/styling/scrollbar.css";
 @import "../domain/shared/styling/shadow-container-scroll.css";
+
+@layer base {
+  .y-global-spacing {
+    @apply px-4 md:px-8 lg:px-12;
+  }
+}

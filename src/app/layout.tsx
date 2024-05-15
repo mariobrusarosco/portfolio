@@ -22,7 +22,7 @@ const bodyClasses = clsx(
 );
 
 const mainContainerClasses = clsx(
-  "overflow-auto absolute overflow-x-hidden overflow-y-auto w-full top-[60px] h-[calc(100dvh-60px-116px)] tablet:top-[92px] tablet:h-[calc(100dvh-92px-116px)] "
+  "overflow-auto absolute overflow-x-hidden overflow-y-auto w-full top-[76px] h-[calc(100dvh-76px-116px)] md:top-[92px] md:h-[calc(100dvh-92px-116px)]"
 );
 
 export default function RootLayout({

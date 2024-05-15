@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="container h-full flex flex-col justify-around lg:justify-center">
+    <div className="container y-global-spacing h-full flex flex-col justify-around lg:justify-center">
       <NameAndFirstName />
 
       <AboutMe />
@@ -17,7 +17,7 @@ const lastName = "brusarosco".split("");
 const NameAndFirstName = () => {
   return (
     <div className="font-serif max-w-[312px] md:max-w-[667px] lg:mt-[100px] lg:pb-[10px]">
-      <h2 className="font-semibold uppercase text-pink-500 text-6xl md:text-[100px] xl:text-[125px]">
+      <h2 className="font-semibold uppercase text-pink-500 text-6xl md:text-7xl">
         {firstName.map((letter, index) => (
           <motion.span
             key={index}
@@ -34,7 +34,7 @@ const NameAndFirstName = () => {
         ))}
       </h2>
 
-      <h3 className="font-thin text-pink-100 text-5xl md:text-[100px] text-right -mt-5 md:-mt-8 md:text-left md:pl-[90px] xl:text-[100px] uppercase">
+      <h3 className="font-thin text-pink-100 text-5xl md:text-6xl text-right -mt-5 md:-mt-5 md:text-left md:pl-16 xl:text-[100px] uppercase">
         {lastName.map((letter, index) => (
           <motion.span
             key={index}
@@ -60,7 +60,7 @@ const aboutMeText =
 
 const AboutMe = () => {
   return (
-    <div className="w-full font-sans md:text-right lg:max-w-[680px] lg:ml-auto xl:max-w-[1080px]">
+    <div className="w-full font-sans md:text-right md:ml-auto md:max-w-[610px] lg:ml-auto xl:max-w-[1080px]">
       <p className="text-3xl font-light text-pink-500 xl:text-5xl">
         {aboutMeHeading.map((letter, index) => (
           <motion.span
@@ -78,7 +78,7 @@ const AboutMe = () => {
         ))}
       </p>
 
-      <p className="text-pink-100 font-thin text-3xl uppercase md:text-5xl lg:text-7xl xl:text-8xl">
+      <p className="text-pink-100 font-thin text-3xl uppercase md:text-4xl lg:text-7xl xl:text-8xl">
         {aboutMeText.map((letter, index) => (
           <motion.span
             key={index}
