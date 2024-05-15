@@ -17,11 +17,12 @@ const routeColors = portfolioRouting.reduce(
 );
 
 export const ThemeSetup = () => {
-  const root = document?.documentElement;
   const pathname = usePathname();
 
   useEffect(() => {
     const { primaryColor, secondaryColor } = routeColors[pathname];
+
+    const root = document?.documentElement;
 
     root.style.setProperty("--active-primary", primaryColor);
     root.style.setProperty("--active-secondary", secondaryColor ?? "");
@@ -29,6 +30,8 @@ export const ThemeSetup = () => {
 
   useEffect(() => {
     // TODO Conside setting these CSS Vars as a build process, where a css file will be created with the colors
+    const root = document?.documentElement;
+
     Object.entries(palette).forEach(([key, { rgb }]) => {
       root.style.setProperty(`--${key}`, rgb);
     });
