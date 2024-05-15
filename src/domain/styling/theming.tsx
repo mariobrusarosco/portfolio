@@ -24,7 +24,7 @@ export const ThemeSetup = () => {
     const { primaryColor, secondaryColor } = routeColors[pathname];
 
     root.style.setProperty("--active-primary", primaryColor);
-    root.style.setProperty("--active-secondary", secondaryColor);
+    root.style.setProperty("--active-secondary", secondaryColor ?? "");
   }, [pathname]);
 
   useEffect(() => {
