@@ -17,15 +17,16 @@ const config: Config = {
       },
     },
     screens: {
-      "mobile-only": { max: AppBreakpoints.mobile + "px" },
+      // "mobile-only": { max: AppBreakpoints.mobile + "px" },
       // "mobile-lg-only": { max: AppBreakpoints["mobile-lg"] + "px" },
       // "m-and-t": { max: AppBreakpoints.mobileAndTablet + "px" },
-      "mobile-lg": {
-        min: AppBreakpoints.mobile,
-      },
-      tablet: { min: AppBreakpoints.tablet },
-      desktop: { min: AppBreakpoints.desktop },
-      "desktop-large": { min: AppBreakpoints["desktop-large"] },
+      // "mobile-lg": {
+      //   min: AppBreakpoints.mobile,
+      // },
+      sm: { min: AppBreakpoints.sm },
+      md: { min: AppBreakpoints.md },
+      lg: { min: AppBreakpoints.lg },
+      xl: { min: AppBreakpoints.xl },
     },
     extend: {
       fontFamily: {

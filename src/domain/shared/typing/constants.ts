@@ -1,20 +1,17 @@
 import { palette } from "../../styling/palette";
 
 export const AppBreakpoints = {
-  mobile: "767px",
-  tablet: "768px",
-  mobileAndTablet: "1279px",
-  desktop: "1440px",
-  "desktop-large": "1920px",
+  sm: "480px",
+  md: "768px",
+  lg: "1440px",
+  xl: "1920px",
 };
 
 export const AppBreakpointsMediaQueries = {
-  mobile: `(max-width: ${AppBreakpoints.mobile})`,
-  "mobile-lg": `(min-width: ${AppBreakpoints.mobile})`,
-  "mobile-lg-only": `(min-width: ${AppBreakpoints.mobile}) and (max-width: ${AppBreakpoints.tablet})`,
-  tablet: `(min-width: ${AppBreakpoints.tablet}) and (max-width: ${AppBreakpoints.desktop})`,
-  desktop: `(min-width: ${AppBreakpoints.desktop})`,
-  "desktop-large": `(min-width: ${AppBreakpoints["desktop-large"]}px)`,
+  md: `(max-width: ${AppBreakpoints.md})`,
+  tablet: `(min-width: ${AppBreakpoints.md})`,
+  lg: `(min-width: ${AppBreakpoints.lg})`,
+  xl: `(min-width: ${AppBreakpoints.xl})`,
 };
 
 export type PortfolioRoute = {
