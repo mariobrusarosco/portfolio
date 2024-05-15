@@ -9,23 +9,13 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: {
-        DEFAULT: "1rem",
-        mobile: "0.5rem",
-        tablet: "2rem",
-        desktop: "3rem",
-      },
     },
     screens: {
-      "mobile-only": { max: AppBreakpoints.mobile + "px" },
-      // "mobile-lg-only": { max: AppBreakpoints["mobile-lg"] + "px" },
-      // "m-and-t": { max: AppBreakpoints.mobileAndTablet + "px" },
-      "mobile-lg": {
-        min: AppBreakpoints.mobile,
-      },
-      tablet: { min: AppBreakpoints.tablet },
-      desktop: { min: AppBreakpoints.desktop },
-      "desktop-large": { min: AppBreakpoints["desktop-large"] },
+      sm: { min: AppBreakpoints.sm },
+      md: { min: AppBreakpoints.md },
+      lg: { min: AppBreakpoints.lg },
+      xl: { min: AppBreakpoints.xl },
+      fh: { min: AppBreakpoints.fh },
     },
     extend: {
       fontFamily: {
