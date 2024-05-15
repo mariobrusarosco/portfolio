@@ -16,7 +16,7 @@ import {
 export default function ExperienceScreen() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const currentCompanyId = searchParams.get("id");
+  const currentCompanyId = searchParams.get("id") ?? experiences[0].id;
   const selectedExperience = experiences.find((experience) => {
     return experience.id === currentCompanyId;
   });
@@ -37,30 +37,27 @@ export default function ExperienceScreen() {
   const listAnimation = useMemo(() => animateChildrenInSequence(0.15), []);
 
   return (
-    <div className="h-full grid grid-cols-1 desktop:grid-cols-2 container">
-      <div className="heading-and-list-section">
-        <div className="">
-          <motion.p
-            initial="initial"
-            animate="animate"
-            variants={screens.heading}
-            className="mb-2 w-fit tracking-tighter font-serif font text-pink-500 text-2xl tablet:text-3xl desktop:text-4xl"
-          >
-            <span>these are my</span>
-            {/* <span className="desktop:hidden flex h-[1px] bg-pink-500" /> */}
-          </motion.p>
+    <div className="h-full grid grid-cols-1 desktop:grid-cols-2 container tablet:content-start">
+      <div className="heading-and-list-section pt-12 desktop:pt-2">
+        <motion.p
+          initial="initial"
+          animate="animate"
+          variants={screens.heading}
+          className="w-fit font-serif text-active-secondary text-2xl tracking-widest tablet:text-3xl desktop:text-4xl"
+        >
+          <span>these are my</span>
+        </motion.p>
 
-          <motion.h2
-            initial="initial"
-            animate="animate"
-            variants={screens.heading}
-            className="font-sans font-regular text-pink-500 text-6xl -mt-6 tablet:text-7xl desktop:text-8xl"
-          >
-            experiences
-          </motion.h2>
-        </div>
+        <motion.h2
+          initial="initial"
+          animate="animate"
+          variants={screens.heading}
+          className="font-sans font-regular text-pink-500 text-6xl -mt-6 tablet:text-7xl desktop:text-8xl desktop:-mt-8"
+        >
+          experiences
+        </motion.h2>
 
-        <section className="mt-20 max-w-full overflow-auto">
+        <section className="list-of-experiences my-16 max-w-full overflow-auto">
           <motion.ul
             className="flex gap-8 pb-4 desktop:flex-col justify-start items-start tablet:gap-12"
             variants={listAnimation}
@@ -129,7 +126,7 @@ const DetailSection = (props: {
   return (
     <div
       ref={ref}
-      className="scrollable experience-detail-section pr-4  my-4 overflow-x-auto mt-14 desktop:m-0"
+      className="scrollable experience-detail-section pr-4 overflow-x-auto desktop:m-0"
     >
       <ExperienceDetail
         experience={props.selectedExperience}

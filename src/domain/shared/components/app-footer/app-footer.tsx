@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import animations from "./animations";
 import { useScreenDetector } from "../../hooks/useScreenDetector";
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { footerSpecialAnimations } from "@/domain/skills/animations";
 
 const routeToBeIgnore = ["/"];
@@ -17,8 +17,7 @@ const { menu } = animations;
 const AppFooter = () => (
   <footer
     className="fixed flex min-h-[116px] w-screen bottom-0 backdrop-filter 
-  backdrop-blur-md 
-  bg-opacity-10desktop:bg-transparent m-w-[132px]"
+    backdrop-blur-md desktop:backdrop-filter-none desktop:desktop:m-w-[132px]"
   >
     <div className="container flex-1 py-6 desktop:flex desktop:justify-start items-center">
       <Menu />
@@ -41,6 +40,7 @@ const Menu = () => {
           onClick={handleToggleMenu}
           layout="size"
           whileHover="hover"
+          initial="default"
           animate={isMenuOpen && "hover"}
           variants={menu.trigger}
         >
@@ -50,8 +50,9 @@ const Menu = () => {
         <svg width="2" height="53" viewBox="0 0 2 53" fill="none">
           <motion.path
             d="M1 0V53"
-            className="mx-6 stroke-primary-color"
+            className="mx-6"
             initial="hidden"
+            fill={`var(--active-primary)`}
             animate={isMenuOpen ? "visible" : "hidden"}
             variants={menu.stem}
           />
@@ -74,7 +75,6 @@ const Menu = () => {
 };
 
 const AnimatedLink = (props: { path: string; label: string; id: string }) => {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const isSkillSelected = !!searchParams.get("skill_id");
   const { path, label, id } = props;
@@ -84,55 +84,41 @@ const AnimatedLink = (props: { path: string; label: string; id: string }) => {
     ? footerSpecialAnimations["skills"]
     : {};
 
-  console.log(id, itemAnimation);
-
   return (
-    <motion.li
-      key={path}
-      className="flex justify-center w-1/4 desktop:w-auto"
-      variants={menu.listItem}
-    >
-      <Link href={path}>
-        <motion.div
-          className="relative flex flex-col items-center gap-y-1 cursor-pointer"
-          whileHover="hover"
-          initial="default"
-          animate="default"
-        >
+    <Link href={path}>
+      <motion.li
+        key={path}
+        className="flex justify-center w-1/4 desktop:w-auto"
+        variants={menu.listItem}
+        whileHover="hover"
+        initial="default"
+      >
+        <motion.div className="relative flex flex-col items-center gap-y-1 cursor-pointer">
           <motion.div
-            className="parent relative z-60"
-            initial="default"
-            variants={itemAnimation}
-            whileHover="hover"
-            layout
-            animate={isSkillSelected ? "selected" : "default"}
-          >
-            <motion.div
-              className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              variants={menu.innerCircle}
-            />
-            <div className="w-[40px]">
-              <motion.svg viewBox="0 0 40 40">
-                <motion.path
-                  d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
-                  strokeWidth="1"
-                  variants={hasHover ? menu.outerCircle : undefined}
-                  fill="transparent"
-                  className="stroke-primary-color"
-                />
-              </motion.svg>
-            </div>
-          </motion.div>
-
-          <motion.span
-            className="font-sans font-light text-primary-color w-max desktop:absolute desktop:text-2xl desktop:invisible"
-            variants={hasHover ? menu.label : undefined}
-          >
-            {label}
-          </motion.span>
+            className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-active-primary"
+            variants={menu.innerCircle}
+          />
+          <div className="w-[40px]">
+            <motion.svg viewBox="0 0 40 40">
+              <motion.path
+                d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
+                strokeWidth="1"
+                fill="transparent"
+                stroke={`var(--active-primary)`}
+                variants={menu.outerCircle}
+              />
+            </motion.svg>
+          </div>
         </motion.div>
-      </Link>
-    </motion.li>
+
+        <motion.span
+          className="font-sans font-light text-active-primary w-max desktop:absolute desktop:text-2xl desktop:invisible"
+          variants={menu.label}
+        >
+          {label}
+        </motion.span>
+      </motion.li>
+    </Link>
   );
 };
 

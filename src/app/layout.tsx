@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
 import { AppHeader } from "@/domain/shared/components/app-header/app-header";
 import clsx from "clsx";
 import { APP_FONTS_NEXTJS } from "@/domain/styling/nextjs";
 import { AppFooter } from "@/domain/shared/components/app-footer/app-footer";
-import { useEffect } from "react";
 import { ThemeSetup } from "@/domain/styling/theming";
 
 export const metadata: Metadata = {
@@ -12,10 +11,18 @@ export const metadata: Metadata = {
   description: "Mario Brusarosco - Front End Developer",
 };
 
+const tabletOffsets = "tablet:pt-[156px] tablet:pb-[156px]";
+const desktopOffsets = "desktop:pt-[180px]";
 const bodyClasses = clsx(
-  "antialiased",
+  "bg-cover bg-no-repeat bg-fixed bg-main-mobile antialiased",
+  tabletOffsets,
+  desktopOffsets,
   APP_FONTS_NEXTJS.josefinSlab.variable,
   APP_FONTS_NEXTJS.josefinSans.variable
+);
+
+const mainContainerClasses = clsx(
+  "overflow-auto absolute overflow-x-hidden overflow-y-auto w-full top-[60px] h-[calc(100dvh-60px-116px)] tablet:top-[92px] tablet:h-[calc(100dvh-92px-116px)] "
 );
 
 export default function RootLayout({
@@ -28,11 +35,7 @@ export default function RootLayout({
       <body className={bodyClasses}>
         <ThemeSetup />
         <AppHeader />
-        <div className="h-full bg-cover bg-no-repeat bg-main-mobile tablet:bg-main-tablet desktop:bg-main-desktop">
-          <main className="h-full pt-[120px] pb-[116px] tablet:pt-[156px] tablet:pb-[156px] desktop:pt-[180px]">
-            {children}
-          </main>
-        </div>
+        <main className={mainContainerClasses}>{children}</main>
         <AppFooter />
       </body>
     </html>

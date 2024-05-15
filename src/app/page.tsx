@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="container h-full flex flex-col justify-around desktop:justify-center">
+    <div className="container h-full  flex flex-col justify-around desktop:justify-center">
       <NameAndFirstName />
 
       <AboutMe />
@@ -16,7 +16,7 @@ const lastName = "brusarosco".split("");
 
 const NameAndFirstName = () => {
   return (
-    <div className=" font-serif max-w-[312px] tablet:max-w-[667px] desktop:mt-[100px] desktop:pb-[10px]">
+    <div className="font-serif max-w-[312px] tablet:max-w-[667px] desktop:mt-[100px] desktop:pb-[10px]">
       <h2 className="font-semibold uppercase text-pink-500 text-6xl tablet:text-[100px]  desktop-large:text-[125px]">
         {firstName.map((letter, index) => (
           <motion.span

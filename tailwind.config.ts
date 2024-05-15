@@ -2,6 +2,7 @@ import { APP_FONTS } from "./src/domain/styling/fonts";
 import { AppBreakpoints } from "./src/domain/shared/typing/constants";
 
 import { Config } from "tailwindcss";
+import { palette } from "./src/domain/styling/palette";
 
 const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
@@ -37,24 +38,15 @@ const config: Config = {
         "main-desktop": "url('/main-bg-desktop.jpg')",
       },
       colors: {
-        "primary-black": "rgb(var(--primary-black) / <alpha-value>)",
-        "primary-white": "rgb(var(--primary-white) / <alpha-value>)",
-        "primary-base": "rgb(var(--primary-base) / <alpha-value>)",
-        "primary-dark": "rgb(var(--primary-dark) / <alpha-value>)",
-        "secondary-base": "rgb(var(--secondary-base) / <alpha-value>)",
-        "secondary-dark": "rgb(var(--secondary-dark) / <alpha-value>)",
-        "light-gray": "rgb(var(--light-gray) / <alpha-value>)",
-        "light-green": "rgb(var(--light-green) / <alpha-value>)",
-
-        "pink-100": "rgb(var(--pink-100) / <alpha-value>)",
-        "green-600": "rgb(var(--green-600) / <alpha-value>)",
-        "orange-400": "rgb(var(--orange-400) / <alpha-value>)",
-        "pink-500": "rgb(var(--pink-500) / <alpha-value>)",
-        "blue-green-300": "rgb(var(--blue-green-300) / <alpha-value>)",
-        "red-700": "rgb(var(--red-700) / <alpha-value>)",
-        "blue-800": "rgb(var(--blue-800) / <alpha-value>)",
-
-        "primary-color": "var(--primary-color)",
+        "pink-100": palette["pink-100"].tailwind,
+        "green-600": palette["green-600"].tailwind,
+        "orange-400": palette["orange-400"].tailwind,
+        "pink-500": palette["pink-500"].tailwind,
+        "blue-green-300": palette["blue-green-300"].tailwind,
+        "red-700": palette["red-700"].tailwind,
+        "blue-800": palette["blue-800"].tailwind,
+        "active-primary": "var(--active-primary)",
+        "active-secondary": "var(--active-secondary)",
       },
     },
   },

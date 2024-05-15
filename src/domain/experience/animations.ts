@@ -16,10 +16,9 @@ export const revealAndMoveToRight: Variants = {
     x: 0,
     transition: {
       type: "spring",
-      bounce: 0.25,
-      damping: 15,
+      damping: 17,
       stiffness: 200,
-      restDelta: 0.05,
+      restDelta: 0.1,
     },
   },
   hidden: { opacity: 0, x: -25 },

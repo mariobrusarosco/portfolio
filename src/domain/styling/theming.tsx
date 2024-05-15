@@ -1,28 +1,41 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { use, useEffect } from "react";
 import { PortfolioRoute, portfolioRouting } from "../shared/typing/constants";
+import { palette } from "./palette";
 
 const routeColors = portfolioRouting.reduce(
-  (acc, { path, primaryColor }: PortfolioRoute) => {
+  (acc, { path, primaryColor, secondaryColor }: PortfolioRoute) => {
     acc[path] = {
       primaryColor,
+      secondaryColor,
     };
     return acc;
   },
-  {} as Record<string, { primaryColor: string }>
+  {} as Record<string, { primaryColor: string; secondaryColor?: string }>
 );
 
 export const ThemeSetup = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    const { primaryColor } = routeColors[pathname];
-    const root = document.documentElement;
+    const { primaryColor, secondaryColor } = routeColors[pathname];
 
-    root.style.setProperty("--primary-color", primaryColor);
+    const root = document?.documentElement;
+
+    root.style.setProperty("--active-primary", primaryColor);
+    root.style.setProperty("--active-secondary", secondaryColor ?? "");
   }, [pathname]);
+
+  useEffect(() => {
+    // TODO Conside setting these CSS Vars as a build process, where a css file will be created with the colors
+    const root = document?.documentElement;
+
+    Object.entries(palette).forEach(([key, { rgb }]) => {
+      root.style.setProperty(`--${key}`, rgb);
+    });
+  }, []);
 
   return null;
 };
