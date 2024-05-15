@@ -7,11 +7,11 @@ const identifyDeviceProperties = () => {
     return { isMobile: false, isTablet: false, isDesktop: false };
 
   const isMobile =
-    window?.matchMedia(AppBreakpointsMediaQueries.mobile).matches || false;
-  const isTablet = window?.matchMedia(AppBreakpointsMediaQueries.tablet)
+    window?.matchMedia(AppBreakpointsMediaQueries["up-to-sm"]).matches || false;
+  const isTablet = window?.matchMedia(AppBreakpointsMediaQueries["up-to-md"])
     .matches;
   const isDesktop =
-    window?.matchMedia(AppBreakpointsMediaQueries.desktop).matches || false;
+    window?.matchMedia(AppBreakpointsMediaQueries.lg).matches || false;
   const hasHover = window.matchMedia("(hover: hover)").matches;
 
   return { isMobile, isTablet, isDesktop, hasHover };
