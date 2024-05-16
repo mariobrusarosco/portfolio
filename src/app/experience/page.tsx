@@ -37,13 +37,13 @@ export default function ExperienceScreen() {
   const listAnimation = useMemo(() => animateChildrenInSequence(0.15), []);
 
   return (
-    <div className="h-full grid grid-cols-1 desktop:grid-cols-2 container tablet:content-start">
-      <div className="heading-and-list-section pt-12 desktop:pt-2">
+    <div className="h-full grid grid-cols-1 lg:grid-cols-2 md:content-start">
+      <section className="heading-and-list-section x-global-spacing pt-12 lg:pt-2">
         <motion.p
           initial="initial"
           animate="animate"
           variants={screens.heading}
-          className="w-fit font-serif text-active-secondary text-2xl tracking-widest tablet:text-3xl desktop:text-4xl"
+          className="w-fit font-serif text-active-secondary text-2xl tracking-widest md:text-3xl lg:text-4xl"
         >
           <span>these are my</span>
         </motion.p>
@@ -52,60 +52,60 @@ export default function ExperienceScreen() {
           initial="initial"
           animate="animate"
           variants={screens.heading}
-          className="font-sans font-regular text-pink-500 text-6xl -mt-6 tablet:text-7xl desktop:text-8xl desktop:-mt-8"
+          className="font-sans font-regular text-pink-500 text-6xl -mt-6 md:text-7xl lg:text-8xl lg:-mt-8"
         >
           experiences
         </motion.h2>
+      </section>
 
-        <section className="list-of-experiences my-16 max-w-full overflow-auto">
-          <motion.ul
-            className="flex gap-8 pb-4 desktop:flex-col justify-start items-start tablet:gap-12"
-            variants={listAnimation}
-            animate="visible"
-            initial="hidden"
-          >
-            {experiences.map((experience) => (
-              <motion.li
-                key={experience.id}
-                onClick={() => handleSelectCompany(experience.id)}
-                variants={revealAndMoveToRight}
+      <section className="list-of-experiences my-14 max-w-full overflow-auto">
+        <motion.ul
+          className="flex gap-8 pb-4 px-4 lg:flex-col justify-start items-start md:gap-12"
+          variants={listAnimation}
+          animate="visible"
+          initial="hidden"
+        >
+          {experiences.map((experience) => (
+            <motion.li
+              key={experience.id}
+              onClick={() => handleSelectCompany(experience.id)}
+              variants={revealAndMoveToRight}
+            >
+              {/* IMPORTANT: Framer Motion has a bug with the usage of "whileHover" + variants with "staggerChidlren" To fix that, we need an extra motion.div to handle the "whileHover"*/}
+              <motion.div
+                className="flex flex-col items-center gap-y-4 cursor-pointer last:pr-4 lg:flex-row lg:gap-x-4 lg:items-center"
+                whileHover="hover"
               >
-                {/* IMPORTANT: Framer Motion has a bug with the usage of "whileHover" + variants with "staggerChidlren" To fix that, we need an extra motion.div to handle the "whileHover"*/}
-                <motion.div
-                  className="flex flex-col items-center gap-y-4 cursor-pointer last:pr-4 desktop:flex-row desktop:gap-x-4 desktop:items-center"
-                  whileHover="hover"
-                >
-                  <div className="w-[6px] h-[6px]">
-                    <svg viewBox="0 0 6 6" fill="none">
-                      <path
-                        d="M0 3C0 1.34315 1.34315 0 3 0C4.65685 0 6 1.34315 6 3C6 4.65685 4.65685 6 3 6C1.34315 6 0 4.65685 0 3Z"
-                        fill={`${
-                          experience.id == currentCompanyId
-                            ? "#D60C4E"
-                            : "#FFD1CA"
-                        }`}
-                      />
-                    </svg>
-                  </div>
+                <div className="w-[6px] h-[6px]">
+                  <svg viewBox="0 0 6 6" fill="none">
+                    <path
+                      d="M0 3C0 1.34315 1.34315 0 3 0C4.65685 0 6 1.34315 6 3C6 4.65685 4.65685 6 3 6C1.34315 6 0 4.65685 0 3Z"
+                      fill={`${
+                        experience.id == currentCompanyId
+                          ? "#D60C4E"
+                          : "#FFD1CA"
+                      }`}
+                    />
+                  </svg>
+                </div>
 
-                  <motion.span
-                    variants={companyLabel}
-                    className={`uppercase font-sans font-semibold text-lg whitespace-nowrap
+                <motion.span
+                  variants={companyLabel}
+                  className={`uppercase font-sans font-semibold text-lg whitespace-nowrap
                   ${
                     experience.id == currentCompanyId
                       ? "text-pink-500"
                       : "text-pink-100"
                   }
                 `}
-                  >
-                    {experience.companyName}
-                  </motion.span>
-                </motion.div>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </section>
-      </div>
+                >
+                  {experience.companyName}
+                </motion.span>
+              </motion.div>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </section>
 
       <DetailSection selectedExperience={selectedExperience} />
     </div>
@@ -124,14 +124,14 @@ const DetailSection = (props: {
   if (!props.selectedExperience) return null;
 
   return (
-    <div
+    <section
       ref={ref}
-      className="scrollable experience-detail-section pr-4 overflow-x-auto desktop:m-0"
+      className="experience-detail-section container x-global-spacing scrollable pr-4 overflow-x-auto lg:m-0"
     >
       <ExperienceDetail
         experience={props.selectedExperience}
         key={props.selectedExperience.id}
       />
-    </div>
+    </section>
   );
 };
