@@ -37,75 +37,116 @@ export default function ExperienceScreen() {
   const listAnimation = useMemo(() => animateChildrenInSequence(0.15), []);
 
   return (
-    <div className="h-full grid grid-cols-1 lg:grid-cols-2 md:content-start">
-      <section className="heading-and-list-section x-global-spacing pt-12 lg:pt-2">
-        <motion.p
-          initial="initial"
-          animate="animate"
-          variants={screens.heading}
-          className="w-fit font-serif text-active-secondary text-2xl tracking-widest md:text-3xl lg:text-4xl"
-        >
-          <span>these are my</span>
-        </motion.p>
+    <div className="h-full grid grid-cols-1 lg:grid-cols-2 md:content-start lg:container">
+      <div className="column-wrapper">
+        <section className="heading-and-list-section x-global-spacing pt-12 md:pt-4 lg:col-span-2 lg:pt-2">
+          <motion.p
+            initial="initial"
+            animate="animate"
+            variants={screens.heading}
+            className="w-fit font-serif text-active-secondary text-2xl tracking-widest md:text-3xl lg:text-4xl"
+          >
+            <span>these are my</span>
+          </motion.p>
 
-        <motion.h2
-          initial="initial"
-          animate="animate"
-          variants={screens.heading}
-          className="font-sans font-regular text-pink-500 text-6xl -mt-6 md:text-7xl lg:text-8xl lg:-mt-8"
-        >
-          experiences
-        </motion.h2>
-      </section>
+          <motion.h2
+            initial="initial"
+            animate="animate"
+            variants={screens.heading}
+            className="font-sans font-regular text-pink-500 text-6xl -mt-6 md:text-7xl lg:text-8xl lg:-mt-8"
+          >
+            experiences
+          </motion.h2>
+        </section>
 
-      <section className="list-of-experiences my-14 max-w-full overflow-auto">
-        <motion.ul
-          className="flex gap-8 pb-4 px-4 lg:flex-col justify-start items-start md:gap-12"
-          variants={listAnimation}
-          animate="visible"
-          initial="hidden"
-        >
-          {experiences.map((experience) => (
-            <motion.li
-              key={experience.id}
-              onClick={() => handleSelectCompany(experience.id)}
-              variants={revealAndMoveToRight}
-            >
-              {/* IMPORTANT: Framer Motion has a bug with the usage of "whileHover" + variants with "staggerChidlren" To fix that, we need an extra motion.div to handle the "whileHover"*/}
-              <motion.div
-                className="flex flex-col items-center gap-y-4 cursor-pointer last:pr-4 lg:flex-row lg:gap-x-4 lg:items-center"
-                whileHover="hover"
+        <section className="list-of-experiences mt-14 w-full overflow-auto lg:mt-12">
+          <motion.ul
+            className="flex gap-8 pb-4 x-global-spacing justify-start items-start md:gap-4 lg:max-h-[250px] lg:flex-wrap lg:flex-col"
+            variants={listAnimation}
+            animate="visible"
+            initial="hidden"
+          >
+            {experiences.map((experience) => (
+              <motion.li
+                key={experience.id}
+                onClick={() => handleSelectCompany(experience.id)}
+                variants={revealAndMoveToRight}
               >
-                <div className="w-[6px] h-[6px]">
-                  <svg viewBox="0 0 6 6" fill="none">
-                    <path
-                      d="M0 3C0 1.34315 1.34315 0 3 0C4.65685 0 6 1.34315 6 3C6 4.65685 4.65685 6 3 6C1.34315 6 0 4.65685 0 3Z"
-                      fill={`${
-                        experience.id == currentCompanyId
-                          ? "#D60C4E"
-                          : "#FFD1CA"
-                      }`}
-                    />
-                  </svg>
-                </div>
+                {/* IMPORTANT: Framer Motion has a bug with the usage of "whileHover" + variants with "staggerChidlren" To fix that, we need an extra motion.div to handle the "whileHover"*/}
+                <motion.div
+                  className="flex flex-col items-center gap-y-4 cursor-pointer last:pr-4 lg:flex-row lg:gap-x-4 lg:items-center"
+                  whileHover="hover"
+                >
+                  <div className="w-[6px] h-[6px]">
+                    <svg viewBox="0 0 6 6" fill="none">
+                      <path
+                        d="M0 3C0 1.34315 1.34315 0 3 0C4.65685 0 6 1.34315 6 3C6 4.65685 4.65685 6 3 6C1.34315 6 0 4.65685 0 3Z"
+                        fill={`${
+                          experience.id == currentCompanyId
+                            ? "#D60C4E"
+                            : "#FFD1CA"
+                        }`}
+                      />
+                    </svg>
+                  </div>
 
-                <motion.span
-                  variants={companyLabel}
-                  className={`uppercase font-sans font-semibold text-lg whitespace-nowrap
+                  <motion.span
+                    variants={companyLabel}
+                    className={`uppercase font-sans font-semibold text-lg whitespace-nowrap
                   ${
                     experience.id == currentCompanyId
                       ? "text-pink-500"
                       : "text-pink-100"
                   }
                 `}
+                  >
+                    {experience.companyName}
+                  </motion.span>
+                </motion.div>
+              </motion.li>
+            ))}
+            {experiences.map((experience) => (
+              <motion.li
+                key={experience.id}
+                onClick={() => handleSelectCompany(experience.id)}
+                variants={revealAndMoveToRight}
+              >
+                {/* IMPORTANT: Framer Motion has a bug with the usage of "whileHover" + variants with "staggerChidlren" To fix that, we need an extra motion.div to handle the "whileHover"*/}
+                <motion.div
+                  className="flex flex-col items-center gap-y-4 cursor-pointer last:pr-4 lg:flex-row lg:gap-x-4 lg:items-center"
+                  whileHover="hover"
                 >
-                  {experience.companyName}
-                </motion.span>
-              </motion.div>
-            </motion.li>
-          ))}
-        </motion.ul>
-      </section>
+                  <div className="w-[6px] h-[6px]">
+                    <svg viewBox="0 0 6 6" fill="none">
+                      <path
+                        d="M0 3C0 1.34315 1.34315 0 3 0C4.65685 0 6 1.34315 6 3C6 4.65685 4.65685 6 3 6C1.34315 6 0 4.65685 0 3Z"
+                        fill={`${
+                          experience.id == currentCompanyId
+                            ? "#D60C4E"
+                            : "#FFD1CA"
+                        }`}
+                      />
+                    </svg>
+                  </div>
+
+                  <motion.span
+                    variants={companyLabel}
+                    className={`uppercase font-sans font-semibold text-lg whitespace-nowrap
+                  ${
+                    experience.id == currentCompanyId
+                      ? "text-pink-500"
+                      : "text-pink-100"
+                  }
+                `}
+                  >
+                    {experience.companyName}
+                  </motion.span>
+                </motion.div>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </section>
+      </div>
 
       <DetailSection selectedExperience={selectedExperience} />
     </div>
@@ -126,7 +167,7 @@ const DetailSection = (props: {
   return (
     <section
       ref={ref}
-      className="experience-detail-section container x-global-spacing scrollable pr-4 overflow-x-auto lg:m-0"
+      className="experience-detail-section container x-global-spacing scrollable pr-4 mt-14 overflow-x-auto lg:m-0 "
     >
       <ExperienceDetail
         experience={props.selectedExperience}

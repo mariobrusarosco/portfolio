@@ -26,7 +26,7 @@ export const ExperienceDetail = ({
         className="experience-detail mb-8"
       >
         <motion.p
-          className="lowercase font-light font-serif text-pink-500 text-7xl mb-6 md:text-6xl lg:text-8xl"
+          className="lowercase font-light font-serif text-pink-500 text-7xl mb-6 lg:text-8xl lg:mb-10 lg:mt-5"
           variants={revealAndMoveToRight}
         >
           {experience.companyName}
@@ -60,7 +60,7 @@ export const ExperienceDetail = ({
       <div className="flex flex-col gap-y-6">
         {experience?.description.map((descriptionItem, i) => (
           <Reveal key={i} iterator={i}>
-            <p className="font-sans font-light text-pink-100 text-xl md:text-2xl lg:text-3xl">
+            <p className="font-sans font-light text-pink-100 text-xl md:text-2xl">
               {descriptionItem}
             </p>
           </Reveal>
