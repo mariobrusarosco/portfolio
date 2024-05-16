@@ -37,14 +37,14 @@ export default function ExperienceScreen() {
   const listAnimation = useMemo(() => animateChildrenInSequence(0.15), []);
 
   return (
-    <div className="h-full grid grid-cols-1 lg:grid-cols-2 md:content-start lg:container">
+    <div className="h-full grid grid-cols-1 lg:grid-cols-2 md:content-start lg:container lg:x-global-spacing">
       <div className="column-wrapper">
-        <section className="heading-and-list-section x-global-spacing pt-12 md:pt-4 lg:col-span-2 lg:pt-2">
+        <section className="heading-and-list-section  pt-12 md:pt-4 lg:col-span-2 lg:pt-2 x-global-spacing lg:px-0">
           <motion.p
             initial="initial"
             animate="animate"
             variants={screens.heading}
-            className="w-fit font-serif text-active-secondary text-2xl tracking-widest md:text-3xl lg:text-4xl"
+            className="w-fit font-serif text-active-secondary text-2xl tracking-widest md:text-3xl lg:text-4xl "
           >
             <span>these are my</span>
           </motion.p>
@@ -53,7 +53,7 @@ export default function ExperienceScreen() {
             initial="initial"
             animate="animate"
             variants={screens.heading}
-            className="font-sans font-regular text-pink-500 text-6xl -mt-6 md:text-7xl lg:text-8xl lg:-mt-8"
+            className="font-sans font-regular text-active-primary text-6xl -mt-6 md:text-7xl lg:text-8xl lg:-mt-8"
           >
             experiences
           </motion.h2>
@@ -61,7 +61,7 @@ export default function ExperienceScreen() {
 
         <section className="list-of-experiences mt-14 w-full overflow-auto lg:mt-12">
           <motion.ul
-            className="flex gap-8 pb-4 x-global-spacing justify-start items-start md:gap-4 lg:max-h-[250px] lg:flex-wrap lg:flex-col"
+            className="flex gap-8 pb-4 x-global-spacing justify-start items-start md:gap-4 lg:max-h-[250px] lg:flex-wrap lg:flex-col lg:px-0"
             variants={listAnimation}
             animate="visible"
             initial="hidden"
