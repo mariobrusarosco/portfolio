@@ -4,6 +4,7 @@ import {
   revealAndMoveToRight,
 } from "@/domain/experience/animations";
 import { screens } from "@/domain/shared/animations";
+import { PageHeading } from "@/domain/shared/components/page-heading/page-heading";
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { cn } from "@/domain/shared/utils/classnames";
 import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
@@ -37,56 +38,29 @@ export default function Skills() {
   };
   const { hasHover } = useScreenDetector();
 
-  console.log({ selectedSkill });
-
   return (
-    <div className="h-full grid grid-cols-1 desktop:grid-cols-2 container ">
-      <motion.div
-        className="heading-and-list-section desktop:max-h-[500px] desktop:overflow-auto"
-        initial="default"
-        animate={selectedSkill ? "selected" : "default"}
-        variants={skillListContainer}
-      >
-        <div className="">
+    <div className="h-full grid grid-cols-1 lg:grid-cols-2 md:content-start lg:container">
+      <div className="column-wrapper">
+        <section className="heading-and-list-section x-global-spacing pt-12 md:pt-4 lg:col-span-2 lg:pt-2">
           <motion.p
             initial="initial"
             animate="animate"
             variants={screens.heading}
-            className="mb-2 w-fit tracking-tighter font-serif font text-blue-green-300 text-2xl tablet:text-3xl desktop:text-4xl"
+            className="w-fit font-serif text-active-secondary text-2xl tracking-widest md:text-3xl lg:text-4xl lg:ml-8"
           >
-            <span>these are my</span>
-            <span className="desktop:hidden flex h-[1px] bg-blue-green-300" />
+            <span>this is my</span>
           </motion.p>
 
           <motion.h2
             initial="initial"
             animate="animate"
             variants={screens.heading}
-            className="font-sans font-regular text-blue-green-300 text-6xl tablet:text-7xl desktop:text-8xl"
+            className="font-sans font-regular text-active-primary text-6xl -mt-6 md:text-7xl lg:text-8xl lg:-mt-7"
           >
-            skills
+            knowledge
           </motion.h2>
-        </div>
-
-        <section className="mt-16 pr-4 tablet:mt-18 ">
-          <motion.ul
-            className="flex flex-wrap gap-10 pb-4 justify-center"
-            variants={listAnimation}
-            animate="visible"
-            initial="hidden"
-          >
-            {skills.map((skill) => (
-              <motion.li
-                className="min-w-[63px] tablet:min-w-[90px]"
-                key={skill.id}
-                onClick={() => handleSelectSkill(skill.id)}
-              >
-                <Skill skill={skill} selectedSkillId={selectedSkill?.id} />
-              </motion.li>
-            ))}
-          </motion.ul>
         </section>
-      </motion.div>
+      </div>
 
       <motion.div
         initial="default"
