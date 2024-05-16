@@ -36,14 +36,14 @@ export default function Skills() {
   const { hasHover } = useScreenDetector();
 
   return (
-    <div className="h-full grid grid-cols-1 lg:grid-cols-2 md:content-start lg:container">
+    <div className="container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 md:content-start overflow-hidden">
       <div className="column-wrapper">
-        <section className="heading-and-list-section x-global-spacing pt-12 md:pt-4 lg:col-span-2 lg:pt-2">
+        <section className="heading-and-list-section pt-12 md:pt-4 lg:col-span-2 lg:pt-2">
           <motion.p
             initial="initial"
             animate="animate"
             variants={screens.heading}
-            className="w-fit font-serif text-active-secondary text-2xl tracking-widest md:text-3xl lg:text-4xl lg:ml-8"
+            className="w-fit font-serif text-active-secondary text-2xl tracking-widest ml-4 md:text-3xl lg:text-4xl "
           >
             <span>this is my</span>
           </motion.p>
@@ -52,10 +52,37 @@ export default function Skills() {
             initial="initial"
             animate="animate"
             variants={screens.heading}
-            className="font-sans font-regular text-active-primary text-6xl -mt-6 md:text-7xl lg:text-8xl lg:-mt-7"
+            className="font-sans font-regular text-active-primary text-6xl -mt-6 md:text-7xl lg:text-8xl"
           >
             knowledge
           </motion.h2>
+        </section>
+
+        <section className="list-of-knowledge mt-16">
+          <motion.ul
+            className="flex flex-wrap gap-8 pb-4 justify-center"
+            variants={{
+              selected: {
+                opacity: 0,
+                transition: {
+                  duration: 0.8,
+                },
+              },
+              ...listAnimation,
+            }}
+            animate={!!selectedSkill ? "selected" : "visible"}
+            initial="hidden"
+          >
+            {skills.map((skill) => (
+              <motion.li
+                className="min-w-[30px] md:min-w-[40px]"
+                key={skill.id}
+                onClick={() => handleSelectSkill(skill.id)}
+              >
+                <Skill skill={skill} selectedSkillId={selectedSkill?.id} />
+              </motion.li>
+            ))}
+          </motion.ul>
         </section>
       </div>
 
@@ -64,18 +91,18 @@ export default function Skills() {
         variants={skillContainer}
         animate={selectedSkill ? "selected" : "default"}
         className={cn(
-          "skill-details-overlay absolute w-screen left-0 top-92 h-[calc(100%-96px-116px)] z-50 px-4 desktop:static  desktop:w-full desktop:overflow-auto desktop:h-auto desktop:max-h-[600px] desktop:z-1 bg-blue-green-300/10"
+          "skill-details-overlay h-full absolute w-screen left-0 top-0 pt-[150px] x-global-spacing"
         )}
       >
-        <div className="skill-details-content pt-20 px-6 my-20 border border-primary-color flex flex-col w-full overflow-auto desktop:my-0 desktop:px-10 desktop:border-none">
-          <div className="heading flex justify-between items-center mb-16">
-            <p className="font-serif text-2xl text-primary-color font-regular">
+        <div className="skill-details-content  py-8 px-6 border border-active-primary scrollable overflow-auto">
+          <div className="heading flex justify-between items-center mb-10">
+            <p className="font-serif text-2xl text-active-primary font-regular">
               {selectedSkill?.label}
             </p>
 
-            <div className="flex gap-2 justify-between items-center desktop:hidden">
+            <div className="flex gap-2 justify-between items-center lg:hidden cursor-pointer">
               <p
-                className="uppercase text-pink-100 font-sans text-xs cursor-pointer"
+                className="uppercase text-pink-100 font-sans text-xs "
                 onClick={() => {
                   router.push(window.location.pathname);
                 }}

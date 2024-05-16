@@ -13,6 +13,8 @@ import {
   companyLabel,
 } from "@/domain/experience/animations";
 
+const listAnimation = animateChildrenInSequence(0.15);
+
 export default function ExperienceScreen() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -33,8 +35,6 @@ export default function ExperienceScreen() {
 
     router.push(`${window.location.pathname}?${queryParamsString}`);
   };
-
-  const listAnimation = useMemo(() => animateChildrenInSequence(0.15), []);
 
   return (
     <div className="h-full grid grid-cols-1 lg:grid-cols-2 md:content-start lg:container lg:x-global-spacing">
