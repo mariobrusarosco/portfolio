@@ -40,7 +40,7 @@ const AppHeader = () => {
 
   return (
     <header className="w-screen position fixed top-0 left-0 ">
-      <div className="container y-global-spacing flex justify-between items-center py-6 md:py-8 lg:py-12">
+      <div className="container x-global-spacing flex justify-between items-center py-6 md:py-8 lg:py-12">
         <Link className="flex-1" href="./">
           <motion.span
             className="uppercase font-sans text-pink-100 font-semibold cursor-pointer text-lg"

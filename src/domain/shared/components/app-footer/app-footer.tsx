@@ -14,7 +14,7 @@ const { menu } = animations;
 
 const AppFooter = () => (
   <footer className="fixed flex min-h-[116px] w-screen bottom-0 lg:m-w-[132px]">
-    <div className="container y-global-spacing flex-1 py-6 lg:flex lg:justify-start items-center">
+    <div className="container x-global-spacing flex-1 py-6 lg:flex lg:justify-start items-center">
       <Menu />
     </div>
   </footer>

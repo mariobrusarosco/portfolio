@@ -23,17 +23,17 @@ export const ExperienceDetail = ({
         animate="visible"
         initial="hidden"
         variants={wrapperAnimation}
-        className="experience-details"
+        className="experience-detail mb-8"
       >
         <motion.p
-          className="font-light font-serif text-pink-500 text-5xl tablet:text-6xl desktop:text-8xl lowercase mt-4 mb-10"
+          className="lowercase font-light font-serif text-pink-500 text-7xl mb-6 lg:text-8xl lg:mb-10 lg:mt-5"
           variants={revealAndMoveToRight}
         >
           {experience.companyName}
         </motion.p>
 
         <motion.p
-          className="font-light font-sans text-lg text-blue-green-300 tablet:text-xl desktop:text-2xl"
+          className="font-light font-sans text-lg text-blue-green-300 md:text-xl lg:text-2xl"
           variants={revealAndMoveToRight}
         >
           {new Date(experience.startDate).getFullYear()} -{" "}
@@ -43,7 +43,7 @@ export const ExperienceDetail = ({
         </motion.p>
 
         <motion.p
-          className="font-light font-sans text-4xl text-pink-100 lowercase tablet:text-4xl"
+          className="font-light font-sans text-4xl text-pink-100 lowercase md:text-4xl"
           variants={revealAndMoveToRight}
         >
           {experience.position}
@@ -60,7 +60,7 @@ export const ExperienceDetail = ({
       <div className="flex flex-col gap-y-6">
         {experience?.description.map((descriptionItem, i) => (
           <Reveal key={i} iterator={i}>
-            <p className="font-sans font-light text-pink-100 text-xl tablet:text-2xl desktop:text-3xl">
+            <p className="font-sans font-light text-pink-100 text-xl md:text-2xl">
               {descriptionItem}
             </p>
           </Reveal>
