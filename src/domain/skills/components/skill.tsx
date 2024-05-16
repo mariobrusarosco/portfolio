@@ -1,6 +1,6 @@
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { motion } from "framer-motion";
-import animations from "../animations";
+import animations, { selectedKnowledgeOuterCircle } from "../animations";
 import { cn } from "@/domain/shared/utils/classnames";
 import { SkillProps } from "../typing/interfaces-and-enums";
 const { menu } = animations;
@@ -30,6 +30,10 @@ const AnimatedLink = ({
 }) => {
   const { hasHover } = useScreenDetector();
 
+  if (isSelected) {
+    console.log("isSelected", isSelected, skill.label);
+  }
+
   return (
     // <Link href={path}>
     <motion.div
@@ -38,15 +42,21 @@ const AnimatedLink = ({
       initial="default"
       animate="default"
     >
-      <div className="relative">
-        <div
+      <motion.div
+        className="relative"
+        initial="default"
+        animate={isSelected ? "selected" : "default"}
+        variants={selectedKnowledgeOuterCircle}
+      >
+        <motion.div
           className={cn(
             "h-[5px] w-[5px] absolute bg-pink-100 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
             {
               "bg-blue-green-300": isSelected,
             }
           )}
-          // variants={hasHover ? menu.innerCircle : undefined}
+          // animate={isSelected ? "selected" : "default"}
+          // variants={selectedKnowledgeOuterCircle}
         >
           <svg viewBox="0 0 7 6" fill="none">
             <rect
@@ -60,22 +70,21 @@ const AnimatedLink = ({
               // })}
             />
           </svg>
-        </div>
+        </motion.div>
         <div className="w-[20px]">
-          <motion.svg viewBox="0 0 40 40">
-            <motion.path
+          <svg viewBox="0 0 40 40">
+            <path
               d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
               strokeWidth="1"
-              variants={hasHover ? menu.outerCircle : undefined}
               fill="transparent"
               className={cn({
                 "stroke-blue-green-300": isSelected,
                 "stroke-pink-100": !isSelected,
               })}
             />
-          </motion.svg>
+          </svg>
         </div>
-      </div>
+      </motion.div>
 
       <motion.span
         className={cn("font-sans font-light text-sm", {

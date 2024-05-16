@@ -23,8 +23,8 @@ export const skillContainer = {
     // y: 100,
     transition: {
       type: "spring",
-      // duration: 0.5,
-      velocity: 1.5,
+      duration: 2,
+      // velocity: 1.5,
     },
   },
   selected: {
@@ -33,12 +33,40 @@ export const skillContainer = {
     // y: 0,
     transition: {
       type: "spring",
-      // duration: 0.5,
-      delay: 0.5,
+      duration: 2,
+      delay: 0.25,
     },
   },
 };
 
+export const selectedKnowledgeOuterCircle: Variants = {
+  default: {
+    opacity: 1,
+    scale: 1,
+    visibility: "visible",
+    transition: {
+      type: "spring",
+      duration: 1,
+    },
+    transitionEnd: {
+      color: "red",
+      // display: "flex",
+    },
+  },
+  selected: {
+    scale: 200,
+    opacity: 0,
+    transition: {
+      type: "spring",
+      damping: 35,
+    },
+    transitionEnd: {
+      color: "blue",
+      visibility: "hidden",
+      scale: 2,
+    },
+  },
+};
 export const footerSpecialAnimations: { skills: Variants } = {
   skills: {
     default: {

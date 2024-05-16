@@ -2,10 +2,8 @@ import { Variants } from "framer-motion";
 
 export const animateChildrenInSequence = (interval: number) => {
   return {
-    visible: {
-      transition: {
-        staggerChildren: interval || 0.05,
-      },
+    transition: {
+      staggerChildren: interval || 0.05,
     },
   };
 };
