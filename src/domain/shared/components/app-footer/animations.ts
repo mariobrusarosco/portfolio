@@ -72,8 +72,7 @@ const innerCircle: Variants = {
     x: "-50%",
   },
   hover: {
-    y: -45,
-    x: "-50%",
+    y: -40,
     opacity: 1,
     transition: {
       type: "spring",

@@ -5,8 +5,6 @@ import { motion } from "framer-motion";
 import animations from "./animations";
 import { useScreenDetector } from "../../hooks/useScreenDetector";
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { footerSpecialAnimations } from "@/domain/skills/animations";
 
 const routeToBeIgnore = ["/"];
 const footerRoutes = portfolioRouting.filter(
@@ -25,9 +23,9 @@ const AppFooter = () => (
 const Menu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleToggleMenu = () => setIsMenuOpen((prev) => !prev);
-  const { hasHover } = useScreenDetector();
+  const { isDesktop } = useScreenDetector();
 
-  const menuStatus = isMenuOpen || !hasHover ? "visible" : "hidden";
+  const menuStatus = isDesktop && !isMenuOpen ? "hidden" : "visible";
 
   return (
     <>
@@ -37,7 +35,6 @@ const Menu = () => {
           onClick={handleToggleMenu}
           layout="size"
           whileHover="hover"
-          initial="default"
           animate={isMenuOpen && "hover"}
           variants={menu.trigger}
         >
@@ -47,10 +44,9 @@ const Menu = () => {
         <svg width="2" height="53" viewBox="0 0 2 53" fill="none">
           <motion.path
             d="M1 0V53"
-            className="mx-6"
+            className="mx-6 stroke-active-primary"
             initial="hidden"
-            fill={`var(--active-primary)`}
-            animate={menuStatus}
+            animate={isMenuOpen ? "visible" : "hidden"}
             variants={menu.stem}
           />
         </svg>
@@ -61,62 +57,60 @@ const Menu = () => {
         layout="position"
         animate={menuStatus}
         variants={menu.list}
-        custom={menuStatus}
         className="hidden w-full justify-center gap-10 md:justify-around lg:ml-8 lg:justify-start lg:items-center lg:px-4"
       >
         {footerRoutes.map((route) => (
-          <AnimatedLink key={route.path} id={route.path} {...route} />
+          <AnimatedLink key={route.path} {...route} />
         ))}
       </motion.ul>
     </>
   );
 };
 
-const AnimatedLink = (props: { path: string; label: string; id: string }) => {
-  const searchParams = useSearchParams();
-  const isSkillSelected = !!searchParams.get("skill_id");
-  const { path, label, id } = props;
+const AnimatedLink = (props: { path: string; label: string }) => {
+  const { path, label } = props;
   const { hasHover } = useScreenDetector();
 
-  const itemAnimation = id.includes("skills")
-    ? footerSpecialAnimations["skills"]
-    : {};
-
   return (
-    <Link href={path}>
-      <motion.li
-        key={path}
-        className="flex justify-center flex-col"
-        variants={menu.listItem}
-        whileHover="hover"
-        initial="default"
-      >
-        <motion.div className="relative flex flex-col items-center gap-y-1 cursor-pointer">
-          <motion.div
-            className="h-[10px] w-[10px] absolute bg-primary-color rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-active-primary"
-            variants={menu.innerCircle}
-          />
-          <div className="w-[40px]">
-            <motion.svg viewBox="0 0 40 40">
-              <motion.path
-                d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
-                strokeWidth="1"
-                fill="transparent"
-                stroke={`var(--active-primary)`}
-                variants={menu.outerCircle}
-              />
-            </motion.svg>
-          </div>
-        </motion.div>
-
-        <motion.span
-          className="font-sans font-light text-active-primary w-max lg:absolute lg:text-2xl lg:invisible"
-          variants={menu.label}
+    <motion.li
+      key={path}
+      className="flex justify-center lg:w-auto"
+      variants={menu.listItem}
+    >
+      <Link href={path}>
+        <motion.div
+          className="relative flex flex-col items-center gap-y-1 cursor-pointer"
+          whileHover="hover"
+          initial="default"
+          animate="default"
         >
-          {label}
-        </motion.span>
-      </motion.li>
-    </Link>
+          <div className="relative">
+            <motion.div
+              className="h-[10px] w-[10px] absolute bg-active-primary rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              variants={hasHover ? menu.innerCircle : undefined}
+            />
+            <div className="w-[40px]">
+              <motion.svg viewBox="0 0 40 40">
+                <motion.path
+                  d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
+                  stroke="var(--active-primary)"
+                  stroke-width="1"
+                  variants={hasHover ? menu.outerCircle : undefined}
+                  fill="transparent"
+                />
+              </motion.svg>
+            </div>
+          </div>
+
+          <motion.span
+            className="font-sans font-light text-active-primary w-max lg:absolute lg:text-2xl lg:invisible"
+            variants={hasHover ? menu.label : undefined}
+          >
+            {label}
+          </motion.span>
+        </motion.div>
+      </Link>
+    </motion.li>
   );
 };
 
