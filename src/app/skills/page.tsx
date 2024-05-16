@@ -68,9 +68,7 @@ export default function Skills() {
                   duration: 0.8,
                 },
               },
-              visibile: {
-                ...listAnimation,
-              },
+              ...listAnimation,
             }}
             animate={!!selectedSkill ? "selected" : "visible"}
             initial="hidden"
