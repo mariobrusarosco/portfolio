@@ -41,7 +41,7 @@ const AnimatedLink = ({
       <div className="relative">
         <div
           className={cn(
-            "h-[10px] w-[10px] absolute bg-pink-100 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
+            "h-[5px] w-[5px] absolute bg-pink-100 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
             {
               "bg-blue-green-300": isSelected,
             }
@@ -61,7 +61,7 @@ const AnimatedLink = ({
             />
           </svg>
         </div>
-        <div className="w-[40px]">
+        <div className="w-[20px]">
           <motion.svg viewBox="0 0 40 40">
             <motion.path
               d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
@@ -78,7 +78,7 @@ const AnimatedLink = ({
       </div>
 
       <motion.span
-        className={cn("font-sans font-light", {
+        className={cn("font-sans font-light text-sm", {
           "text-blue-green-300": isSelected,
           "text-pink-100": !isSelected,
         })}
