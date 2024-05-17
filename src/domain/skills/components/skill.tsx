@@ -1,9 +1,8 @@
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { motion } from "framer-motion";
-import animations, { selectedKnowledgeOuterCircle } from "../animations";
+import animations from "../animations";
 import { cn } from "@/domain/shared/utils/classnames";
 import { SkillProps } from "../typing/interfaces-and-enums";
-const { menu } = animations;
 
 const Skill = ({
   skill,
@@ -13,40 +12,49 @@ const Skill = ({
   selectedSkillId: string | undefined;
 }) => {
   const isSelected = skill.id === selectedSkillId;
+  const isInSelectionMode = !!selectedSkillId;
 
   return (
-    <h3 className="uppercase font-sans font-semibold text-pink-100 text-lg">
-      <AnimatedLink skill={skill} isSelected={isSelected} />
-    </h3>
+    // <h3 className="uppercase font-sans font-semibold text-pink-100 text-lg">
+    <AnimatedLink
+      skill={skill}
+      isSelected={isSelected}
+      isInSelectionMode={isInSelectionMode}
+    />
+    // </h3>
   );
 };
 
 const AnimatedLink = ({
   isSelected,
   skill,
+  isInSelectionMode,
 }: {
   skill: SkillProps;
   isSelected: boolean;
+  isInSelectionMode: boolean;
 }) => {
   const { hasHover } = useScreenDetector();
 
-  if (isSelected) {
-    console.log("isSelected", isSelected, skill.label);
-  }
+  console.log("isInSelectionMode", isInSelectionMode);
 
   return (
-    // <Link href={path}>
     <motion.div
-      className="relative flex flex-col items-center gap-y-1 cursor-pointer"
       whileHover="hover"
       initial="default"
       animate="default"
+      className={cn(
+        "relative flex flex-col items-center gap-y-1 cursor-pointer",
+        {
+          "opacity-0": isInSelectionMode && !isSelected,
+        }
+      )}
     >
       <motion.div
         className="relative"
-        initial="default"
+        initial="hidden"
         animate={isSelected ? "selected" : "default"}
-        variants={selectedKnowledgeOuterCircle}
+        variants={animations.selectedKnowledgeOuterCircle}
       >
         <motion.div
           className={cn(
@@ -88,6 +96,7 @@ const AnimatedLink = ({
 
       <motion.span
         className={cn("font-sans font-light text-sm", {
+          "opacity-5": isInSelectionMode,
           "text-blue-green-300": isSelected,
           "text-pink-100": !isSelected,
         })}
