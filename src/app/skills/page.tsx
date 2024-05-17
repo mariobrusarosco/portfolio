@@ -61,15 +61,15 @@ export default function Skills() {
         <section className="list-of-knowledge mt-16">
           <motion.ul
             className="flex flex-wrap gap-8 pb-4 justify-center"
-            variants={{
-              selected: {
-                opacity: 0,
-                transition: {
-                  duration: 0.8,
-                },
-              },
-              ...listAnimation,
-            }}
+            // variants={{
+            //   selected: {
+            //     opacity: 0.5,
+            //     transition: {
+            //       duration: 0.8,
+            //     },
+            //   },
+            //   ...listAnimation,
+            // }}
             animate={!!selectedSkill ? "selected" : "visible"}
             initial="hidden"
           >
@@ -89,7 +89,7 @@ export default function Skills() {
       <motion.div
         initial="default"
         variants={skillContainer}
-        animate={selectedSkill ? "selected" : "default"}
+        // animate={selectedSkill ? "selected" : "default"}
         className={cn(
           "skill-details-overlay h-full absolute w-screen left-0 top-0 pt-[150px] x-global-spacing"
         )}

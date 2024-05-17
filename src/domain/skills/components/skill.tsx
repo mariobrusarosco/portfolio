@@ -44,9 +44,19 @@ const AnimatedLink = ({
     >
       <motion.div
         className="relative"
-        initial="default"
+        // initial="default"
         animate={isSelected ? "selected" : "default"}
         variants={selectedKnowledgeOuterCircle}
+        // animate={{
+        //   scale: [1, 2, 5, 10, 15],
+        //   opacity: [1, 0.5, 0.2, 0.1, 0],
+        //   transition: {
+        //     type: "easeInOut",
+        //     duration: 1.5,
+        //     // delay: 0.5,
+        //     times: [0, 0.2, 0.3, 0.5, 1],
+        //   },
+        // }}
       >
         <motion.div
           className={cn(
