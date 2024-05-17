@@ -49,7 +49,7 @@ const AnimatedLink = ({
       className={cn(
         "relative flex flex-col items-center gap-y-1 cursor-pointer",
         {
-          "opacity-5": isInSelectionMode && !isSelected,
+          "opacity-0": isInSelectionMode && !isSelected,
         }
       )}
     >
@@ -109,6 +109,7 @@ const AnimatedLink = ({
 
       <motion.span
         className={cn("font-sans font-light text-sm", {
+          "opacity-5": isInSelectionMode,
           "text-blue-green-300": isSelected,
           "text-pink-100": !isSelected,
         })}

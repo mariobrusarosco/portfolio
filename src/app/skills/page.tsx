@@ -8,7 +8,7 @@ import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
 import animations, { skillContainer } from "@/domain/skills/animations";
 import { Skill } from "@/domain/skills/components/skill";
 import { skills } from "@/domain/skills/constants";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
@@ -70,8 +70,8 @@ export default function Skills() {
             //   },
             //   ...listAnimation,
             // }}
-            variants={animations.listOfSkills}
-            animate={!!selectedSkill ? "selected" : "visible"}
+            // variants={animations.listOfSkills}
+            // animate={!!selectedSkill ? "selected" : "visible"}
             initial="hidden"
           >
             {skills.map((skill) => (
@@ -87,66 +87,70 @@ export default function Skills() {
         </section>
       </div>
 
-      <motion.div
-        initial="default"
-        variants={skillContainer}
-        // animate={selectedSkill ? "selected" : "default"}
-        className={cn(
-          "skill-details-overlay h-full absolute w-screen left-0 top-0 pt-[150px] x-global-spacing"
+      <AnimatePresence>
+        {selectedSkill && (
+          <motion.div
+            initial="default"
+            variants={skillContainer}
+            animate={selectedSkill ? "selected" : "default"}
+            className={cn(
+              "skill-details-overlay h-full absolute w-screen left-0 top-0 pt-[150px] x-global-spacing "
+            )}
+          >
+            <div className="skill-details-content h-full py-8 px-6 border border-active-primary scrollable overflow-x-auto bg-[#00000003]">
+              <div className="heading flex justify-between items-center mb-10">
+                <p className="font-serif text-2xl text-active-primary font-regular">
+                  {selectedSkill?.label}
+                </p>
+
+                <div
+                  className="flex gap-2 justify-between items-center lg:hidden cursor-pointer p-4"
+                  onClick={() => {
+                    router.push(window.location.pathname);
+                  }}
+                >
+                  <p className="uppercase text-pink-100 font-sans text-xs">
+                    back
+                  </p>
+                  <p>--</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-x-4">
+                <div className="mb-6">
+                  <p className="topic mb-2 font-serif text-blue-green-300 text-lg">
+                    work experience
+                  </p>
+
+                  <p className="topic-explanation font-sans text-2xl text-pink-100 font-light">
+                    I’ve worked with Typescript on React projects for 4+ years
+                  </p>
+                </div>
+
+                <div className="mb-6">
+                  <p className="topic topic mb-2 serif text-blue-green-300 text-lg">
+                    work experience
+                  </p>
+
+                  <p className="topic-explanation font-sans text-2xl text-pink-100 font-light">
+                    I’ve worked with Typescript on React projects for 4+ years
+                  </p>
+                </div>
+
+                <div className="mb-6">
+                  <p className="topic topic mb-2 font-serif text-blue-green-300 text-lg">
+                    work experience
+                  </p>
+
+                  <p className="topic-explanation font-sans text-2xl text-pink-100 font-light">
+                    I’ve worked with Typescript on React projects for 4+ years
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         )}
-      >
-        <div className="skill-details-content  py-8 px-6 border border-active-primary scrollable overflow-auto">
-          <div className="heading flex justify-between items-center mb-10">
-            <p className="font-serif text-2xl text-active-primary font-regular">
-              {selectedSkill?.label}
-            </p>
-
-            <div className="flex gap-2 justify-between items-center lg:hidden cursor-pointer">
-              <p
-                className="uppercase text-pink-100 font-sans text-xs "
-                onClick={() => {
-                  router.push(window.location.pathname);
-                }}
-              >
-                back
-              </p>
-              <p>--</p>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-x-4">
-            <div className="mb-6">
-              <p className="topic mb-2 font-serif text-blue-green-300 text-lg">
-                work experience
-              </p>
-
-              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light">
-                I’ve worked with Typescript on React projects for 4+ years
-              </p>
-            </div>
-
-            <div className="mb-6">
-              <p className="topic topic mb-2 serif text-blue-green-300 text-lg">
-                work experience
-              </p>
-
-              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light">
-                I’ve worked with Typescript on React projects for 4+ years
-              </p>
-            </div>
-
-            <div className="mb-6">
-              <p className="topic topic mb-2 font-serif text-blue-green-300 text-lg">
-                work experience
-              </p>
-
-              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light">
-                I’ve worked with Typescript on React projects for 4+ years
-              </p>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
