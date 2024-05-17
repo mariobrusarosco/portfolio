@@ -5,29 +5,12 @@ import { screens } from "@/domain/shared/animations";
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { cn } from "@/domain/shared/utils/classnames";
 import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
-import animations, { skillContainer } from "@/domain/skills/animations";
+import animations from "@/domain/skills/animations";
 import { Skill } from "@/domain/skills/components/skill";
 import { skills } from "@/domain/skills/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-
-const listAnimation = animateChildrenInSequence(0.05);
-
-const container = {
-  // hidden: { opacity: 0 },
-  show: {
-    // opacity: 1,
-    transition: {
-      staggerChildren: 0.01,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 },
-};
 
 export default function Skills() {
   const router = useRouter();
@@ -105,7 +88,7 @@ export default function Skills() {
         {selectedSkill && (
           <motion.div
             initial="default"
-            variants={skillContainer}
+            variants={animations.skillContainer}
             animate={selectedSkill ? "selected" : "default"}
             className={cn(
               "skill-details-overlay h-full absolute w-screen left-0 top-0 pt-[150px] x-global-spacing "

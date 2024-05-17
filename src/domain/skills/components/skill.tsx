@@ -1,9 +1,8 @@
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { motion } from "framer-motion";
-import animations, { selectedKnowledgeOuterCircle } from "../animations";
+import animations from "../animations";
 import { cn } from "@/domain/shared/utils/classnames";
 import { SkillProps } from "../typing/interfaces-and-enums";
-const { menu } = animations;
 
 const Skill = ({
   skill,
@@ -40,9 +39,7 @@ const AnimatedLink = ({
   console.log("isInSelectionMode", isInSelectionMode);
 
   return (
-    // <Link href={path}>
     <motion.div
-      // className=""
       whileHover="hover"
       initial="default"
       animate="default"
@@ -57,17 +54,7 @@ const AnimatedLink = ({
         className="relative"
         initial="hidden"
         animate={isSelected ? "selected" : "default"}
-        variants={selectedKnowledgeOuterCircle}
-        // animate={{
-        //   scale: [1, 2, 5, 10, 15],
-        //   opacity: [1, 0.5, 0.2, 0.1, 0],
-        //   transition: {
-        //     type: "easeInOut",
-        //     duration: 1.5,
-        //     // delay: 0.5,
-        //     times: [0, 0.2, 0.3, 0.5, 1],
-        //   },
-        // }}
+        variants={animations.selectedKnowledgeOuterCircle}
       >
         <motion.div
           className={cn(
