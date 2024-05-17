@@ -55,7 +55,7 @@ const AnimatedLink = ({
     >
       <motion.div
         className="relative"
-        // initial="default"
+        initial="hidden"
         animate={isSelected ? "selected" : "default"}
         variants={selectedKnowledgeOuterCircle}
         // animate={{

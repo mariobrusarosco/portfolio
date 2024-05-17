@@ -14,6 +14,21 @@ import { useRouter } from "next/navigation";
 
 const listAnimation = animateChildrenInSequence(0.05);
 
+const container = {
+  // hidden: { opacity: 0 },
+  show: {
+    // opacity: 1,
+    transition: {
+      staggerChildren: 0.01,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
+};
+
 export default function Skills() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -34,6 +49,10 @@ export default function Skills() {
     router.push(`${window.location.pathname}?${queryParamsString}`);
   };
   const { hasHover } = useScreenDetector();
+
+  const stringToAnimate = !!selectedSkill ? "selected" : "visible";
+  console.log("stringToAnimate", stringToAnimate);
+  console.log("listOfSkills", animations.listOfSkills);
 
   return (
     <div className="container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 md:content-start overflow-hidden">
@@ -61,24 +80,19 @@ export default function Skills() {
         <section className="list-of-knowledge mt-16">
           <motion.ul
             className="flex flex-wrap gap-8 pb-4 justify-center"
-            // variants={{
-            //   selected: {
-            //     opacity: 0.5,
-            //     transition: {
-            //       duration: 0.8,
-            //     },
-            //   },
-            //   ...listAnimation,
-            // }}
-            // variants={animations.listOfSkills}
-            // animate={!!selectedSkill ? "selected" : "visible"}
+            // variants={container}
+            variants={animations.listOfSkills}
             initial="hidden"
+            animate="visible"
           >
             {skills.map((skill) => (
               <motion.li
                 className="min-w-[30px] md:min-w-[40px]"
                 key={skill.id}
                 onClick={() => handleSelectSkill(skill.id)}
+                // animate="visible"
+                variants={animations.listItem}
+                // initial="hidden"
               >
                 <Skill skill={skill} selectedSkillId={selectedSkill?.id} />
               </motion.li>

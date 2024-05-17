@@ -31,18 +31,6 @@ export const footerSpecialAnimations: { skills: Variants } = {
   },
 };
 
-const listItem = {
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.2,
-    },
-  },
-  hidden: {
-    opacity: 0,
-  },
-};
-
 const list = {
   visible: {
     display: "flex",
@@ -155,19 +143,21 @@ const stem: Variants = {
 const listOfSkills: Variants = {
   visible: {
     // display: "flex",
-    // transition: {
-    //   staggerChildren: 0.1,
-    //   type: "spring",
-    // },
+    color: "gold",
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      type: "spring",
+    },
   },
   hidden: {
-    // opacity: 0.5,
+    opacity: 0,
     // display: "none",
-    // transition: {
-    //   staggerChildren: -0.1,
-    //   type: "spring",
-    //   when: "afterChildren",
-    // },
+    color: "red",
+    transition: {
+      staggerChildren: -0.1,
+      type: "spring",
+    },
   },
   // selected: {
   //   opacity: 0.05,
@@ -237,6 +227,19 @@ export const selectedKnowledgeOuterCircle: Variants = {
   },
 };
 
+const listItem = {
+  visible: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      duration: 3,
+    },
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+
 const animations = {
   menu: {
     stem,
@@ -248,6 +251,7 @@ const animations = {
     label,
   },
   listOfSkills,
+  listItem,
   selectedKnowledgeOuterCircle,
 };
 
