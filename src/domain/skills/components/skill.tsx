@@ -13,34 +13,45 @@ const Skill = ({
   selectedSkillId: string | undefined;
 }) => {
   const isSelected = skill.id === selectedSkillId;
+  const isInSelectionMode = !!selectedSkillId;
 
   return (
-    <h3 className="uppercase font-sans font-semibold text-pink-100 text-lg">
-      <AnimatedLink skill={skill} isSelected={isSelected} />
-    </h3>
+    // <h3 className="uppercase font-sans font-semibold text-pink-100 text-lg">
+    <AnimatedLink
+      skill={skill}
+      isSelected={isSelected}
+      isInSelectionMode={isInSelectionMode}
+    />
+    // </h3>
   );
 };
 
 const AnimatedLink = ({
   isSelected,
   skill,
+  isInSelectionMode,
 }: {
   skill: SkillProps;
   isSelected: boolean;
+  isInSelectionMode: boolean;
 }) => {
   const { hasHover } = useScreenDetector();
 
-  if (isSelected) {
-    console.log("isSelected", isSelected, skill.label);
-  }
+  console.log("isInSelectionMode", isInSelectionMode);
 
   return (
     // <Link href={path}>
     <motion.div
-      className="relative flex flex-col items-center gap-y-1 cursor-pointer"
+      // className=""
       whileHover="hover"
       initial="default"
       animate="default"
+      className={cn(
+        "relative flex flex-col items-center gap-y-1 cursor-pointer",
+        {
+          "opacity-5": isInSelectionMode && !isSelected,
+        }
+      )}
     >
       <motion.div
         className="relative"

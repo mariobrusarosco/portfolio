@@ -41,55 +41,6 @@ export const skillContainer = {
   },
 };
 
-export const selectedKnowledgeOuterCircle: Variants = {
-  default: {
-    opacity: 1,
-    scale: 1,
-    // visibility: "visible",
-    transition: {
-      type: "spring",
-      stiffness: 55,
-      damping: 12,
-      // bounce: 0.2,
-      // duration: 0.7,
-      restDelta: 0.01,
-    },
-    // transitionEnd: {
-    //   color: "red",
-    // visibility: "hidden",
-    // display: "flex",
-    // },
-  },
-  selected: {
-    // scale: [1, 2, 5, 10, 15, 30],
-    // opacity: [1, 0.5, 0.2, 0.1, 0.1, 0.01],
-    // transition: {
-    //   type: "easeInOut",
-    //   duration: 1.5,
-    //   // delay: 0.5,
-    //   times: [0, 0.2, 0.3, 0.4, 0.5, 1],
-    // },
-    // scale: [1, 2, 5, 10, 15, 30],
-    // opacity: [0.9, 0.9, 0.5, 0.4, 0],
-    // rotate: [0, 10, 15, 20, 360],
-    opacity: 0.02,
-    scale: 30,
-    // borderRadius: ["20%", "20%", "50%", "50%", "20%"],
-    transition: {
-      // type: "easeInOut",
-      type: "spring",
-      // times: [0, 1],
-      stiffness: 55,
-      damping: 12,
-      restDelta: 0.01,
-    },
-    // transitionEnd: {
-    //   color: "blue",
-    // visibility: "hidden",
-    // scale: 2,
-    // },
-  },
-};
 export const footerSpecialAnimations: { skills: Variants } = {
   skills: {
     default: {
@@ -241,6 +192,84 @@ const stem: Variants = {
   },
 };
 
+const listOfSkills: Variants = {
+  visible: {
+    // display: "flex",
+    // transition: {
+    //   staggerChildren: 0.1,
+    //   type: "spring",
+    // },
+  },
+  hidden: {
+    // opacity: 0.5,
+    // display: "none",
+    // transition: {
+    //   staggerChildren: -0.1,
+    //   type: "spring",
+    //   when: "afterChildren",
+    // },
+  },
+  // selected: {
+  //   opacity: 0.05,
+  // display: "none",
+  // transition: {
+  //   staggerChildren: -0.1,
+  //   type: "spring",
+  //   when: "afterChildren",
+  // },
+  // },
+};
+
+export const selectedKnowledgeOuterCircle: Variants = {
+  default: {
+    opacity: 1,
+    scale: 1,
+    // visibility: "visible",
+    transition: {
+      type: "spring",
+      stiffness: 55,
+      damping: 12,
+      // bounce: 0.2,
+      // duration: 0.7,
+      restDelta: 0.01,
+    },
+    // transitionEnd: {
+    //   color: "red",
+    // visibility: "hidden",
+    // display: "flex",
+    // },
+  },
+  selected: {
+    // scale: [1, 2, 5, 10, 15, 30],
+    // opacity: [1, 0.5, 0.2, 0.1, 0.1, 0.01],
+    // transition: {
+    //   type: "easeInOut",
+    //   duration: 1.5,
+    //   // delay: 0.5,
+    //   times: [0, 0.2, 0.3, 0.4, 0.5, 1],
+    // },
+    // scale: [1, 2, 5, 10, 15, 30],
+    // opacity: [0.9, 0.9, 0.5, 0.4, 0],
+    // rotate: [0, 10, 15, 20, 360],
+    opacity: 0.02,
+    scale: 30,
+    // borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+    transition: {
+      // type: "easeInOut",
+      type: "spring",
+      // times: [0, 1],
+      stiffness: 55,
+      damping: 12,
+      restDelta: 0.01,
+    },
+    // transitionEnd: {
+    //   color: "blue",
+    // visibility: "hidden",
+    // scale: 2,
+    // },
+  },
+};
+
 const animations = {
   menu: {
     stem,
@@ -251,6 +280,8 @@ const animations = {
     innerCircle,
     label,
   },
+  listOfSkills,
+  selectedKnowledgeOuterCircle,
 };
 
 export default animations;

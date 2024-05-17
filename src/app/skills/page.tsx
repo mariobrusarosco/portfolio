@@ -5,7 +5,7 @@ import { screens } from "@/domain/shared/animations";
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { cn } from "@/domain/shared/utils/classnames";
 import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
-import { skillContainer, skillListContainer } from "@/domain/skills/animations";
+import animations, { skillContainer } from "@/domain/skills/animations";
 import { Skill } from "@/domain/skills/components/skill";
 import { skills } from "@/domain/skills/constants";
 import { motion } from "framer-motion";
@@ -70,6 +70,7 @@ export default function Skills() {
             //   },
             //   ...listAnimation,
             // }}
+            variants={animations.listOfSkills}
             animate={!!selectedSkill ? "selected" : "visible"}
             initial="hidden"
           >
