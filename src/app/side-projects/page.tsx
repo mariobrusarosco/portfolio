@@ -30,7 +30,6 @@ export default function SideProjects() {
 
     router.push(`${window.location.pathname}?${queryParamsString}`);
   };
-  console.log("selectedProject", !!selectedProject);
 
   return (
     <div className="overflow-hidden container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 md:content-start fh:relative">
@@ -92,7 +91,7 @@ export default function SideProjects() {
 
             <div className="flex flex-col gap-x-4 lg:flex-row lg:ml-[100px] fh:flex-col fh:flex-1 fh:items-center justify-center">
               <div className="mb-6 fh:mb-10">
-                <p className="topic mb-2 font-serif text-blue-green-300 text-lg fh:text-5xl">
+                <p className="topic mb-2 font-serif text-orange-400 text-lg fh:text-5xl">
                   work experience
                 </p>
 
@@ -117,7 +116,7 @@ export default function SideProjects() {
               </div>
 
               <div className="mb-6 fh:mb-10">
-                <p className="topic topic mb-2 serif text-blue-green-300 text-lg fh:text-5xl">
+                <p className="topic topic mb-2 serif text-orange-400 text-lg fh:text-5xl">
                   work experience
                 </p>
                 <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">

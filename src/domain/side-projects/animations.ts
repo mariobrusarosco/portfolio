@@ -105,7 +105,7 @@ const projectContainer: Variants = {
     opacity: 1,
     transition: {
       type: "spring",
-      duration: 4,
+      duration: 3,
       delay: 3,
     },
   },

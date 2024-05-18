@@ -68,6 +68,8 @@ const Project = ({
           {console.log(project.label, "-----", !isSelected)}
         </motion.svg>
       </div>
+
+      <p className="text-pink-100">{project.label}</p>
     </div>
   );
 };

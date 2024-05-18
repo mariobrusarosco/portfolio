@@ -1,31 +1,27 @@
-import { AnimationPlaybackControls, useAnimate } from "framer-motion";
+import {
+  AnimationPlaybackControls,
+  AnimationSequence,
+  useAnimate,
+} from "framer-motion";
 
 const useProjectAnimation = (isSelected: boolean) => {
   const [scope, animate] = useAnimate();
 
-  const handleAnimation = async () => {
-    console.log(scope);
-    const sequence = [];
+  const moveInnerCircleToLeft = async () => {
     await animate(
       ".inner-circle",
       { x: -15 },
       { type: "spring", duration: 0.02 }
     );
-    animate("path", { pathLength: 0.9 }, { duration: 0.5 });
+  };
 
+  const crackOuterCircle = async (crack: number) =>
+    animate("path", { pathLength: crack }, { duration: 0.5 });
+
+  const centerInnerCircle = async () =>
     await animate(".inner-circle", { x: "-50%" }, { type: "spring" });
-    await animate(
-      ".inner-circle",
-      { x: -15 },
-      { type: "spring", duration: 0.02 }
-    );
-    animate("path", { pathLength: 0.8 }, { duration: 0.5 });
-    await animate(".inner-circle", { x: "-50%" }, { type: "spring" });
-    await animate(
-      ".inner-circle",
-      { x: -25 },
-      { type: "spring", stiffness: 200 }
-    );
+
+  const scaleInnerCircleUp = async () =>
     await animate(
       ".inner-circle",
       {
@@ -33,6 +29,14 @@ const useProjectAnimation = (isSelected: boolean) => {
       },
       { type: "spring", stiffness: 300, damping: 12 }
     );
+  const breakOuterCircle = async () =>
+    await animate(
+      ".inner-circle",
+      { x: -25 },
+      { type: "spring", stiffness: 200 }
+    );
+
+  const fadeInnerCircleOut = async () =>
     await animate(
       ".inner-circle",
       {
@@ -40,6 +44,21 @@ const useProjectAnimation = (isSelected: boolean) => {
       },
       { type: "spring", bounce: 0 }
     );
+
+  const handleAnimation = async () => {
+    await moveInnerCircleToLeft();
+    crackOuterCircle(0.9);
+    await centerInnerCircle();
+
+    await moveInnerCircleToLeft();
+    crackOuterCircle(0.8);
+    await centerInnerCircle();
+
+    await breakOuterCircle();
+
+    await scaleInnerCircleUp();
+
+    await fadeInnerCircleOut();
   };
 
   return { scope, handleAnimation };
