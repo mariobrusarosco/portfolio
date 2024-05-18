@@ -1,18 +1,5 @@
 import { Variants } from "framer-motion";
 
-const listItem = {
-  visible: {
-    opacity: 1,
-    transition: {
-      type: "spring",
-      duration: 3,
-    },
-  },
-  hidden: {
-    opacity: 0,
-  },
-};
-
 const selectedKnowledgeOuterCircle: Variants = {
   default: {
     pathLength: 1,
@@ -52,45 +39,38 @@ const innerCircle: Variants = {
     y: "-50%",
     transition: {
       type: "spring",
-      duration: 0.1,
+      duration: 1,
+      bounce: 0.25,
+      damping: 15,
     },
   },
-  // selected: {
-  //   y: 0,
-  //   x: "-50%",
-  //   transition: {
-  //     type: "spring",
-  //     duration: 0.5,
-  //     bounce: 0.5,
-  //     // times: [0, 0.1, 0.95, 1],
-  //     repeat: 1,
-  //     // repeatDelay: 0.01,
-  //   },
-  // },
+  hidden: {
+    opacity: 0,
+    transition: {
+      type: "spring",
+      duration: 2,
+      delay: 1.5,
+    },
+  },
 };
 
 const outerCircle: Variants = {
   default: {
-    color: "red",
     rotate: "28deg",
-    strokeDasharray: "1",
     pathLength: 1,
+    opacity: 1,
     transition: {
       type: "spring",
     },
   },
-  // selected: {
-  //   y: 0,
-  //   x: "-50%",
-  //   transition: {
-  //     type: "spring",
-  //     duration: 0.5,
-  //     bounce: 0.5,
-  //     // times: [0, 0.1, 0.95, 1],
-  //     repeat: 1,
-  //     // repeatDelay: 0.01,
-  //   },
-  // },
+  hidden: {
+    opacity: 0,
+    transition: {
+      type: "spring",
+      duration: 2,
+      delay: 1.5,
+    },
+  },
 };
 
 const projectContainer: Variants = {
@@ -98,15 +78,34 @@ const projectContainer: Variants = {
     opacity: 0,
     transition: {
       type: "spring",
-      duration: 0.5,
+      duration: 1,
     },
   },
   selected: {
     opacity: 1,
     transition: {
       type: "spring",
-      duration: 3,
-      delay: 3,
+      duration: 2,
+      delay: 2.5,
+    },
+  },
+};
+
+const label: Variants = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      type: "spring",
+      duration: 2,
+      delay: 2.5,
+    },
+  },
+  default: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      duration: 0.5,
+      delay: 0.5,
     },
   },
 };
@@ -115,30 +114,8 @@ const animations = {
   projectContainer,
   innerCircle,
   outerCircle,
-  listItem,
+  label,
   selectedKnowledgeOuterCircle,
 };
 
 export default animations;
-
-// <motion.div
-// layout="position"
-// className="border border-orange-400 rounded-full flex items-center justify-center p-4"
-// variants={animations.selectedKnowledgeOuterCircle}
-// animate={isSelected ? "selected" : "default"}
-// >
-// <motion.div
-//   className={cn("w-[10px] h-[10px] bg-orange-400 flex rounded-full")}
-// />
-// </motion.div>
-
-// <motion.span
-// className={cn("font-sans font-light text-sm text-orange-400", {
-//   // "opacity-5": isInSelectionMode,
-//   // "text-blue-green-300": isSelected,
-//   // "text-pink-100": !isSelected,
-// })}
-// >
-// {project.label}
-// </motion.span>
-// </motion.div>

@@ -32,24 +32,17 @@ const Project = ({
           variants={animations.innerCircle}
           animate={isSelected ? undefined : "default"}
           style={{ x: "-50%", y: "-50%" }}
+          initial="default"
           className={cn(
             "inner-circle absolute h-[8px] w-[8px] bg-pink-100 rounded-full left-1/2 top-1/2 md:h-[10px] md:w-[10px]",
             {
-              "bg-blue-green-300": isSelected,
+              "bg-orange-400": isSelected,
+              "opacity-0": isInSelectionMode && !isSelected,
             }
           )}
-          // variants={animations.innerCircle}
-          // animate={isSelected ? "selected" : "default"}
         >
           <svg viewBox="0 0 7 6" fill="none">
-            <rect
-              x="0.5"
-              width="6"
-              height="6"
-              rx="3"
-              stroke="none"
-              className="abslute"
-            />
+            <rect x="0.5" width="6" height="6" rx="3" stroke="none" />
           </svg>
         </motion.div>
 
@@ -62,14 +55,19 @@ const Project = ({
             stroke="#FFF"
             strokeDasharray="0 1"
             initial={"default"}
-            animate={isSelected ? undefined : "default"}
+            animate={isInSelectionMode ? "hidden" : "default"}
             variants={animations.outerCircle}
           />
-          {console.log(project.label, "-----", !isSelected)}
         </motion.svg>
       </div>
 
-      <p className="text-pink-100">{project.label}</p>
+      <motion.p
+        variants={animations.label}
+        animate={isInSelectionMode ? "hidden" : "default"}
+        className="text-pink-100"
+      >
+        {project.label}
+      </motion.p>
     </div>
   );
 };

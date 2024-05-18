@@ -1,5 +1,3 @@
-import { OneWordProject } from "./components-old/projects/one-word";
-import { OneWordApiProject } from "./components-old/projects/one-word-api";
 import { SideProject } from "./typing/interfaces-and-enums";
 
 export const sideProjects: SideProject[] = [
@@ -8,13 +6,13 @@ export const sideProjects: SideProject[] = [
     id: "one-word",
     url: "https://one-word.netlify.app/",
     queryParams: [{ project_id: "one-word" }],
-    Component: OneWordProject,
+    Component: () => "OneWordProject",
   },
   {
     label: "One Word - API",
     id: "one-word-api",
     url: "https://one-word-api.herokuapp.com/",
     queryParams: [{ project_id: "one-word-api" }],
-    Component: OneWordApiProject,
+    Component: () => "OneWordProject",
   },
 ];

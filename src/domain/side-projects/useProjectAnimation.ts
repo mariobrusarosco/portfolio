@@ -37,7 +37,7 @@ const useProjectAnimation = (isSelected: boolean) => {
     await animate(
       ".inner-circle",
       {
-        opacity: 0.01,
+        opacity: 0.002,
       },
       { type: "spring", bounce: 0 }
     );
