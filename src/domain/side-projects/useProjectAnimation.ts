@@ -1,8 +1,5 @@
-import {
-  AnimationPlaybackControls,
-  AnimationSequence,
-  useAnimate,
-} from "framer-motion";
+import { useAnimate } from "framer-motion";
+import { useEffect } from "react";
 
 const useProjectAnimation = (isSelected: boolean) => {
   const [scope, animate] = useAnimate();
@@ -18,7 +15,7 @@ const useProjectAnimation = (isSelected: boolean) => {
   const crackOuterCircle = async (crack: number) =>
     animate("path", { pathLength: crack }, { duration: 0.5 });
 
-  const centerInnerCircle = async () =>
+  const moveInnerCircleToMiddle = async () =>
     await animate(".inner-circle", { x: "-50%" }, { type: "spring" });
 
   const scaleInnerCircleUp = async () =>
@@ -48,18 +45,24 @@ const useProjectAnimation = (isSelected: boolean) => {
   const handleAnimation = async () => {
     await moveInnerCircleToLeft();
     crackOuterCircle(0.9);
-    await centerInnerCircle();
+    await moveInnerCircleToMiddle();
 
     await moveInnerCircleToLeft();
     crackOuterCircle(0.8);
-    await centerInnerCircle();
+    await moveInnerCircleToMiddle();
 
     await breakOuterCircle();
-
     await scaleInnerCircleUp();
-
     await fadeInnerCircleOut();
   };
+
+  useEffect(() => {
+    console.log("somethings changed!", { isSelected });
+
+    if (!isSelected) return;
+
+    handleAnimation();
+  }, [isSelected]);
 
   return { scope, handleAnimation };
 };
