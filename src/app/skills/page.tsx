@@ -80,8 +80,6 @@ export default function Skills() {
         </section>
       </div>
 
-      {/* <AnimatePresence>
-        {selectedSkill && ( */}
       <motion.div
         initial="default"
         variants={animations.skillContainer}
@@ -151,8 +149,6 @@ export default function Skills() {
           </div>
         </div>
       </motion.div>
-      {/* )} */}
-      {/* </AnimatePresence> */}
     </div>
   );
 }

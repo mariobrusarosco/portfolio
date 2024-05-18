@@ -1,9 +1,9 @@
 export const screens = {
   heading: {
-    initial: { opacity: 0, y: -30 },
+    initial: { opacity: 0, x: 30 },
     animate: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: {
         type: "spring",
         damping: 10,
