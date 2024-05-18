@@ -8,51 +8,7 @@ import {
 import animations from "../animations";
 import { cn } from "@/domain/shared/utils/classnames";
 import { SideProject } from "../typing/interfaces-and-enums";
-
-const useProjectAnimation = (isSelected: boolean) => {
-  const [scope, animate] = useAnimate();
-
-  const handleAnimation = async () => {
-    console.log(scope);
-    const sequence = [];
-    await animate(
-      ".inner-circle",
-      { x: -15 },
-      { type: "spring", duration: 0.02 }
-    );
-    animate("path", { pathLength: 0.9 }, { duration: 0.5 });
-
-    await animate(".inner-circle", { x: "-50%" }, { type: "spring" });
-    await animate(
-      ".inner-circle",
-      { x: -15 },
-      { type: "spring", duration: 0.02 }
-    );
-    animate("path", { pathLength: 0.8 }, { duration: 0.5 });
-    await animate(".inner-circle", { x: "-50%" }, { type: "spring" });
-    await animate(
-      ".inner-circle",
-      { x: -25 },
-      { type: "spring", stiffness: 200 }
-    );
-    // await animate(
-    //   ".inner-circle",
-    //   {
-    //     // width: "100vw",
-    //     // height: "100vh",
-    //     // scale: 200,
-    //     // position: "fixed",
-    //     // left: 0,
-    //     // top: 0,
-    //     // x: 0,
-    //     // y: 0,
-    //   },
-    //   { type: "spring", stiffness: 100 }
-    // );
-  };
-
-  return { scope, handleAnimation };
-};
+import { useProjectAnimation } from "../useProjectAnimation";
 
 const Project = ({
   project,
@@ -63,47 +19,7 @@ const Project = ({
 }) => {
   const isSelected = project.id === selectedProjectId;
   const isInSelectionMode = !!selectedProjectId;
-  const [scope, animate] = useAnimate();
-
-  const handleAnimation = async () => {
-    console.log(scope);
-    const sequence = [];
-    await animate(
-      ".inner-circle",
-      { x: -15 },
-      { type: "spring", duration: 0.02 }
-    );
-    animate("path", { pathLength: 0.9 }, { duration: 0.5 });
-
-    await animate(".inner-circle", { x: "-50%" }, { type: "spring" });
-    await animate(
-      ".inner-circle",
-      { x: -15 },
-      { type: "spring", duration: 0.02 }
-    );
-    animate("path", { pathLength: 0.8 }, { duration: 0.5 });
-
-    await animate(".inner-circle", { x: "-50%" }, { type: "spring" });
-    await animate(
-      ".inner-circle",
-      { x: -25 },
-      { type: "spring", stiffness: 200 }
-    );
-    await animate(
-      ".inner-circle",
-      {
-        scale: 100,
-      },
-      { type: "spring", stiffness: 300, damping: 10 }
-    );
-    await animate(
-      ".inner-circle",
-      {
-        opacity: 0.01,
-      },
-      { type: "spring", bounce: 0 }
-    );
-  };
+  const { scope, handleAnimation } = useProjectAnimation(isSelected);
 
   return (
     <div>
