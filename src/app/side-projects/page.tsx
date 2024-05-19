@@ -34,7 +34,7 @@ export default function SideProjects() {
     router.push(window?.location.pathname);
 
   return (
-    <div className="overflow-hidden container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 md:content-start fh:relative">
+    <div className="overflow-hidden container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 fh:relative">
       <Heading />
       <List
         onSelectProject={handleSelectProject}
@@ -50,7 +50,7 @@ export default function SideProjects() {
 
 const Heading = () => {
   return (
-    <section className="heading-and-list-section pt-12 md:pt-4 lg:col-span-2 lg:pt-2">
+    <section className="heading-and-list-section pt-12 md:pt-4 lg:pt-2 lg:row-start-1">
       <motion.p
         initial="initial"
         animate="animate"
@@ -81,9 +81,9 @@ const List = motion(
     selectedProject: SideProject;
   }) => {
     return (
-      <section className="list-of-knowledge mt-16">
+      <section className="list-of-knowledge mt-16 lg:mt-0 lg:col-start-1 lg:row-[2/-1]">
         <motion.ul
-          className="flex flex-wrap gap-8 pb-4 justify-center md:gap-14 lg:gap-x-6 lg:gap-y-6"
+          className="flex flex-wrap gap-8 pb-4 justify-center md:gap-14 lg:justify-start lg:gap-x-6 lg:gap-y-6"
           // variants={animations.listOfSkills}
           initial="hidden"
           animate="visible"
@@ -121,14 +121,14 @@ const SelectedProjectContainer = motion(
         variants={animations.projectContainer}
         animate={selectedProject ? "selected" : "default"}
         className={cn(
-          "project-details-overlay h-full absolute w-screen left-0 top-0 pt-[150px] x-global-spacing lg:pt-[80px] fh:container",
+          "project-details-container h-full absolute w-screen left-0 top-0 pt-[150px] x-global-spacing lg:static lg:width lg:p-0 lg:w-auto lg:row-[1/-1]",
           {
             "-z-10": !selectedProject,
           }
         )}
       >
-        <div className="skill-details-content h-full py-8 px-4 border border-active-primary scrollable overflow-x-auto lg:border-none lg:py-2 lg:px-2 lg:flex bg-[#00000002]">
-          <div className="heading flex justify-between items-start mb-10 lg:min-w-[450px] lg:mb-0 lg:sticky lg:top-0">
+        <div className="skill-details-content h-full py-8 px-4 border border-active-primary scrollable overflow-x-auto bg-[#00000002] lg:border-none lg:p-2">
+          <div className="heading flex justify-between items-start mb-10 lg:mb-2">
             <h3 className="font-serif text-3xl text-active-primary font-regular max-w-[50%] lg:text-6xl">
               {selectedProject?.label}
             </h3>
@@ -152,7 +152,7 @@ const SelectedProjectContainer = motion(
             </div>
           </div>
 
-          <div className="flex flex-col gap-x-4 lg:flex-row lg:ml-[100px] fh:flex-col fh:flex-1 fh:items-center justify-center">
+          <div className="flex flex-col gap-x-4 justify-center fh:flex-col fh:flex-1 fh:items-center lg:overflow-auto">
             <div className="mb-6 fh:mb-10">
               <p className="topic mb-2 font-serif text-orange-400 text-lg fh:text-5xl">
                 work experience
