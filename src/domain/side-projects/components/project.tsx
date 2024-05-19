@@ -22,7 +22,7 @@ const Project = ({
   const { scope, handleAnimation } = useProjectAnimation(isSelected);
 
   return (
-    <div>
+    <div className="flex flex-col items-center gap-y-2">
       <div
         ref={scope}
         className="cursor-pointer relative w-[30px]"
@@ -64,7 +64,12 @@ const Project = ({
       <motion.p
         variants={animations.label}
         animate={isInSelectionMode ? "hidden" : "default"}
-        className="text-pink-100"
+        className={cn(
+          "text-pink-100 font-semibold uppercase text-lg font-sans",
+          {
+            "text-orange-400": isSelected,
+          }
+        )}
       >
         {project.label}
       </motion.p>
