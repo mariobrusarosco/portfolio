@@ -127,8 +127,8 @@ const SelectedProjectContainer = motion(
           }
         )}
       >
-        <div className="skill-details-content h-full py-8 px-4 border border-active-primary scrollable overflow-x-auto bg-[#00000002] lg:border-none lg:p-2">
-          <div className="heading flex justify-between items-start mb-10 lg:mb-2">
+        <div className="skill-details-content h-full py-8 px-4 border border-active-primary scrollable overflow-x-auto bg-[#00000002] lg:border-none lg:pt-14">
+          <div className="heading flex justify-between items-center mb-10 lg:mb-2">
             <h3 className="font-serif text-3xl text-active-primary font-regular max-w-[50%] lg:text-6xl">
               {selectedProject?.label}
             </h3>
