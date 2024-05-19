@@ -23,11 +23,12 @@ const Project = ({
 
   return (
     <div
+      ref={scope}
       className={cn("flex flex-col items-center gap-y-2 cursor-pointer", {
         "opacity-5 invisible": isInSelectionMode && !isSelected,
       })}
     >
-      <div ref={scope} className="relative w-[30px]" onClick={handleAnimation}>
+      <div className="relative w-[30px]" onClick={handleAnimation}>
         <motion.div
           variants={animations.innerCircle}
           animate={isSelected ? undefined : "default"}
@@ -48,7 +49,7 @@ const Project = ({
         <motion.svg viewBox="0 0 40 40">
           <motion.path
             className={cn("outer-circle", {
-              "stroke-orange-400 opacity-5 lg:opacity-100": isSelected,
+              "stroke-orange-400": isSelected,
             })}
             d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
             strokeWidth="1"
@@ -63,13 +64,14 @@ const Project = ({
       </div>
 
       <motion.p
-        animate={isInSelectionMode ? "undefined" : "default"}
+        animate={isInSelectionMode ? undefined : "default"}
         className={cn(
-          "text-pink-100 font-semibold uppercase text-lg font-sans",
+          "project-label text-pink-100 font-semibold uppercase text-lg font-sans",
           {
-            "text-orange-400 opacity-5 lg:opacity-100": isSelected,
+            "text-orange-400": isSelected,
           }
         )}
+        variants={animations.label}
       >
         {project.label}
       </motion.p>

@@ -43,6 +43,23 @@ const useProjectAnimation = (isSelected: boolean) => {
       { type: "spring", bounce: 0 }
     );
 
+  const fadeLabelAndOuterCircle = async () => {
+    animate(
+      ".project-label",
+      {
+        opacity: 0.009,
+      },
+      { type: "spring" }
+    );
+    animate(
+      ".outer-circle",
+      {
+        opacity: 0.009,
+      },
+      { type: "spring" }
+    );
+  };
+
   const handleAnimation = async () => {
     await moveInnerCircleToLeft();
     crackOuterCircle(0.9);
@@ -54,6 +71,8 @@ const useProjectAnimation = (isSelected: boolean) => {
 
     await breakOuterCircle();
     crackOuterCircle(1);
+    fadeLabelAndOuterCircle();
+
     await scaleInnerCircleUp();
     await fadeInnerCircleOut();
   };

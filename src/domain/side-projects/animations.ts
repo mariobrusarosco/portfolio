@@ -91,10 +91,21 @@ const projectContainer: Variants = {
   },
 };
 
+const label: Variants = {
+  default: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      duration: 1,
+    },
+  },
+};
+
 const animations = {
   projectContainer,
   innerCircle,
   outerCircle,
+  label,
   selectedKnowledgeOuterCircle,
 };
 
