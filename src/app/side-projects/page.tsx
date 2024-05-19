@@ -16,7 +16,8 @@ export default function SideProjects() {
   const searchParams = useSearchParams();
   const selectedProject = sideProjects.find((project) => {
     return project.id === searchParams.get("project_id");
-  });
+  }) as SideProject;
+
   const handleSelectProject = (projectId: string) => {
     const selectedProject = sideProjects.find((project) => {
       return project.id === projectId;
@@ -29,15 +30,60 @@ export default function SideProjects() {
 
     router.push(`${window.location.pathname}?${queryParamsString}`);
   };
+  const handleCloseProjectDetails = () =>
+    router.push(window?.location.pathname);
 
   return (
-    <div className="overflow-hidden container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 md:content-start fh:relative">
-      {/* <div className="column-wrapper lg:col-span-2 fh:col-span-1"> */}
-      <HeadingAndList />
+    <div className="container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 fh:relative">
+      <Heading />
+      <List
+        onSelectProject={handleSelectProject}
+        selectedProject={selectedProject}
+      />
+      <SelectedProjectContainer
+        selectedProject={selectedProject}
+        handleCloseProjectDetails={handleCloseProjectDetails}
+      />
+    </div>
+  );
+}
 
-      <section className="list-of-knowledge mt-16">
+const Heading = () => {
+  return (
+    <section className="heading-and-list-section pt-12 md:pt-4 lg:pt-2 lg:row-start-1">
+      <motion.p
+        initial="initial"
+        animate="animate"
+        variants={screens.heading}
+        className="w-fit font-serif text-active-secondary text-2xl tracking-[2px] md:text-3xl lg:text-4xl "
+      >
+        <span>these are my</span>
+      </motion.p>
+
+      <motion.h2
+        initial="initial"
+        animate="animate"
+        variants={screens.heading}
+        className="font-sans font-regular -tracking-[2px] text-active-primary text-6xl -mt-4 md:text-7xl lg:text-8xl"
+      >
+        side projects
+      </motion.h2>
+    </section>
+  );
+};
+
+const List = motion(
+  ({
+    onSelectProject,
+    selectedProject,
+  }: {
+    onSelectProject: (projectId: string) => void;
+    selectedProject: SideProject;
+  }) => {
+    return (
+      <section className="list-of-knowledge mt-16 lg:mt-0 lg:col-start-1 lg:row-[2/-1]">
         <motion.ul
-          className="flex flex-wrap gap-8 pb-4 justify-center md:gap-14 lg:gap-x-6 lg:gap-y-6"
+          className="flex flex-wrap gap-8 pb-4 justify-center md:gap-14 lg:justify-start lg:gap-x-6 lg:gap-y-6"
           // variants={animations.listOfSkills}
           initial="hidden"
           animate="visible"
@@ -46,7 +92,7 @@ export default function SideProjects() {
             <motion.li
               className=""
               key={project.id}
-              onClick={() => handleSelectProject(project.id)}
+              onClick={() => onSelectProject(project.id)}
               // variants={animations.listItem}
             >
               <Project
@@ -57,36 +103,94 @@ export default function SideProjects() {
           ))}
         </motion.ul>
       </section>
+    );
+  }
+);
 
+const SelectedProjectContainer = motion(
+  ({
+    selectedProject,
+    handleCloseProjectDetails,
+  }: {
+    selectedProject: SideProject;
+    handleCloseProjectDetails: () => void;
+  }) => {
+    return (
       <motion.div
         initial="default"
         variants={animations.projectContainer}
-        animate={selectedProject ? undefined : "default"}
+        animate={selectedProject ? "selected" : "default"}
         className={cn(
-          "project-details-overlay h-full absolute w-screen left-0 top-0 pt-[150px] x-global-spacing lg:pt-[80px] fh:container",
+          "project-details-container h-[calc(100dvh-224px)] absolute w-screen left-0 top-[80px] pt-[150px] x-global-spacing lg:static lg:width lg:p-0 lg:w-auto lg:row-[1/-1]",
           {
             "-z-10": !selectedProject,
           }
         )}
       >
-        <div className="skill-details-content h-full py-8 px-6 border border-active-primary scrollable overflow-x-auto lg:border-none lg:py-2 lg:px-2 lg:flex bg-[#00000002]">
-          <div className="heading flex justify-between items-center mb-10 lg:min-w-[450px] lg:mb-0  lg:sticky lg:top-0">
-            <p className="font-serif text-2xl text-active-primary font-regular lg:text-6xl">
+        <div className="skill-details-content h-full py-8 px-4 border border-active-primary scrollable overflow-x-auto bg-[#00000002] lg:border-none lg:pt-14">
+          <div className="heading flex justify-between items-center mb-10 lg:mb-2">
+            <h3 className="font-serif text-3xl text-active-primary font-regular max-w-[50%] lg:text-6xl">
               {selectedProject?.label}
-            </p>
+            </h3>
 
             <div
-              className="flex gap-2 justify-between items-center  cursor-pointer p-4"
-              onClick={() => {
-                router.push(window.location.pathname);
-              }}
+              className="flex gap-3 justify-between items-center  cursor-pointer"
+              onClick={handleCloseProjectDetails}
             >
               <p className="uppercase text-pink-100 font-sans text-xs">back</p>
-              <p>--</p>
+              <div className="w-8 h-8 border border-active-primary p-2 rounded-full">
+                <svg
+                  viewBox="0 0 7 7"
+                  className="stroke-active-primary"
+                  fill="none"
+                  strokeWidth="0.5"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M3.68555 1L1.43555 3.5M7 3.5H1.43555M1.43555 3.5L3.68555 6.5" />
+                </svg>
+              </div>
             </div>
           </div>
 
-          <div className="flex flex-col gap-x-4 lg:flex-row lg:ml-[100px] fh:flex-col fh:flex-1 fh:items-center justify-center">
+          <div className="flex flex-col gap-x-4 justify-center fh:flex-col fh:flex-1 fh:items-center lg:overflow-auto">
+            <div className="mb-6 fh:mb-10">
+              <p className="topic mb-2 font-serif text-orange-400 text-lg fh:text-5xl">
+                work experience
+              </p>
+
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+            </div>
+
+            <div className="mb-6 fh:mb-10">
+              <p className="topic topic mb-2 serif text-orange-400 text-lg fh:text-5xl">
+                work experience
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+            </div>
+
             <div className="mb-6 fh:mb-10">
               <p className="topic mb-2 font-serif text-orange-400 text-lg fh:text-5xl">
                 work experience
@@ -127,31 +231,6 @@ export default function SideProjects() {
           </div>
         </div>
       </motion.div>
-      {/* </div> */}
-    </div>
-  );
-}
-
-const HeadingAndList = () => {
-  return (
-    <section className="heading-and-list-section pt-12 md:pt-4 lg:col-span-2 lg:pt-2">
-      <motion.p
-        initial="initial"
-        animate="animate"
-        variants={screens.heading}
-        className="w-fit font-serif text-active-secondary text-2xl tracking-[2px] md:text-3xl lg:text-4xl "
-      >
-        <span>these are my</span>
-      </motion.p>
-
-      <motion.h2
-        initial="initial"
-        animate="animate"
-        variants={screens.heading}
-        className="font-sans font-regular -tracking-[2px] text-active-primary text-6xl -mt-4 md:text-7xl lg:text-8xl"
-      >
-        side projects
-      </motion.h2>
-    </section>
-  );
-};
+    );
+  }
+);

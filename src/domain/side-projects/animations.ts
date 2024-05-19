@@ -44,14 +44,14 @@ const innerCircle: Variants = {
       damping: 15,
     },
   },
-  hidden: {
-    opacity: 0,
-    transition: {
-      type: "spring",
-      duration: 2,
-      delay: 1.5,
-    },
-  },
+  // hidden: {
+  //   opacity: 0,
+  //   transition: {
+  //     type: "spring",
+  //     duration: 2,
+  //     delay: 1.5,
+  //   },
+  // },
 };
 
 const outerCircle: Variants = {
@@ -92,20 +92,11 @@ const projectContainer: Variants = {
 };
 
 const label: Variants = {
-  hidden: {
-    opacity: 0,
-    transition: {
-      type: "spring",
-      duration: 2,
-      delay: 2.5,
-    },
-  },
   default: {
     opacity: 1,
     transition: {
       type: "spring",
-      duration: 0.5,
-      delay: 0.5,
+      duration: 1,
     },
   },
 };

@@ -13,7 +13,7 @@ const footerRoutes = portfolioRouting.filter(
 const { menu } = animations;
 
 const AppFooter = () => (
-  <footer className="fixed flex min-h-[116px] w-screen bottom-0 lg:m-w-[132px]">
+  <footer className="fixed flex min-h-[116px] w-screen bottom-0 lg:m-w-[132px] z-10">
     <div className="container x-global-spacing flex-1 py-6 lg:flex lg:justify-start items-center">
       <Menu />
     </div>
