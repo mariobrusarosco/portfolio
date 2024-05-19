@@ -9,6 +9,7 @@ import animations from "../animations";
 import { cn } from "@/domain/shared/utils/classnames";
 import { SideProject } from "../typing/interfaces-and-enums";
 import { useProjectAnimation } from "../useProjectAnimation";
+import { useRef } from "react";
 
 const Project = ({
   project,
@@ -19,7 +20,9 @@ const Project = ({
 }) => {
   const isSelected = project.id === selectedProjectId;
   const isInSelectionMode = !!selectedProjectId;
-  const { scope, handleAnimation } = useProjectAnimation(isSelected);
+
+  // console.log("rendering project", { ref });
+  const { scope, handleAnimation } = useProjectAnimation(isSelected, ref);
 
   return (
     <div
@@ -28,11 +31,11 @@ const Project = ({
       })}
     >
       <div ref={scope} className="relative w-[30px]" onClick={handleAnimation}>
-        <motion.div
+        <motion.span
           variants={animations.innerCircle}
-          animate={isSelected ? undefined : "default"}
+          animate={isSelected ? "test" : "default"}
           style={{ x: "-50%", y: "-50%" }}
-          initial="default"
+          // initial="default"
           className={cn(
             "inner-circle absolute h-[8px] w-[8px] bg-pink-100 rounded-full left-1/2 top-1/2 md:h-[10px] md:w-[10px]",
             {
@@ -43,7 +46,7 @@ const Project = ({
           <svg viewBox="0 0 7 6" fill="none">
             <rect x="0.5" width="6" height="6" rx="3" stroke="none" />
           </svg>
-        </motion.div>
+        </motion.span>
 
         <motion.svg viewBox="0 0 40 40">
           <motion.path

@@ -35,8 +35,10 @@ const innerCircle: Variants = {
   default: {
     scale: 1,
     opacity: 1,
+    zIndex: "initial",
     x: "-50%",
-    y: "-50%",
+    // y: "-50%",
+    color: "#D90",
     transition: {
       type: "spring",
       duration: 1,
@@ -44,14 +46,14 @@ const innerCircle: Variants = {
       damping: 15,
     },
   },
-  // hidden: {
-  //   opacity: 0,
-  //   transition: {
-  //     type: "spring",
-  //     duration: 2,
-  //     delay: 1.5,
-  //   },
-  // },
+  test: {
+    color: "#f01",
+    transition: {
+      type: "spring",
+      duration: 2,
+      delay: 1.5,
+    },
+  },
 };
 
 const outerCircle: Variants = {

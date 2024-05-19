@@ -1,7 +1,12 @@
 import { useAnimate } from "framer-motion";
-import { useEffect } from "react";
+import { MutableRefObject, useEffect } from "react";
 
-const useProjectAnimation = (isSelected: boolean) => {
+const useProjectAnimation = (
+  isSelected: boolean,
+  ref: MutableRefObject<{
+    wasAnimated: boolean;
+  }>
+) => {
   const [scope, animate] = useAnimate();
 
   const moveInnerCircleToLeft = async () => {
@@ -44,23 +49,50 @@ const useProjectAnimation = (isSelected: boolean) => {
     );
 
   const handleAnimation = async () => {
-    await moveInnerCircleToLeft();
-    crackOuterCircle(0.9);
-    await moveInnerCircleToMiddle();
+    console.log("handleAnimation before if", { ref });
+    debugger;
+    if (ref.current?.wasAnimated) {
+      console.log("skiping");
+      // scaleInnerCircleUp();
+      // fadeInnerCircleOut();
+      const anim = animate([
+        [
+          ".inner-circle",
+          { scale: 100 },
+          {
+            type: "spring",
+            // stiffness: 300,
+            // damping: 12,
+            duration: 5,
+          },
+        ],
+        [
+          ".inner-circle",
+          { opacity: 0.009, zIndex: -1 },
+          { type: "spring", bounce: 0 },
+        ],
+      ]);
+      anim.complete();
+    } else {
+      console.log("handleAnimation inside else", { ref });
+      await moveInnerCircleToLeft();
+      crackOuterCircle(0.9);
+      await moveInnerCircleToMiddle();
 
-    await moveInnerCircleToLeft();
-    crackOuterCircle(0.8);
-    await moveInnerCircleToMiddle();
+      await moveInnerCircleToLeft();
+      crackOuterCircle(0.8);
+      await moveInnerCircleToMiddle();
 
-    await breakOuterCircle();
-    crackOuterCircle(1);
-    await scaleInnerCircleUp();
-    await fadeInnerCircleOut();
+      await breakOuterCircle();
+      crackOuterCircle(1);
+      await scaleInnerCircleUp();
+      await fadeInnerCircleOut();
+
+      ref.current.wasAnimated = true;
+    }
   };
 
   useEffect(() => {
-    console.log("somethings changed!", { isSelected });
-
     if (!isSelected) return;
 
     handleAnimation();
