@@ -10,13 +10,13 @@
 
   /* Track */
   ::-webkit-scrollbar-track {
-    background-color: theme(colors.blue-800);
+    background-color: theme(colors.red-700);
     border-radius: 2px;
   }
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background-color: theme(colors.pink-500);
+    background-color: theme(colors.pink-100);
     border-radius: 2px;
   }
 
@@ -28,8 +28,8 @@
 
 @layer utilities {
   /* [Vendor Support]: Firefox  */
-  .scrollbar {
-    scrollbar-color: theme(colors.green-600) theme(colors.primary-white);
+  * {
+    scrollbar-color: theme(colors.pink-500) theme(colors.pink-100);
     scrollbar-width: thin;
   }
 }
