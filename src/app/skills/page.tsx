@@ -37,7 +37,7 @@ export default function Skills() {
   // console.log("listOfSkills", animations.listOfSkills);
 
   return (
-    <div className="overflow-hidden container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 md:content-start fh:relative">
+    <div className="container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 md:content-start fh:relative">
       <div className="column-wrapper lg:col-span-2 fh:col-span-1">
         <section className="heading-and-list-section pt-12 md:pt-4 lg:col-span-2 lg:pt-2">
           <motion.p
@@ -85,13 +85,13 @@ export default function Skills() {
         variants={animations.skillContainer}
         animate={selectedSkill ? "selected" : "default"}
         className={cn(
-          "skill-details-overlay h-full absolute w-screen left-0 top-0 pt-[150px] x-global-spacing lg:pt-[80px] fh:container",
+          "skill-details-container h-[calc(100dvh-224px)] absolute w-screen left-0 top-[80px] pt-[150px] x-global-spacing lg:pt-[80px] fh:container",
           {
             invisible: !selectedSkill,
           }
         )}
       >
-        <div className="skill-details-content h-full py-8 px-6 border border-active-primary scrollable overflow-x-auto lg:border-none lg:py-2 lg:px-2 lg:flex">
+        <div className="skill-details-content h-full py-8  px-6 border border-active-primary scrollable overflow-x-auto lg:border-none lg:py-2 lg:px-2 lg:flex">
           <div className="heading flex justify-between items-center mb-10 lg:min-w-[450px] lg:mb-0  lg:sticky lg:top-0">
             <p className="font-serif text-2xl text-active-primary font-regular lg:text-6xl">
               {selectedSkill?.label}

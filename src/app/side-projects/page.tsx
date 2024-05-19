@@ -34,7 +34,7 @@ export default function SideProjects() {
     router.push(window?.location.pathname);
 
   return (
-    <div className="overflow-hidden container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 fh:relative">
+    <div className="container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 fh:relative">
       <Heading />
       <List
         onSelectProject={handleSelectProject}
@@ -121,7 +121,7 @@ const SelectedProjectContainer = motion(
         variants={animations.projectContainer}
         animate={selectedProject ? "selected" : "default"}
         className={cn(
-          "project-details-container h-full absolute w-screen left-0 top-0 pt-[150px] x-global-spacing lg:static lg:width lg:p-0 lg:w-auto lg:row-[1/-1]",
+          "project-details-container h-[calc(100dvh-224px)] absolute w-screen left-0 top-[80px] pt-[150px] x-global-spacing lg:static lg:width lg:p-0 lg:w-auto lg:row-[1/-1]",
           {
             "-z-10": !selectedProject,
           }
@@ -153,6 +153,44 @@ const SelectedProjectContainer = motion(
           </div>
 
           <div className="flex flex-col gap-x-4 justify-center fh:flex-col fh:flex-1 fh:items-center lg:overflow-auto">
+            <div className="mb-6 fh:mb-10">
+              <p className="topic mb-2 font-serif text-orange-400 text-lg fh:text-5xl">
+                work experience
+              </p>
+
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+            </div>
+
+            <div className="mb-6 fh:mb-10">
+              <p className="topic topic mb-2 serif text-orange-400 text-lg fh:text-5xl">
+                work experience
+              </p>
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+
+              <p className="topic-explanation font-sans text-2xl text-pink-100 font-light fh:text-3xl">
+                I’ve worked with Typescript on React projects for 4+ years
+              </p>
+            </div>
+
             <div className="mb-6 fh:mb-10">
               <p className="topic mb-2 font-serif text-orange-400 text-lg fh:text-5xl">
                 work experience
