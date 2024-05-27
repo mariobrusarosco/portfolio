@@ -2,34 +2,16 @@
 @tailwind utilities;
 
 @layer base {
-  /* width */
   ::-webkit-scrollbar {
     width: 2px;
     height: 2px;
   }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background-color: theme(colors.red-700);
-    border-radius: 2px;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background-color: theme(colors.pink-100);
-    border-radius: 2px;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: theme(colors.green-600);
-  }
 }
 
 @layer utilities {
-  /* [Vendor Support]: Firefox  */
-  * {
-    scrollbar-color: theme(colors.pink-500) theme(colors.pink-100);
+  .scroller {
+    /* First value == scrollbar-thumb . Second value == crollbar-track */
+    scrollbar-color: var(--active-primary) var(--active-secondary);
     scrollbar-width: thin;
   }
 }

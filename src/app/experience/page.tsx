@@ -6,14 +6,11 @@ import { screens } from "@/domain/shared/animations";
 import { useRouter, useSearchParams } from "next/navigation";
 import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
 import { Experience } from "@/domain/experience/typing/interfaces-and-enums";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
-  animateChildrenInSequence,
   revealAndMoveToRight,
   companyLabel,
 } from "@/domain/experience/animations";
-
-const listAnimation = animateChildrenInSequence(0.15);
 
 export default function ExperienceScreen() {
   const router = useRouter();
@@ -59,10 +56,24 @@ export default function ExperienceScreen() {
           </motion.h2>
         </section>
 
-        <section className="list-of-experiences mt-14 w-full overflow-auto lg:mt-12">
+        <section className="list-of-experiences mt-14 w-full lg:mt-12 ">
           <motion.ul
-            className="flex gap-8 pb-4 x-global-spacing justify-start items-start md:gap-4 lg:max-h-[250px] lg:flex-wrap lg:flex-col lg:px-0"
-            variants={listAnimation}
+            className="flex gap-8 pb-4 x-global-spacing justify-start items-start md:gap-4 lg:max-h-[250px] lg:flex-wrap lg:flex-col lg:px-0 scroller"
+            variants={{
+              hidden: {
+                opacity: 0,
+              },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.05,
+                  when: "beforeChildren",
+                },
+                transitionEnd: {
+                  overflow: "auto",
+                },
+              },
+            }}
             animate="visible"
             initial="hidden"
           >
@@ -128,7 +139,7 @@ const DetailSection = (props: {
   return (
     <section
       ref={ref}
-      className="experience-detail-section container x-global-spacing scrollable pr-4 mt-14 overflow-x-auto lg:m-0 "
+      className="experience-detail-section container x-global-spacing scrollable pr-4 mt-14 overflow-x-auto lg:m-0 scroller"
     >
       <ExperienceDetail
         experience={props.selectedExperience}
