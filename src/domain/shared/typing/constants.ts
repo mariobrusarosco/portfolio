@@ -1,3 +1,5 @@
+import { palette } from "../../styling/palette";
+
 export const AppBreakpoints = {
   "up-to-sm": "479px",
   sm: "480px",
@@ -25,23 +27,33 @@ export const AppBreakpointsMediaQueries = {
 export type PortfolioRoute = {
   path: string;
   label: string;
+  primaryColor: string;
+  secondaryColor?: string;
 };
 
 export const portfolioRouting: PortfolioRoute[] = [
   {
     path: "/",
     label: "Home",
+    primaryColor: palette["pink-100"].hex,
+    secondaryColor: palette["blue-green-300"].hex,
   },
   {
     path: "/experience",
     label: "Experience",
+    primaryColor: palette["pink-500"].hex,
+    secondaryColor: palette["blue-green-300"].hex,
   },
   {
     path: "/skills",
     label: "Skills",
+    primaryColor: palette["blue-green-300"].hex,
+    secondaryColor: palette["pink-500"].hex,
   },
   {
     path: "/side-projects",
     label: "Side Projects",
+    primaryColor: palette["orange-400"].hex,
+    secondaryColor: palette["blue-green-300"].hex,
   },
 ];
