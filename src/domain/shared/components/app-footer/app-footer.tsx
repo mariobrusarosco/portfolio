@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
 import { portfolioRouting } from "../../typing/constants";
-import { motion } from "framer-motion";
+import { TargetAndTransition, motion } from "framer-motion";
 import animations from "./animations";
 import { useScreenDetector } from "../../hooks/useScreenDetector";
 import { useState } from "react";
+import { palette } from "@/domain/styling/palette";
 
 const routeToBeIgnore = ["/"];
 const footerRoutes = portfolioRouting.filter(
@@ -31,11 +32,12 @@ const Menu = () => {
     <>
       <div className="hidden lg:flex lg:items-center">
         <motion.span
-          className="font-sans font-semibold text-lg uppercase text-pink-100 cursor-pointer p-4"
+          className="font-sans font-semibold text-lg uppercase text-pink-100 cursor-pointer p-4 pl-0"
           onClick={handleToggleMenu}
           layout="size"
-          whileHover="hover"
-          animate={isMenuOpen && "hover"}
+          animate={isMenuOpen ? "hover" : "default"}
+          initial="hidden"
+          whileHover={menu.trigger.hover as TargetAndTransition}
           variants={menu.trigger}
         >
           menu
@@ -44,7 +46,7 @@ const Menu = () => {
         <svg width="2" height="53" viewBox="0 0 2 53" fill="none">
           <motion.path
             d="M1 0V53"
-            className="mx-6 stroke-active-primary"
+            className="mx-6 stroke-pink-100"
             initial="hidden"
             animate={isMenuOpen ? "visible" : "hidden"}
             variants={menu.stem}
@@ -57,7 +59,7 @@ const Menu = () => {
         layout="position"
         animate={menuStatus}
         variants={menu.list}
-        className="hidden w-full justify-center gap-10 md:justify-around lg:ml-8 lg:justify-start lg:items-center lg:px-4"
+        className="hidden w-full justify-center gap-10 md:justify-around lg:ml-8 lg:justify-start lg:items-center"
       >
         {footerRoutes.map((route) => (
           <AnimatedLink key={route.path} {...route} />
@@ -86,14 +88,14 @@ const AnimatedLink = (props: { path: string; label: string }) => {
         >
           <div className="relative">
             <motion.div
-              className="h-[10px] w-[10px] absolute bg-active-primary rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="h-[10px] w-[10px] absolute bg-pink-100 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
               variants={hasHover ? menu.innerCircle : undefined}
             />
             <div className="w-[40px]">
               <motion.svg viewBox="0 0 40 40">
                 <motion.path
                   d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
-                  stroke="var(--active-primary)"
+                  stroke={palette["pink-100"].hex}
                   stroke-width="1"
                   variants={hasHover ? menu.outerCircle : undefined}
                   fill="transparent"
@@ -103,7 +105,7 @@ const AnimatedLink = (props: { path: string; label: string }) => {
           </div>
 
           <motion.span
-            className="font-sans font-light text-active-primary w-max lg:absolute lg:text-2xl lg:invisible"
+            className="font-sans font-light text-pink-100 w-max lg:absolute lg:text-2xl lg:invisible"
             variants={hasHover ? menu.label : undefined}
           >
             {label}

@@ -83,12 +83,18 @@ const innerCircle: Variants = {
 };
 
 const trigger = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
   default: {
-    fill: palette["pink-100"].hex,
+    y: 0,
+    opacity: 1,
   },
   hover: {
+    y: 0,
     letterSpacing: "0.4em",
-    color: "var(--active-primary)",
+    opacity: 1,
     transition: {
       duration: 0.8,
       type: "spring",

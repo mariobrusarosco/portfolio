@@ -1,6 +1,6 @@
 import { Variants } from "framer-motion";
 
-const circleAnimation: Variants = {
+const circle: Variants = {
   hover: {
     backgroundColor: "rgb(var(--light-green))",
     transition: {
@@ -11,7 +11,7 @@ const circleAnimation: Variants = {
   },
 };
 
-const labelAnimation: Variants = {
+const label: Variants = {
   hover: {
     visibility: "visible",
     opacity: 1,
@@ -24,26 +24,54 @@ const labelAnimation: Variants = {
   },
 };
 
-const stemAnimation: Variants = {
-  hover: {
-    y: -50,
+const homeLink: Variants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  default: {
     opacity: 1,
+    y: 0,
+  },
+  hover: {
+    letterSpacing: "0.4em",
     transition: {
       type: "spring",
+      stiffness: 200,
       damping: 10,
-      stiffness: 150,
     },
+  },
+};
 
-    backgroundColor: "rgb(var(--light-green))",
+const socialItem: Variants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  default: {
+    opacity: 1,
+    y: 0,
+  },
+  hover: {
+    y: -10,
+    scale: 1.1,
+    transition: {
+      type: "spring",
+    },
   },
 };
 
 const animations = {
-  desktopHeader: {
-    stem: stemAnimation,
-    circle: circleAnimation,
-    label: labelAnimation,
-  },
+  circle,
+  label,
+  socialItem,
+  homeLink,
+};
+
+const formatRGB = (color: string) => {
+  const [r, g, b] = color.split(" ");
+
+  return `rgb(${r}, ${g}, ${b})`;
 };
 
 export default animations;
