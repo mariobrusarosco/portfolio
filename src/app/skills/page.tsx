@@ -91,7 +91,7 @@ export default function Skills() {
           }
         )}
       >
-        <div className="skill-details-content h-full py-8  px-6 border border-active-primary scrollable overflow-x-auto lg:border-none lg:py-2 lg:px-2 lg:flex">
+        <div className="skill-details-content h-full py-8  px-6 border border-active-primary scrollable overflow-x-auto scroller lg:border-none lg:py-2 lg:px-2 lg:flex">
           <div className="heading flex justify-between items-center mb-10 lg:min-w-[450px] lg:mb-0  lg:sticky lg:top-0">
             <p className="font-serif text-2xl text-active-primary font-regular lg:text-6xl">
               {selectedSkill?.label}

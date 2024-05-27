@@ -30,7 +30,7 @@ export const companyLabel: Variants = {
     transition: {
       type: "spring",
       stiffness: 150,
-      dumping: 20,
+      dumping: 10,
       from: 0,
     },
   },
@@ -44,9 +44,10 @@ const jobDescriptionItem: Variants = {
     y: 0,
     transition: {
       type: "spring",
-      damping: 15,
+      damping: 18,
       stiffness: 200,
       delay: iterator * 0.03,
+      restSpeed: 0.5,
     },
   }),
   hidden: { opacity: 0, y: 20 },

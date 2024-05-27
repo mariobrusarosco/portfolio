@@ -1,6 +1,6 @@
-import { Experience } from "./typing/interfaces-and-enums";
+import { IExperience } from "./typing/interfaces-and-enums";
 
-export const experiences: Experience[] = [
+export const experiences: IExperience[] = [
   {
     id: "enext",
     queryParams: [{ id: "enext" }],

@@ -22,7 +22,7 @@ const bodyClasses = clsx(
 );
 
 const mainContainerClasses = clsx(
-  "fixed h-full w-full pt-[76px] pb-[116px] md:pt-[92px] overflow-hidden"
+  "fixed h-full w-full overflow-hidden pt-[76px] pb-[116px] md:pt-[92px] lg:pb-[92px]"
 );
 
 export default function RootLayout({
