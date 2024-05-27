@@ -3,6 +3,7 @@ import { TargetAndTransition, Variants, motion } from "framer-motion";
 import Link from "next/link";
 import { useScreenDetector } from "../../hooks/useScreenDetector";
 import animations from "./animations";
+import { onlyOnHover } from "../../utils/animations";
 
 const AppHeader = () => {
   const { hasHover } = useScreenDetector();
@@ -15,7 +16,7 @@ const AppHeader = () => {
             className="block uppercase font-sans text-pink-100 font-semibold cursor-pointer text-lg"
             initial="hidden"
             animate="default"
-            whileHover={animations.homeLink.hover as TargetAndTransition}
+            whileHover={onlyOnHover(hasHover, animations.homeLink.hover)}
             variants={animations.homeLink}
           >
             home

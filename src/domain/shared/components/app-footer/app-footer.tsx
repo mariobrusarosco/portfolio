@@ -32,7 +32,7 @@ const Menu = () => {
     <>
       <div className="hidden lg:flex lg:items-center">
         <motion.span
-          className="font-sans font-semibold text-lg uppercase text-pink-100 cursor-pointer p-4"
+          className="font-sans font-semibold text-lg uppercase text-pink-100 cursor-pointer p-4 pl-0"
           onClick={handleToggleMenu}
           layout="size"
           animate={isMenuOpen ? "hover" : "default"}
@@ -59,7 +59,7 @@ const Menu = () => {
         layout="position"
         animate={menuStatus}
         variants={menu.list}
-        className="hidden w-full justify-center gap-10 md:justify-around lg:ml-8 lg:justify-start lg:items-center lg:px-4"
+        className="hidden w-full justify-center gap-10 md:justify-around lg:ml-8 lg:justify-start lg:items-center"
       >
         {footerRoutes.map((route) => (
           <AnimatedLink key={route.path} {...route} />
