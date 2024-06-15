@@ -3,20 +3,23 @@ import { TargetAndTransition, Variants, motion } from "framer-motion";
 import Link from "next/link";
 import { useScreenDetector } from "../../hooks/useScreenDetector";
 import animations from "./animations";
-import { onlyOnHover } from "../../utils/animations";
+import { animateIfHoverExists } from "../../utils/animations";
 
 const AppHeader = () => {
   const { hasHover } = useScreenDetector();
 
   return (
-    <header className="w-screen position fixed top-0 left-0 z-10">
-      <div className="container x-global-spacing flex justify-between items-center py-6 md:py-8 lg:pt-12 lg:pb-4 ">
+    <header className="w-screen">
+      <div className="x-global-spacing flex justify-between items-center py-8">
         <Link className="block" href="./">
           <motion.span
             className="block uppercase font-sans text-pink-100 font-semibold cursor-pointer text-lg"
             initial="hidden"
             animate="default"
-            whileHover={onlyOnHover(hasHover, animations.homeLink.hover)}
+            whileHover={animateIfHoverExists(
+              hasHover,
+              animations.homeLink.hover
+            )}
             variants={animations.homeLink}
           >
             home

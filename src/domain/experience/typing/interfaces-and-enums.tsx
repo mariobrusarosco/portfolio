@@ -6,5 +6,4 @@ export interface IExperience {
   endDate: string | null;
   description: string[];
   location: string;
-  queryParams: Record<string, string | boolean>[];
 }

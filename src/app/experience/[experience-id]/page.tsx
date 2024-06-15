@@ -1,38 +1,43 @@
-import { motion } from "framer-motion";
-import { IExperience } from "../typing/interfaces-and-enums";
-import { Reveal } from "./reveal";
+"use client";
+
 import animations, {
   animateChildrenInSequence,
   revealAndMoveToRight,
 } from "@/domain/experience/animations";
+import { Reveal } from "@/domain/experience/components/reveal";
+import { EXPERIENCES } from "@/domain/experience/constants";
+import { IExperience } from "@/domain/experience/typing/interfaces-and-enums";
+import { motion } from "framer-motion";
+import { useParams } from "next/navigation";
 import { useMemo } from "react";
 const { company } = animations;
 
-interface Props {
-  experience: IExperience | undefined;
-}
-
-const Experience = ({ experience }: Props) => {
+const Experience = () => {
+  const params = useParams();
+  const experienceId = params["experience-id"];
+  const experience: IExperience | undefined = EXPERIENCES.find(
+    (exp) => exp.id === experienceId
+  );
   const wrapperAnimation = useMemo(() => animateChildrenInSequence(0.15), []);
 
   if (!experience) return null;
 
   return (
-    <div className="experience x-global-spacing overflow-auto scroller pb-6">
+    <div data-ui="experience" className="flex flex-col pt-12 overflow-auto">
       <motion.div
         animate="visible"
         initial="hidden"
         variants={wrapperAnimation}
       >
         <motion.p
-          className="lowercase font-light font-serif text-pink-500 text-7xl mb-6 lg:text-7xl lg:mb-10 lg:mt-5"
+          className="uppercase font-light font-serif text-4xl md:text-6xl mb-4 text-pink-500"
           variants={revealAndMoveToRight}
         >
           {experience.companyName}
         </motion.p>
 
         <motion.p
-          className="font-light font-sans text-lg text-blue-green-300 md:text-xl"
+          className="font-light font-sans my-1 text-blue-green-300 md:text-xl"
           variants={revealAndMoveToRight}
         >
           {new Date(experience.startDate).getFullYear()} -{" "}
@@ -49,14 +54,14 @@ const Experience = ({ experience }: Props) => {
         </motion.p>
 
         <motion.p
-          className="font-light font-sans text-lg text-blue-green-300"
+          className="font-light font-sans text-blue-green-300"
           variants={company.headeritem}
         >
           {experience.location}
         </motion.p>
       </motion.div>
 
-      <div className="flex flex-col gap-y-6 lg:gap-y-2 lg:pt-8">
+      <div className="flex flex-col gap-y-3 pt-4">
         {experience?.description.map((descriptionItem, i) => (
           <Reveal key={i} iterator={i}>
             <p className="font-sans font-light text-pink-100 text-xl md:text-2xl lg:text-lg ">
@@ -69,4 +74,4 @@ const Experience = ({ experience }: Props) => {
   );
 };
 
-export { Experience };
+export default Experience;

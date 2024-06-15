@@ -10,6 +10,7 @@ import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
 import animations from "@/domain/side-projects/animations";
 import { Project } from "@/domain/side-projects/components/project";
 import { cn } from "@/domain/shared/utils/classnames";
+import { ScreenHeading } from "@/domain/shared/components/screen-heading";
 
 export default function SideProjects() {
   const router = useRouter();
@@ -30,12 +31,13 @@ export default function SideProjects() {
 
     router.push(`${window.location.pathname}?${queryParamsString}`);
   };
+
   const handleCloseProjectDetails = () =>
     router.push(window?.location.pathname);
 
   return (
-    <div className="container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 fh:relative">
-      <Heading />
+    <div className="container x-global-spacing h-full">
+      <ScreenHeading prefix="these are my" title="side projects" />
       <List
         onSelectProject={handleSelectProject}
         selectedProject={selectedProject}
@@ -47,30 +49,6 @@ export default function SideProjects() {
     </div>
   );
 }
-
-const Heading = () => {
-  return (
-    <section className="heading-and-list-section pt-12 md:pt-4 lg:pt-2 lg:row-start-1">
-      <motion.p
-        initial="initial"
-        animate="animate"
-        variants={screens.heading}
-        className="w-fit font-serif text-active-secondary text-2xl tracking-[2px] md:text-3xl lg:text-4xl "
-      >
-        <span>these are my</span>
-      </motion.p>
-
-      <motion.h2
-        initial="initial"
-        animate="animate"
-        variants={screens.heading}
-        className="font-sans font-regular -tracking-[2px] text-active-primary text-6xl -mt-4 md:text-7xl lg:text-8xl"
-      >
-        side projects
-      </motion.h2>
-    </section>
-  );
-};
 
 const List = motion(
   ({
