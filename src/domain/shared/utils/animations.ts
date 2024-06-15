@@ -1,6 +1,6 @@
 import { TargetAndTransition } from "framer-motion";
 
-export const animateIfHoverExists = (
+export const animateIfHoverEnabled = (
   hasHover: boolean | null | undefined,
   animation: any
 ) => {

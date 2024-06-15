@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { PortfolioRoute, portfolioRouting } from "../shared/typing/constants";
 
@@ -18,14 +18,17 @@ const routeColors = portfolioRouting.reduce(
 export const ThemeSetup = () => {
   const paths = usePathname().split("/");
   const domainPath = paths[1];
-  const domainId = !domainPath ? "/" : `/${domainPath}`;
+  const domainIdOrRootPath = !domainPath ? "/" : `/${domainPath}`;
 
   useEffect(() => {
-    const colors = routeColors[domainId];
+    const dynamicColors = routeColors[domainIdOrRootPath];
     const root = document?.documentElement;
-    root.style.setProperty("--active-primary", colors.primaryColor);
-    root.style.setProperty("--active-secondary", colors.secondaryColor ?? "");
-  }, [paths, domainId]);
+    root.style.setProperty("--active-primary", dynamicColors.primaryColor);
+    root.style.setProperty(
+      "--active-secondary",
+      dynamicColors.secondaryColor ?? ""
+    );
+  }, [paths, domainIdOrRootPath]);
 
   return null;
 };
