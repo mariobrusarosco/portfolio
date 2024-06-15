@@ -14,7 +14,7 @@ const ListOfExperiences = () => {
     <div>
       <motion.ul
         data-ui="list-of-experiences"
-        className="flex gap-8 pb-6"
+        className="flex gap-8 pb-6 lg:flex-col lg:pr-16 lg:gap-4"
         variants={{
           hidden: {
             opacity: 0,
