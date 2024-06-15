@@ -1,6 +1,7 @@
 "use client";
 import { animateChildrenInSequence } from "@/domain/experience/animations";
 import { screens } from "@/domain/shared/animations";
+import { ScreenHeading } from "@/domain/shared/components/screen-heading";
 
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { cn } from "@/domain/shared/utils/classnames";
@@ -37,27 +38,9 @@ export default function Skills() {
   // console.log("listOfSkills", animations.listOfSkills);
 
   return (
-    <div className="container x-global-spacing h-full grid grid-cols-1 lg:grid-cols-2 md:content-start fh:relative">
-      <div className="column-wrapper lg:col-span-2 fh:col-span-1">
-        <section className="heading-and-list-section pt-12 md:pt-4 lg:col-span-2 lg:pt-2">
-          <motion.p
-            initial="initial"
-            animate="animate"
-            variants={screens.heading}
-            className="w-fit font-serif text-active-secondary text-2xl tracking-widest ml-4 md:text-3xl lg:text-4xl "
-          >
-            <span>this is my</span>
-          </motion.p>
-
-          <motion.h2
-            initial="initial"
-            animate="animate"
-            variants={screens.heading}
-            className="font-sans font-regular text-active-primary text-6xl -mt-6 md:text-7xl lg:text-8xl"
-          >
-            knowledge
-          </motion.h2>
-        </section>
+    <div className="container x-global-spacing h-full">
+      <div className="column-wrapper">
+        <ScreenHeading prefix="this is my" title="knowledge" />
 
         <section className="list-of-knowledge mt-16">
           <motion.ul
@@ -91,7 +74,7 @@ export default function Skills() {
           }
         )}
       >
-        <div className="skill-details-content h-full py-8  px-6 border border-active-primary scrollable overflow-x-auto lg:border-none lg:py-2 lg:px-2 lg:flex">
+        <div className="skill-details-content h-full py-8  px-6 border border-active-primary scrollable overflow-x-auto scroller lg:border-none lg:py-2 lg:px-2 lg:flex">
           <div className="heading flex justify-between items-center mb-10 lg:min-w-[450px] lg:mb-0  lg:sticky lg:top-0">
             <p className="font-serif text-2xl text-active-primary font-regular lg:text-6xl">
               {selectedSkill?.label}

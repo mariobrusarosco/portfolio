@@ -1,4 +1,4 @@
-export interface Experience {
+export interface IExperience {
   id: string;
   companyName: string;
   position: string;
@@ -6,5 +6,4 @@ export interface Experience {
   endDate: string | null;
   description: string[];
   location: string;
-  queryParams: Record<string, string | boolean>[];
 }

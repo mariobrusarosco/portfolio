@@ -16,16 +16,19 @@ const routeColors = portfolioRouting.reduce(
 );
 
 export const ThemeSetup = () => {
-  const pathname = usePathname();
+  const paths = usePathname().split("/");
+  const domainPath = paths[1];
+  const domainIdOrRootPath = !domainPath ? "/" : `/${domainPath}`;
 
   useEffect(() => {
-    const { primaryColor, secondaryColor } = routeColors[pathname];
-
+    const dynamicColors = routeColors[domainIdOrRootPath];
     const root = document?.documentElement;
-
-    root.style.setProperty("--active-primary", primaryColor);
-    root.style.setProperty("--active-secondary", secondaryColor ?? "");
-  }, [pathname]);
+    root.style.setProperty("--active-primary", dynamicColors.primaryColor);
+    root.style.setProperty(
+      "--active-secondary",
+      dynamicColors.secondaryColor ?? ""
+    );
+  }, [paths, domainIdOrRootPath]);
 
   return null;
 };

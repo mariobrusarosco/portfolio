@@ -1,9 +1,8 @@
-import { Experience } from "./typing/interfaces-and-enums";
+import { IExperience } from "./typing/interfaces-and-enums";
 
-export const experiences: Experience[] = [
+export const EXPERIENCES: IExperience[] = [
   {
     id: "enext",
-    queryParams: [{ id: "enext" }],
     companyName: "Enext",
     description: [
       "Development of e-commerce stores for the Brazilian market",
@@ -18,7 +17,6 @@ export const experiences: Experience[] = [
   },
   {
     id: "fiap",
-    queryParams: [{ id: "fiap" }],
     companyName: "FIAP",
     description: [
       "Development of a SPA  Web-Based Platform with multi-web-browser support",
@@ -34,7 +32,6 @@ export const experiences: Experience[] = [
   },
   {
     id: "red-ventures",
-    queryParams: [{ id: "red-ventures" }],
     companyName: "Red Ventures",
     description: [
       "Development of Web Applications - SPA",
@@ -52,7 +49,6 @@ export const experiences: Experience[] = [
   },
   {
     id: "origin",
-    queryParams: [{ id: "origin" }],
     companyName: "Origin",
     description: [
       "Product development from the ground up",

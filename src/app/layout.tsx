@@ -11,18 +11,20 @@ export const metadata: Metadata = {
   description: "Mario Brusarosco - Front End Developer",
 };
 
-const tabletOffsets = "tablet:pt-[156px] tablet:pb-[156px]";
-const desktopOffsets = "desktop:pt-[180px]";
-const bodyClasses = clsx(
-  "bg-cover bg-no-repeat bg-fixed bg-main-mobile antialiased",
-  tabletOffsets,
-  desktopOffsets,
+const htmlClasses = clsx(
   APP_FONTS_NEXTJS.josefinSlab.variable,
   APP_FONTS_NEXTJS.josefinSans.variable
 );
+const tabletOffsets = "";
+const desktopOffsets = "";
+const bodyClasses = clsx(
+  "bg-cover bg-no-repeat bg-fixed bg-main-mobile antialiased flex flex-col",
+  tabletOffsets,
+  desktopOffsets
+);
 
 const mainContainerClasses = clsx(
-  "fixed h-full w-full pt-[76px] pb-[116px] md:pt-[92px] overflow-hidden"
+  "x-global-spacing flex-1  max-h-[calc(100dvh-92px-92px)] overflow-hidden "
 );
 
 export default function RootLayout({
@@ -31,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={htmlClasses}>
       <body className={bodyClasses}>
         <ThemeSetup />
         <AppHeader />
