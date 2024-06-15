@@ -10,7 +10,7 @@ const AppHeader = () => {
 
   return (
     <header className="w-screen">
-      <div className="x-global-spacing flex justify-between items-center py-8">
+      <div className="x-global-spacing flex justify-between items-center py-8  fh:py-10">
         <Link className="block" href="./">
           <motion.span
             className="block uppercase font-sans text-pink-100 font-semibold cursor-pointer text-lg"

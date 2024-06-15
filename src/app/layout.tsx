@@ -24,7 +24,7 @@ const bodyClasses = clsx(
 );
 
 const mainContainerClasses = clsx(
-  "x-global-spacing flex-1  max-h-[calc(100dvh-92px-92px)] overflow-hidden"
+  "x-global-spacing flex-1  max-h-[calc(100dvh-92px-92px)] overflow-hidden "
 );
 
 export default function RootLayout({

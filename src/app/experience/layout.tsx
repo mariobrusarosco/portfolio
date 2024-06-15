@@ -3,7 +3,7 @@ import { ScreenHeading } from "@/domain/shared/components/screen-heading";
 
 const ExperienceLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section data-ui="experience-layout" className="h-full flex flex-col">
+    <div data-ui="experience-layout" className="h-full flex flex-col">
       <ScreenHeading prefix="these are my" title="experiences" />
 
       <div className="overflow-hidden flex flex-col pb-12 lg:flex-row lg:pb-0 lg:flex-1 xl:gap-x-16 xl:justify-between">
@@ -11,7 +11,7 @@ const ExperienceLayout = ({ children }: { children: React.ReactNode }) => {
 
         {children}
       </div>
-    </section>
+    </div>
   );
 };
 
