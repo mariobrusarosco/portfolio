@@ -2,23 +2,20 @@ import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { motion } from "framer-motion";
 import animations from "../animations";
 import { cn } from "@/domain/shared/utils/classnames";
-import { SkillProps } from "../typing/interfaces-and-enums";
+import { IKnowledge } from "../typing/interfaces-and-enums";
+import { useParams } from "next/navigation";
+import { KNOWLEDGE } from "../constants";
 
-const Skill = ({
-  skill,
-  selectedSkillId,
-}: {
-  skill: SkillProps;
-  selectedSkillId: string | undefined;
-}) => {
-  const isSelected = skill.id === selectedSkillId;
-  const isInSelectionMode = !!selectedSkillId;
+const Knowledge = ({ knowledge }: { knowledge: IKnowledge }) => {
+  const knowledgeId = useParams()["slug"];
+  const activeKnowledge = knowledge.id === knowledgeId;
+  const isInSelectionMode = !!activeKnowledge;
 
   return (
     // <h3 className="uppercase font-sans font-semibold text-pink-100 text-lg">
     <AnimatedLink
-      skill={skill}
-      isSelected={isSelected}
+      knowledge={knowledge}
+      isSelected={activeKnowledge}
       isInSelectionMode={isInSelectionMode}
     />
     // </h3>
@@ -27,10 +24,10 @@ const Skill = ({
 
 const AnimatedLink = ({
   isSelected,
-  skill,
+  knowledge,
   isInSelectionMode,
 }: {
-  skill: SkillProps;
+  knowledge: IKnowledge;
   isSelected: boolean;
   isInSelectionMode: boolean;
 }) => {
@@ -86,11 +83,11 @@ const AnimatedLink = ({
           "text-pink-100": !isSelected,
         })}
       >
-        {skill.label}
+        {knowledge.label}
       </motion.span>
     </motion.div>
     // </Link>
   );
 };
 
-export { Skill };
+export { Knowledge };

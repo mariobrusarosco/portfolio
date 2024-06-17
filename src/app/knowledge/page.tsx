@@ -6,78 +6,40 @@ import { ScreenHeading } from "@/domain/shared/components/screen-heading";
 import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { cn } from "@/domain/shared/utils/classnames";
 import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
-import animations from "@/domain/skills/animations";
-import { Skill } from "@/domain/skills/components/skill";
-import { skills } from "@/domain/skills/constants";
+import animations from "@/domain/knowledge/animations";
+import { KNOWLEDGE } from "@/domain/knowledge/constants";
 import { AnimatePresence, motion } from "framer-motion";
-import { useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { IKnowledge } from "@/domain/knowledge/typing/interfaces-and-enums";
 
-export default function Skills() {
+export default function KnowledgeRootScreen() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const selectedSkill = skills.find((skill) => {
-    return skill.id === searchParams.get("skill_id");
-  });
-  const handleSelectSkill = (skillId: string) => {
-    const selectedSkill = skills.find((skill) => {
-      return skill.id === skillId;
-    });
-
-    const queryParamsString = updateParamsOnURL({
-      searchParams,
-      queryParams: selectedSkill?.queryParams,
-    });
-
-    router.push(`${window.location.pathname}?${queryParamsString}`);
-  };
-  // const { hasHover } = useScreenDetector();
-
-  const stringToAnimate = !!selectedSkill ? "selected" : "visible";
+  const knowledgeId = useParams()["slug"];
+  const activeKnowledge: IKnowledge | undefined = KNOWLEDGE.find(
+    (exp) => exp.id === knowledgeId
+  );
+  // const stringToAnimate = !!selectedSkill ? "selected" : "visible";
   // console.log("stringToAnimate", stringToAnimate);
   // console.log("listOfSkills", animations.listOfSkills);
 
   return (
     <div className="container x-global-spacing h-full">
-      <div className="column-wrapper">
-        <ScreenHeading prefix="this is my" title="knowledge" />
-
-        <section className="list-of-knowledge mt-16">
-          <motion.ul
-            className="flex flex-wrap gap-8 pb-4 justify-center md:gap-14 lg:gap-x-6 lg:gap-y-6"
-            variants={animations.listOfSkills}
-            initial="hidden"
-            animate="visible"
-          >
-            {skills.map((skill) => (
-              <motion.li
-                className="min-w-[30px] md:min-w-[40px] lg:min-w-[80px]"
-                key={skill.id}
-                onClick={() => handleSelectSkill(skill.id)}
-                variants={animations.listItem}
-              >
-                <Skill skill={skill} selectedSkillId={selectedSkill?.id} />
-              </motion.li>
-            ))}
-          </motion.ul>
-        </section>
-      </div>
-
       <motion.div
         initial="default"
         variants={animations.skillContainer}
-        animate={selectedSkill ? "selected" : "default"}
+        animate={knowledgeId ? "selected" : "default"}
         className={cn(
           "skill-details-container h-[calc(100dvh-224px)] absolute w-screen left-0 top-[80px] pt-[150px] x-global-spacing lg:pt-[80px] fh:container",
           {
-            invisible: !selectedSkill,
+            invisible: !knowledgeId,
           }
         )}
       >
         <div className="skill-details-content h-full py-8  px-6 border border-active-primary scrollable overflow-x-auto scroller lg:border-none lg:py-2 lg:px-2 lg:flex">
           <div className="heading flex justify-between items-center mb-10 lg:min-w-[450px] lg:mb-0  lg:sticky lg:top-0">
             <p className="font-serif text-2xl text-active-primary font-regular lg:text-6xl">
-              {selectedSkill?.label}
+              {activeKnowledge?.label}
             </p>
 
             <div
