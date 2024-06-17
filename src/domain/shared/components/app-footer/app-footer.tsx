@@ -96,7 +96,7 @@ const AnimatedLink = (props: { path: string; label: string }) => {
                 <motion.path
                   d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
                   stroke={palette["pink-100"].hex}
-                  stroke-width="1"
+                  strokeWidth="1"
                   variants={hasHover ? menu.outerCircle : undefined}
                   fill="transparent"
                 />

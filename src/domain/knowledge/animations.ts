@@ -32,14 +32,16 @@ const skillListContainer = {
   },
 };
 
-const skillContainer = {
+const knowledgeContainer = {
   default: {
     opacity: 0,
+    scale: 0.5,
   },
   selected: {
     opacity: 1,
+    scale: 1,
     transition: {
-      delay: 0.25,
+      type: "spring",
     },
   },
 };
@@ -53,7 +55,7 @@ const selectedKnowledgeOuterCircle: Variants = {
         type: "spring",
         stiffness: 100,
         damping: 15,
-        restDelta: 0.01,
+        restDelta: 0.1,
       },
     },
   },
@@ -88,7 +90,7 @@ const listItem = {
 };
 
 const animations = {
-  skillContainer,
+  knowledgeContainer,
   skillListContainer,
   listOfSkills,
   listItem,

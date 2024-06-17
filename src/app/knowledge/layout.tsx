@@ -1,4 +1,4 @@
-import { ListOfKnowledges } from "@/domain/knowledge/components/list-of-knowledges";
+import { ListOfKnowledge } from "@/domain/knowledge/components/list-of-knowledge";
 import { ScreenHeading } from "@/domain/shared/components/screen-heading";
 
 const KnowledgeLayout = ({ children }: { children: React.ReactNode }) => {
@@ -6,10 +6,10 @@ const KnowledgeLayout = ({ children }: { children: React.ReactNode }) => {
     <div data-ui="knowledge-layout" className="h-full flex flex-col">
       <ScreenHeading prefix="this is my" title="knowledge" />
 
-      <div className="">
-        <ListOfKnowledges />
+      <div className="relative">
+        <ListOfKnowledge />
 
-        {children}
+        {/* {children} */}
       </div>
     </div>
   );

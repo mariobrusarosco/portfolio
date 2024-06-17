@@ -30,32 +30,12 @@ export const KNOWLEDGE: IKnowledge[] = [
     label: "Express",
   },
   {
-    id: "django",
-    label: "Django",
-  },
-  {
     id: "tailwindcss",
     label: "Tailwind CSS",
   },
   {
-    id: "python",
-    label: "Python",
-  },
-  {
-    id: "git",
-    label: "Git",
-  },
-  {
     id: "postgresql",
     label: "PostgreSQL",
-  },
-  {
-    id: "mongodb",
-    label: "MongoDB",
-  },
-  {
-    id: "firebase",
-    label: "Firebase",
   },
   {
     id: "vercel",
@@ -66,15 +46,7 @@ export const KNOWLEDGE: IKnowledge[] = [
     label: "Heroku",
   },
   {
-    id: "netlify",
-    label: "Netlify",
-  },
-  {
     id: "figma",
     label: "Figma",
-  },
-  {
-    id: "adobexd",
-    label: "Adobe XD",
   },
 ];
