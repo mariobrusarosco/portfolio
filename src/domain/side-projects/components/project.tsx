@@ -1,10 +1,4 @@
-import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
-import {
-  AnimatePresence,
-  motion,
-  useAnimate,
-  useWillChange,
-} from "framer-motion";
+import { motion } from "framer-motion";
 import animations from "../animations";
 import { cn } from "@/domain/shared/utils/classnames";
 import { SideProject } from "../typing/interfaces-and-enums";

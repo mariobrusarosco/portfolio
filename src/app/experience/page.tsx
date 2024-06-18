@@ -5,7 +5,7 @@ export default function ExperienceRootScreen() {
       className="flex flex-col h-full flex-1 pt-20 lg:pt-0"
     >
       <p className="text-pink-100 text-4xl font-thin lowercase">
-        Please select an experience on the navebar
+        Please select an experience on the navbar
       </p>
     </div>
   );
