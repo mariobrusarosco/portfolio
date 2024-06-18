@@ -1,5 +1,8 @@
 "use client";
+import animations from "@/domain/knowledge/animations";
 import { KNOWLEDGE } from "@/domain/knowledge/constants";
+import { cn } from "@/domain/shared/utils/classnames";
+import { AnimatePresence, motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
 
 export default function KnowledgeScreen() {
@@ -10,14 +13,18 @@ export default function KnowledgeScreen() {
   if (!knowledge) return null;
 
   return (
-    <div
-      data-ui="knowledge-screen"
-      className="hidden rounded py-8 px-6 absolute top-0 left-0 min-h-[300px] backdrop-filter 
-  backdrop-blur-md 
-  bg-opacity-10 desktop:bg-transparent"
+    // <AnimatePresence>
+    //   {isSelected && (
+    <motion.div
+      className={cn(
+        "rounded py-8 px-6 fixed h-screen w-screen grid place-content-center top-0 left-0 min-h-[300px] lg:flex lg:items-center lg:gap-x-24"
+      )}
+      animate="selected"
+      initial="default"
+      variants={animations.knowledgeContainer}
     >
-      <div className="flex justify-between mb-8">
-        <h2 className="text-3xl font-josefin text-teal-500">
+      <div className="flex justify-between items-center mb-8 lg:w-[300px] ">
+        <h2 className="text-4xl font-josefin text-teal-500">
           {knowledge.label}
         </h2>
 
@@ -40,13 +47,35 @@ export default function KnowledgeScreen() {
         </div>
       </div>
 
-      <div>
-        <p className="text-rose-100">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-          quasi optio, eos dolor ducimus quos velit! Quidem sequi placeat ipsa
-          est. Dicta fugiat, minus voluptate cumque ea sed aperiam eos.
-        </p>
+      <div className="flex flex-col gap-4 lg:gap-x-6 lg:flex-1 lg:flex-row">
+        {knowledge.academicExperience?.length && (
+          <div className="flex-1">
+            <h3 className="text-pink-500 font-semibold text-2xl">
+              academic experience
+            </h3>
+            <p className="text-rose-100">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
+              quasi optio, eos dolor ducimus quos velit! Quidem sequi placeat
+              ipsa est. Dicta fugiat, minus voluptate cumque ea sed aperiam eos.
+            </p>
+          </div>
+        )}
+
+        {knowledge.workExperience?.length && (
+          <div className="flex-1">
+            <h3 className="text-pink-500 font-semibold text-2xl">
+              work experience
+            </h3>
+            <p className="text-rose-100">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
+              quasi optio, eos dolor ducimus quos velit! Quidem sequi placeat
+              ipsa est. Dicta fugiat, minus voluptate cumque ea sed aperiam eos.
+            </p>
+          </div>
+        )}
       </div>
-    </div>
+    </motion.div>
+    //   )}
+    // </AnimatePresence>
   );
 }
