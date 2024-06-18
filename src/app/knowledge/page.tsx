@@ -1,17 +1,12 @@
 "use client";
-import { animateChildrenInSequence } from "@/domain/experience/animations";
-import { screens } from "@/domain/shared/animations";
-import { ScreenHeading } from "@/domain/shared/components/screen-heading";
-
-import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
-import { cn } from "@/domain/shared/utils/classnames";
 import { updateParamsOnURL } from "@/domain/shared/utils/url-manipulation";
 import animations from "@/domain/knowledge/animations";
 import { KNOWLEDGE } from "@/domain/knowledge/constants";
-import { AnimatePresence, motion } from "framer-motion";
-import { useParams, useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
+import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { IKnowledge } from "@/domain/knowledge/typing/interfaces-and-enums";
+import { cn } from "@/domain/shared/utils/classnames";
 
 export default function KnowledgeRootScreen() {
   const router = useRouter();
@@ -27,7 +22,7 @@ export default function KnowledgeRootScreen() {
     <div className="container x-global-spacing h-full">
       <motion.div
         initial="default"
-        variants={animations.skillContainer}
+        variants={animations.knowledgeContainer}
         animate={knowledgeId ? "selected" : "default"}
         className={cn(
           "skill-details-container h-[calc(100dvh-224px)] absolute w-screen left-0 top-[80px] pt-[150px] x-global-spacing lg:pt-[80px] fh:container",

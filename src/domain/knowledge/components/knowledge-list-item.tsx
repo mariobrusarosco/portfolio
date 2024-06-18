@@ -1,11 +1,9 @@
 "use client";
-import { useScreenDetector } from "@/domain/shared/hooks/useScreenDetector";
 import { motion, AnimatePresence } from "framer-motion";
 import animations from "../animations";
 import { cn } from "@/domain/shared/utils/classnames";
 import { IKnowledge } from "../typing/interfaces-and-enums";
 import { useParams, useRouter } from "next/navigation";
-import { KNOWLEDGE } from "../constants";
 
 const KnowledgeListItem = ({ knowledge }: { knowledge: IKnowledge }) => {
   const router = useRouter();
@@ -16,13 +14,14 @@ const KnowledgeListItem = ({ knowledge }: { knowledge: IKnowledge }) => {
   return (
     <>
       <motion.div
-        whileHover="hover"
-        initial="default"
-        animate="default"
+        // whileHover="hover"
+        // initial="default"
+        // animate="default"
         className={cn(
           "relative flex flex-col items-center gap-y-1 cursor-pointer",
           {
             "opacity-0 invisible": isInSelectionMode && !isSelected,
+            "cursor-auto": isSelected,
           }
         )}
       >
@@ -73,13 +72,19 @@ const KnowledgeListItem = ({ knowledge }: { knowledge: IKnowledge }) => {
       <AnimatePresence>
         {isSelected && (
           <motion.div
-            className="rounded py-8 px-6 absolute top-0 left-0 min-h-[300px]"
+            className={cn(
+              "rounded py-8 px-6 fixed h-screen w-screen grid place-content-center top-0 left-0 min-h-[300px] lg:flex lg:items-center lg:gap-x-24",
+              {
+                "z-[2]": isSelected,
+                "z-[1]": !isSelected,
+              }
+            )}
             animate={isSelected ? "selected" : "default"}
             initial="default"
             variants={animations.knowledgeContainer}
           >
-            <div className="flex justify-between mb-8">
-              <h2 className="text-3xl font-josefin text-teal-500">
+            <div className="flex justify-between items-center mb-8 lg:w-[300px] ">
+              <h2 className="text-4xl font-josefin text-teal-500">
                 {knowledge.label}
               </h2>
 
@@ -87,7 +92,6 @@ const KnowledgeListItem = ({ knowledge }: { knowledge: IKnowledge }) => {
                 className="flex gap-1 justify-between items-center  cursor-pointer"
                 onClick={() => {
                   router.back();
-                  // router.push(`/knowledge/dsadsadsadsa`);
                 }}
               >
                 <p className="uppercase text-pink-100 text-xs">back</p>
@@ -105,14 +109,34 @@ const KnowledgeListItem = ({ knowledge }: { knowledge: IKnowledge }) => {
               </div>
             </div>
 
-            <div>
-              <span onClick={() => router.push("/experience")}>Dashboar</span>
-              <p className="text-rose-100">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Nesciunt quasi optio, eos dolor ducimus quos velit! Quidem sequi
-                placeat ipsa est. Dicta fugiat, minus voluptate cumque ea sed
-                aperiam eos.
-              </p>
+            <div className="flex flex-col gap-4 lg:gap-x-6 lg:flex-1 lg:flex-row">
+              {knowledge.academicExperience?.length && (
+                <div className="flex-1">
+                  <h3 className="text-pink-500 font-semibold text-2xl">
+                    academic experience
+                  </h3>
+                  <p className="text-rose-100">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Nesciunt quasi optio, eos dolor ducimus quos velit! Quidem
+                    sequi placeat ipsa est. Dicta fugiat, minus voluptate cumque
+                    ea sed aperiam eos.
+                  </p>
+                </div>
+              )}
+
+              {knowledge.workExperience?.length && (
+                <div className="flex-1">
+                  <h3 className="text-pink-500 font-semibold text-2xl">
+                    work experience
+                  </h3>
+                  <p className="text-rose-100">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Nesciunt quasi optio, eos dolor ducimus quos velit! Quidem
+                    sequi placeat ipsa est. Dicta fugiat, minus voluptate cumque
+                    ea sed aperiam eos.
+                  </p>
+                </div>
+              )}
             </div>
           </motion.div>
         )}
