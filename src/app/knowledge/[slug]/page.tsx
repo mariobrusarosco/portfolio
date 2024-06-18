@@ -2,7 +2,7 @@
 import animations from "@/domain/knowledge/animations";
 import { KNOWLEDGE } from "@/domain/knowledge/constants";
 import { cn } from "@/domain/shared/utils/classnames";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
 
 export default function KnowledgeScreen() {
@@ -13,11 +13,9 @@ export default function KnowledgeScreen() {
   if (!knowledge) return null;
 
   return (
-    // <AnimatePresence>
-    //   {isSelected && (
     <motion.div
       className={cn(
-        "rounded py-8 px-6 fixed h-screen w-screen grid place-content-center top-0 left-0 min-h-[300px] lg:flex lg:items-center lg:gap-x-24"
+        "x-global-spacing py-8 px-10 fixed h-screen w-screen grid place-content-center top-0 left-0 min-h-[300px] lg:flex lg:items-center lg:gap-x-24"
       )}
       animate="selected"
       initial="default"
@@ -53,11 +51,11 @@ export default function KnowledgeScreen() {
             <h3 className="text-pink-500 font-semibold text-2xl">
               academic experience
             </h3>
-            <p className="text-rose-100">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-              quasi optio, eos dolor ducimus quos velit! Quidem sequi placeat
-              ipsa est. Dicta fugiat, minus voluptate cumque ea sed aperiam eos.
-            </p>
+            {knowledge.academicExperience?.map((text, i) => (
+              <p className="text-rose-100" key={`text-${i}`}>
+                {text}
+              </p>
+            ))}
           </div>
         )}
 
@@ -66,16 +64,14 @@ export default function KnowledgeScreen() {
             <h3 className="text-pink-500 font-semibold text-2xl">
               work experience
             </h3>
-            <p className="text-rose-100">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-              quasi optio, eos dolor ducimus quos velit! Quidem sequi placeat
-              ipsa est. Dicta fugiat, minus voluptate cumque ea sed aperiam eos.
-            </p>
+            {knowledge.workExperience?.map((text, i) => (
+              <p className="text-rose-100" key={`text-${i}`}>
+                {text}
+              </p>
+            ))}
           </div>
         )}
       </div>
     </motion.div>
-    //   )}
-    // </AnimatePresence>
   );
 }
