@@ -1,6 +1,6 @@
 import { Variants } from "framer-motion";
 
-const selectedKnowledgeOuterCircle: Variants = {
+const selectedProjectOuterCircle: Variants = {
   default: {
     pathLength: 1,
     rotate: "32deg",
@@ -37,13 +37,13 @@ const innerCircle: Variants = {
     opacity: 1,
     x: "-50%",
     y: "-50%",
-    transition: {
-      type: "spring",
-      duration: 1,
-      bounce: 0.25,
-      damping: 15,
-    },
+    // transition: {
+    //   type: "spring",
+    //   duration: 1,
+    //   bounce: 0.25,
+    //   damping: 15,
   },
+  // },
   // hidden: {
   //   opacity: 0,
   //   transition: {
@@ -86,7 +86,7 @@ const projectContainer: Variants = {
     transition: {
       type: "spring",
       duration: 2,
-      delay: 2.5,
+      delay: 2,
     },
   },
 };
@@ -106,7 +106,7 @@ const animations = {
   innerCircle,
   outerCircle,
   label,
-  selectedKnowledgeOuterCircle,
+  selectedProjectOuterCircle,
 };
 
 export default animations;

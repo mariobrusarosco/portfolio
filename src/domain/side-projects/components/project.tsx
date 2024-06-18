@@ -1,18 +1,15 @@
 import { motion } from "framer-motion";
 import animations from "../animations";
 import { cn } from "@/domain/shared/utils/classnames";
-import { SideProject } from "../typing/interfaces-and-enums";
+import { ISideProject } from "../typing/interfaces-and-enums";
 import { useProjectAnimation } from "../useProjectAnimation";
+import { useParams } from "next/navigation";
 
-const Project = ({
-  project,
-  selectedProjectId,
-}: {
-  project: SideProject;
-  selectedProjectId: string | undefined;
-}) => {
-  const isSelected = project.id === selectedProjectId;
-  const isInSelectionMode = !!selectedProjectId;
+const Project = ({ project }: { project: ISideProject }) => {
+  const proejctId = useParams()["slug"];
+  const isSelected = project.id === proejctId;
+  const isInSelectionMode = !!proejctId;
+
   const { scope, handleAnimation } = useProjectAnimation(isSelected);
 
   return (
@@ -29,7 +26,7 @@ const Project = ({
           style={{ x: "-50%", y: "-50%" }}
           initial="default"
           className={cn(
-            "inner-circle absolute h-[8px] w-[8px] bg-pink-100 rounded-full left-1/2 top-1/2 md:h-[10px] md:w-[10px]",
+            "inner-circle absolute h-[8px] w-[8px] bg-pink-100 rounded-full left-1/2 top-1/2 md:h-[8px] md:w-[8px]",
             {
               "bg-orange-400": isSelected,
             }
@@ -60,7 +57,7 @@ const Project = ({
       <motion.p
         animate={isInSelectionMode ? undefined : "default"}
         className={cn(
-          "project-label text-pink-100 font-semibold uppercase text-lg font-sans",
+          "project-label text-pink-100 font-light lowercase text-lg font-sans",
           {
             "text-orange-400": isSelected,
           }

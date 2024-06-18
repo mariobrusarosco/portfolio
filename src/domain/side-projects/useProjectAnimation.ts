@@ -1,7 +1,8 @@
 import { useAnimate } from "framer-motion";
-import { useEffect } from "react";
+import { use, useEffect, useRef } from "react";
 
 const useProjectAnimation = (isSelected: boolean) => {
+  // const hasSeenAnimation = useRef(false);
   const [scope, animate] = useAnimate();
 
   const moveInnerCircleToLeft = async () => {
@@ -65,24 +66,32 @@ const useProjectAnimation = (isSelected: boolean) => {
     crackOuterCircle(0.9);
     await moveInnerCircleToMiddle();
 
+    console.log("[ANIMATION] PART 1");
+
     await moveInnerCircleToLeft();
     crackOuterCircle(0.8);
     await moveInnerCircleToMiddle();
+    console.log("[ANIMATION] PART 2");
 
     await breakOuterCircle();
     crackOuterCircle(1);
     fadeLabelAndOuterCircle();
 
+    console.log("[ANIMATION] PART 3");
     await scaleInnerCircleUp();
     await fadeInnerCircleOut();
   };
 
   useEffect(() => {
-    console.log("somethings changed!", { isSelected });
+    console.log("[ANIMATION] somethings changed!", { isSelected });
 
     if (!isSelected) return;
 
     handleAnimation();
+
+    return () => {
+      console.log("[ANIMATION] RESET ANIMATION");
+    };
   }, [isSelected]);
 
   return { scope, handleAnimation };

@@ -12,7 +12,20 @@ import { Project } from "@/domain/side-projects/components/project";
 import { cn } from "@/domain/shared/utils/classnames";
 import { ScreenHeading } from "@/domain/shared/components/screen-heading";
 
-export default function SideProjects() {
+export default function SideProjectRootScreen() {
+  return (
+    <div
+      data-ui="side-projects-root-screen"
+      className="flex flex-col h-full flex-1 pt-20 lg:pt-0"
+    >
+      <p className="text-pink-100 text-4xl font-thin lowercase">
+        Please select a side project on the navbar
+      </p>
+    </div>
+  );
+}
+
+export function SideProjectsa() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedProject = sideProjects.find((project) => {
@@ -37,7 +50,6 @@ export default function SideProjects() {
 
   return (
     <div className="container x-global-spacing h-full">
-      <ScreenHeading prefix="these are my" title="side projects" />
       <List
         onSelectProject={handleSelectProject}
         selectedProject={selectedProject}
@@ -73,10 +85,10 @@ const List = motion(
               onClick={() => onSelectProject(project.id)}
               // variants={animations.listItem}
             >
-              <Project
+              {/* <Project
                 project={project}
                 selectedProjectId={selectedProject?.id}
-              />
+              /> */}
             </motion.li>
           ))}
         </motion.ul>
