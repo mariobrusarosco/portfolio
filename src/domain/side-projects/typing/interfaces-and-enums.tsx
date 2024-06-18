@@ -1,7 +1,14 @@
-export interface SideProject {
+export interface ISideProject {
   label: string;
-  queryParams: Record<string, string | boolean>[];
   url: string;
   id: string;
-  Component: React.FC;
+  description: React.ReactNode;
+  // benefits: React.ReactNode;
+  // stack: React.ReactNode;
+}
+
+export interface SideProject {
+  label: string;
+  url: string;
+  id: string;
 }

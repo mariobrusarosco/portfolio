@@ -37,7 +37,7 @@ const useProjectAnimation = (isSelected: boolean) => {
     await animate(
       ".inner-circle",
       {
-        opacity: 0.1,
+        opacity: 0.01,
         zIndex: -1,
       },
       { type: "spring", bounce: 0 }
@@ -65,21 +65,23 @@ const useProjectAnimation = (isSelected: boolean) => {
     crackOuterCircle(0.9);
     await moveInnerCircleToMiddle();
 
+    console.log("[ANIMATION] PART 1");
+
     await moveInnerCircleToLeft();
     crackOuterCircle(0.8);
     await moveInnerCircleToMiddle();
+    console.log("[ANIMATION] PART 2");
 
     await breakOuterCircle();
     crackOuterCircle(1);
     fadeLabelAndOuterCircle();
 
+    console.log("[ANIMATION] PART 3");
     await scaleInnerCircleUp();
     await fadeInnerCircleOut();
   };
 
   useEffect(() => {
-    console.log("somethings changed!", { isSelected });
-
     if (!isSelected) return;
 
     handleAnimation();
