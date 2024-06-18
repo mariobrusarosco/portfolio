@@ -10,7 +10,7 @@ const Project = ({ project }: { project: ISideProject }) => {
   const isSelected = project.id === proejctId;
   const isInSelectionMode = !!proejctId;
 
-  const { scope, handleAnimation } = useProjectAnimation(isSelected);
+  const { scope } = useProjectAnimation(isSelected);
 
   return (
     <div
@@ -19,7 +19,7 @@ const Project = ({ project }: { project: ISideProject }) => {
         "opacity-5 invisible": isInSelectionMode && !isSelected,
       })}
     >
-      <div className="relative w-[30px]" onClick={handleAnimation}>
+      <div className="relative w-[30px]">
         <motion.div
           variants={animations.innerCircle}
           animate={isSelected ? undefined : "default"}

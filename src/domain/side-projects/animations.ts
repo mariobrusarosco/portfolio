@@ -37,21 +37,13 @@ const innerCircle: Variants = {
     opacity: 1,
     x: "-50%",
     y: "-50%",
-    // transition: {
-    //   type: "spring",
-    //   duration: 1,
-    //   bounce: 0.25,
-    //   damping: 15,
+    transition: {
+      type: "spring",
+      duration: 1,
+      bounce: 0.25,
+      damping: 15,
+    },
   },
-  // },
-  // hidden: {
-  //   opacity: 0,
-  //   transition: {
-  //     type: "spring",
-  //     duration: 2,
-  //     delay: 1.5,
-  //   },
-  // },
 };
 
 const outerCircle: Variants = {
@@ -78,15 +70,15 @@ const projectContainer: Variants = {
     opacity: 0,
     transition: {
       type: "spring",
-      duration: 1,
+      duration: 0.5,
     },
   },
   selected: {
     opacity: 1,
     transition: {
       type: "spring",
-      duration: 2,
-      delay: 2,
+      duration: 3,
+      delay: 3.5,
     },
   },
 };

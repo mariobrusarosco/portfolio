@@ -1,8 +1,7 @@
 import { useAnimate } from "framer-motion";
-import { use, useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 const useProjectAnimation = (isSelected: boolean) => {
-  // const hasSeenAnimation = useRef(false);
   const [scope, animate] = useAnimate();
 
   const moveInnerCircleToLeft = async () => {
@@ -38,7 +37,7 @@ const useProjectAnimation = (isSelected: boolean) => {
     await animate(
       ".inner-circle",
       {
-        opacity: 0.1,
+        opacity: 0.01,
         zIndex: -1,
       },
       { type: "spring", bounce: 0 }
@@ -83,15 +82,9 @@ const useProjectAnimation = (isSelected: boolean) => {
   };
 
   useEffect(() => {
-    console.log("[ANIMATION] somethings changed!", { isSelected });
-
     if (!isSelected) return;
 
     handleAnimation();
-
-    return () => {
-      console.log("[ANIMATION] RESET ANIMATION");
-    };
   }, [isSelected]);
 
   return { scope, handleAnimation };
