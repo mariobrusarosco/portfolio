@@ -15,17 +15,6 @@ const htmlClasses = clsx(
   APP_FONTS_NEXTJS.josefinSlab.variable,
   APP_FONTS_NEXTJS.josefinSans.variable
 );
-const tabletOffsets = "";
-const desktopOffsets = "";
-const bodyClasses = clsx(
-  "bg-cover bg-no-repeat bg-fixed bg-main-mobile antialiased flex flex-col",
-  tabletOffsets,
-  desktopOffsets
-);
-
-const mainContainerClasses = clsx(
-  "x-global-spacing flex-1  max-h-[calc(100dvh-92px-92px)] overflow-hidden "
-);
 
 export default function RootLayout({
   children,
@@ -34,10 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={htmlClasses}>
-      <body className={bodyClasses}>
+      <body className="bg-cover bg-no-repeat bg-fixed bg-main-mobile antialiased flex flex-col overflow-hidden">
         <ThemeSetup />
         <AppHeader />
-        <main className={mainContainerClasses}>{children}</main>
+        <main className="x-global-spacing flex-1  max-h-[calc(100dvh-92px-92px)] z-10 relative">
+          {children}
+        </main>
         <AppFooter />
       </body>
     </html>

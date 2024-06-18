@@ -22,22 +22,19 @@ export default function KnowledgeScreen() {
       variants={animations.knowledgeContainer}
     >
       <div className="flex justify-between items-center mb-8 lg:w-[300px] ">
-        <h2 className="text-4xl font-josefin text-teal-500">
-          {knowledge.label}
-        </h2>
+        <h2 className="text-4xl font-serif text-teal-500">{knowledge.label}</h2>
 
         <div
           className="flex gap-1 justify-between items-center  cursor-pointer"
           onClick={back}
         >
-          <p className="uppercase text-pink-100 text-xs">back</p>
+          <p className="uppercase text-teal-500 text-xs">back</p>
           <div className="w-5 h-5 border border-teal-500 p-1 rounded-full">
             <svg
               viewBox="0 0 7 7"
-              className="stroke-active-primary"
+              className="stroke-teal-500"
               fill="none"
               strokeWidth="0.5"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M3.68555 1L1.43555 3.5M7 3.5H1.43555M1.43555 3.5L3.68555 6.5" />
             </svg>
@@ -48,7 +45,7 @@ export default function KnowledgeScreen() {
       <div className="flex flex-col gap-4 lg:gap-x-6 lg:flex-1 lg:flex-row">
         {knowledge.academicExperience?.length && (
           <div className="flex-1">
-            <h3 className="text-pink-500 font-semibold text-2xl">
+            <h3 className="text-pink-500 font-light text-2xl">
               academic experience
             </h3>
             {knowledge.academicExperience?.map((text, i) => (
@@ -61,7 +58,7 @@ export default function KnowledgeScreen() {
 
         {knowledge.workExperience?.length && (
           <div className="flex-1">
-            <h3 className="text-pink-500 font-semibold text-2xl">
+            <h3 className="text-pink-500 font-light text-2xl">
               work experience
             </h3>
             {knowledge.workExperience?.map((text, i) => (

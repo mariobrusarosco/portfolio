@@ -9,7 +9,7 @@ const AppHeader = () => {
   const { hasHover } = useScreenDetector();
 
   return (
-    <header className="w-screen">
+    <header className="w-screen z-20 relative">
       <div className="x-global-spacing flex justify-between items-center py-8  fh:py-10">
         <Link className="block" href="./">
           <motion.span
