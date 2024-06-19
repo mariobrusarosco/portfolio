@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={htmlClasses}>
-      <body className="bg-cover bg-no-repeat bg-fixed bg-main-mobile antialiased flex flex-col overflow-hidden">
+      <body className="bg-cover bg-no-repeat bg-fixed bg-main-mobile antialiased flex flex-col overflow-hidden md:bg-main-tablet lg:bg-main-desktop xl:bg-main-desktop-large fh:bg-main-full-hd">
         <ThemeSetup />
         <AppHeader />
         <main className="x-global-spacing flex-1  max-h-[calc(100dvh-92px-92px)] z-10 relative">

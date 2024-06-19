@@ -26,6 +26,8 @@ const config: Config = {
         "main-mobile": "url('/main-bg-mobile.jpg')",
         "main-tablet": "url('/main-bg-tablet.jpg')",
         "main-desktop": "url('/main-bg-desktop.jpg')",
+        "main-desktop-large": "url('/main-bg-desktop-large.jpg')",
+        "main-full-hd": "url('/main-bg-full-hd.jpg')",
       },
       colors: {
         "pink-100": palette["pink-100"].hex,
