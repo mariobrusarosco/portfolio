@@ -3,8 +3,8 @@ export interface ISideProject {
   url: string;
   id: string;
   description: React.ReactNode;
-  // benefits: React.ReactNode;
-  // stack: React.ReactNode;
+  benefits: React.ReactNode;
+  stack: React.ReactNode;
 }
 
 export interface SideProject {

@@ -1,6 +1,7 @@
 "use client";
 import animations from "@/domain/knowledge/animations";
 import { KNOWLEDGE } from "@/domain/knowledge/constants";
+import { CircleAndDot } from "@/domain/shared/components/circle-and-dots";
 import { cn } from "@/domain/shared/utils/classnames";
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
@@ -15,24 +16,26 @@ export default function KnowledgeScreen() {
   return (
     <motion.div
       className={cn(
-        "x-global-spacing py-8 px-10 fixed h-screen w-screen grid place-content-center top-0 left-0 min-h-[300px] lg:flex lg:items-center lg:gap-x-24"
+        "x-global-spacing absolute h-screen w-screen top-[150px] left-0 lg:flex lg:items-center lg:gap-x-24"
       )}
       animate="selected"
       initial="default"
       variants={animations.knowledgeContainer}
     >
-      <div className="flex justify-between items-center mb-8 lg:w-[300px] ">
-        <h2 className="text-4xl font-serif text-teal-500">{knowledge.label}</h2>
+      <div className="flex justify-between items-center mb-14 lg:w-[300px]">
+        <h2 className="text-5xl font-thin text-blue-green-300 lowercase">
+          {knowledge.label}
+        </h2>
 
         <div
           className="flex gap-1 justify-between items-center  cursor-pointer"
           onClick={back}
         >
-          <p className="uppercase text-teal-500 text-xs">back</p>
-          <div className="w-5 h-5 border border-teal-500 p-1 rounded-full">
+          <p className="uppercase text-pink-100 text-xs font-light">back</p>
+          <div className="w-6 h-6 border border-blue-green-300 p-2 rounded-full">
             <svg
               viewBox="0 0 7 7"
-              className="stroke-teal-500"
+              className="stroke-blue-green-300"
               fill="none"
               strokeWidth="0.5"
             >
@@ -42,33 +45,45 @@ export default function KnowledgeScreen() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 lg:gap-x-6 lg:flex-1 lg:flex-row">
-        {knowledge.academicExperience?.length && (
-          <div className="flex-1">
-            <h3 className="text-pink-500 font-light text-2xl">
-              academic experience
-            </h3>
-            {knowledge.academicExperience?.map((text, i) => (
-              <p className="text-rose-100" key={`text-${i}`}>
-                {text}
-              </p>
-            ))}
-          </div>
-        )}
-
-        {knowledge.workExperience?.length && (
-          <div className="flex-1">
-            <h3 className="text-pink-500 font-light text-2xl">
+      <div className="flex flex-col mb-10 lg:gap-x-6 lg:flex-1 lg:flex-row">
+        {knowledge?.workExperience ? (
+          <>
+            <h3 className="text-blue-green-300 font-light text-xl">
               work experience
             </h3>
-            {knowledge.workExperience?.map((text, i) => (
-              <p className="text-rose-100" key={`text-${i}`}>
-                {text}
-              </p>
-            ))}
-          </div>
-        )}
+            <ul className="flex gap-x-6  gap-y-2 flex-wrap ">
+              {knowledge.workExperience.map((exp) => (
+                <li
+                  key={exp}
+                  className="text-pink-100 font-light text-lg flex items-center gap-x-2"
+                >
+                  <CircleAndDot color="pink-500" className="w-4 h-4" />
+                  <span>{exp}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : null}
       </div>
+
+      {knowledge?.academicExperience ? (
+        <>
+          <h3 className="text-blue-green-300 font-light text-xl">
+            academic experience
+          </h3>
+          <ul className="flex gap-2 flex-wrap">
+            {knowledge.academicExperience.map((exp) => (
+              <li
+                key={exp}
+                className="text-pink-100 font-light text-lg flex items-center gap-x-2"
+              >
+                <CircleAndDot color="pink-800" className="w-4 h-4" />
+                <span>{exp}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : null}
     </motion.div>
   );
 }

@@ -60,7 +60,7 @@ const selectedKnowledgeOuterCircle: Variants = {
     },
   },
   selected: {
-    opacity: 0.01,
+    opacity: 0.004,
     scale: 30,
     transition: {
       opacity: {

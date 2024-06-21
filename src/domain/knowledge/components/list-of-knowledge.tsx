@@ -8,7 +8,10 @@ const ListOfKnowledge = () => {
   const router = useRouter();
 
   return (
-    <section data-ui="knowledge-list" className="flex-1 flex items-center">
+    <div
+      data-ui="knowledge-list"
+      className="flex-1 flex items-center justify-center"
+    >
       <motion.ul
         className="flex flex-wrap gap-8 pb-4 justify-center md:gap-14 lg:gap-x-6 lg:gap-y-6 relative"
         variants={animations.listOfSkills}
@@ -26,7 +29,7 @@ const ListOfKnowledge = () => {
           </motion.li>
         ))}
       </motion.ul>
-    </section>
+    </div>
   );
 };
 

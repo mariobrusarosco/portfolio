@@ -1,10 +1,10 @@
 "use client";
 import animations from "@/domain/side-projects/animations";
-import { KNOWLEDGE } from "@/domain/knowledge/constants";
 import { cn } from "@/domain/shared/utils/classnames";
 import { SIDE_PROJECTS } from "@/domain/side-projects/constants";
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
+import { CircleAndDot } from "@/domain/shared/components/circle-and-dots";
 
 export default function ProjectScreen() {
   const projectgeId = useParams()["slug"];
@@ -23,8 +23,8 @@ export default function ProjectScreen() {
       initial="default"
       variants={animations.projectContainer}
     >
-      <div className="flex justify-between items-center mb-8 lg:w-[300px] ">
-        <h2 className="text-4xl font-serif text-oraborder-orange-500">
+      <div className="flex justify-between items-center mb-14 lg:w-[300px]">
+        <h2 className="text-5xl font-thin text-orange-400 lowercase">
           {project.label}
         </h2>
 
@@ -32,11 +32,11 @@ export default function ProjectScreen() {
           className="flex gap-1 justify-between items-center  cursor-pointer"
           onClick={back}
         >
-          <p className="uppercase text-oraborder-orange-500 text-xs">back</p>
-          <div className="w-5 h-5 border border-orange-500 p-1 rounded-full">
+          <p className="uppercase text-pink-100 text-xs font-light">back</p>
+          <div className="w-6 h-6 border border-blue-green-300 p-2 rounded-full">
             <svg
               viewBox="0 0 7 7"
-              className="stroke-oraborder-orange-500"
+              className="stroke-blue-green-300"
               fill="none"
               strokeWidth="0.5"
             >
@@ -46,19 +46,26 @@ export default function ProjectScreen() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 lg:gap-x-6 lg:flex-1 lg:flex-row">
-        <div className="flex-1">
-          <h3 className="text-orange-500 font-light text-2xl">project</h3>
-          <p className="text-rose-100">{project.description}</p>
+      {project?.description ? (
+        <div className="mb-10">
+          <h3 className="text-orange-400 font-light text-xl">project</h3>
+          {project.description}
         </div>
+      ) : null}
 
-        <div className="flex-1">
-          <h3 className="text-orange-500 font-light text-2xl">
-            work experience
-          </h3>
-          <p className="text-rose-100">{project.description}</p>
+      {project?.benefits ? (
+        <div className="mb-10">
+          <h3 className="text-orange-400 font-light text-xl">benefits</h3>
+          {project.benefits}
         </div>
-      </div>
+      ) : null}
+
+      {project?.stack ? (
+        <div className="mb-10">
+          <h3 className="text-orange-400 font-light text-xl">stack</h3>
+          {project.stack}
+        </div>
+      ) : null}
     </motion.div>
   );
 }

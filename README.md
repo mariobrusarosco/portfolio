@@ -11,7 +11,7 @@ To make it easier for people to understand my work, interests, skills, projects,
 
 ## Production URL
 
-https://mariobrusarosco.vercel.app/
+https://mariobrusarosco.com/
 
 ## Stack
 
