@@ -2,9 +2,11 @@ export interface ISideProject {
   label: string;
   url: string;
   id: string;
-  description: React.ReactNode;
-  benefits: React.ReactNode;
-  stack: React.ReactNode;
+  description: React.ReactElement[];
+  benefits: React.ReactElement[];
+  stack: React.ReactElement[];
+  figmaUrl?: string;
+  githubUrl?: string;
 }
 
 export interface SideProject {

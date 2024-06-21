@@ -28,7 +28,7 @@ const PulseLoader = () => {
         </motion.svg>
       </div>
 
-      <div className="w-[20px] h-[20px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div className="w-5 h-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <motion.svg
           viewBox="0 0 120 120"
           fill="var(--active-primary)"
