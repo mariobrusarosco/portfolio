@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const PulseLoader = () => {
   return (
-    <div data-ui="pulse-loader" className="relative w-full">
+    <div data-ui="pulse-loader" className="relative w-full h-full">
       <div className="w-[80px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <motion.svg
           initial="initial"
@@ -28,7 +28,7 @@ const PulseLoader = () => {
         </motion.svg>
       </div>
 
-      <div className="w-[20px] h-[20px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div className="w-5 h-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <motion.svg
           viewBox="0 0 120 120"
           fill="var(--active-primary)"

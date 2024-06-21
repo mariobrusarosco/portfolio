@@ -6,9 +6,6 @@ const selectedProjectOuterCircle: Variants = {
     rotate: "32deg",
     transition: {
       type: "spring",
-      // stiffness: 100,
-      // damping: 15,
-      // restDelta: 0.01,
     },
     transitionEnd: {
       rotate: "32deg",
@@ -19,13 +16,11 @@ const selectedProjectOuterCircle: Variants = {
     pathLength: 1,
     originX: "50%",
     originY: "50%",
-    // scale: 10,
     transitionEnd: {
       rotate: "32deg",
     },
     transition: {
       type: "spring",
-      // bounce: 0.5,
       duration: 0.5,
     },
   },

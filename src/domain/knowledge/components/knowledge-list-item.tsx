@@ -40,7 +40,10 @@ const KnowledgeListItem = ({ knowledge }: { knowledge: IKnowledge }) => {
             </svg>
           </motion.div>
 
-          <div className="w-[20px] md:w-[40px]">
+          <div
+            className="w-[28
+          px] md:w-[40px]"
+          >
             <svg viewBox="0 0 40 40">
               <path
                 d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
