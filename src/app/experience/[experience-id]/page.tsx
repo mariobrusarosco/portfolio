@@ -23,10 +23,7 @@ const Experience = () => {
   if (!experience) return null;
 
   return (
-    <div
-      data-ui="experience"
-      className="flex flex-col pt-12 pr-4 overflow-auto lg:flex-1 lg:pt-0 lg:flex-row lg:gap-x-20"
-    >
+    <div data-ui="experience-screen" className="mt-10 overflow-auto pr-4">
       <motion.div
         animate="visible"
         initial="hidden"

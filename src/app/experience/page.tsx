@@ -1,4 +1,5 @@
 export default function ExperienceRootScreen() {
+  return null;
   return (
     <div
       data-ui="experience-root-screen"

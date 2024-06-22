@@ -1,7 +1,5 @@
-import { ListOfExperiences } from "@/domain/experience/components/list-of-experiences";
 import { ScreenHeading } from "@/domain/shared/components/screen-heading";
 import { ProjectsList } from "@/domain/side-projects/components/projects-list";
-import { Suspense } from "react";
 
 const SideProjectsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -9,12 +7,12 @@ const SideProjectsLayout = ({ children }: { children: React.ReactNode }) => {
       <ScreenHeading prefix="these are my" title="side projects" />
 
       <div
-        data-ui="main-content"
+        data-ui="side-projects-main-content"
         className="flex flex-col pb-12 lg:pb-0 lg:flex-1 xl:gap-x-16 xl:justify-between"
       >
         <ProjectsList />
 
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        {children}
       </div>
     </div>
   );

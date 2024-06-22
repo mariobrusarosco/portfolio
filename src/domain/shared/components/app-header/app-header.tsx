@@ -13,7 +13,7 @@ const AppHeader = () => {
       <div className="x-global-spacing flex justify-between items-center py-8  fh:py-10">
         <Link className="block" href="./">
           <motion.span
-            className="block uppercase font-sans text-pink-100 font-semibold cursor-pointer text-lg"
+            className="block uppercase font-sans text-sm text-pink-100  cursor-pointer"
             initial="hidden"
             animate="default"
             whileHover={animateIfHoverEnabled(
@@ -26,8 +26,8 @@ const AppHeader = () => {
           </motion.span>
         </Link>
 
-        <div className="flex gap-x-6 items-center">
-          <div className="w-6 cursor-pointer">
+        <div className="flex gap-x-4 items-center">
+          <div className="w-4 cursor-pointer">
             <motion.svg
               viewBox="0 0 25 25"
               whileHover={animations.socialItem.hover as TargetAndTransition}
@@ -43,7 +43,7 @@ const AppHeader = () => {
             </motion.svg>
           </div>
 
-          <div className="w-6 cursor-pointer">
+          <div className="w-4 cursor-pointer">
             <motion.svg
               viewBox="0 0 25 25"
               whileHover={animations.socialItem.hover as TargetAndTransition}

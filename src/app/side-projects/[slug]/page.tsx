@@ -17,19 +17,28 @@ export default function ProjectScreen() {
 
   return (
     <motion.div
-      data-ui="project-screen"
-      className={cn(
-        "x-global-spacing absolute w-screen top-[150px] left-0 lg:flex lg:items-center lg:gap-x-24"
-      )}
+      data-ui="project-slug-screen"
+      className="x-global-spacing absolute w-full left-0 pt-40 top-0"
       animate="selected"
       initial="default"
       variants={animations.projectContainer}
     >
       <div className="flex justify-between items-start mb-6">
-        <h2 className="text-4xl font-thin text-orange-400 max-w-[260px]">
+        <h2 className="text-5xl font-thin text-orange-400 max-w-[260px]">
           {project.label}
         </h2>
-
+        {/* 
+        <p>asdsadsadsadsadsa</p>
+        <p>
+          asdsadsadsa asdasdjsakdjas dsadsajdhsajdhjsa asdsajhdjsahd
+          asdjsahdjsad asdjhsadjshadjsa dsajhdjsadhj
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore dicta
+          dolores impedit reiciendis perspiciatis quis, beatae, ratione quas
+          tenetur, minima dolore dignissimos a praesentium temporibus cupiditate
+          adipisci voluptas aut corrupti?
+        </p> */}
         <div className="flex flex-col gap-y-6">
           <div
             className="flex gap-1 justify-between items-center cursor-pointer"

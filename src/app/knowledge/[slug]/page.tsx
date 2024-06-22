@@ -15,46 +15,47 @@ export default function KnowledgeScreen() {
 
   return (
     <motion.div
-      className={cn(
-        "x-global-spacing absolute h-screen w-screen top-[150px] left-0 lg:flex lg:items-center lg:gap-x-24"
-      )}
+      data-ui="kwowledge-slug-screen"
+      className={cn("x-global-spacing absolute w-full left-0 pt-40")}
       animate="selected"
       initial="default"
       variants={animations.knowledgeContainer}
     >
-      <div className="flex justify-between items-center mb-14 lg:w-[300px]">
-        <h2 className="text-5xl font-thin text-blue-green-300 lowercase">
-          {knowledge.label}
-        </h2>
+      <div data-ui="kwowledge-control-area" className="mb-14">
+        <div data-ui="knowledge-header" className="flex justify-between">
+          <h2 className="text-5xl font-thin text-blue-green-300 lowercase">
+            {knowledge.label}
+          </h2>
 
-        <div
-          className="flex gap-1 justify-between items-center  cursor-pointer"
-          onClick={back}
-        >
-          <p className="uppercase text-pink-100 text-xs font-light">back</p>
-          <div className="w-6 h-6 border border-blue-green-300 p-2 rounded-full">
-            <svg
-              viewBox="0 0 7 7"
-              className="stroke-blue-green-300"
-              fill="none"
-              strokeWidth="0.5"
-            >
-              <path d="M3.68555 1L1.43555 3.5M7 3.5H1.43555M1.43555 3.5L3.68555 6.5" />
-            </svg>
+          <div
+            className="flex gap-1 justify-between items-center  cursor-pointer"
+            onClick={back}
+          >
+            <p className="uppercase text-pink-100 text-xs font-light">back</p>
+            <div className="w-6 h-6 border border-blue-green-300 p-2 rounded-full">
+              <svg
+                viewBox="0 0 7 7"
+                className="stroke-blue-green-300"
+                fill="none"
+                strokeWidth="0.5"
+              >
+                <path d="M3.68555 1L1.43555 3.5M7 3.5H1.43555M1.43555 3.5L3.68555 6.5" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
 
       <div
         data-ui="knowledge-main-content"
-        className="max-h-[420px] overflow-auto"
+        className="max-h-[420px] overflow-auto lg:flex lg:gap-x-20"
       >
         {knowledge?.workExperience ? (
-          <div className="flex flex-col mb-10 lg:gap-x-6 lg:flex-1 lg:flex-row">
-            <h3 className="text-blue-green-300 font-light text-xl">
+          <div className="mb-10">
+            <h3 className="text-blue-green-300 font-light text-xl mb-4">
               work experience
             </h3>
-            <ul className="flex gap-x-6 gap-y-2 flex-wrap">
+            <ul className="flex gap-x-6 gap-y-2 flex-wrap lg:flex-col">
               {knowledge.workExperience.map((exp) => (
                 <li
                   key={exp}
@@ -69,11 +70,77 @@ export default function KnowledgeScreen() {
         ) : null}
 
         {knowledge?.academicExperience ? (
-          <div className="flex flex-col mb-10 lg:gap-x-6 lg:flex-1 lg:flex-row">
-            <h3 className="text-blue-green-300 font-light text-xl">
+          <div className="mb-10">
+            <h3 className="text-blue-green-300 font-light text-xl mb-4">
               academic experience
             </h3>
-            <ul className="flex gap-x-6  gap-y-2 flex-wrap">
+            <ul className="flex gap-x-6 gap-y-2 flex-wrap lg:flex-col">
+              {knowledge.academicExperience.map((exp) => (
+                <li
+                  key={exp}
+                  className="text-pink-100 font-light text-lg flex items-center gap-x-2"
+                >
+                  <CircleAndDot
+                    color="pink-800"
+                    className="w-4 h-4 fill-pink-500 stroke-pink-500"
+                  />
+                  <span>{exp}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {knowledge?.academicExperience ? (
+          <div className="mb-10">
+            <h3 className="text-blue-green-300 font-light text-xl mb-4">
+              academic experience
+            </h3>
+            <ul className="flex gap-x-6 gap-y-2 flex-wrap lg:flex-col">
+              {knowledge.academicExperience.map((exp) => (
+                <li
+                  key={exp}
+                  className="text-pink-100 font-light text-lg flex items-center gap-x-2"
+                >
+                  <CircleAndDot
+                    color="pink-800"
+                    className="w-4 h-4 fill-pink-500 stroke-pink-500"
+                  />
+                  <span>{exp}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {knowledge?.academicExperience ? (
+          <div className="mb-10">
+            <h3 className="text-blue-green-300 font-light text-xl mb-4">
+              academic experience
+            </h3>
+            <ul className="flex gap-x-6 gap-y-2 flex-wrap lg:flex-col">
+              {knowledge.academicExperience.map((exp) => (
+                <li
+                  key={exp}
+                  className="text-pink-100 font-light text-lg flex items-center gap-x-2"
+                >
+                  <CircleAndDot
+                    color="pink-800"
+                    className="w-4 h-4 fill-pink-500 stroke-pink-500"
+                  />
+                  <span>{exp}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {knowledge?.academicExperience ? (
+          <div className="mb-10">
+            <h3 className="text-blue-green-300 font-light text-xl mb-4">
+              academic experience
+            </h3>
+            <ul className="flex gap-x-6 gap-y-2 flex-wrap lg:flex-col">
               {knowledge.academicExperience.map((exp) => (
                 <li
                   key={exp}
