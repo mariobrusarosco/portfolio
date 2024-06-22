@@ -8,9 +8,9 @@ export const ProjectsList = () => {
   const router = useRouter();
 
   return (
-    <section data-ui="side-projects-list" className="flex-1 flex items-start">
+    <section data-ui="side-projects-list" className="overflow-hidden h-full">
       <motion.ul
-        className="flex flex-1 flex-wrap gap-8 pb-4 justify-center md:gap-14 lg:gap-x-6 lg:gap-y-6 relative"
+        className="flex flex-1 flex-wrap gap-8 pb-4 justify-center md:gap-14 lg:gap-x-6 lg:gap-y-6 relative overflow-auto h-full"
         // variants={animations.listOfSkills}
         initial="hidden"
         animate="visible"

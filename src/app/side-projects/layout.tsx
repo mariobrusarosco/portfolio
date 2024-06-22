@@ -6,14 +6,14 @@ const SideProjectsLayout = ({ children }: { children: React.ReactNode }) => {
     <div data-ui="side-projects-layout" className="h-full flex flex-col">
       <ScreenHeading prefix="these are my" title="side projects" />
 
-      <div
+      {/* <div
         data-ui="side-projects-main-content"
         className="flex flex-col pb-12 lg:pb-0 lg:flex-1 xl:gap-x-16 xl:justify-between"
-      >
-        <ProjectsList />
+      > */}
+      <ProjectsList />
 
-        {children}
-      </div>
+      {children}
+      {/* </div> */}
     </div>
   );
 };

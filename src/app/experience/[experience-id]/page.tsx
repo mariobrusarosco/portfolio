@@ -62,7 +62,7 @@ const Experience = () => {
         </motion.p>
       </motion.div>
 
-      <div className="flex flex-col gap-y-3 pt-4 lg:pt-0 lg:flex-1">
+      <div className="flex flex-col gap-y-3 pt-10 lg:pt-0 lg:flex-1">
         {experience?.description.map((descriptionItem, i) => (
           <Reveal key={i} iterator={i}>
             <p className="font-sans font-light text-pink-100 text-xl md:text-2xl lg:text-lg xl:text-xl">

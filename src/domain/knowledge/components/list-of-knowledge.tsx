@@ -8,12 +8,9 @@ const ListOfKnowledge = () => {
   const router = useRouter();
 
   return (
-    <div
-      data-ui="knowledge-list"
-      className="flex-1 flex items-center justify-center"
-    >
+    <div data-ui="knowledge-list" className="overflow-hidden h-full">
       <motion.ul
-        className="flex flex-wrap gap-8 pb-4 justify-center md:gap-14 lg:gap-x-6 lg:gap-y-6 relative"
+        className="flex flex-wrap gap-8 pb-4 pr-2 justify-center md:gap-14 lg:gap-x-6 lg:gap-y-6 relative overflow-auto h-full"
         variants={animations.listOfSkills}
         initial="hidden"
         animate="visible"
