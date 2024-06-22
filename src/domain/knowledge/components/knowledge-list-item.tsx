@@ -27,6 +27,7 @@ const KnowledgeListItem = ({ knowledge }: { knowledge: IKnowledge }) => {
           initial="default"
           animate={isSelected ? "selected" : "default"}
           variants={animations.selectedKnowledgeOuterCircle}
+          layout="preserve-aspect"
         >
           <motion.div
             className={cn(

@@ -58,10 +58,15 @@ const selectedKnowledgeOuterCircle: Variants = {
         restDelta: 0.1,
       },
     },
+    // transitionEnd: {
+    //   position: "relative",
+    // },
+    position: "relative",
   },
   selected: {
-    opacity: 0.004,
+    opacity: 0.04,
     scale: 30,
+    position: "fixed",
     transition: {
       opacity: {
         type: "easeInOut",
