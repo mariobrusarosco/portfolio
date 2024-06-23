@@ -1,5 +1,3 @@
-import clsx from "clsx";
-
 const CircleAndDot = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg

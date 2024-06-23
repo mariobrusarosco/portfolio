@@ -72,7 +72,6 @@ export const KNOWLEDGE: IKnowledge[] = [
   {
     id: "nextjs",
     label: "Next.js",
-    workExperience: ["Next.js 9+", "Next.js 11+"],
     academicExperience: ["Next.js 10"],
   },
   {

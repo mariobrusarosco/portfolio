@@ -52,13 +52,10 @@ export default function KnowledgeScreen() {
         </div>
       </div>
 
-      <div
-        data-ui="knowledge-main-content"
-        className="overflow-auto lg:flex lg:gap-x-20 lg:flex-1 lg:justify-start lg:flex-wrap"
-      >
+      <div data-ui="knowledge-main-content" className="overflow-auto flex-1">
         {knowledge?.mostRecentStack ? (
           <div className="lg:w-full">
-            <h3 className="text-blue-green-300 font-light text-xl mb-2">
+            <h3 className="text-pink-500 font-light text-xl mb-4 xl:text-2xl">
               currently working with
             </h3>
 
@@ -73,17 +70,17 @@ export default function KnowledgeScreen() {
                 </li>
               ))}
             </ul>
-            <div className="h-[1px] w-full bg-blue-green-300 my-8" />
+            <div className="h-[1px] w-full bg-blue-green-300/30 my-8" />
           </div>
         ) : null}
 
         {knowledge?.workExperience ? (
           <div className="mb-10 lg:mb-0 lg:flex-1">
-            <h3 className="text-pink-500 font-light text-xl mb-2">
-              full work experience
+            <h3 className="text-blue-green-300 font-light text-xl mb-4 xl:text-2xl">
+              work experience
             </h3>
 
-            <ul className="flex gap-x-6 gap-y-2 flex-wrap pr-4 md:gap-x-10 md:gap-y-6  lg:h-full lg:flex-col lg:gap-y-2">
+            <ul className="flex gap-x-6 gap-y-2 flex-wrap pr-4 md:gap-x-10 md:gap-y-6">
               {knowledge.workExperience.map((exp) => (
                 <li
                   key={exp}
@@ -94,16 +91,16 @@ export default function KnowledgeScreen() {
                 </li>
               ))}
             </ul>
-            <div className="h-[1px] w-full bg-blue-green-300 my-8" />
+            <div className="h-[1px] w-full bg-blue-green-300/10 my-8" />
           </div>
         ) : null}
 
         {knowledge?.academicExperience ? (
           <div className="mb-10 lg:mb-0 lg:flex-1">
-            <h3 className="text-pink-500 font-light text-xl mb-2">
+            <h3 className="text-blue-green-300 font-light text-xl mb-4 xl:text-2xl">
               academic experience
             </h3>
-            <ul className="flex gap-x-6 gap-y-2 flex-wrap pr-4 md:gap-x-10 md:gap-y-6 lg:h-full lg:flex-col lg:gap-y-2">
+            <ul className="flex gap-x-6 gap-y-2 flex-wrap pr-4 md:gap-x-10 md:gap-y-6">
               {knowledge.academicExperience.map((exp) => (
                 <li
                   key={exp}
