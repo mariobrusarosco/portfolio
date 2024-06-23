@@ -15,7 +15,7 @@ const { menu } = animations;
 
 const AppFooter = () => (
   <footer className="z-20 relative">
-    <div className="x-global-spacing items-center py-6 lg:flex lg:justify-start lg:py-4 fh:py-10">
+    <div className="x-global-spacing items-center py-6 lg:flex lg:justify-start lg:py-4 xl:py-8">
       <Menu />
     </div>
   </footer>
@@ -32,7 +32,7 @@ const Menu = () => {
     <>
       <div className="hidden lg:flex lg:items-center">
         <motion.span
-          className="font-sans font-semibold text-lg uppercase text-pink-100 cursor-pointer p-4 pl-0"
+          className="font-sans font-semibold text-sm uppercase text-pink-100 cursor-pointer p-4 pl-0"
           onClick={handleToggleMenu}
           layout="size"
           animate={isMenuOpen ? "hover" : "default"}

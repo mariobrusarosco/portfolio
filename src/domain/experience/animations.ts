@@ -26,7 +26,7 @@ export const revealAndMoveToRight: Variants = {
 
 export const companyLabel: Variants = {
   hover: {
-    x: 15,
+    x: 5,
     transition: {
       type: "spring",
       stiffness: 150,

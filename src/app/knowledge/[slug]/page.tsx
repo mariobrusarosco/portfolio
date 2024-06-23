@@ -16,14 +16,20 @@ export default function KnowledgeScreen() {
   return (
     <motion.div
       data-ui="kwowledge-slug-screen"
-      className={cn("x-global-spacing absolute w-full left-0 pt-40")}
+      className="x-global-spacing flex flex-col absolute left-0 h-full w-full overflow-hidden pt-[150px] lg:pt-[120px] lg:flex-row lg:gap-x-16"
       animate="selected"
       initial="default"
       variants={animations.knowledgeContainer}
     >
-      <div data-ui="kwowledge-control-area" className="mb-14">
-        <div data-ui="knowledge-header" className="flex justify-between">
-          <h2 className="text-5xl font-thin text-blue-green-300 lowercase">
+      <div
+        data-ui="kwowledge-control-area"
+        className="mb-14 lg:mb-10 lg:min-w-[300px]"
+      >
+        <div
+          data-ui="knowledge-header"
+          className="flex justify-between lg:gap-x-4"
+        >
+          <h2 className="text-5xl font-light text-blue-green-300 lowercase">
             {knowledge.label}
           </h2>
 
@@ -48,15 +54,16 @@ export default function KnowledgeScreen() {
 
       <div
         data-ui="knowledge-main-content"
-        className="max-h-[420px] overflow-auto lg:flex lg:gap-x-20"
+        className="overflow-auto lg:flex lg:gap-x-20 lg:flex-1 lg:justify-start lg:flex-wrap"
       >
-        {knowledge?.workExperience ? (
-          <div className="mb-10">
-            <h3 className="text-blue-green-300 font-light text-xl mb-4">
-              work experience
+        {knowledge?.mostRecentStack ? (
+          <div className="lg:w-full">
+            <h3 className="text-blue-green-300 font-light text-xl mb-2">
+              currently working with
             </h3>
-            <ul className="flex gap-x-6 gap-y-2 flex-wrap lg:flex-col">
-              {knowledge.workExperience.map((exp) => (
+
+            <ul className="flex gap-x-6 gap-y-2 flex-wrap md:gap-x-10 md:gap-y-6 md:pr-4">
+              {knowledge.mostRecentStack.map((exp) => (
                 <li
                   key={exp}
                   className="text-pink-100 font-light text-lg flex items-center gap-x-2"
@@ -66,37 +73,37 @@ export default function KnowledgeScreen() {
                 </li>
               ))}
             </ul>
+            <div className="h-[1px] w-full bg-blue-green-300 my-8" />
           </div>
         ) : null}
 
-        {knowledge?.academicExperience ? (
-          <div className="mb-10">
-            <h3 className="text-blue-green-300 font-light text-xl mb-4">
-              academic experience
+        {knowledge?.workExperience ? (
+          <div className="mb-10 lg:mb-0 lg:flex-1">
+            <h3 className="text-pink-500 font-light text-xl mb-2">
+              full work experience
             </h3>
-            <ul className="flex gap-x-6 gap-y-2 flex-wrap lg:flex-col">
-              {knowledge.academicExperience.map((exp) => (
+
+            <ul className="flex gap-x-6 gap-y-2 flex-wrap pr-4 md:gap-x-10 md:gap-y-6  lg:h-full lg:flex-col lg:gap-y-2">
+              {knowledge.workExperience.map((exp) => (
                 <li
                   key={exp}
                   className="text-pink-100 font-light text-lg flex items-center gap-x-2"
                 >
-                  <CircleAndDot
-                    color="pink-800"
-                    className="w-4 h-4 fill-pink-500 stroke-pink-500"
-                  />
+                  <CircleAndDot className="w-4 h-4 fill-blue-green-300 stroke-blue-green-300" />
                   <span>{exp}</span>
                 </li>
               ))}
             </ul>
+            <div className="h-[1px] w-full bg-blue-green-300 my-8" />
           </div>
         ) : null}
 
         {knowledge?.academicExperience ? (
-          <div className="mb-10">
-            <h3 className="text-blue-green-300 font-light text-xl mb-4">
+          <div className="mb-10 lg:mb-0 lg:flex-1">
+            <h3 className="text-pink-500 font-light text-xl mb-2">
               academic experience
             </h3>
-            <ul className="flex gap-x-6 gap-y-2 flex-wrap lg:flex-col">
+            <ul className="flex gap-x-6 gap-y-2 flex-wrap pr-4 md:gap-x-10 md:gap-y-6 lg:h-full lg:flex-col lg:gap-y-2">
               {knowledge.academicExperience.map((exp) => (
                 <li
                   key={exp}
@@ -104,51 +111,7 @@ export default function KnowledgeScreen() {
                 >
                   <CircleAndDot
                     color="pink-800"
-                    className="w-4 h-4 fill-pink-500 stroke-pink-500"
-                  />
-                  <span>{exp}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-
-        {knowledge?.academicExperience ? (
-          <div className="mb-10">
-            <h3 className="text-blue-green-300 font-light text-xl mb-4">
-              academic experience
-            </h3>
-            <ul className="flex gap-x-6 gap-y-2 flex-wrap lg:flex-col">
-              {knowledge.academicExperience.map((exp) => (
-                <li
-                  key={exp}
-                  className="text-pink-100 font-light text-lg flex items-center gap-x-2"
-                >
-                  <CircleAndDot
-                    color="pink-800"
-                    className="w-4 h-4 fill-pink-500 stroke-pink-500"
-                  />
-                  <span>{exp}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-
-        {knowledge?.academicExperience ? (
-          <div className="mb-10">
-            <h3 className="text-blue-green-300 font-light text-xl mb-4">
-              academic experience
-            </h3>
-            <ul className="flex gap-x-6 gap-y-2 flex-wrap lg:flex-col">
-              {knowledge.academicExperience.map((exp) => (
-                <li
-                  key={exp}
-                  className="text-pink-100 font-light text-lg flex items-center gap-x-2"
-                >
-                  <CircleAndDot
-                    color="pink-800"
-                    className="w-4 h-4 fill-pink-500 stroke-pink-500"
+                    className="w-4 h-4 fill-blue-green-300 stroke-blue-green-300"
                   />
                   <span>{exp}</span>
                 </li>

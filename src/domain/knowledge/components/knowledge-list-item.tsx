@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import animations from "../animations";
 import { cn } from "@/domain/shared/utils/classnames";
 import { IKnowledge } from "../typing/interfaces-and-enums";
@@ -27,7 +27,6 @@ const KnowledgeListItem = ({ knowledge }: { knowledge: IKnowledge }) => {
           initial="default"
           animate={isSelected ? "selected" : "default"}
           variants={animations.selectedKnowledgeOuterCircle}
-          layout="preserve-aspect"
         >
           <motion.div
             className={cn(

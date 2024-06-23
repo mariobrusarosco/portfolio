@@ -8,7 +8,7 @@ const ExperienceLayout = ({ children }: { children: React.ReactNode }) => {
 
       <div
         data-ui="experience-main-content"
-        className="flex flex-col overflow-hidden"
+        className="flex flex-col overflow-hidden lg:flex-row lg:gap-x-20 xl:gap-x-44"
       >
         <ListOfExperiences />
 

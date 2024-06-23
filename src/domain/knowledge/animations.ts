@@ -50,6 +50,7 @@ const selectedKnowledgeOuterCircle: Variants = {
   default: {
     scale: 1,
     opacity: 1,
+    position: "relative",
     transition: {
       scale: {
         type: "spring",
@@ -58,13 +59,9 @@ const selectedKnowledgeOuterCircle: Variants = {
         restDelta: 0.1,
       },
     },
-    // transitionEnd: {
-    //   position: "relative",
-    // },
-    position: "relative",
   },
   selected: {
-    opacity: 0.04,
+    opacity: 0.008,
     scale: 30,
     position: "fixed",
     transition: {
