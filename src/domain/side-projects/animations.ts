@@ -1,5 +1,35 @@
 import { Variants } from "framer-motion";
 
+const projectList: Variants = {
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      type: "spring",
+    },
+  },
+  hidden: {
+    opacity: 0,
+    transition: {
+      staggerChildren: -0.08,
+      type: "spring",
+    },
+  },
+};
+
+const listItem = {
+  visible: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      duration: 3,
+    },
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+
 const selectedProjectOuterCircle: Variants = {
   default: {
     pathLength: 1,
@@ -94,6 +124,8 @@ const animations = {
   outerCircle,
   label,
   selectedProjectOuterCircle,
+  projectList,
+  listItem,
 };
 
 export default animations;

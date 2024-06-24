@@ -3,21 +3,23 @@ import animations from "../animations";
 import { cn } from "@/domain/shared/utils/classnames";
 import { ISideProject } from "../typing/interfaces-and-enums";
 import { useProjectAnimation } from "../useProjectAnimation";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 const Project = ({ project }: { project: ISideProject }) => {
   const proejctId = useParams()["slug"];
   const isSelected = project.id === proejctId;
   const isInSelectionMode = !!proejctId;
-
+  const router = useRouter();
   const { scope } = useProjectAnimation(isSelected);
 
   return (
-    <div
+    <li
+      data-ui="project-list-item"
       ref={scope}
       className={cn("flex flex-col items-center gap-y-2 cursor-pointer", {
         "opacity-5 invisible": isInSelectionMode && !isSelected,
       })}
+      onClick={() => router.push(`/side-projects/${project.id}`)}
     >
       <div className="relative w-[30px]">
         <motion.div
@@ -66,7 +68,7 @@ const Project = ({ project }: { project: ISideProject }) => {
       >
         {project.label}
       </motion.p>
-    </div>
+    </li>
   );
 };
 

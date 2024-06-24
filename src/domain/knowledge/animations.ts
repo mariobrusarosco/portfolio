@@ -1,6 +1,6 @@
 import { Variants } from "framer-motion";
 
-const listOfSkills: Variants = {
+const knowledgeList: Variants = {
   visible: {
     opacity: 1,
     transition: {
@@ -14,6 +14,19 @@ const listOfSkills: Variants = {
       staggerChildren: -0.08,
       type: "spring",
     },
+  },
+};
+
+const listItem = {
+  visible: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      duration: 3,
+    },
+  },
+  hidden: {
+    opacity: 0,
   },
 };
 
@@ -78,23 +91,10 @@ const selectedKnowledgeOuterCircle: Variants = {
   },
 };
 
-const listItem = {
-  visible: {
-    opacity: 1,
-    transition: {
-      type: "spring",
-      duration: 3,
-    },
-  },
-  hidden: {
-    opacity: 0,
-  },
-};
-
 const animations = {
   knowledgeContainer,
   skillListContainer,
-  listOfSkills,
+  knowledgeList,
   listItem,
   selectedKnowledgeOuterCircle,
 };

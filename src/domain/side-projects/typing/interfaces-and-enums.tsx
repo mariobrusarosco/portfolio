@@ -6,7 +6,8 @@ export interface ISideProject {
   benefits: React.ReactElement[];
   stack: React.ReactElement[];
   figmaUrl?: string;
-  githubUrl?: string;
+  postmanUrl?: string;
+  githubUrl: string;
 }
 
 export interface SideProject {

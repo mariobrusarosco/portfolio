@@ -11,7 +11,7 @@ const AppHeader = () => {
   return (
     <header className="w-screen z-20 relative">
       <div className="x-global-spacing flex justify-between items-center py-8  fh:py-10">
-        <Link className="block" href="./">
+        <Link className="block" href="/">
           <motion.span
             className="block uppercase font-sans text-sm text-pink-100  cursor-pointer"
             initial="hidden"
@@ -27,7 +27,12 @@ const AppHeader = () => {
         </Link>
 
         <div className="flex gap-x-4 items-center">
-          <div className="w-4 cursor-pointer">
+          <a
+            className="w-4 cursor-pointer"
+            href="https://www.linkedin.com/in/mariobrusarosco/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <motion.svg
               viewBox="0 0 25 25"
               whileHover={animations.socialItem.hover as TargetAndTransition}
@@ -41,23 +46,7 @@ const AppHeader = () => {
                 fill="inherit"
               />
             </motion.svg>
-          </div>
-
-          <div className="w-4 cursor-pointer">
-            <motion.svg
-              viewBox="0 0 25 25"
-              whileHover={animations.socialItem.hover as TargetAndTransition}
-              variants={animations.socialItem}
-              initial="hidden"
-              animate="default"
-              className="fill-pink-100 block"
-            >
-              <path
-                d="M18.9014 0H22.5816L14.5415 10.1662L24 24H16.5941L10.7935 15.6098L4.15631 24H0.473926L9.07356 13.1262L0 0H7.59394L12.8372 7.66892L18.9014 0ZM17.6098 21.5631H19.649L6.48589 2.30892H4.29759L17.6098 21.5631Z"
-                fill="inherit"
-              />
-            </motion.svg>
-          </div>
+          </a>
         </div>
       </div>
     </header>

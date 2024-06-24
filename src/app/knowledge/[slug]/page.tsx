@@ -2,7 +2,6 @@
 import animations from "@/domain/knowledge/animations";
 import { KNOWLEDGE } from "@/domain/knowledge/constants";
 import { CircleAndDot } from "@/domain/shared/components/circle-and-dots";
-import { cn } from "@/domain/shared/utils/classnames";
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
 

@@ -18,7 +18,7 @@ const ListOfKnowledge = () => {
             "overflow-y-auto": knowledgeId,
           }
         )}
-        variants={animations.listOfSkills}
+        variants={animations.knowledgeList}
         initial="hidden"
         animate="visible"
       >
