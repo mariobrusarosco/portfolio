@@ -10,7 +10,7 @@ const ScreenHeading = ({
   title: string;
 }) => {
   return (
-    <section className="heading-and-list-section pb-[72px] flex flex-col md:flex-row md:gap-x-2 md:items-center fh:pb-[130px]">
+    <section className="heading-and-list-section pb-12 flex flex-col md:flex-row md:gap-x-2 md:items-center">
       <motion.p
         initial="initial"
         animate="animate"

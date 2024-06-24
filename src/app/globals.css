@@ -40,5 +40,6 @@ html {
 :root {
   --font-josefin-sans: theme("fontFamily.sans");
 
-  --footer-height: 92px;
+  --header-height: 100px;
+  --footer-height: 117px;
 }

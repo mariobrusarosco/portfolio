@@ -3,10 +3,13 @@ import { ScreenHeading } from "@/domain/shared/components/screen-heading";
 
 const ExperienceLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div data-ui="experience-layout" className="h-full flex flex-col">
+    <div data-ui="experience-layout" className="flex flex-col h-full">
       <ScreenHeading prefix="these are my" title="experiences" />
 
-      <div className="overflow-hidden flex flex-col pb-12 lg:flex-row lg:pb-0 lg:flex-1 xl:gap-x-16 xl:justify-between">
+      <div
+        data-ui="experience-main-content"
+        className="flex flex-col overflow-hidden lg:flex-row lg:gap-x-20 xl:gap-x-44"
+      >
         <ListOfExperiences />
 
         {children}

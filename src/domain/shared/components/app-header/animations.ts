@@ -46,15 +46,15 @@ const homeLink: Variants = {
 const socialItem: Variants = {
   hidden: {
     opacity: 0,
-    y: -10,
+    y: -5,
   },
   default: {
     opacity: 1,
     y: 0,
   },
   hover: {
-    y: -10,
-    scale: 1.1,
+    y: -5,
+    scale: 1.05,
     transition: {
       type: "spring",
     },

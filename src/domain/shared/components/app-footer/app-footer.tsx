@@ -14,8 +14,8 @@ const footerRoutes = portfolioRouting.filter(
 const { menu } = animations;
 
 const AppFooter = () => (
-  <footer className="w-screen z-20 relative">
-    <div className="x-global-spacing items-center py-6 lg:flex lg:justify-start lg:py-4 fh:py-10">
+  <footer className="z-20 relative">
+    <div className="x-global-spacing items-center py-6 lg:flex lg:justify-start lg:py-4 xl:py-8">
       <Menu />
     </div>
   </footer>
@@ -32,7 +32,7 @@ const Menu = () => {
     <>
       <div className="hidden lg:flex lg:items-center">
         <motion.span
-          className="font-sans font-semibold text-lg uppercase text-pink-100 cursor-pointer p-4 pl-0"
+          className="font-sans font-semibold text-sm uppercase text-pink-100 cursor-pointer p-4 pl-0"
           onClick={handleToggleMenu}
           layout="size"
           animate={isMenuOpen ? "hover" : "default"}
@@ -88,10 +88,10 @@ const AnimatedLink = (props: { path: string; label: string }) => {
         >
           <div className="relative">
             <motion.div
-              className="h-[10px] w-[10px] absolute bg-pink-100 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="h-[8px] w-[8px] absolute bg-pink-100 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
               variants={hasHover ? menu.innerCircle : undefined}
             />
-            <div className="w-[40px]">
+            <div className="w-[30px]">
               <motion.svg viewBox="0 0 40 40">
                 <motion.path
                   d="M1 20C1 9.50659 9.50659 1 20 1C30.4934 1 39 9.50659 39 20C39 30.4934 30.4934 39 20 39C9.50659 39 1 30.4934 1 20Z"
