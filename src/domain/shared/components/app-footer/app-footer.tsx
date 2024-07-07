@@ -6,6 +6,7 @@ import animations from "./animations";
 import { useScreenDetector } from "../../hooks/useScreenDetector";
 import { useState } from "react";
 import { palette } from "@/domain/styling/palette";
+import { animateIfHoverEnabled } from "../../utils/animations";
 
 const routeToBeIgnore = ["/"];
 const footerRoutes = portfolioRouting.filter(
@@ -13,13 +14,32 @@ const footerRoutes = portfolioRouting.filter(
 );
 const { menu } = animations;
 
-const AppFooter = () => (
-  <footer className="z-20 relative">
-    <div className="x-global-spacing items-center py-6 lg:flex lg:justify-start lg:py-4 xl:py-8">
-      <Menu />
-    </div>
-  </footer>
-);
+const AppFooter = () => {
+  const { hasHover } = useScreenDetector();
+
+  return (
+    <footer className="z-20 relative">
+      <div className="x-global-spacing items-center py-6 lg:flex lg:justify-start lg:py-4 xl:py-8">
+        <Menu />
+
+        <motion.a
+          className="font-sans text-xs uppercase whitespace-nowrap text-pink-100 font-light cursor-pointer hidden ml-auto lg:block"
+          initial="hidden"
+          animate="default"
+          whileHover={animateIfHoverEnabled(
+            hasHover,
+            animations.textLink.hover
+          )}
+          href="/resume-mario-brusarosco.pdf"
+          variants={animations.textLink}
+          download
+        >
+          get a simpler version
+        </motion.a>
+      </div>
+    </footer>
+  );
+};
 
 const Menu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

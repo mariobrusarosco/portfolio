@@ -24,7 +24,7 @@ const label: Variants = {
   },
 };
 
-const homeLink: Variants = {
+const textLink: Variants = {
   hidden: {
     opacity: 0,
     y: -10,
@@ -65,7 +65,7 @@ const animations = {
   circle,
   label,
   socialItem,
-  homeLink,
+  textLink,
 };
 
 const formatRGB = (color: string) => {

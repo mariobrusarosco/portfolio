@@ -18,15 +18,30 @@ const AppHeader = () => {
             animate="default"
             whileHover={animateIfHoverEnabled(
               hasHover,
-              animations.homeLink.hover
+              animations.textLink.hover
             )}
-            variants={animations.homeLink}
+            variants={animations.textLink}
           >
             home
           </motion.span>
         </Link>
 
         <div className="flex gap-x-4 items-center">
+          <motion.a
+            className="block font-sans text-sm text-pink-100 font-light cursor-pointer lg:hidden"
+            initial="hidden"
+            animate="default"
+            whileHover={animateIfHoverEnabled(
+              hasHover,
+              animations.textLink.hover
+            )}
+            href="/resume-mario-brusarosco.pdf"
+            variants={animations.textLink}
+            download
+          >
+            get a simpler version
+          </motion.a>
+
           <a
             className="w-4 cursor-pointer"
             href="https://www.linkedin.com/in/mariobrusarosco/"

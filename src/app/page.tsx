@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="container x-global-spacing h-full flex flex-col justify-around fd:h-auto">
+    <div className="container h-full flex flex-col justify-around fd:h-auto">
       <NameAndFirstName />
 
       <AboutMe />

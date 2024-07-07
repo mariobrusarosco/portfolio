@@ -121,6 +121,25 @@ const stem: Variants = {
   },
 };
 
+const textLink: Variants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  default: {
+    opacity: 1,
+    y: 0,
+  },
+  hover: {
+    letterSpacing: "0.05em",
+    transition: {
+      type: "spring",
+      stiffness: 200,
+      damping: 10,
+    },
+  },
+};
+
 const animations = {
   menu: {
     stem,
@@ -131,6 +150,7 @@ const animations = {
     innerCircle,
     label,
   },
+  textLink,
 };
 
 export default animations;
