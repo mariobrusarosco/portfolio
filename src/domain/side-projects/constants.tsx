@@ -90,7 +90,7 @@ export const SIDE_PROJECTS: ISideProject[] = [
     label: "Digital Garden",
     id: "digital-garden",
     githubUrl: "https://github.com/mariobrusarosco/digital-garden/",
-    url: "https://digital-garden-psi-eight.vercel.app/",
+    url: "https://garden.mariobrusarosco.com/",
     description: [
       <>
         Collection of my notes regarding{" "}
