@@ -5,7 +5,7 @@ export const SIDE_PROJECTS: ISideProject[] = [
     label: "One Word",
     id: "one-word",
     githubUrl: "https://github.com/mariobrusarosco/one-word",
-    url: "https://one-word.mariobrusarosco.com/",
+    url: "https://one-word-demo.mariobrusarosco.com/",
     figmaUrl:
       "https://www.figma.com/design/KZ4tq3xzzz2CvWwijUZoRy/Side-Projects?node-id=918-4431&t=1HPCS5OETTC7tSi1-1",
     description: [
