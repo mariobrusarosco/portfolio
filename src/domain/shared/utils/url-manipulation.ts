@@ -8,7 +8,7 @@ type Props = {
 export const updateParamsOnURL = ({ searchParams, queryParams }: Props) => {
   if (queryParams === undefined) return null;
 
-  const newQueryParams = new URLSearchParams(searchParams);
+  const newQueryParams = new URLSearchParams(searchParams.toString());
   queryParams.forEach((param) => {
     const [paramKey, paramValue] = Object.entries(param)[0];
     newQueryParams.set(paramKey, String(paramValue));

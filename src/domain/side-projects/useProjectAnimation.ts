@@ -1,66 +1,67 @@
 import { useAnimate } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 
 const useProjectAnimation = (isSelected: boolean) => {
   const [scope, animate] = useAnimate();
 
-  const moveInnerCircleToLeft = async () => {
-    await animate(
-      ".inner-circle",
-      { x: -15 },
-      { type: "spring", duration: 0.02 }
-    );
-  };
+  const handleAnimation = useCallback(async () => {
+    const moveInnerCircleToLeft = async () => {
+      await animate(
+        ".inner-circle",
+        { x: -15 },
+        { type: "spring", duration: 0.02 }
+      );
+    };
 
-  const crackOuterCircle = async (crack: number) =>
-    animate("path", { pathLength: crack }, { duration: 0.5 });
+    const crackOuterCircle = async (crack: number) =>
+      animate("path", { pathLength: crack }, { duration: 0.5 });
 
-  const moveInnerCircleToMiddle = async () =>
-    await animate(".inner-circle", { x: "-50%" }, { type: "spring" });
+    const moveInnerCircleToMiddle = async () =>
+      await animate(".inner-circle", { x: "-50%" }, { type: "spring" });
 
-  const scaleInnerCircleUp = async () =>
-    await animate(
-      ".inner-circle",
-      {
-        scale: 100,
-      },
-      { type: "spring", stiffness: 300, damping: 12 }
-    );
-  const breakOuterCircle = async () =>
-    await animate(
-      ".inner-circle",
-      { x: -25 },
-      { type: "spring", stiffness: 200 }
-    );
+    const scaleInnerCircleUp = async () =>
+      await animate(
+        ".inner-circle",
+        {
+          scale: 100,
+        },
+        { type: "spring", stiffness: 300, damping: 12 }
+      );
 
-  const fadeInnerCircleOut = async () =>
-    await animate(
-      ".inner-circle",
-      {
-        opacity: 0.009,
-        zIndex: -1,
-      },
-      { type: "spring", bounce: 0 }
-    );
+    const breakOuterCircle = async () =>
+      await animate(
+        ".inner-circle",
+        { x: -25 },
+        { type: "spring", stiffness: 200 }
+      );
 
-  const fadeLabelAndOuterCircle = async () => {
-    animate(
-      ".project-label",
-      {
-        opacity: 0.009,
-      },
-      { type: "spring" }
-    );
-    animate(
-      ".outer-circle",
-      {
-        opacity: 0.009,
-      },
-      { type: "spring" }
-    );
-  };
+    const fadeInnerCircleOut = async () =>
+      await animate(
+        ".inner-circle",
+        {
+          opacity: 0.009,
+          zIndex: -1,
+        },
+        { type: "spring", bounce: 0 }
+      );
 
-  const handleAnimation = async () => {
+    const fadeLabelAndOuterCircle = async () => {
+      animate(
+        ".project-label",
+        {
+          opacity: 0.009,
+        },
+        { type: "spring" }
+      );
+      animate(
+        ".outer-circle",
+        {
+          opacity: 0.009,
+        },
+        { type: "spring" }
+      );
+    };
+
     await moveInnerCircleToLeft();
     crackOuterCircle(0.9);
     await moveInnerCircleToMiddle();
@@ -79,13 +80,13 @@ const useProjectAnimation = (isSelected: boolean) => {
     console.log("[ANIMATION] PART 3");
     await scaleInnerCircleUp();
     await fadeInnerCircleOut();
-  };
+  }, [animate]);
 
   useEffect(() => {
     if (!isSelected) return;
 
     handleAnimation();
-  }, [isSelected]);
+  }, [isSelected, handleAnimation]);
 
   return { scope, handleAnimation };
 };
