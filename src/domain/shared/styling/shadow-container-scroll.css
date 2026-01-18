@@ -1,11 +1,9 @@
-@tailwind utilities;
-
 @layer utilities {
   .shadow-container-scroll {
     background:
-      linear-gradient(theme(colors.primary-base) 30%, rgba(255, 255, 255, 0))
+      linear-gradient(var(--scroll-shadow-color, rgba(0, 0, 0, 0.8)) 30%, rgba(255, 255, 255, 0))
         center top,
-      linear-gradient(rgba(255, 255, 255, 0), theme(colors.primary-base) 70%)
+      linear-gradient(rgba(255, 255, 255, 0), var(--scroll-shadow-color, rgba(0, 0, 0, 0.8)) 70%)
         center bottom,
       radial-gradient(
           farthest-side at 50% 0,

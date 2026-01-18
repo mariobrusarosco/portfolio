@@ -1,4 +1,3 @@
-import { palette } from "@/domain/styling/palette";
 import { Variants } from "framer-motion";
 
 const listItem = {

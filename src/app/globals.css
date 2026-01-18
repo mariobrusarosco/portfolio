@@ -1,6 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* ============================================
+   TAILWIND V4 THEME CONFIGURATION
+   Migrated from tailwind.config.ts
+   ============================================ */
+
+@theme {
+  /* Custom Breakpoints */
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1336px;
+  --breakpoint-xl: 1536px;
+  --breakpoint-fh: 1920px;
+
+  /* Custom Colors */
+  --color-pink-100: #ffd1ca;
+  --color-pink-500: #d60c4e;
+  --color-green-600: #34d399;
+  --color-orange-400: #ff6f59;
+  --color-blue-green-300: #6a9b96;
+  --color-red-700: #ef4444;
+  --color-blue-800: #1e40af;
+
+  /* Dynamic Theme Colors (set via JS based on route) */
+  --color-active-primary: var(--active-primary);
+  --color-active-secondary: var(--active-secondary);
+
+  /* Custom Fonts */
+  --font-sans: var(--font-josefin-sans), sans-serif;
+  --font-serif: var(--font-josefin-slab), serif;
+
+  /* Background Images */
+  --background-image-main-mobile: url("/main-bg-mobile.jpg");
+  --background-image-main-tablet: url("/main-bg-tablet.jpg");
+  --background-image-main-desktop: url("/main-bg-desktop.jpg");
+  --background-image-main-desktop-large: url("/main-bg-desktop-large.jpg");
+  --background-image-main-full-hd: url("/main-bg-full-hd.jpg");
+}
 
 /* TODO [project-requirement] Config a reset/normalize css */
 
@@ -38,8 +74,6 @@ html {
 }
 
 :root {
-  --font-josefin-sans: theme("fontFamily.sans");
-
   --header-height: 100px;
   --footer-height: 117px;
 }

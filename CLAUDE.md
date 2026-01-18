@@ -56,16 +56,26 @@ The project uses Next.js 14 with the App Router. The structure follows a domain-
 
 **Responsive Background Images**:
 - Five breakpoint-specific background images in `public/`
-- Configured in `tailwind.config.ts` and applied in root layout
+- Configured via CSS `@theme` directive in `src/app/globals.css`
 - Breakpoints: mobile, tablet, desktop, desktop-large, full-hd
 
 ### Styling
 
-- **Tailwind CSS** with custom configuration in `tailwind.config.ts`
+- **Tailwind CSS v4** with CSS-first configuration (no `tailwind.config.ts`)
+- All theme customizations defined in `src/app/globals.css` using the `@theme` directive:
+  ```css
+  @theme {
+    --breakpoint-sm: 480px;
+    --color-pink-500: #d60c4e;
+    --font-sans: var(--font-josefin-sans), sans-serif;
+    --background-image-main-mobile: url("/main-bg-mobile.jpg");
+    /* ... */
+  }
+  ```
 - Path alias: `@/*` maps to `./src/*`
 - Custom breakpoints: `sm` (480px), `md` (768px), `lg` (1336px), `xl` (1536px), `fh` (1920px)
 - Custom fonts: Josefin Sans (sans-serif) and Josefin Slab (serif)
-- Color palette in `src/domain/styling/palette.ts`
+- Color values defined inline and in CSS `@theme` directive
 - Prettier with `prettier-plugin-tailwindcss` for class sorting
 
 ### Utilities
