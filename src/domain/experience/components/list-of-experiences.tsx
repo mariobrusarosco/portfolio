@@ -59,7 +59,7 @@ const ListOfExperiences = () => {
               className={clsx(
                 `uppercase font-sans font-semibold text-lg lg:text-sm`,
                 {
-                  "text-active-primary": experience.id == experienceId,
+                  "text-primary": experience.id == experienceId,
                   "text-pink-100": experience.id != experienceId,
                 }
               )}

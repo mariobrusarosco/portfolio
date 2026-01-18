@@ -25,33 +25,11 @@ export const AppBreakpointsMediaQueries = {
 export type PortfolioRoute = {
   path: string;
   label: string;
-  primaryColor: string;
-  secondaryColor?: string;
 };
 
 export const portfolioRouting: PortfolioRoute[] = [
-  {
-    path: "/",
-    label: "Home",
-    primaryColor: "#ffd1ca", // pink-100
-    secondaryColor: "#6a9b96", // blue-green-300
-  },
-  {
-    path: "/experience",
-    label: "Experience",
-    primaryColor: "#d60c4e", // pink-500
-    secondaryColor: "#6a9b96", // blue-green-300
-  },
-  {
-    path: "/knowledge",
-    label: "Knowledge",
-    primaryColor: "#6a9b96", // blue-green-300
-    secondaryColor: "#d60c4e", // pink-500
-  },
-  {
-    path: "/side-projects",
-    label: "Side Projects",
-    primaryColor: "#ff6f59", // orange-400
-    secondaryColor: "#6a9b96", // blue-green-300
-  },
+  { path: "/", label: "Home" },
+  { path: "/experience", label: "Experience" },
+  { path: "/knowledge", label: "Knowledge" },
+  { path: "/side-projects", label: "Side Projects" },
 ];

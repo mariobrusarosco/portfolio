@@ -22,9 +22,9 @@
   --color-red-700: #ef4444;
   --color-blue-800: #1e40af;
 
-  /* Dynamic Theme Colors (set via JS based on route) */
-  --color-active-primary: var(--active-primary);
-  --color-active-secondary: var(--active-secondary);
+  /* Primary Theme Colors (static) */
+  --color-primary: #d60c4e;
+  --color-secondary: #6a9b96;
 
   /* Custom Fonts */
   --font-sans: var(--font-josefin-sans), sans-serif;

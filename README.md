@@ -11,14 +11,15 @@ To make it easier for people to understand my work, interests, skills, projects,
 
 ## Production URL
 
-https://mariobrusarosco.com/
+https://mario.productions
 
 ## Stack
 
-A project using Next JS. Why?
+- Next JS. 
+
+Why?
 
 To have a ready-to-go:
-
 - React Environment
 - CI/CD
 - Server Rendered HTML for SEO purposes

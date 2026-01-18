@@ -7,7 +7,7 @@ const PulseLoader = () => {
       <div className="w-[80px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <motion.svg
           initial="initial"
-          animate={{ fill: "var(--active-primary)", scale: 0.2 }}
+          animate={{ fill: "var(--color-primary)", scale: 0.2 }}
           transition={{
             duration: 1,
             type: "spring",
@@ -23,7 +23,7 @@ const PulseLoader = () => {
             width="25"
             height="25"
             rx="12.5"
-            stroke="var(--active-primary)"
+            stroke="var(--color-primary)"
           />
         </motion.svg>
       </div>
@@ -31,8 +31,8 @@ const PulseLoader = () => {
       <div className="w-5 h-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <motion.svg
           viewBox="0 0 120 120"
-          fill="var(--active-primary)"
-          stroke="var(--active-primary)"
+          fill="var(--color-primary)"
+          stroke="var(--color-primary)"
           animate={{ fill: "transparent", scale: 4 }}
           transition={{
             duration: 1,

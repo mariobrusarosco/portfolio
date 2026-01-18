@@ -15,7 +15,7 @@ const ScreenHeading = ({
         initial="initial"
         animate="animate"
         variants={screens.heading}
-        className="w-fit font-serif text-active-secondary text-3xl fh:text-4xl"
+        className="w-fit font-serif text-secondary text-3xl fh:text-4xl"
       >
         <span>{prefix}</span>
       </motion.p>
@@ -24,7 +24,7 @@ const ScreenHeading = ({
         initial="initial"
         animate="animate"
         variants={screens.heading}
-        className="text-active-primary text-5xl md:text-6xl fh:text-8xl"
+        className="text-primary text-5xl md:text-6xl fh:text-8xl"
       >
         {title}
       </motion.h2>

@@ -8,7 +8,7 @@
 @layer utilities {
   .scroller {
     /* First value == scrollbar-thumb . Second value == crollbar-track */
-    scrollbar-color: var(--active-primary) var(--active-secondary);
+    scrollbar-color: var(--color-primary) var(--color-secondary);
     scrollbar-width: thin;
   }
 }
