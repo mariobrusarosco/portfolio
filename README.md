@@ -14,13 +14,4 @@ To make it easier for people to understand my work, interests, skills, projects,
 https://mario.productions
 
 ## Stack
-
-- Next JS. 
-
-Why?
-
-To have a ready-to-go:
-- React Environment
-- CI/CD
-- Server Rendered HTML for SEO purposes
-- A custom domain
+....
