@@ -481,12 +481,68 @@ export function ThemeSetup() {
 ## 🚀 Implementation Roadmap
 
 ### Phase 1: Foundation (Day 1-2)
-- [ ] Initialize TanStack Start project
-- [ ] Configure Vite + Tailwind v4 + Netlify plugin
-- [ ] Set up folder structure
-- [ ] Create root layout with basic page transitions
-- [ ] Implement route-based theming
-- [ ] Deploy to Netlify (empty shell)
+
+#### 1.1 Project Initialization
+- [x] Create `package.json` with all dependencies
+- [x] Set up `.yarnrc.yml` to use `node_modules` (avoid PnP)
+- [x] Create `.gitignore` with proper exclusions
+- [ ] Install dependencies (`yarn install`)
+- [ ] Verify project runs (`yarn dev`)
+
+#### 1.2 Build Configuration
+- [x] Create `vite.config.ts` with TanStack Start + Netlify plugins
+- [x] Create `app.config.ts` for TanStack Start
+- [x] Create `netlify.toml` for deployment configuration
+- [x] Create `tsconfig.json` with path aliases
+- [ ] Test build process (`yarn build`)
+
+#### 1.3 Styling Setup
+- [ ] Create `src/styles/globals.css` with Tailwind v4
+- [ ] Configure Tailwind v4 `@theme` directive
+- [ ] Set up responsive background images
+- [ ] Define color palette and custom properties
+- [ ] Verify Tailwind classes work in components
+
+#### 1.4 Folder Structure
+- [ ] Create `src/routes/` directory structure
+- [ ] Create `src/domain/` directory structure
+- [ ] Create `src/domain/shared/` with utilities
+- [ ] Create `src/domain/styling/` for theming
+- [ ] Create `src/styles/` for global styles
+- [ ] Create placeholder directories for future domains (experience, knowledge, side-projects, contact)
+
+#### 1.5 Core Utilities & Hooks
+- [ ] Create `cn()` utility (`src/domain/shared/utils/classnames.ts`)
+- [ ] Create `useHydrated()` hook (`src/domain/shared/hooks/useHydrated.ts`)
+- [ ] Create route theme constants (`src/domain/shared/typing/constants.ts`)
+- [ ] Create shared animation utilities (if needed)
+
+#### 1.6 Root Layout & Routing
+- [ ] Create `src/routes/__root.tsx` with HTML structure
+- [ ] Implement page transitions with Framer Motion `AnimatePresence`
+- [ ] Create `src/routes/index.tsx` (home page)
+- [ ] Set up selective SSR (`ssr: 'data-only'` for animated routes)
+- [ ] Test page transitions work correctly
+
+#### 1.7 Theming System
+- [ ] Create `ThemeSetup` component (`src/domain/styling/theming.tsx`)
+- [ ] Implement route-based color theme switching
+- [ ] Configure CSS custom properties for active theme colors
+- [ ] Test theme changes on route navigation
+
+#### 1.8 Development Environment
+- [ ] Verify dev server starts without errors
+- [ ] Test hot module replacement (HMR)
+- [ ] Verify TypeScript compilation
+- [ ] Check for any linting errors
+
+#### 1.9 Netlify Deployment Setup
+- [ ] Connect repository to Netlify
+- [ ] Configure build settings in Netlify dashboard
+- [ ] Set environment variables (if needed)
+- [ ] Deploy empty shell to Netlify
+- [ ] Verify deployment works and site is accessible
+- [ ] Test production build locally (`yarn build && yarn start`)
 
 ### Phase 2: Core Pages (Day 3-5)
 - [ ] Home page with hero section
