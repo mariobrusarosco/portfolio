@@ -2,18 +2,19 @@
 
 ## 📋 Final Stack Summary
 
-| Layer | Technology | Notes |
-|-------|------------|-------|
-| **Framework** | TanStack Start + React | Full-stack, type-safe |
-| **Routing** | TanStack Router | File-based, type-safe params |
-| **Hosting** | Netlify | Official partner, edge functions |
-| **Styling** | Tailwind CSS v4 | CSS-first configuration |
-| **Animations** | Framer Motion | With hydration-aware patterns |
-| **Content** | Hardcoded TSX | Type-safe, simple |
-| **Contact Form** | Server Functions | TanStack Start RPC |
-| **Rendering** | Selective SSR | `data-only` for animated routes |
+| Layer            | Technology             | Notes                            |
+| ---------------- | ---------------------- | -------------------------------- |
+| **Framework**    | TanStack Start + React | Full-stack, type-safe            |
+| **Routing**      | TanStack Router        | File-based, type-safe params     |
+| **Hosting**      | Netlify                | Official partner, edge functions |
+| **Styling**      | Tailwind CSS v4        | CSS-first configuration          |
+| **Animations**   | Framer Motion          | With hydration-aware patterns    |
+| **Content**      | Hardcoded TSX          | Type-safe, simple                |
+| **Contact Form** | Server Functions       | TanStack Start RPC               |
+| **Rendering**    | Selective SSR          | `data-only` for animated routes  |
 
 ### What We're NOT Including
+
 - ❌ Blog
 - ❌ Dark mode toggle (route-based theming only)
 - ❌ External UI library (fully custom)
@@ -184,37 +185,32 @@ portfolio/
 ### `vite.config.ts`
 
 ```typescript
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { tanstackStart } from '@tanstack/start/plugin/vite'
-import tailwindcss from '@tailwindcss/vite'
-import netlify from '@netlify/vite-plugin-tanstack-start'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { tanstackStart } from "@tanstack/start/plugin/vite";
+import tailwindcss from "@tailwindcss/vite";
+import netlify from "@netlify/vite-plugin-tanstack-start";
 
 export default defineConfig({
-  plugins: [
-    tanstackStart(),
-    react(),
-    tailwindcss(),
-    netlify(),
-  ],
+  plugins: [tanstackStart(), react(), tailwindcss(), netlify()],
   resolve: {
     alias: {
-      '@': '/src',
+      "@": "/src",
     },
   },
-})
+});
 ```
 
 ### `app.config.ts`
 
 ```typescript
-import { defineConfig } from '@tanstack/start/config'
+import { defineConfig } from "@tanstack/start/config";
 
 export default defineConfig({
   server: {
-    preset: 'netlify',
+    preset: "netlify",
   },
-})
+});
 ```
 
 ### `netlify.toml`
@@ -275,7 +271,7 @@ export default defineConfig({
   html {
     @apply antialiased;
   }
-  
+
   body {
     @apply bg-black text-white font-sans;
     background-image: var(--background-image-main-mobile);
@@ -317,19 +313,19 @@ export default defineConfig({
 ### Root Layout with Page Transitions (`src/routes/__root.tsx`)
 
 ```tsx
-import { Outlet, createRootRoute, useLocation } from '@tanstack/react-router'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Header } from '@/domain/shared/components/Header'
-import { Footer } from '@/domain/shared/components/Footer'
-import { ThemeSetup } from '@/domain/styling/theming'
-import '@/styles/globals.css'
+import { Outlet, createRootRoute, useLocation } from "@tanstack/react-router";
+import { AnimatePresence, motion } from "framer-motion";
+import { Header } from "@/domain/shared/components/Header";
+import { Footer } from "@/domain/shared/components/Footer";
+import { ThemeSetup } from "@/domain/styling/theming";
+import "@/styles/globals.css";
 
 export const Route = createRootRoute({
   component: RootLayout,
-})
+});
 
 function RootLayout() {
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <html lang="en">
@@ -347,7 +343,7 @@ function RootLayout() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             <Outlet />
           </motion.main>
@@ -355,81 +351,79 @@ function RootLayout() {
         <Footer />
       </body>
     </html>
-  )
+  );
 }
 ```
 
 ### Hydration-Aware Hook (`src/domain/shared/hooks/useHydrated.ts`)
 
 ```tsx
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 
 export function useHydrated() {
-  const [isHydrated, setIsHydrated] = useState(false)
-  
+  const [isHydrated, setIsHydrated] = useState(false);
+
   useEffect(() => {
-    setIsHydrated(true)
-  }, [])
-  
-  return isHydrated
+    setIsHydrated(true);
+  }, []);
+
+  return isHydrated;
 }
 ```
 
 ### Route with Selective SSR (`src/routes/index.tsx`)
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { motion } from 'framer-motion'
-import { useHydrated } from '@/domain/shared/hooks/useHydrated'
+import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { useHydrated } from "@/domain/shared/hooks/useHydrated";
 
-export const Route = createFileRoute('/')({
-  ssr: 'data-only', // Server fetches data, client renders UI
+export const Route = createFileRoute("/")({
+  ssr: "data-only", // Server fetches data, client renders UI
   component: HomePage,
-})
+});
 
 function HomePage() {
-  const isHydrated = useHydrated()
+  const isHydrated = useHydrated();
 
   return (
     <section className="min-h-screen flex items-center justify-center">
       <motion.div
         initial={isHydrated ? { opacity: 0, scale: 0.95 } : false}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className="text-center"
       >
         <h1 className="text-5xl font-bold text-active-primary">
           Mario Brusarosco
         </h1>
-        <p className="text-xl text-gray-300 mt-4">
-          Front End Developer
-        </p>
+        <p className="text-xl text-gray-300 mt-4">Front End Developer</p>
       </motion.div>
     </section>
-  )
+  );
 }
 ```
 
 ### Contact Form Server Function (`src/server/functions/contact.ts`)
 
 ```tsx
-import { createServerFn } from '@tanstack/start'
+import { createServerFn } from "@tanstack/start";
 
 type ContactFormData = {
-  name: string
-  email: string
-  message: string
-}
+  name: string;
+  email: string;
+  message: string;
+};
 
-export const submitContactForm = createServerFn({ method: 'POST' })
+export const submitContactForm = createServerFn({ method: "POST" })
   .validator((data: ContactFormData) => {
     if (!data.name || !data.email || !data.message) {
-      throw new Error('All fields are required')
+      throw new Error("All fields are required");
     }
-    if (!data.email.includes('@')) {
-      throw new Error('Invalid email address')
+    if (!data.email.includes("@")) {
+      throw new Error("Invalid email address");
     }
-    return data
+    return data;
   })
   .handler(async ({ data }) => {
     // Option 1: Use Resend
@@ -442,37 +436,44 @@ export const submitContactForm = createServerFn({ method: 'POST' })
     // })
 
     // Option 2: Log for now (replace with your email service)
-    console.log('Contact form submission:', data)
+    console.log("Contact form submission:", data);
 
-    return { success: true, message: 'Message sent successfully!' }
-  })
+    return { success: true, message: "Message sent successfully!" };
+  });
 ```
 
 ### Route-Based Theming (`src/domain/styling/theming.ts`)
 
 ```tsx
-import { useLocation } from '@tanstack/react-router'
-import { useEffect } from 'react'
+import { useLocation } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 const routeThemes = {
-  '/': { primary: '#d60c4e', secondary: '#7c3aed' },
-  '/experience': { primary: '#3b82f6', secondary: '#06b6d4' },
-  '/knowledge': { primary: '#22c55e', secondary: '#84cc16' },
-  '/side-projects': { primary: '#f97316', secondary: '#eab308' },
-} as const
+  "/": { primary: "#d60c4e", secondary: "#7c3aed" },
+  "/experience": { primary: "#3b82f6", secondary: "#06b6d4" },
+  "/knowledge": { primary: "#22c55e", secondary: "#84cc16" },
+  "/side-projects": { primary: "#f97316", secondary: "#eab308" },
+} as const;
 
 export function ThemeSetup() {
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
-    const basePath = '/' + (location.pathname.split('/')[1] || '')
-    const theme = routeThemes[basePath as keyof typeof routeThemes] || routeThemes['/']
+    const basePath = "/" + (location.pathname.split("/")[1] || "");
+    const theme =
+      routeThemes[basePath as keyof typeof routeThemes] || routeThemes["/"];
 
-    document.documentElement.style.setProperty('--color-active-primary', theme.primary)
-    document.documentElement.style.setProperty('--color-active-secondary', theme.secondary)
-  }, [location.pathname])
+    document.documentElement.style.setProperty(
+      "--color-active-primary",
+      theme.primary,
+    );
+    document.documentElement.style.setProperty(
+      "--color-active-secondary",
+      theme.secondary,
+    );
+  }, [location.pathname]);
 
-  return null
+  return null;
 }
 ```
 
@@ -483,27 +484,30 @@ export function ThemeSetup() {
 ### Phase 1: Foundation (Day 1-2)
 
 #### 1.1 Project Initialization
+
 - [x] Create `package.json` with all dependencies
 - [x] Set up `.yarnrc.yml` to use `node_modules` (avoid PnP)
 - [x] Create `.gitignore` with proper exclusions
-- [ ] Install dependencies (`yarn install`)
-- [ ] Verify project runs (`yarn dev`)
+- [x] Install dependencies (`yarn install`)
+- [x] Verify project runs (`yarn dev`)
 
 #### 1.2 Build Configuration
+
 - [x] Create `vite.config.ts` with TanStack Start + Netlify plugins
 - [x] Create `app.config.ts` for TanStack Start
 - [x] Create `netlify.toml` for deployment configuration
 - [x] Create `tsconfig.json` with path aliases
-- [ ] Test build process (`yarn build`)
+- [x] Test build process (`yarn build`)
 
 #### 1.3 Styling Setup
-- [ ] Create `src/styles/globals.css` with Tailwind v4
-- [ ] Configure Tailwind v4 `@theme` directive
-- [ ] Set up responsive background images
-- [ ] Define color palette and custom properties
-- [ ] Verify Tailwind classes work in components
+
+- [x] Create `src/styles/globals.css` with Tailwind v4
+- [x] Configure Tailwind v4 `@theme` directive
+- [x] Define color palette and custom properties
+- [x] Verify Tailwind classes work in components
 
 #### 1.4 Folder Structure
+
 - [ ] Create `src/routes/` directory structure
 - [ ] Create `src/domain/` directory structure
 - [ ] Create `src/domain/shared/` with utilities
@@ -512,12 +516,14 @@ export function ThemeSetup() {
 - [ ] Create placeholder directories for future domains (experience, knowledge, side-projects, contact)
 
 #### 1.5 Core Utilities & Hooks
+
 - [ ] Create `cn()` utility (`src/domain/shared/utils/classnames.ts`)
 - [ ] Create `useHydrated()` hook (`src/domain/shared/hooks/useHydrated.ts`)
 - [ ] Create route theme constants (`src/domain/shared/typing/constants.ts`)
 - [ ] Create shared animation utilities (if needed)
 
 #### 1.6 Root Layout & Routing
+
 - [ ] Create `src/routes/__root.tsx` with HTML structure
 - [ ] Implement page transitions with Framer Motion `AnimatePresence`
 - [ ] Create `src/routes/index.tsx` (home page)
@@ -525,18 +531,21 @@ export function ThemeSetup() {
 - [ ] Test page transitions work correctly
 
 #### 1.7 Theming System
+
 - [ ] Create `ThemeSetup` component (`src/domain/styling/theming.tsx`)
 - [ ] Implement route-based color theme switching
 - [ ] Configure CSS custom properties for active theme colors
 - [ ] Test theme changes on route navigation
 
 #### 1.8 Development Environment
+
 - [ ] Verify dev server starts without errors
 - [ ] Test hot module replacement (HMR)
 - [ ] Verify TypeScript compilation
 - [ ] Check for any linting errors
 
 #### 1.9 Netlify Deployment Setup
+
 - [ ] Connect repository to Netlify
 - [ ] Configure build settings in Netlify dashboard
 - [ ] Set environment variables (if needed)
@@ -545,6 +554,7 @@ export function ThemeSetup() {
 - [ ] Test production build locally (`yarn build && yarn start`)
 
 ### Phase 2: Core Pages (Day 3-5)
+
 - [ ] Home page with hero section
 - [ ] Experience list + detail pages
 - [ ] Knowledge grid + detail pages
@@ -552,6 +562,7 @@ export function ThemeSetup() {
 - [ ] Navigation component
 
 ### Phase 3: Polish (Day 6-7)
+
 - [ ] Page transition animations
 - [ ] Component-level animations (cards, reveals)
 - [ ] Responsive design across breakpoints
@@ -559,6 +570,7 @@ export function ThemeSetup() {
 - [ ] Contact form with server function
 
 ### Phase 4: Launch (Day 8)
+
 - [ ] Final testing across devices
 - [ ] Performance audit (Lighthouse)
 - [ ] Domain configuration
@@ -581,5 +593,3 @@ export function ThemeSetup() {
 - Node.js 22.x required
 - Use `yarn` for package management (per user preference)
 - Domain: mario.productions (to be configured in Netlify)
-
-

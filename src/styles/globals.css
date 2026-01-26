@@ -22,13 +22,6 @@
   /* Dynamic Theme Colors (set via JS) */
   --color-active-primary: var(--color-pink-500);
   --color-active-secondary: var(--color-purple-500);
-
-  /* Background Images */
-  --background-image-main-mobile: url("/main-bg-mobile.jpg");
-  --background-image-main-tablet: url("/main-bg-tablet.jpg");
-  --background-image-main-desktop: url("/main-bg-desktop.jpg");
-  --background-image-main-desktop-large: url("/main-bg-desktop-large.jpg");
-  --background-image-main-full-hd: url("/main-bg-full-hd.jpg");
 }
 
 /* Base styles */
@@ -39,33 +32,5 @@
   
   body {
     @apply bg-black text-white font-sans;
-    background-image: var(--background-image-main-mobile);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-
-  @media (min-width: theme(--breakpoint-md)) {
-    body {
-      background-image: var(--background-image-main-tablet);
-    }
-  }
-
-  @media (min-width: theme(--breakpoint-lg)) {
-    body {
-      background-image: var(--background-image-main-desktop);
-    }
-  }
-
-  @media (min-width: theme(--breakpoint-xl)) {
-    body {
-      background-image: var(--background-image-main-desktop-large);
-    }
-  }
-
-  @media (min-width: theme(--breakpoint-fh)) {
-    body {
-      background-image: var(--background-image-main-full-hd);
-    }
   }
 }

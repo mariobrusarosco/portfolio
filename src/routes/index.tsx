@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
   component: HomeComponent,
@@ -15,24 +15,24 @@ function HomeComponent() {
           Front End Developer
         </p>
         <nav className="mt-12 flex flex-col gap-4 md:flex-row md:justify-center">
-          <a
-            href="/experience"
+          <Link
+            to="/experience"
             className="rounded-lg bg-pink-500 px-6 py-3 font-medium text-white transition-colors hover:bg-pink-600"
           >
             Experience
-          </a>
-          <a
-            href="/knowledge"
+          </Link>
+          <Link
+            to="/knowledge"
             className="rounded-lg bg-purple-500 px-6 py-3 font-medium text-white transition-colors hover:bg-purple-600"
           >
             Knowledge
-          </a>
-          <a
-            href="/side-projects"
+          </Link>
+          <Link
+            to="/side-projects"
             className="rounded-lg bg-blue-500 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-600"
           >
             Side Projects
-          </a>
+          </Link>
         </nav>
       </div>
     </div>
