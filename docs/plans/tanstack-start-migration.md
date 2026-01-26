@@ -508,12 +508,12 @@ export function ThemeSetup() {
 
 #### 1.4 Folder Structure
 
-- [ ] Create `src/routes/` directory structure
-- [ ] Create `src/domain/` directory structure
-- [ ] Create `src/domain/shared/` with utilities
-- [ ] Create `src/domain/styling/` for theming
-- [ ] Create `src/styles/` for global styles
-- [ ] Create placeholder directories for future domains (experience, knowledge, side-projects, contact)
+- [x] Create `src/routes/` directory structure
+- [x] Create `src/domain/` directory structure
+- [x] Create `src/domain/shared/` with utilities
+- [x] Create `src/domain/styling/` for theming
+- [x] Create `src/styles/` for global styles
+- [x] Create placeholder directories for future domains (experience, knowledge, side-projects, contact)
 
 #### 1.5 Core Utilities & Hooks
 
