@@ -1,0 +1,29 @@
+---
+alwaysApply: true
+---
+## 🚨 CRITICAL: Documentation-First Rule
+
+**BEFORE implementing ANY task or making ANY assumption:**
+
+1. **ALWAYS navigate to and read the official documentation FIRST**
+2. **Verify package names, imports, configurations, and APIs against official docs**
+3. **Show what the documentation says before proceeding**
+4. **NEVER guess or assume - only use verified information from official sources**
+
+This applies to:
+- ✅ ALL tasks
+- ✅ ALL conversations
+- ✅ ALL frameworks, libraries, and tools
+- ✅ ALL configuration files
+- ✅ ALL package installations
+
+**If you don't know something, navigate to the docs and learn. Do not make assumptions.**
+
+**Example workflow:**
+1. User asks about TanStack Start setup
+2. Navigate to `https://tanstack.com/start/latest/docs`
+3. Read the relevant documentation section
+4. Show the user what the docs say
+5. Then implement based on verified information
+
+**This rule is non-negotiable. Violating it defeats the purpose of having an AI agent.**

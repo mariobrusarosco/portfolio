@@ -5,6 +5,21 @@
 Hi, this is my personal portfolio project. It's under construction so new things will be shipped to
 "production" pretty soon!
 
+## 🤖 AI Agent Instructions
+
+**For AI agents working on this project:**
+
+**BEFORE implementing ANY task or making ANY assumption:**
+
+1. **ALWAYS navigate to and read the official documentation FIRST**
+2. **Verify package names, imports, configurations, and APIs against official docs**
+3. **Show what the documentation says before proceeding**
+4. **NEVER guess or assume - only use verified information from official sources**
+
+This applies to ALL tasks, ALL conversations, ALL frameworks, libraries, and tools.
+
+**If you don't know something, navigate to the docs and learn. Do not make assumptions.**
+
 ## Motivation
 
 To make it easier for people to understand my work, interests, skills, projects, and experiences.
@@ -60,6 +75,10 @@ yarn typecheck
 This portfolio uses a **domain-driven architecture** with TanStack Start:
 
 - **`src/routes/`** - File-based routing (TanStack Router)
+  - `__root.tsx` - Root route (document shell, global layout)
+  - `index.tsx` - Home page
+  - Route folders for each section (experience, knowledge, side-projects)
+  - `routeTree.gen.ts` - Auto-generated (do not edit)
 - **`src/domain/`** - Business logic organized by domain
   - `experience/` - Work experience domain
   - `knowledge/` - Technical knowledge domain
