@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap');
+
 @import 'tailwindcss';
 
 @plugin "tailwindcss-animate";
@@ -7,7 +7,7 @@
 
 body {
   @apply m-0;
-  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -17,11 +17,12 @@ code {
     source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* Haute Patisserie Dark Theme */
 :root {
-  /* Core colors - Dark elegant bakery */
-  --background: oklch(0.13 0.01 60);
-  --foreground: oklch(0.93 0.02 85);
+  --primary: #A1CFCB;
+  --secondary: #6A9b96;
+  --background: #254441;
+  --foreground: #5B98A5;
+  --neutral-white: #fff;
 
   /* Warm cream for cards */
   --card: oklch(0.17 0.015 55);
@@ -77,9 +78,10 @@ code {
 }
 
 @theme inline {
-  --font-display: 'Playfair Display', Georgia, serif;
+  --font-display: 'Barlow Condensed', sans-serif;
   --font-body: 'Cormorant Garamond', Georgia, serif;
 
+  --color-neutral-white: var(--neutral-white);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -134,61 +136,15 @@ code {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-neutral-white text-foreground;
   }
 }
 
 /* Custom utilities for the theme */
 .font-display {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Barlow Condensed', sans-serif;
 }
 
 .font-body {
   font-family: 'Cormorant Garamond', Georgia, serif;
-}
-
-/* Elegant grain texture overlay */
-.grain-texture {
-  position: relative;
-}
-
-.grain-texture::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
-  pointer-events: none;
-  opacity: 0.4;
-}
-
-/* Golden border accent */
-.border-gold-accent {
-  border-image: linear-gradient(
-      135deg,
-      oklch(0.72 0.12 85),
-      oklch(0.65 0.14 55),
-      oklch(0.72 0.12 85)
-    )
-    1;
-}
-
-/* Copper glow effect */
-.glow-copper {
-  box-shadow:
-    0 0 20px oklch(0.65 0.14 55 / 0.3),
-    0 0 40px oklch(0.65 0.14 55 / 0.1);
-}
-
-/* Elegant card hover effect */
-.card-hover {
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 12px 40px oklch(0 0 0 / 0.4),
-    0 0 20px oklch(0.65 0.14 55 / 0.15);
 }

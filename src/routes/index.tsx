@@ -15,8 +15,8 @@ function HomePage() {
 	const featuredTalks = allTalks.slice(0, 4);
 
 	return (
-		<main>
-			<h2>Mario Brusarosco</h2>
+		<main className="grid place-items-center pt-20">
+			<h2 className="text-6xl text-background font-display uppercase">Mario Brusarosco</h2>
 		</main>
 	);
 }
