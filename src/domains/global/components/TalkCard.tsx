@@ -3,7 +3,7 @@ import { Clock, User } from 'lucide-react'
 
 import { type Talk } from 'content-collections'
 
-import { Card, CardContent } from '@/domains/global/components/ui/card'
+import { Card, CardContent } from '@/domains/components-library/card'
 
 interface TalkCardProps {
   talk: Talk
