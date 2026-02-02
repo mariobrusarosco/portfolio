@@ -5,6 +5,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import Header from "@/domains/global/components/Header";
 
 import appCss from "../styles.css?url";
+import { Wheel } from "@/domains/global/components/whell";
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -50,9 +51,17 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 			<head>
 				<HeadContent />
 			</head>
-			<body>
-				<Header />
+			<body className="relative">
+				{/* TODO: Remove this demo  header */}
+				{/* <Header /> */}
 				{children}
+				<Wheel
+					className="w-30 h-30"
+				>
+					<p className="text-background text-sm p-4 w-20 text-center">
+						push to start
+					</p>
+				</Wheel>
 				<TanStackDevtools
 					config={{
 						position: "bottom-right",

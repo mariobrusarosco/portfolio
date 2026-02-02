@@ -35,9 +35,9 @@ src/domains/[domain-name]/
 ## 3. Naming Conventions
 
 - **Domains**: `kebab-case` (e.g., `user-profile`, `payment-processing`).
-- **Components**: `PascalCase` (e.g., `UserProfile.tsx`).
-- **Hooks**: `camelCase` starting with `use` (e.g., `useUserData.ts`).
-- **Functions/Utils**: `camelCase` (e.g., `formatCurrency.ts`).
+- **Components**: `kebab-case` (e.g., `user-profile.tsx`).
+- **Hooks**: `kebab-case` starting with `use` (e.g., `use-user-data.ts`).
+- **Functions/Utils**: `kebab-case` (e.g., `format-currency.ts`).
 
 ## 4. Workflows
 
@@ -56,7 +56,7 @@ When asked to creating a new feature (e.g., "blog"):
 
 ## 5. Imports
 
-- Prefer absolute imports using the `@` alias.
+- **Always use** absolute imports using the `@` alias. No relative imports (`../` or `./`) are allowed for project files.
   - `@/domains/blog/components/PostList`
   - `@/domains/global/hooks/useWindowSize`
 
