@@ -9,14 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AboutRouteImport } from './routes/about'
+import { Route as innerPagesRouteRouteImport } from './routes/(inner-pages)/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as TalksIndexRouteImport } from './routes/talks.index'
-import { Route as SpeakersIndexRouteImport } from './routes/speakers.index'
-import { Route as ScheduleIndexRouteImport } from './routes/schedule.index'
 import { Route as TalksSlugRouteImport } from './routes/talks.$slug'
 import { Route as SpeakersSlugRouteImport } from './routes/speakers.$slug'
 import { Route as ApiRemyChatRouteImport } from './routes/api.remy-chat'
+import { Route as innerPagesProjectsIndexRouteImport } from './routes/(inner-pages)/projects/index'
+import { Route as innerPagesExperienceIndexRouteImport } from './routes/(inner-pages)/experience/index'
+import { Route as innerPagesAboutIndexRouteImport } from './routes/(inner-pages)/about/index'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
 import { Route as DemoApiNamesRouteImport } from './routes/demo/api.names'
@@ -25,29 +25,13 @@ import { Route as DemoStartSsrSpaModeRouteImport } from './routes/demo/start.ssr
 import { Route as DemoStartSsrFullSsrRouteImport } from './routes/demo/start.ssr.full-ssr'
 import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ssr.data-only'
 
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const innerPagesRouteRoute = innerPagesRouteRouteImport.update({
+  id: '/(inner-pages)',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TalksIndexRoute = TalksIndexRouteImport.update({
-  id: '/talks/',
-  path: '/talks/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SpeakersIndexRoute = SpeakersIndexRouteImport.update({
-  id: '/speakers/',
-  path: '/speakers/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ScheduleIndexRoute = ScheduleIndexRouteImport.update({
-  id: '/schedule/',
-  path: '/schedule/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TalksSlugRoute = TalksSlugRouteImport.update({
@@ -64,6 +48,22 @@ const ApiRemyChatRoute = ApiRemyChatRouteImport.update({
   id: '/api/remy-chat',
   path: '/api/remy-chat',
   getParentRoute: () => rootRouteImport,
+} as any)
+const innerPagesProjectsIndexRoute = innerPagesProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => innerPagesRouteRoute,
+} as any)
+const innerPagesExperienceIndexRoute =
+  innerPagesExperienceIndexRouteImport.update({
+    id: '/experience/',
+    path: '/experience/',
+    getParentRoute: () => innerPagesRouteRoute,
+  } as any)
+const innerPagesAboutIndexRoute = innerPagesAboutIndexRouteImport.update({
+  id: '/about/',
+  path: '/about/',
+  getParentRoute: () => innerPagesRouteRoute,
 } as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
   id: '/demo/start/server-funcs',
@@ -103,16 +103,15 @@ const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/api/remy-chat': typeof ApiRemyChatRoute
   '/speakers/$slug': typeof SpeakersSlugRoute
   '/talks/$slug': typeof TalksSlugRoute
-  '/schedule/': typeof ScheduleIndexRoute
-  '/speakers/': typeof SpeakersIndexRoute
-  '/talks/': typeof TalksIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/about/': typeof innerPagesAboutIndexRoute
+  '/experience/': typeof innerPagesExperienceIndexRoute
+  '/projects/': typeof innerPagesProjectsIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -120,16 +119,15 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/api/remy-chat': typeof ApiRemyChatRoute
   '/speakers/$slug': typeof SpeakersSlugRoute
   '/talks/$slug': typeof TalksSlugRoute
-  '/schedule': typeof ScheduleIndexRoute
-  '/speakers': typeof SpeakersIndexRoute
-  '/talks': typeof TalksIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/about': typeof innerPagesAboutIndexRoute
+  '/experience': typeof innerPagesExperienceIndexRoute
+  '/projects': typeof innerPagesProjectsIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -138,16 +136,16 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/(inner-pages)': typeof innerPagesRouteRouteWithChildren
   '/api/remy-chat': typeof ApiRemyChatRoute
   '/speakers/$slug': typeof SpeakersSlugRoute
   '/talks/$slug': typeof TalksSlugRoute
-  '/schedule/': typeof ScheduleIndexRoute
-  '/speakers/': typeof SpeakersIndexRoute
-  '/talks/': typeof TalksIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/(inner-pages)/about/': typeof innerPagesAboutIndexRoute
+  '/(inner-pages)/experience/': typeof innerPagesExperienceIndexRoute
+  '/(inner-pages)/projects/': typeof innerPagesProjectsIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -157,16 +155,15 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
     | '/api/remy-chat'
     | '/speakers/$slug'
     | '/talks/$slug'
-    | '/schedule/'
-    | '/speakers/'
-    | '/talks/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
+    | '/about/'
+    | '/experience/'
+    | '/projects/'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -174,16 +171,15 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
     | '/api/remy-chat'
     | '/speakers/$slug'
     | '/talks/$slug'
-    | '/schedule'
-    | '/speakers'
-    | '/talks'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
+    | '/about'
+    | '/experience'
+    | '/projects'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -191,16 +187,16 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/about'
+    | '/(inner-pages)'
     | '/api/remy-chat'
     | '/speakers/$slug'
     | '/talks/$slug'
-    | '/schedule/'
-    | '/speakers/'
-    | '/talks/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
+    | '/(inner-pages)/about/'
+    | '/(inner-pages)/experience/'
+    | '/(inner-pages)/projects/'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -209,13 +205,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
+  innerPagesRouteRoute: typeof innerPagesRouteRouteWithChildren
   ApiRemyChatRoute: typeof ApiRemyChatRoute
   SpeakersSlugRoute: typeof SpeakersSlugRoute
   TalksSlugRoute: typeof TalksSlugRoute
-  ScheduleIndexRoute: typeof ScheduleIndexRoute
-  SpeakersIndexRoute: typeof SpeakersIndexRoute
-  TalksIndexRoute: typeof TalksIndexRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
@@ -227,11 +220,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/(inner-pages)': {
+      id: '/(inner-pages)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof innerPagesRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -239,27 +232,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/talks/': {
-      id: '/talks/'
-      path: '/talks'
-      fullPath: '/talks/'
-      preLoaderRoute: typeof TalksIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/speakers/': {
-      id: '/speakers/'
-      path: '/speakers'
-      fullPath: '/speakers/'
-      preLoaderRoute: typeof SpeakersIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/schedule/': {
-      id: '/schedule/'
-      path: '/schedule'
-      fullPath: '/schedule/'
-      preLoaderRoute: typeof ScheduleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/talks/$slug': {
@@ -282,6 +254,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/api/remy-chat'
       preLoaderRoute: typeof ApiRemyChatRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/(inner-pages)/projects/': {
+      id: '/(inner-pages)/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof innerPagesProjectsIndexRouteImport
+      parentRoute: typeof innerPagesRouteRoute
+    }
+    '/(inner-pages)/experience/': {
+      id: '/(inner-pages)/experience/'
+      path: '/experience'
+      fullPath: '/experience/'
+      preLoaderRoute: typeof innerPagesExperienceIndexRouteImport
+      parentRoute: typeof innerPagesRouteRoute
+    }
+    '/(inner-pages)/about/': {
+      id: '/(inner-pages)/about/'
+      path: '/about'
+      fullPath: '/about/'
+      preLoaderRoute: typeof innerPagesAboutIndexRouteImport
+      parentRoute: typeof innerPagesRouteRoute
     }
     '/demo/start/server-funcs': {
       id: '/demo/start/server-funcs'
@@ -335,15 +328,28 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface innerPagesRouteRouteChildren {
+  innerPagesAboutIndexRoute: typeof innerPagesAboutIndexRoute
+  innerPagesExperienceIndexRoute: typeof innerPagesExperienceIndexRoute
+  innerPagesProjectsIndexRoute: typeof innerPagesProjectsIndexRoute
+}
+
+const innerPagesRouteRouteChildren: innerPagesRouteRouteChildren = {
+  innerPagesAboutIndexRoute: innerPagesAboutIndexRoute,
+  innerPagesExperienceIndexRoute: innerPagesExperienceIndexRoute,
+  innerPagesProjectsIndexRoute: innerPagesProjectsIndexRoute,
+}
+
+const innerPagesRouteRouteWithChildren = innerPagesRouteRoute._addFileChildren(
+  innerPagesRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
+  innerPagesRouteRoute: innerPagesRouteRouteWithChildren,
   ApiRemyChatRoute: ApiRemyChatRoute,
   SpeakersSlugRoute: SpeakersSlugRoute,
   TalksSlugRoute: TalksSlugRoute,
-  ScheduleIndexRoute: ScheduleIndexRoute,
-  SpeakersIndexRoute: SpeakersIndexRoute,
-  TalksIndexRoute: TalksIndexRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,

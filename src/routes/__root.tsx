@@ -2,10 +2,9 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
-import Header from "@/domains/global/components/Header";
-
-import appCss from "../styles.css?url";
+import Header from "@/domains/global/components/header";
 import { Wheel } from "@/domains/global/components/whell";
+import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -52,12 +51,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 				<HeadContent />
 			</head>
 			<body className="relative">
-				{/* TODO: Remove this demo  header */}
-				{/* <Header /> */}
 				{children}
-				<Wheel
-					className="w-30 h-30"
-				>
+				<Wheel className="w-30 h-30">
 					<p className="text-background text-sm p-4 w-20 text-center">
 						push to start
 					</p>

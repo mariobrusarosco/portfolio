@@ -42,8 +42,7 @@ var talks = defineCollection({
   }
 });
 var content_collections_default = defineConfig({
-  collections: [speakers, talks],
-  port: 42070
+  collections: [speakers, talks]
 });
 export {
   content_collections_default as default

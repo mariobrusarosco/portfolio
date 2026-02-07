@@ -12,6 +12,8 @@ interface WheelProps {
 const POSITION_BY_SCREEN: Record<string, string> = {
 	"/": "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
 	"/about": "top-0 left-0 translate-x-6 -translate-y-[2/3]",
+	"/projects": "top-0 left-0 translate-x-6 -translate-y-[2/3]",
+	"/experience": "top-0 left-0 translate-x-6 translate-y-[2/3]",
 };
 
 const POSITION_BY_STATE = {
@@ -22,6 +24,8 @@ const POSITION_BY_STATE = {
 const ROTATION: Record<string, string> = {
 	"/": "rotate-0",
 	"/about": "rotate-[135deg]",
+	"/projects": "rotate-[225deg]",
+	"/experience": "rotate-[315deg]",
 };
 
 const defineWhellInnerLabel = (
@@ -110,15 +114,15 @@ export const Wheel = ({
 					className="origin-center transition-colors duration-300 cursor-pointer pointer-events-auto"
 					onMouseEnter={() => handleWhellHover("projects")}
 					onMouseLeave={handleWhellLeave}
-					onClick={() => navigate({ to: "/" })}
+					onClick={() => navigate({ to: "/projects" })}
 				/>
 				<path
 					d="M69 135.997C30.8464 135.728 0 104.717 0 66.5C0 66.3332 0.00175476 66.1665 0.00292969 66H25C25 90.3005 44.6995 110 69 110V135.997Z"
 					fill={colors[3]}
 					className="origin-center transition-colors duration-300 cursor-pointer pointer-events-auto"
-					onMouseEnter={() => handleWhellHover("contact")}
+					onMouseEnter={() => handleWhellHover("experience")}
 					onMouseLeave={handleWhellLeave}
-					onClick={() => navigate({ to: "/contact" })}
+					onClick={() => navigate({ to: "/experience" })}
 				/>
 			</svg>
 
@@ -137,11 +141,7 @@ export const Wheel = ({
 						"cursor-pointer z-10 font-semibold uppercase font-display text-background",
 						isOpen ? "absolute" : "",
 					)}
-					onClick={
-						isHomePage
-							? () => setIsOpen(!isOpen)
-							: () => navigate({ to: "/about" })
-					}
+					onClick={() => setIsOpen(!isOpen)}
 				>
 					{whellText}
 				</div>
