@@ -1,10 +1,44 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { preload } from "react-dom";
 
 import Header from "@/domains/global/components/header";
 import { Wheel } from "@/domains/global/components/whell";
 import appCss from "../styles.css?url";
+
+// Preload fonts to prevent FOUT (Flash of Unstyled Text) and reduce CLS
+// These are called at module load time for earliest possible preloading
+preload("/fonts/josefin-sans-v34-latin-regular.woff2", {
+	as: "font",
+	type: "font/woff2",
+	crossOrigin: "anonymous",
+});
+preload("/fonts/josefin-sans-v34-latin-600.woff2", {
+	as: "font",
+	type: "font/woff2",
+	crossOrigin: "anonymous",
+});
+preload("/fonts/barlow-condensed-v13-latin-regular.woff2", {
+	as: "font",
+	type: "font/woff2",
+	crossOrigin: "anonymous",
+});
+preload("/fonts/barlow-condensed-v13-latin-700.woff2", {
+	as: "font",
+	type: "font/woff2",
+	crossOrigin: "anonymous",
+});
+preload("/fonts/cormorant-garamond-v21-latin-regular.woff2", {
+	as: "font",
+	type: "font/woff2",
+	crossOrigin: "anonymous",
+});
+preload("/fonts/cormorant-garamond-v21-latin-700.woff2", {
+	as: "font",
+	type: "font/woff2",
+	crossOrigin: "anonymous",
+});
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -21,19 +55,6 @@ export const Route = createRootRoute({
 			},
 		],
 		links: [
-			{
-				rel: "preconnect",
-				href: "https://fonts.googleapis.com",
-			},
-			{
-				rel: "preconnect",
-				href: "https://fonts.gstatic.com",
-				crossOrigin: "anonymous",
-			},
-			{
-				rel: "stylesheet",
-				href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap",
-			},
 			{
 				rel: "stylesheet",
 				href: appCss,

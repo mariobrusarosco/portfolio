@@ -10,6 +10,8 @@ import netlify from '@netlify/vite-plugin-tanstack-start'
 import contentCollections from '@content-collections/vite'
 
 const config = defineConfig({
+  // Static assets are served from src/public
+  publicDir: 'src/public',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
