@@ -9,7 +9,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
 	return (
 		<div data-ui="main-layout" className="min-h-screen relative">
 			<Header />
-			<div className="pt-20">{children}</div>
+			<div className="pt-10">{children}</div>
 		</div>
 	);
 };
