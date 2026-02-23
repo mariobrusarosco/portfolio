@@ -1,7 +1,11 @@
 import { ExperienceTimeline } from "@/domains/experience/components/timeline";
-import { ExperienceCalendar } from "../components/calendar";
+import { ExperienceCalendar } from "@/domains/experience/components/calendar";
+import { useExperience } from "@/domains/experience/hooks/use-experience";
 
 export const ExperienceMainScreen = () => {
+	const { selectedExperience, handleSelectExperience } = useExperience();
+	const { role, mode, location } = selectedExperience;
+	
 	return (
 		<main
 			data-ui="experience-main-screen"
@@ -15,18 +19,17 @@ export const ExperienceMainScreen = () => {
 			</h2>
 
 			<div className="grid gap-4">
-				<ExperienceTimeline />
+				<ExperienceTimeline selectedExperience={selectedExperience} handleSelectExperience={handleSelectExperience} />
 
-				<hr className="w-full h-[1px] border-b border-background/20 dashed my-4" />
 				<div
 					data-ui="experience-selected"
-					className="flex gap-4 items-center flex-1"
+					className="flex gap-4 items-center flex-1 my-6"
 				>
 					<h3
 						data-ui="experience-selected-title"
 						className="text-lg font-bold  font-display bg-background uppercase text-white px-3 py-2 pr-6 w-fit"
 					>
-						Versive
+						{selectedExperience.company}
 					</h3>
 
 					<div
@@ -35,10 +38,10 @@ export const ExperienceMainScreen = () => {
 					>
 						<div className="grid">
 							<span className="text-background font-bold font-display uppercase">
-								remote from
+								{mode} from
 							</span>
 							<span className="text-background/50 font-light font-body text-sm">
-								São Paulo, Brazil
+								{location}
 							</span>
 						</div>
 
@@ -49,7 +52,7 @@ export const ExperienceMainScreen = () => {
 								role
 							</span>
 							<span className="text-background/50 font-light font-body text-sm">
-								Software Developer
+								{role}
 							</span>
 						</div>
 
@@ -60,13 +63,13 @@ export const ExperienceMainScreen = () => {
 								<span className="text-background font-bold font-display uppercase">
 									start
 								</span>
-								<ExperienceCalendar month="JAN" day="20" />
+								<ExperienceCalendar date={selectedExperience.startDate} />
 							</div>
 							<div className="grid">
 								<span className="text-background font-bold font-display uppercase">
 									end
 								</span>
-								<ExperienceCalendar month="DEC" day="20" />
+								<ExperienceCalendar date={selectedExperience.endDate} />
 							</div>
 						</div>
 					</div>
