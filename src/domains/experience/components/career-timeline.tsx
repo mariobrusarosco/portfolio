@@ -1,16 +1,13 @@
-import { useState } from "react";
 import { ExperienceWheel } from "@/domains/experience/components/whell";
 import { EXPERIENCES } from "@/domains/experience/constants";
-import { cn } from "@/lib/utils";
+import type { Experience } from "@/domains/experience/types";
 
-const firstExperience = EXPERIENCES[0];
-
-export const ExperienceTimeline = ({
+export const CareerTimeline = ({
 	selectedExperience,
 	handleSelectExperience,
 }: {
-	selectedExperience: typeof firstExperience;
-	handleSelectExperience: (experience: typeof firstExperience) => void;
+	selectedExperience: Experience;
+	handleSelectExperience: (experience: Experience) => void;
 }) => {
 	return (
 		<div data-ui="experience-timeline" className="relative">
@@ -21,30 +18,29 @@ export const ExperienceTimeline = ({
 						<li
 							key={experience.id}
 							data-ui="experience-timeline-item"
-							className="grid place-items-center relative cursor-pointer"
+							className="grid place-items-center relative cursor-pointer gap-2"
 							onClick={() => handleSelectExperience(experience)}
 						>
 							<p
 								data-ui="experience-timeline-item-date"
-								className="text-sm uppercase font-secondary  text-light-gray"
+								className="text-uppercase font-display text-background"
 							>
 								{experience.startDate}
 							</p>
-							<ExperienceWheel
-								isSelected={isSelected}
-								className="w-7 h-7"
-							/>
-							<p data-ui="experience-timeline-item-company" className="text-2xl uppercase font-display font-bold text-background w-fit">
+							<ExperienceWheel isSelected={isSelected} className="w-7 h-7" />
+							<p
+								data-ui="experience-timeline-item-company"
+								className="text-2xl uppercase font-display font-bold text-background w-fit"
+							>
 								{experience.company}
 							</p>
-
 						</li>
 					);
 				})}
 			</ul>
 			<hr
 				aria-hidden
-				className="h-[1px] border-background absolute top-[33px] left-7 w-[calc(100%-64px)]"
+				className="h-[1px] border-background absolute top-[45px] left-7 w-[calc(100%-64px)]"
 			/>
 		</div>
 	);

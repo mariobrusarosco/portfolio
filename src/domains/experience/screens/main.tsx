@@ -1,15 +1,20 @@
-import { ExperienceTimeline } from "@/domains/experience/components/timeline";
-import { ExperienceCalendar } from "@/domains/experience/components/calendar";
+import { CareerTimeline } from "@/domains/experience/components/career-timeline";
+import { ExperienceLocationAndDate } from "@/domains/experience/components/experience-location-and-data";
+import { Hightlights } from "@/domains/experience/components/highlights";
+import {
+	Stack,
+	Tools,
+} from "@/domains/experience/components/stack-and-product";
+import { UsualDay } from "@/domains/experience/components/usual-day";
 import { useExperience } from "@/domains/experience/hooks/use-experience";
 
 export const ExperienceMainScreen = () => {
 	const { selectedExperience, handleSelectExperience } = useExperience();
-	const { role, mode, location } = selectedExperience;
-	
+
 	return (
 		<main
 			data-ui="experience-main-screen"
-			className="h-full flex gap-20 items-start"
+			className="h-full flex gap-20 items-start pr-12"
 		>
 			<h2
 				data-ui="experience-page-title"
@@ -19,59 +24,22 @@ export const ExperienceMainScreen = () => {
 			</h2>
 
 			<div className="grid gap-4">
-				<ExperienceTimeline selectedExperience={selectedExperience} handleSelectExperience={handleSelectExperience} />
+				<CareerTimeline
+					selectedExperience={selectedExperience}
+					handleSelectExperience={handleSelectExperience}
+				/>
 
-				<div
-					data-ui="experience-selected"
-					className="flex gap-4 items-center flex-1 my-6"
-				>
-					<h3
-						data-ui="experience-selected-title"
-						className="text-lg font-bold  font-display bg-background uppercase text-white px-3 py-2 pr-6 w-fit"
-					>
-						{selectedExperience.company}
-					</h3>
+				<ExperienceLocationAndDate selectedExperience={selectedExperience} />
 
-					<div
-						data-ui="experience-role-location-and-date"
-						className="flex gap-4"
-					>
-						<div className="grid">
-							<span className="text-background font-bold font-display uppercase">
-								{mode} from
-							</span>
-							<span className="text-background/50 font-light font-body text-sm">
-								{location}
-							</span>
-						</div>
+				<div className="grid grid-cols-2">
+					<div className="grid gap-6 pr-12">
+						<Hightlights description={selectedExperience.description} />
+						<UsualDay efforts={selectedExperience.efforts} />
+					</div>
 
-						<hr className="w-[1px] h-full border-l border-background/20 dashed" />
-
-						<div className="grid">
-							<span className="text-background font-bold font-display uppercase">
-								role
-							</span>
-							<span className="text-background/50 font-light font-body text-sm">
-								{role}
-							</span>
-						</div>
-
-						<hr className="w-[1px] h-full border-l border-background/20 dashed" />
-
-						<div className="flex gap-4">
-							<div className="grid">
-								<span className="text-background font-bold font-display uppercase">
-									start
-								</span>
-								<ExperienceCalendar date={selectedExperience.startDate} />
-							</div>
-							<div className="grid">
-								<span className="text-background font-bold font-display uppercase">
-									end
-								</span>
-								<ExperienceCalendar date={selectedExperience.endDate} />
-							</div>
-						</div>
+					<div className="grid gap-6 pr-12">
+						<Stack stack={selectedExperience.stack} />
+						<Tools tools={selectedExperience.tools} />
 					</div>
 				</div>
 			</div>
