@@ -1,4 +1,5 @@
-import Header from "@/domains/global/components/header";
+import { GitHubLink } from "@/domains/global/components/github-link";
+import { LinkedInLink } from "@/domains/global/components/linkedin-link";
 
 export const HomeMainScreen = () => {
 	return (
@@ -6,8 +7,8 @@ export const HomeMainScreen = () => {
 			data-ui="home-main-screen"
 			className="h-screen px-10 grid place-items-center "
 		>
-			<div data-ui="home-page-heading" className="justify-between gap-4">
-				<div>
+			<div className="flex gap-10 justify-between pb-[350px]">
+				<div data-ui="home-page-heading" className="justify-between gap-4">
 					<h2
 						data-ui="home-page-title"
 						className="max-w-[662px] leading-24 trim-boundary text-9xl text-background font-display uppercase font-semibold tracking-wide"
@@ -21,9 +22,18 @@ export const HomeMainScreen = () => {
 						software Developer
 					</h3>
 				</div>
-				<Header />
+
+				<div className="grid gap-6 place-content-start max-w-[465px]">
+					{/* <p className="text-2xl text-background font-display lowercase tracking-wide">
+						a front end developer who enjoys creating digital products
+					</p> */}
+
+					<div className="flex gap-4 align-end h-fit">
+						<LinkedInLink />
+						<GitHubLink />
+					</div>
+				</div>
 			</div>
 		</main>
 	);
 };
-("");

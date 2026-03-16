@@ -45,7 +45,8 @@ export const EXPERIENCES: Experience[] = [
 		endDate: "DEC 23",
 		company: "Red Ventures",
 		role: "Software Developer",
-		description: "Description 2",
+		description:
+			"Development of Web Applications - SPA, CMS integrations, internal NPM package using responsible for configuration of Front End build tools: Webpack, Migration of React Class Components to React Hooks",
 		mode: "in person",
 		location: "São Paulo, Brazil",
 		efforts: [
@@ -81,7 +82,8 @@ export const EXPERIENCES: Experience[] = [
 		company: "Origin",
 		role: "Product Engineer",
 		mode: "remote",
-		description: "Description 3",
+		description:
+			"Product development from the ground up, Front end optimizations: Routing Code Splitting + Brotli Compression, Deliverables Refinement and Prioritization, Hiring Process - Pair interviews,Take-Home Assignments, Front End Assessment Project, Mentoring, Analytics Reports and Funnel,",
 		location: "São Paulo, Brazil",
 		efforts: [
 			{

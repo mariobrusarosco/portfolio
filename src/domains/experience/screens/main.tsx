@@ -7,6 +7,7 @@ import {
 } from "@/domains/experience/components/stack-and-product";
 import { UsualDay } from "@/domains/experience/components/usual-day";
 import { useExperience } from "@/domains/experience/hooks/use-experience";
+import { PageHeading } from "@/domains/global/components/page-heading";
 
 export const ExperienceMainScreen = () => {
 	const { selectedExperience, handleSelectExperience } = useExperience();
@@ -14,16 +15,11 @@ export const ExperienceMainScreen = () => {
 	return (
 		<main
 			data-ui="experience-main-screen"
-			className="h-full flex gap-20 items-start pr-12"
+			className="h-full flex justify-between gap-20 items-start pr-12"
 		>
-			<h2
-				data-ui="experience-page-title"
-				className="w-fit h-fit bg-foreground font-semibold text-6xl text-background font-display uppercase py-6 pl-6 pr-20 line-height-0.5"
-			>
-				Experience
-			</h2>
+			<PageHeading title="Experience" />
 
-			<div className="grid gap-4">
+			<div className="grid gap-4 flex-1">
 				<CareerTimeline
 					selectedExperience={selectedExperience}
 					handleSelectExperience={handleSelectExperience}

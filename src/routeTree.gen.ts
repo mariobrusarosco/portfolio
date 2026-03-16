@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as innerPagesRouteRouteImport } from './routes/(inner-pages)/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as innerPagesSkillsIndexRouteImport } from './routes/(inner-pages)/skills/index'
 import { Route as innerPagesProjectsIndexRouteImport } from './routes/(inner-pages)/projects/index'
 import { Route as innerPagesExperienceIndexRouteImport } from './routes/(inner-pages)/experience/index'
 import { Route as innerPagesAboutIndexRouteImport } from './routes/(inner-pages)/about/index'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const innerPagesSkillsIndexRoute = innerPagesSkillsIndexRouteImport.update({
+  id: '/skills/',
+  path: '/skills/',
+  getParentRoute: () => innerPagesRouteRoute,
 } as any)
 const innerPagesProjectsIndexRoute = innerPagesProjectsIndexRouteImport.update({
   id: '/projects/',
@@ -46,12 +52,14 @@ export interface FileRoutesByFullPath {
   '/about/': typeof innerPagesAboutIndexRoute
   '/experience/': typeof innerPagesExperienceIndexRoute
   '/projects/': typeof innerPagesProjectsIndexRoute
+  '/skills/': typeof innerPagesSkillsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof innerPagesAboutIndexRoute
   '/experience': typeof innerPagesExperienceIndexRoute
   '/projects': typeof innerPagesProjectsIndexRoute
+  '/skills': typeof innerPagesSkillsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -60,12 +68,13 @@ export interface FileRoutesById {
   '/(inner-pages)/about/': typeof innerPagesAboutIndexRoute
   '/(inner-pages)/experience/': typeof innerPagesExperienceIndexRoute
   '/(inner-pages)/projects/': typeof innerPagesProjectsIndexRoute
+  '/(inner-pages)/skills/': typeof innerPagesSkillsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about/' | '/experience/' | '/projects/'
+  fullPaths: '/' | '/about/' | '/experience/' | '/projects/' | '/skills/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/experience' | '/projects'
+  to: '/' | '/about' | '/experience' | '/projects' | '/skills'
   id:
     | '__root__'
     | '/'
@@ -73,6 +82,7 @@ export interface FileRouteTypes {
     | '/(inner-pages)/about/'
     | '/(inner-pages)/experience/'
     | '/(inner-pages)/projects/'
+    | '/(inner-pages)/skills/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -95,6 +105,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/(inner-pages)/skills/': {
+      id: '/(inner-pages)/skills/'
+      path: '/skills'
+      fullPath: '/skills/'
+      preLoaderRoute: typeof innerPagesSkillsIndexRouteImport
+      parentRoute: typeof innerPagesRouteRoute
     }
     '/(inner-pages)/projects/': {
       id: '/(inner-pages)/projects/'
@@ -124,12 +141,14 @@ interface innerPagesRouteRouteChildren {
   innerPagesAboutIndexRoute: typeof innerPagesAboutIndexRoute
   innerPagesExperienceIndexRoute: typeof innerPagesExperienceIndexRoute
   innerPagesProjectsIndexRoute: typeof innerPagesProjectsIndexRoute
+  innerPagesSkillsIndexRoute: typeof innerPagesSkillsIndexRoute
 }
 
 const innerPagesRouteRouteChildren: innerPagesRouteRouteChildren = {
   innerPagesAboutIndexRoute: innerPagesAboutIndexRoute,
   innerPagesExperienceIndexRoute: innerPagesExperienceIndexRoute,
   innerPagesProjectsIndexRoute: innerPagesProjectsIndexRoute,
+  innerPagesSkillsIndexRoute: innerPagesSkillsIndexRoute,
 }
 
 const innerPagesRouteRouteWithChildren = innerPagesRouteRoute._addFileChildren(
