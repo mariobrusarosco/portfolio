@@ -3,7 +3,7 @@ import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { preload } from "react-dom";
 
-import Header from "@/domains/global/components/header";
+import { AiChatWidget } from "@/domains/global/components/ai-chat-widget";
 import { Wheel } from "@/domains/global/components/whell";
 import appCss from "../styles.css?url";
 
@@ -71,13 +71,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 			<head>
 				<HeadContent />
 			</head>
-			<body className="relative">
+			<body className="relative bg-[#bcbcbc1a]">
 				{children}
 				<Wheel className="w-30 h-30">
 					<p className="text-background text-sm p-4 w-20 text-center">
 						push to start
 					</p>
 				</Wheel>
+				<AiChatWidget />
 				<TanStackDevtools
 					config={{
 						position: "bottom-right",

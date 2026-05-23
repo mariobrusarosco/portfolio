@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as innerPagesRouteRouteImport } from './routes/(inner-pages)/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as innerPagesSkillsIndexRouteImport } from './routes/(inner-pages)/skills/index'
 import { Route as innerPagesProjectsIndexRouteImport } from './routes/(inner-pages)/projects/index'
 import { Route as innerPagesExperienceIndexRouteImport } from './routes/(inner-pages)/experience/index'
@@ -23,6 +24,11 @@ const innerPagesRouteRoute = innerPagesRouteRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const innerPagesSkillsIndexRoute = innerPagesSkillsIndexRouteImport.update({
@@ -49,6 +55,7 @@ const innerPagesAboutIndexRoute = innerPagesAboutIndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/chat': typeof ApiChatRoute
   '/about/': typeof innerPagesAboutIndexRoute
   '/experience/': typeof innerPagesExperienceIndexRoute
   '/projects/': typeof innerPagesProjectsIndexRoute
@@ -56,6 +63,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/chat': typeof ApiChatRoute
   '/about': typeof innerPagesAboutIndexRoute
   '/experience': typeof innerPagesExperienceIndexRoute
   '/projects': typeof innerPagesProjectsIndexRoute
@@ -65,6 +73,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/(inner-pages)': typeof innerPagesRouteRouteWithChildren
+  '/api/chat': typeof ApiChatRoute
   '/(inner-pages)/about/': typeof innerPagesAboutIndexRoute
   '/(inner-pages)/experience/': typeof innerPagesExperienceIndexRoute
   '/(inner-pages)/projects/': typeof innerPagesProjectsIndexRoute
@@ -72,13 +81,20 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about/' | '/experience/' | '/projects/' | '/skills/'
+  fullPaths:
+    | '/'
+    | '/api/chat'
+    | '/about/'
+    | '/experience/'
+    | '/projects/'
+    | '/skills/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/experience' | '/projects' | '/skills'
+  to: '/' | '/api/chat' | '/about' | '/experience' | '/projects' | '/skills'
   id:
     | '__root__'
     | '/'
     | '/(inner-pages)'
+    | '/api/chat'
     | '/(inner-pages)/about/'
     | '/(inner-pages)/experience/'
     | '/(inner-pages)/projects/'
@@ -88,6 +104,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   innerPagesRouteRoute: typeof innerPagesRouteRouteWithChildren
+  ApiChatRoute: typeof ApiChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -104,6 +121,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(inner-pages)/skills/': {
@@ -158,6 +182,7 @@ const innerPagesRouteRouteWithChildren = innerPagesRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   innerPagesRouteRoute: innerPagesRouteRouteWithChildren,
+  ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

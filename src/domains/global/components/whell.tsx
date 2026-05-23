@@ -1,6 +1,6 @@
-import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import * as React from "react";
-import { useCallback, useState } from "react";
+import { useLocation, useNavigate } from "@tanstack/react-router";
+import type * as React from "react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface WheelProps {

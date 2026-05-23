@@ -9,10 +9,12 @@ export interface Experience {
 	endDate: string | undefined;
 	company: string;
 	role: string;
-	description: string;
+	description: string[][];
 	mode: "in person" | "remote";
 	location: string;
 	efforts: USUAL_DAY_EFFORT[];
 	stack: string[];
 	tools?: string[];
 }
+
+export type ExperienceAspect = "summary" | "usual-day" | "stack_and_tools";

@@ -1,17 +1,17 @@
-import { useState } from "react";
-import { EXPERIENCES } from "@/domains/experience/constants";
+import { getRouteApi } from "@tanstack/react-router";
+import { EXPERIENCES } from "../constants";
 
-const firstExperience = EXPERIENCES[0];
+const routeApi = getRouteApi("/(inner-pages)/experience/");
 
 export const useExperience = () => {
-	const [selectedExperience, setSelectedExperience] = useState<typeof firstExperience>(firstExperience);
+	const experienceId = routeApi.useSearch({
+		select: (search) => search.company,
+	});
+	const selectedExperience = experienceId
+		? EXPERIENCES[experienceId]
+		: undefined;
 
-    const handleSelectExperience = (experience: typeof firstExperience) => {
-        setSelectedExperience(experience);
-    }
-
-    return {
-        selectedExperience,
-        handleSelectExperience,
-    }
-}
+	return {
+		experience: selectedExperience,
+	};
+};

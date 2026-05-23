@@ -1,12 +1,14 @@
-export const Hightlights = ({ description }: { description: string }) => {
+export const Hightlights = ({ description }: { description: string[][] }) => {
 	return (
-		<div className="grid">
-			<h3 className="text-2xl font-bold font-display uppercase text-background mb-2">
-				highlights
-			</h3>
-			<p className="text-background font-light font-body text-xl  leading-light">
-				{description}
-			</p>
+		<div className="flex gap-2">
+			{description.map((item) => (
+				<p
+					key={item.slice(0, 5)}
+					className="text-background font-light font-body text-2xl leading-light "
+				>
+					{item}
+				</p>
+			))}
 		</div>
 	);
 };
