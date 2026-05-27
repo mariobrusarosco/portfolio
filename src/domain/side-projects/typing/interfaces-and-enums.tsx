@@ -1,6 +1,6 @@
 export interface ISideProject {
   label: string;
-  url: string;
+  url?: string;
   id: string;
   description: React.ReactElement[];
   benefits: React.ReactElement[];
@@ -12,6 +12,6 @@ export interface ISideProject {
 
 export interface SideProject {
   label: string;
-  url: string;
+  url?: string;
   id: string;
 }

@@ -134,7 +134,6 @@ const BEST_SHOT_API_PROJECT = {
   id: "best-shot-api",
   githubUrl: "https://github.com/mariobrusarosco/api-best-shot",
   postmanUrl: "",
-  url: "https://api-best-shot-demo.mariobrusarosco.com/",
   description: [
     <>
       Best Shot is a football prediction platform that allows users to compete
@@ -205,7 +204,6 @@ const BEST_SHOT_PROJECT = {
   label: "Best Shot",
   id: "best-shot",
   githubUrl: "https://github.com/mariobrusarosco/best-shot",
-  url: "https://best-shot-staging.mariobrusarosco.com/",
   figmaUrl: "https://www.figma.com/file/KZ4tq3xzzz2CvWwijUZoRy/Side-Projects?type=design&node-id=919-4165&mode=design&t=NeIWW7N9vz1Wq7P7-0",
   description: [
     <>
@@ -254,5 +252,4 @@ validation)</span></>,
 export const SIDE_PROJECTS: ISideProject[] = [
   BEST_SHOT_API_PROJECT,
   BEST_SHOT_PROJECT,
-  DIGITAL_GARDEN,
 ];

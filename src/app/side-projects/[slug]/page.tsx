@@ -49,14 +49,16 @@ export default function ProjectScreen() {
           </div>
 
           <div className="flex gap-x-3">
-            <a
-              className="w-5 h-5"
-              href={project.url}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <IconLink />
-            </a>
+            {project.url ? (
+              <a
+                className="w-5 h-5"
+                href={project.url}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <IconLink />
+              </a>
+            ) : null}
 
             {project?.figmaUrl ? (
               <a
