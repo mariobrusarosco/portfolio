@@ -14,3 +14,7 @@ todos.json
 
 # Local Netlify folder
 .netlify
+
+# Next.js
+.next
+
