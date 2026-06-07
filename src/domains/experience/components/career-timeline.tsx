@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useLayoutEffect, useRef, useState } from "react";
-import { ExperienceWheel } from "@/domains/experience/components/whell";
+import { Wheel } from "@/domains/experience/components/whell";
 import { EXPERIENCES } from "@/domains/experience/constants";
 import type { CompaniesIds, Experience } from "@/domains/experience/types";
 import { cn } from "@/lib/utils";
@@ -22,8 +22,8 @@ export const CareerTimeline = ({
 	}, [selectedExperience?.id]);
 
 	return (
-		<div data-ui="experience-timeline" className="relative w-[280px]">
-			<ExperienceWheel
+		<div data-ui="experience-timeline" className="w-[280px] relative h-fit">
+			<Wheel
 				className={cn(
 					"w-7 h-7 absolute left-[88px] transition-all duration-300 ease-in-out",
 					{
@@ -63,7 +63,7 @@ export const CareerTimeline = ({
 							</p>
 							<div
 								data-ui="experience-timeline-item-dot"
-								className="w-1 h-1 rounded-full bg-background mx-4"
+								className="w-[5px] h-[5px] rounded-full bg-background mx-4"
 							/>
 							<p
 								data-ui="experience-timeline-item-company"
@@ -80,6 +80,11 @@ export const CareerTimeline = ({
 					);
 				})}
 			</ul>
+
+			<span
+				data-ui="timeline-line"
+				className="absolute top-[15px] left-[102px] w-[1px] h-[calc(100%-30px)] bg-background/40"
+			/>
 		</div>
 	);
 };

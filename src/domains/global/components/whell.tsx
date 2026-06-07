@@ -12,7 +12,6 @@ export const Wheel = ({
 	// Injected dependencies
 	const navigate = useNavigate();
 	// Internal state
-	const [isOpen, setIsOpen] = useState(true);
 	const [hoveredSection, setHoveredSection] = useState<string | null>(null);
 	// Derived state
 
@@ -26,7 +25,10 @@ export const Wheel = ({
 	};
 
 	return (
-		<div data-ui="global-wheel" className="grid place-items-center w-[120px]">
+		<div
+			data-ui="global-wheel"
+			className="grid place-items-center w-[125px] relative"
+		>
 			<svg
 				data-ui="wheel"
 				viewBox="0 0 138 136"
@@ -72,13 +74,19 @@ export const Wheel = ({
 				/>
 			</svg>
 
+			{/* <span className="absolute left-[30px] -top-[30px]">home</span>
+			<span className="absolute left-[100px]">experience</span>
+			<span className="absolute top-[95px]">projects</span>
+			<span className="absolute left-[-40px]">skills</span> */}
+
 			<div
-				className={cn(
-					"cursor-pointer z-10 font-semibold uppercase font-display text-background",
-					isOpen ? "absolute" : "",
-				)}
-				onClick={() => setIsOpen(!isOpen)}
+				onClick={() => navigate({ to: "/" })}
+				className="top-[-40px] absolute cursor-pointer z-10 font-semibold uppercase font-display text-background"
 			>
+				home
+			</div>
+
+			<div className="absolute cursor-pointer z-10 font-semibold uppercase font-display text-background">
 				{hoveredSection}
 			</div>
 		</div>

@@ -6,7 +6,7 @@ import {
 	Tools,
 } from "@/domains/experience/components/stack-and-product";
 import { UsualDay } from "@/domains/experience/components/usual-day";
-import { ExperienceWheel } from "@/domains/experience/components/whell";
+import { Wheel } from "@/domains/experience/components/whell";
 import { EXPERIENCE_ASPECTS_LIST } from "@/domains/experience/constants";
 import { useExperienceAspect } from "@/domains/experience/hooks/use-experience-aspect";
 import type { Experience, ExperienceAspect } from "@/domains/experience/types";
@@ -59,8 +59,8 @@ const AspectsNavigationBar = ({
 	}, [selectedAspect]);
 
 	return (
-		<div className="relative">
-			<ExperienceWheel
+		<div className="relative w-fit">
+			<Wheel
 				className={cn(
 					"w-7 h-7 absolute left-[88px] transition-all duration-300 ease-in-out",
 					{ "opacity-0": !activeAspectRef.current },
@@ -74,7 +74,7 @@ const AspectsNavigationBar = ({
 
 			<ul className="flex gap-6 uppercase text-background font-display">
 				{EXPERIENCE_ASPECTS_LIST.map((aspect) => (
-					<li>
+					<li key={aspect}>
 						<Link
 							to="/experience"
 							search={{ aspect }}
@@ -92,6 +92,11 @@ const AspectsNavigationBar = ({
 					</li>
 				))}
 			</ul>
+
+			<span
+				data-ui="timeline-line"
+				className="absolute top-[2px] left-[30px] h-[1px] w-[calc(100%-48px)] bg-background/40"
+			/>
 		</div>
 	);
 };

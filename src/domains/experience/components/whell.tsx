@@ -9,7 +9,7 @@ interface WheelProps {
 	hideCenterDot?: boolean;
 }
 
-export const ExperienceWheel = ({
+export const Wheel = ({
 	className,
 	colors = ["#254441", "#5B98A5", "#6A9B96", "#35626B"],
 	style,
