@@ -1,32 +1,78 @@
-import { useNavigate } from "@tanstack/react-router";
+import { useLocation, useNavigate } from "@tanstack/react-router";
+import type * as React from "react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface WheelProps {
 	colors?: [string, string, string, string];
+	className?: string;
+	children?: React.ReactNode;
 }
 
-export const Wheel = ({
+const POSITION_BY_SCREEN: Record<string, string> = {
+	"/": "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
+	"/skills": "top-0 left-0 translate-x-6 -translate-y-[2/3]",
+	"/projects": "top-0 left-0 translate-x-6 -translate-y-[2/3]",
+	"/experience": "top-0 left-0 translate-x-6 translate-y-[2/3]",
+	"/about": "top-0 left-0 translate-x-6 translate-y-[2/3]",
+};
+
+const POSITION_BY_STATE = {
+	IS_OPEN: "translate-y-[10px]",
+	IS_CLOSED: "translate-y-[-65px]",
+};
+
+const defineWhellInnerLabel = (
+	hoveredPart: string | null,
+	isHomePage: boolean,
+	isOpen: boolean,
+) => {
+	if (hoveredPart) {
+		return hoveredPart;
+	}
+	if (isHomePage) {
+		return "push to start";
+	}
+	return isOpen ? "Close" : "Open";
+};
+
+export const DeprecatedWheel = ({
+	className,
+	children,
 	colors = ["#254441", "#5B98A5", "#6A9B96", "#35626B"],
 }: WheelProps) => {
 	// Injected dependencies
+	const location = useLocation();
 	const navigate = useNavigate();
 	// Internal state
 	const [isOpen, setIsOpen] = useState(true);
-	const [hoveredSection, setHoveredSection] = useState<string | null>(null);
+	const [hoveredPart, setHoveredPart] = useState<string | null>(null);
 	// Derived state
-
+	const currentLocation = location.pathname;
+	const isHomePage = currentLocation === "/";
+	const whellText = defineWhellInnerLabel(hoveredPart, isHomePage, isOpen);
 	// Handlers
 	const handleWhellHover = (part: string) => {
-		setHoveredSection(part);
+		setHoveredPart(part);
 	};
 
 	const handleWhellLeave = () => {
-		setHoveredSection(null);
+		setHoveredPart(null);
 	};
 
 	return (
-		<div data-ui="global-wheel" className="grid place-items-center w-[120px]">
+		<div
+			data-ui="global-wheel"
+			className={cn(
+				"absolute grid place-items-center",
+				POSITION_BY_SCREEN[currentLocation],
+				{
+					[POSITION_BY_STATE.IS_OPEN]: isOpen,
+					[POSITION_BY_STATE.IS_CLOSED]: !isOpen,
+				},
+				className,
+			)}
+		>
 			<svg
 				data-ui="wheel"
 				viewBox="0 0 138 136"
@@ -72,15 +118,26 @@ export const Wheel = ({
 				/>
 			</svg>
 
-			<div
-				className={cn(
-					"cursor-pointer z-10 font-semibold uppercase font-display text-background",
-					isOpen ? "absolute" : "",
-				)}
-				onClick={() => setIsOpen(!isOpen)}
-			>
-				{hoveredSection}
-			</div>
+			{children && isHomePage && (
+				<div
+					className="absolute inset-0 flex items-center justify-center pointer-events-none"
+					onClick={() => navigate({ to: "/experience" })}
+				>
+					<div className="pointer-events-auto">{children}</div>
+				</div>
+			)}
+
+			{!isHomePage ? (
+				<div
+					className={cn(
+						"cursor-pointer z-10 font-semibold uppercase font-display text-background",
+						isOpen ? "absolute" : "",
+					)}
+					onClick={() => setIsOpen(!isOpen)}
+				>
+					{whellText}
+				</div>
+			) : null}
 		</div>
 	);
 };

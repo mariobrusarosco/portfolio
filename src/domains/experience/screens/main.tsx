@@ -8,18 +8,16 @@ export const ExperienceMainScreen = () => {
 	const { experience } = useExperience();
 
 	return (
-		<main
+		<div
 			data-ui="experience-main-screen"
-			className="h-full justify-between items-start relative"
+			className="h-full flex pt-[200px] gap-18"
 		>
-			<PageHeading title="Experience" />
+			<CareerTimeline selectedExperience={experience} />
 
-			<div className="grid grid-cols-2 justify-between p-6">
+			<div className="flex flex-1 gap-18">
 				<ExperienceLocationAndDate selectedExperience={experience} />
-				<CareerTimeline selectedExperience={experience} />
+				<ExperienceDynamicDisplay selectedExperience={experience} />
 			</div>
-
-			<ExperienceDynamicDisplay selectedExperience={experience} />
-		</main>
+		</div>
 	);
 };

@@ -1,17 +1,31 @@
-import { getRouteApi } from "@tanstack/react-router";
-import { EXPERIENCES } from "../constants";
+import { useEffect } from "react";
+import {
+	COMPANIES_IDS_LIST,
+	EXPERIENCES,
+} from "@/domains/experience/constants";
+import { Route } from "@/routes/(inner-pages)/experience";
 
-const routeApi = getRouteApi("/(inner-pages)/experience/");
+const DEFAULT_EXPERIENCE_ID = COMPANIES_IDS_LIST[0];
 
 export const useExperience = () => {
-	const experienceId = routeApi.useSearch({
+	const navigate = Route.useNavigate();
+	const experienceId = Route.useSearch({
 		select: (search) => search.company,
 	});
-	const selectedExperience = experienceId
-		? EXPERIENCES[experienceId]
-		: undefined;
+	const selectedExperienceId = experienceId ?? DEFAULT_EXPERIENCE_ID;
+
+	useEffect(() => {
+		if (!experienceId) {
+			navigate({
+				replace: true,
+				search: {
+					company: DEFAULT_EXPERIENCE_ID,
+				},
+			});
+		}
+	}, [experienceId, navigate]);
 
 	return {
-		experience: selectedExperience,
+		experience: EXPERIENCES[selectedExperienceId],
 	};
 };

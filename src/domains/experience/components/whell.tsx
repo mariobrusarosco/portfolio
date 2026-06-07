@@ -5,14 +5,22 @@ interface WheelProps {
 	colors?: [string, string, string, string];
 	className?: string;
 	children?: React.ReactNode;
+	style?: React.CSSProperties;
+	hideCenterDot?: boolean;
 }
 
 export const ExperienceWheel = ({
 	className,
 	colors = ["#254441", "#5B98A5", "#6A9B96", "#35626B"],
+	style,
+	hideCenterDot = false,
 }: WheelProps) => {
 	return (
-		<div data-ui="experience-wheel" className={cn("relative", className)}>
+		<div
+			data-ui="experience-wheel"
+			className={cn("relative", className)}
+			style={style}
+		>
 			<svg
 				data-ui="wheel"
 				viewBox="0 0 138 136"
@@ -53,12 +61,14 @@ export const ExperienceWheel = ({
 				/>
 			</svg>
 
-			<circle
-				className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-background rounded-full w-1 h-1"
-				cx="0"
-				cy="0"
-				r="12"
-			/>
+			{!hideCenterDot && (
+				<circle
+					className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-background rounded-full w-1 h-1"
+					cx="0"
+					cy="0"
+					r="12"
+				/>
+			)}
 		</div>
 	);
 };

@@ -1,3 +1,8 @@
+import type {
+	EXPERIENCE_ASPECTS_LIST,
+	EXPERIENCES,
+} from "@/domains/experience/constants";
+
 interface USUAL_DAY_EFFORT {
 	title: string;
 	percentage: number;
@@ -17,4 +22,5 @@ export interface Experience {
 	tools?: string[];
 }
 
-export type ExperienceAspect = "summary" | "usual-day" | "stack_and_tools";
+export type ExperienceAspect = (typeof EXPERIENCE_ASPECTS_LIST)[number];
+export type CompaniesIds = keyof typeof EXPERIENCES;

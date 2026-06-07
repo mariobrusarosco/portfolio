@@ -7,51 +7,63 @@ export const ExperienceLocationAndDate = ({
 	selectedExperience?: Experience;
 }) => {
 	return (
-		<div data-ui="experience-selected" className="flex flex-col">
+		<div
+			data-ui="experience-selected"
+			className="flex flex-col min-w-[192px] gap-8"
+		>
 			{selectedExperience && (
 				<>
 					<h3
 						data-ui="experience-selected-title"
-						className="w-fit text-xl font-bold font-display bg-background uppercase text-white px-3 py-4 pr-12"
+						className="w-fit text-4xl font-bold text-background font-display uppercase"
 					>
 						{selectedExperience.company}
 					</h3>
 
 					<div
 						data-ui="experience-role-location-and-date"
-						className="flex gap-4 mt-4"
+						className="flex flex-col gap-3"
 					>
-						<div className="grid place-content-center">
-							<span className="text-background font-bold font-display uppercase">
-								{selectedExperience.mode} from
-							</span>
-							<span className="text-background  text-xl font-light font-body">
-								{selectedExperience.location}
-							</span>
-						</div>
-
-						<hr className="w-[1px] h-14 border-1 border-dashed border-background/10" />
-
-						<div className="grid place-content-center">
-							<span className="text-background  font-bold font-display uppercase ">
+						<div className="flex flex-col">
+							<span className="text-background  font-bold font-display uppercase text-xl">
 								role
 							</span>
-							<span className="text-background text-xl font-light font-body">
+							<span className="text-background  uppercase font-light font-body">
 								{selectedExperience.role}
 							</span>
 						</div>
 
-						<hr className="w-[0.5px] h-14 border-1 border-dashed border-background/10" />
+						<hr className="h-[1px] w-full border-1 border-dashed border-background/10" />
+
+						<div className="flex flex-col">
+							<span className="text-background font-bold font-display uppercase text-xl">
+								{selectedExperience.mode} from
+							</span>
+							<span className="text-background  uppercase font-light font-body">
+								{selectedExperience.location}
+							</span>
+						</div>
+
+						<hr className="h-[1px] w-full border-1 border-dashed border-background/10" />
 
 						<div className="flex gap-4">
-							<ExperienceCalendar
-								label="from"
-								date={selectedExperience.startDate}
-							/>
-							<ExperienceCalendar
-								label="to"
-								date={selectedExperience.endDate}
-							/>
+							<div className="flex flex-col">
+								<span className="text-background font-bold font-display uppercase text-xl">
+									start
+								</span>
+								<span className="text-background  uppercase font-light font-body">
+									{selectedExperience.startDate}
+								</span>
+							</div>
+
+							<div className="flex flex-col">
+								<span className="text-background font-bold font-display uppercase text-xl">
+									end
+								</span>
+								<span className="text-background  uppercase font-light font-body">
+									{selectedExperience.endDate}
+								</span>
+							</div>
 						</div>
 					</div>
 				</>

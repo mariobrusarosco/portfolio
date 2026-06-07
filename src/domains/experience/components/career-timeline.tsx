@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
+import { useLayoutEffect, useRef, useState } from "react";
 import { ExperienceWheel } from "@/domains/experience/components/whell";
 import { EXPERIENCES } from "@/domains/experience/constants";
-import type { Experience } from "@/domains/experience/types";
+import type { CompaniesIds, Experience } from "@/domains/experience/types";
 import { cn } from "@/lib/utils";
 
 export const CareerTimeline = ({
@@ -9,9 +10,34 @@ export const CareerTimeline = ({
 }: {
 	selectedExperience?: Experience;
 }) => {
+	const activeExperienceRef = useRef<HTMLAnchorElement>(null);
+	const [wheelTop, setWheelTop] = useState(6);
+
+	useLayoutEffect(() => {
+		const selectedExperienceId = selectedExperience?.id;
+
+		if (!selectedExperienceId || !activeExperienceRef.current) return;
+
+		setWheelTop(() => calculateWheelTop(activeExperienceRef.current!));
+	}, [selectedExperience?.id]);
+
 	return (
-		<div data-ui="experience-timeline" className="relative">
-			<ul data-ui="experience-timeline-list" className="flex  justify-between">
+		<div data-ui="experience-timeline" className="relative w-[280px]">
+			<ExperienceWheel
+				className={cn(
+					"w-7 h-7 absolute left-[88px] transition-all duration-300 ease-in-out",
+					{
+						"opacity-0": !activeExperienceRef.current,
+					},
+				)}
+				style={{ top: wheelTop }}
+				hideCenterDot
+			/>
+
+			<ul
+				data-ui="experience-timeline-list"
+				className="flex flex-col justify-between gap-8 pl-8 "
+			>
 				{Object.values(EXPERIENCES).map((experience) => {
 					const isSelected = selectedExperience?.id === experience.id;
 
@@ -19,29 +45,32 @@ export const CareerTimeline = ({
 						<Link
 							key={experience.id}
 							data-ui="experience-timeline-item"
-							className="flex gap-2 items-center group cursor-pointer "
+							className="flex  gap-2 items-center group "
 							to="/experience"
-							search={{ company: experience.id }}
+							search={{ company: experience.id as CompaniesIds }}
+							ref={isSelected ? activeExperienceRef : undefined}
 						>
 							<p
 								data-ui="experience-timeline-item-date"
-								className="text-uppercase font-display font-semibold text-background"
+								className={cn(
+									"text-uppercase font-display text-background w-11 opacity-0 group-hover:opacity-100 transition-opacity",
+									{
+										"opacity-100 font-bold": isSelected,
+									},
+								)}
 							>
 								{experience.startDate}
 							</p>
-							{isSelected ? (
-								<ExperienceWheel className="w-7 h-7" />
-							) : (
-								<div className="w-7 h-7 grid place-items-center">
-									<div className="w-1 h-1 rounded-full bg-background" />
-								</div>
-							)}
+							<div
+								data-ui="experience-timeline-item-dot"
+								className="w-1 h-1 rounded-full bg-background mx-4"
+							/>
 							<p
 								data-ui="experience-timeline-item-company"
 								className={cn(
-									"text-2xl uppercase font-display font-bold text-background opacity-0 group-hover:opacity-100 transition-opacity",
+									"text-lg uppercase font-display text-background opacity-0 group-hover:opacity-100 transition-opacity",
 									{
-										"text-foreground opacity-100": isSelected,
+										"opacity-100 font-bold": isSelected,
 									},
 								)}
 							>
@@ -51,10 +80,10 @@ export const CareerTimeline = ({
 					);
 				})}
 			</ul>
-			<hr
-				aria-hidden
-				className="w-[1px] h-full top-5 left-[85px] bg-background/10 absolute "
-			/>
 		</div>
 	);
+};
+
+const calculateWheelTop = (node: HTMLAnchorElement) => {
+	return node.offsetTop;
 };

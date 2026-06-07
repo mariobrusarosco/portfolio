@@ -1,6 +1,6 @@
-import type { Experience } from "@/domains/experience/types";
+import type { CompaniesIds, Experience } from "@/domains/experience/types";
 
-export const EXPERIENCES: Record<string, Experience> = {
+export const EXPERIENCES = {
 	enext: {
 		id: "enext",
 		startDate: "JAN 20",
@@ -172,4 +172,11 @@ export const EXPERIENCES: Record<string, Experience> = {
 		],
 		tools: ["Linear", "Notion", "Figma", "Claude Code"],
 	},
-};
+} satisfies Record<string, Experience>;
+
+export const COMPANIES_IDS_LIST = Object.keys(EXPERIENCES) as CompaniesIds[];
+export const EXPERIENCE_ASPECTS_LIST = [
+	"usual-day",
+	"accomplished",
+	"using",
+] as const;

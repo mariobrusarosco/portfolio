@@ -7,38 +7,13 @@ import { AiChatWidget } from "@/domains/global/components/ai-chat-widget";
 import { Wheel } from "@/domains/global/components/whell";
 import appCss from "../styles.css?url";
 
-// Preload fonts to prevent FOUT (Flash of Unstyled Text) and reduce CLS
-// These are called at module load time for earliest possible preloading
-preload("/fonts/josefin-sans-v34-latin-regular.woff2", {
-	as: "font",
-	type: "font/woff2",
-	crossOrigin: "anonymous",
-});
-preload("/fonts/josefin-sans-v34-latin-600.woff2", {
-	as: "font",
-	type: "font/woff2",
-	crossOrigin: "anonymous",
-});
-preload("/fonts/barlow-condensed-v13-latin-regular.woff2", {
-	as: "font",
-	type: "font/woff2",
-	crossOrigin: "anonymous",
-});
-preload("/fonts/barlow-condensed-v13-latin-700.woff2", {
-	as: "font",
-	type: "font/woff2",
-	crossOrigin: "anonymous",
-});
-preload("/fonts/cormorant-garamond-v21-latin-regular.woff2", {
-	as: "font",
-	type: "font/woff2",
-	crossOrigin: "anonymous",
-});
-preload("/fonts/cormorant-garamond-v21-latin-700.woff2", {
-	as: "font",
-	type: "font/woff2",
-	crossOrigin: "anonymous",
-});
+// Preload only the critical fonts used in the first viewport.
+// TODO Ex:
+// preload("/fonts/afacad-flux-v4-latin-regular.woff2", {
+// 	as: "font",
+// 	type: "font/woff2",
+// 	crossOrigin: "anonymous",
+// });
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -73,11 +48,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 			</head>
 			<body className="relative bg-[#bcbcbc1a]">
 				{children}
-				<Wheel className="w-30 h-30">
-					<p className="text-background text-sm p-4 w-20 text-center">
-						push to start
-					</p>
-				</Wheel>
+				{/* <Wheel /> */}
 				<AiChatWidget />
 				<TanStackDevtools
 					config={{

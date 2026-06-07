@@ -1,3 +1,4 @@
+import { useSearch } from "@tanstack/react-router";
 import { MessageCircle, RotateCcw, Send, Square, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 
@@ -13,6 +14,7 @@ const starterPrompts = [
 ];
 
 export const AiChatWidget = () => {
+	const search = useSearch({ strict: false });
 	const [isOpen, setIsOpen] = useState(false);
 	const [input, setInput] = useState("");
 	const messageInputId = useId();
@@ -20,14 +22,7 @@ export const AiChatWidget = () => {
 	const { messages, sendMessage, isLoading, error, clear, stop } =
 		usePortfolioChat();
 	const messageTextSnapshot = messages.map(getMessageText).join("");
-
-	useEffect(() => {
-		if (!isOpen || !messageTextSnapshot) {
-			return;
-		}
-
-		messagesEndRef.current?.scrollIntoView({ block: "end" });
-	}, [isOpen, messageTextSnapshot]);
+	const isChatEnabled = search["chat-enabled"] === "true";
 
 	const submitMessage = async (message: string) => {
 		const trimmedMessage = message.trim();
@@ -39,6 +34,16 @@ export const AiChatWidget = () => {
 		setInput("");
 		await sendMessage(trimmedMessage);
 	};
+
+	useEffect(() => {
+		if (!isOpen || !messageTextSnapshot) {
+			return;
+		}
+
+		messagesEndRef.current?.scrollIntoView({ block: "end" });
+	}, [isOpen, messageTextSnapshot]);
+
+	if (!isChatEnabled) return null;
 
 	return (
 		<div className="fixed right-5 bottom-5 z-50 font-secondary text-background sm:right-8 sm:bottom-8">
