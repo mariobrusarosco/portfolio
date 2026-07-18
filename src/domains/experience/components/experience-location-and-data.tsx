@@ -1,5 +1,5 @@
 import type { Experience } from "@/domains/experience/types";
-import { ExperienceCalendar } from "./calendar";
+import { Divider } from "@/domains/global/components/divider";
 
 export const ExperienceLocationAndDate = ({
 	selectedExperience,
@@ -33,7 +33,7 @@ export const ExperienceLocationAndDate = ({
 							</span>
 						</div>
 
-						<hr className="h-[1px] w-full border-1 border-dashed border-background/10" />
+						<Divider direction="horizontal" />
 
 						<div className="flex flex-col">
 							<span className="text-background font-bold font-display uppercase text-xl">
@@ -44,7 +44,7 @@ export const ExperienceLocationAndDate = ({
 							</span>
 						</div>
 
-						<hr className="h-[1px] w-full border-1 border-dashed border-background/10" />
+						<Divider direction="horizontal" />
 
 						<div className="flex gap-4">
 							<div className="flex flex-col">

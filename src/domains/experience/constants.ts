@@ -17,7 +17,7 @@ export const EXPERIENCES = {
 		efforts: [
 			{
 				title: "Coding",
-				percentage: 90,
+				percentage: 85,
 			},
 			{
 				title: "Meetings",
@@ -58,15 +58,15 @@ export const EXPERIENCES = {
 		location: "São Paulo, Brazil",
 		efforts: [
 			{
-				title: "Coding",
-				percentage: 60,
-			},
-			{
 				title: "Meeting",
-				percentage: 20,
+				percentage: 40,
 			},
 			{
 				title: "Other",
+				percentage: 40,
+			},
+			{
+				title: "Coding",
 				percentage: 20,
 			},
 		],
@@ -105,11 +105,11 @@ export const EXPERIENCES = {
 		efforts: [
 			{
 				title: "Coding",
-				percentage: 40,
+				percentage: 30,
 			},
 			{
 				title: "Task Definition",
-				percentage: 20,
+				percentage: 30,
 			},
 			{
 				title: "Meeting",
@@ -121,7 +121,7 @@ export const EXPERIENCES = {
 			},
 			{
 				title: "Hiring Process",
-				percentage: 5,
+				percentage: 10,
 			},
 		],
 		stack: [

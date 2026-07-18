@@ -8,7 +8,7 @@ export const Stack = ({ stack }: { stack: string[] }) => {
 				{stack.map((item) => (
 					<p
 						key={item}
-						className="p-2 text-background bg-foreground font-display text-lg font-semibold uppercase"
+						className="p-2 text-background bg-surface font-display text-lg font-semibold uppercase"
 					>
 						{item}
 					</p>

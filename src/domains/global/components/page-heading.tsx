@@ -1,10 +1,21 @@
-export const PageHeading = ({ title }: { title: string }) => {
+import { cn } from "@/lib/utils";
+
+export const PageHeading = ({
+	title,
+	className,
+}: {
+	title: string;
+	className?: string;
+}) => {
 	return (
-		<div className="fixed top-0 left-1/2 -translate-x-1/2 lg:w-[400px] xl:w-[500px]">
-			<h2
-				data-ui="page-heading"
-				className="w-fit h-fit bg-foreground font-semibold text-[56px] text-background font-display uppercase px-12 py-1 line-height-0.5"
-			>
+		<div
+			data-ui="page-heading"
+			className={cn(
+				"fixed top-0 left-1/2 -translate-x-1/2 px-12 py-3 text-background ",
+				className,
+			)}
+		>
+			<h2 className="w-fit h-fit text-6xl font-display font-thin uppercase">
 				{title}
 			</h2>
 		</div>

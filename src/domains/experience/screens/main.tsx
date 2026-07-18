@@ -12,7 +12,7 @@ export const ExperienceMainScreen = () => {
 			data-ui="experience-main-screen"
 			className="h-full flex pt-[200px] gap-18"
 		>
-			<PageHeading title="Experience" />
+			<PageHeading title="Experience" className="text-background" />
 			<CareerTimeline selectedExperience={experience} />
 
 			<div className="flex flex-1 gap-18">

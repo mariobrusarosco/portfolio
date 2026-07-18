@@ -15,11 +15,11 @@ export const ExperienceCalendar = ({
 			<div data-ui="calendar-container" className="relative">
 				<span
 					data-ui="calendar-line"
-					className="absolute -top-1 left-3 w-[1.5px] h-[7px] rounded-lg bg-foreground "
+					className="absolute -top-1 left-3 w-[1.5px] h-[7px] rounded-lg bg-surface "
 				/>
 				<span
 					data-ui="calendar-line"
-					className="absolute -top-1 right-3 w-[1.5px] h-[7px] rounded-lg bg-foreground"
+					className="absolute -top-1 right-3 w-[1.5px] h-[7px] rounded-lg bg-surface"
 				/>
 				<div
 					data-ui="calendar-header"

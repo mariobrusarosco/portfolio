@@ -11,7 +11,7 @@ export const useExperienceAspect = () => {
 	const aspectFromSearch = Route.useSearch({
 		select: (search) => search.aspect,
 	});
-	const aspect = aspectFromSearch ?? DEFAULT_EXPERIENCE_ASPECT;
+	const selectedAspect = aspectFromSearch ?? DEFAULT_EXPERIENCE_ASPECT;
 
 	useEffect(() => {
 		if (!aspectFromSearch) {
@@ -25,6 +25,6 @@ export const useExperienceAspect = () => {
 	}, [aspectFromSearch, navigate]);
 
 	return {
-		aspect,
+		selectedAspect,
 	};
 };

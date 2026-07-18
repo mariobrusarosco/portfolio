@@ -19,20 +19,20 @@ interface ExperienceDynamicDisplayProps {
 export const ExperienceDynamicDisplay = ({
 	selectedExperience,
 }: ExperienceDynamicDisplayProps) => {
-	const { aspect } = useExperienceAspect();
+	const { selectedAspect } = useExperienceAspect();
 
 	return (
 		<div className="flex flex-1 flex-col gap-14  pr-16">
-			<AspectsNavigationBar selectedAspect={aspect} />
+			<AspectsNavigationBar selectedAspect={selectedAspect} />
 			{selectedExperience ? (
 				<div className="">
-					{aspect === "usual-day" && (
+					{selectedAspect === "usual-day" && (
 						<UsualDay efforts={selectedExperience.efforts} />
 					)}
-					{aspect === "accomplished" && (
+					{selectedAspect === "accomplished" && (
 						<Hightlights description={selectedExperience.description} />
 					)}
-					{aspect === "using" && (
+					{selectedAspect === "using" && (
 						<div className="flex flex-col gap-8">
 							<Stack stack={selectedExperience.stack} />
 							<Tools tools={selectedExperience.tools} />

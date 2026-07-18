@@ -245,7 +245,7 @@ code {
   --primary: #A1CFCB;
   --secondary: #6A9b96;
   --background: #254441;
-  --foreground: #5B98A5;
+  --surface: #5B98A5;
   --neutral-white: #fff;
   --light-gray: #D9D9D9;
 
@@ -301,7 +301,7 @@ code {
 
   --color-neutral-white: var(--neutral-white);
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
   --color-light-gray: var(--light-gray);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -337,17 +337,6 @@ code {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-
-  /* Custom colors for the theme */
-  --color-copper: oklch(0.65 0.14 55);
-  --color-copper-light: oklch(0.75 0.12 55);
-  --color-copper-dark: oklch(0.5 0.15 50);
-  --color-gold: oklch(0.72 0.12 85);
-  --color-gold-light: oklch(0.82 0.1 85);
-  --color-cream: oklch(0.93 0.02 85);
-  --color-cream-dark: oklch(0.85 0.03 80);
-  --color-charcoal: oklch(0.13 0.01 60);
-  --color-charcoal-light: oklch(0.2 0.015 55);
 }
 
 @layer base {
@@ -355,7 +344,7 @@ code {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-neutral-white text-foreground;
+    @apply bg-neutral-white text-background;
     height: 100vh;
     margin: 0;
     padding: 0;
