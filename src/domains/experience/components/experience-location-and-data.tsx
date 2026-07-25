@@ -61,7 +61,7 @@ export const ExperienceLocationAndDate = ({
 									end
 								</span>
 								<span className="text-background  uppercase font-light font-body">
-									{selectedExperience.endDate}
+									{selectedExperience.endDate ?? "present"}
 								</span>
 							</div>
 						</div>

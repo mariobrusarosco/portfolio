@@ -1,10 +1,8 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { preload } from "react-dom";
 
 import { AiChatWidget } from "@/domains/global/components/ai-chat-widget";
-import { Wheel } from "@/domains/global/components/whell";
 import appCss from "../styles.css?url";
 
 // Preload only the critical fonts used in the first viewport.

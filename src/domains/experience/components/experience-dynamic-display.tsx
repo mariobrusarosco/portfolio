@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useLayoutEffect, useRef, useState } from "react";
-import { Hightlights } from "@/domains/experience/components/highlights";
+import { Highlights } from "@/domains/experience/components/highlights";
 import {
 	Stack,
 	Tools,
@@ -30,7 +30,7 @@ export const ExperienceDynamicDisplay = ({
 						<UsualDay efforts={selectedExperience.efforts} />
 					)}
 					{selectedAspect === "accomplished" && (
-						<Hightlights description={selectedExperience.description} />
+						<Highlights highlights={selectedExperience.highlights} />
 					)}
 					{selectedAspect === "using" && (
 						<div className="flex flex-col gap-8">
@@ -53,9 +53,14 @@ const AspectsNavigationBar = ({
 	const [offset, setOffset] = useState({ left: 0, top: 0 });
 
 	useLayoutEffect(() => {
-		if (!selectedAspect || !activeAspectRef.current) return;
+		const updateOffset = () => {
+			if (selectedAspect && activeAspectRef.current) {
+				setOffset(calculateWheelOffset(activeAspectRef.current));
+			}
+		};
 
-		setOffset(() => calculateWheelOffset(activeAspectRef.current!));
+		updateOffset();
+		document.fonts.ready.then(updateOffset);
 	}, [selectedAspect]);
 
 	return (

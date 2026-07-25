@@ -8,13 +8,18 @@ interface USUAL_DAY_EFFORT {
 	percentage: number;
 }
 
+export interface ExperienceHighlight {
+	title: string;
+	description: string;
+}
+
 export interface Experience {
 	id: string;
 	startDate: string;
 	endDate: string | undefined;
 	company: string;
 	role: string;
-	description: string[][];
+	highlights: ExperienceHighlight[];
 	mode: "in person" | "remote";
 	location: string;
 	efforts: USUAL_DAY_EFFORT[];

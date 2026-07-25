@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { SKILLS_ASPECTS_LIST } from "@/domains/skills/constants";
 import type { SkillsAspect } from "@/domains/skills/types";
 import { Route } from "@/routes/(inner-pages)/skills";
+import { SKILLS_ASPECTS_LIST } from "../constants";
 
 const DEFAULT_SKILLS_ASPECT = SKILLS_ASPECTS_LIST[0] satisfies SkillsAspect;
 

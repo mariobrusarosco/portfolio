@@ -1,49 +1,94 @@
-import type { Skill } from "@/domains/skills/types";
+import {
+	Atom,
+	ChartNoAxesCombined,
+	ChevronsLeftRightEllipsis,
+	ClipboardList,
+	Component,
+	Cpu,
+	Database,
+	DraftingCompass,
+	FingerprintPattern,
+	Flag,
+	Gauge,
+	LineSquiggle,
+	Orbit,
+	PencilRuler,
+	ScanSearch,
+	Signpost,
+	SplinePointer,
+	TypeOutline,
+	Warehouse,
+	Workflow,
+	Wrench,
+} from "lucide-react";
+import type { Skill, SkillsAspect } from "@/domains/skills/types";
 
 export const SKILLS_ASPECTS_LIST = [
 	"front-end",
 	"back-end",
 	"product",
-	"tools",
 ] as const;
 
 export const SKILLS = {
 	"front-end": [
-		{ level: 1, label: "lint", recent_usage: 0.5 },
-		{ level: 1, label: "build", recent_usage: 0.4 },
-		{ level: 2, label: "html", recent_usage: 0.9 },
-		{ level: 2, label: "css", recent_usage: 0.9 },
-		{ level: 2, label: "auth", recent_usage: 0.9 },
-		{ level: 3, label: "api", recent_usage: 0.8 },
-		{ level: 3, label: "next", recent_usage: 0.7 },
-		{ level: 3, label: "typescript", recent_usage: 0.8 },
-		{ level: 4, label: "ci/cd", recent_usage: 0.8 },
-		{ level: 5, label: "hosting", recent_usage: 0.8 },
+		{ level: 1, label: "lint", recentUsage: 0.4, icon: ScanSearch },
+		{ level: 2, label: "react", recentUsage: 1, icon: Atom },
+		{ level: 2, label: "typescript", recentUsage: 1, icon: TypeOutline },
+		{ level: 2, label: "styling", recentUsage: 1, icon: PencilRuler },
+		{
+			level: 2,
+			label: "analytics",
+			recentUsage: 0.3,
+			icon: ChartNoAxesCombined,
+		},
+		{ level: 2, label: "feature flags", recentUsage: 0.3, icon: Flag },
+		{ level: 2, label: "auth", recentUsage: 0.4, icon: FingerprintPattern },
+		{
+			level: 3,
+			label: "state management",
+			recentUsage: 0.8,
+			icon: Orbit,
+		},
+		{
+			level: 3,
+			label: "api consumption",
+			recentUsage: 0.9,
+			icon: ChevronsLeftRightEllipsis,
+		},
+
+		{ level: 4, label: "build process", recentUsage: 0.4, icon: Wrench },
+		{ level: 4, label: "ci/cd", recentUsage: 0.5, icon: Workflow },
+		{ level: 5, label: "hosting", recentUsage: 0.7, icon: Warehouse },
 	],
 	"back-end": [
-		{ level: 1, label: "lint", recent_usage: 0.5 },
-		{ level: 1, label: "build", recent_usage: 0.4 },
-		{ level: 1, label: "node", recent_usage: 0.9 },
-		{ level: 1, label: "express", recent_usage: 0.9 },
-		{ level: 2, label: "routing", recent_usage: 0.6 },
-		{ level: 2, label: "auth", recent_usage: 0.9 },
-		{ level: 3, label: "django", recent_usage: 0.5 },
-		{ level: 3, label: "mongodb", recent_usage: 0.7 },
-		{ level: 3, label: "postgresql", recent_usage: 0.8 },
-		{ level: 4, label: "ci/cd", recent_usage: 0.8 },
-		{ level: 5, label: "hosting", recent_usage: 0.8 },
+		{ level: 1, label: "lint [Node]", recentUsage: 0.5, icon: ScanSearch },
+		{ level: 2, label: "node", recentUsage: 0.9, icon: SplinePointer },
+		{ level: 2, label: "python", recentUsage: 0.5, icon: LineSquiggle },
+		{ level: 3, label: "express", recentUsage: 0.9, icon: Signpost },
+		{ level: 3, label: "fast api", recentUsage: 0.5, icon: Gauge },
+		{ level: 4, label: "postgresql", recentUsage: 0.8, icon: Database },
+		{ level: 4, label: "ORM", recentUsage: 0.4, icon: Component },
+		{ level: 5, label: "ci/cd", recentUsage: 0.8, icon: Workflow },
+		{ level: 6, label: "hosting", recentUsage: 0.8, icon: Warehouse },
 	],
 	product: [
-		{ level: 1, label: "figma", recent_usage: 0.9 },
-		{ level: 1, label: "sketch", recent_usage: 0.6 },
-		{ level: 1, label: "adobe", recent_usage: 0.6 },
-		{ level: 1, label: "balsamiq", recent_usage: 0.3 },
-	],
-	tools: [
-		{ level: 1, label: "git", recent_usage: 0.9 },
-		{ level: 1, label: "docker", recent_usage: 0.5 },
-		{ level: 1, label: "kubernetes", recent_usage: 0.2 },
-		{ level: 1, label: "aws", recent_usage: 0.6 },
-		{ level: 1, label: "gcp", recent_usage: 0.3 },
+		{ level: 1, label: "spec defination", recentUsage: 1, icon: Cpu },
+		{ level: 1, label: "task creation", recentUsage: 1, icon: ClipboardList },
+		{ level: 1, label: "prototype", recentUsage: 1, icon: DraftingCompass },
 	],
 } satisfies Record<string, Skill[]>;
+
+export const SKILLS_PRESENTATION_CONFIG = {
+	"front-end": {
+		iconVariant: "background" as const,
+	},
+	"back-end": {
+		iconVariant: "surface" as const,
+	},
+	product: {
+		iconVariant: "background" as const,
+	},
+} satisfies Record<
+	SkillsAspect,
+	{ iconVariant: "primary" | "background" | "surface" | "secondary" }
+>;

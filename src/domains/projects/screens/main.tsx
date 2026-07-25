@@ -1,30 +1,30 @@
+import { useState } from "react";
 import { PageHeading } from "@/domains/global/components/page-heading";
+import { ProjectDetails } from "@/domains/projects/components/project-details";
+import { ProjectsSelector } from "@/domains/projects/components/projects-selector";
+import { PROJECTS } from "@/domains/projects/constants";
+import type { Project } from "@/domains/projects/types";
 
 export const ProjectsMainScreen = () => {
+	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
 	return (
-		<main
+		<div
 			data-ui="projects-main-screen"
-			className="h-full flex gap-20 items-start pr-12"
+			className="flex h-full w-full flex-col items-center px-8 pt-20 font-body"
 		>
 			<PageHeading title="Projects" />
 
-			<div className="flex-1 font-light text-background flex flex-col gap-6 text-sm pr-10">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula,
-					purus in commodo finibus, leo mi euismod massa, in tincidunt nibh
-					libero a sapien.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-					ullamcorper, libero a tincidunt pulvinar, sapien est cursus odio, ut
-					tristique lorem massa sed nunc.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-					euismod, velit sed ultrices commodo, nisl nunc viverra orci, non
-					pharetra turpis lacus sed erat.
-				</p>
+			<div className="h-full  grid place-content-center">
+				{selectedProject ? (
+					<ProjectDetails
+						project={selectedProject}
+						onBack={() => setSelectedProject(null)}
+					/>
+				) : (
+					<ProjectsSelector projects={PROJECTS} onSelect={setSelectedProject} />
+				)}
 			</div>
-		</main>
+		</div>
 	);
 };

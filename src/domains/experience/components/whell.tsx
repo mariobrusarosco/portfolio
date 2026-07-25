@@ -2,7 +2,7 @@ import type * as React from "react";
 import { cn } from "@/lib/utils";
 
 interface WheelProps {
-	colors?: [string, string, string, string];
+	colors?: [string, string, string, string] | [string];
 	className?: string;
 	children?: React.ReactNode;
 	style?: React.CSSProperties;
@@ -15,6 +15,7 @@ export const Wheel = ({
 	style,
 	hideCenterDot = false,
 }: WheelProps) => {
+	const hasMultipleColors = colors.length > 1;
 	return (
 		<div
 			data-ui="experience-wheel"
@@ -40,21 +41,21 @@ export const Wheel = ({
 				/>
 				<path
 					d="M69 0C30.8464 0.268824 0 31.2801 0 69.4971C0 69.6639 0.00175476 69.8305 0.00292969 69.9971H25C25 45.6965 44.6995 25.9971 69 25.9971V0Z"
-					fill={colors[1]}
+					fill={hasMultipleColors ? colors[1] : colors[0]}
 					className={cn(
 						"origin-center transition-colors duration-300 cursor-pointer pointer-events-auto",
 					)}
 				/>
 				<path
 					d="M69 135.997C107.154 135.728 138 104.717 138 66.5C138 66.3332 137.998 66.1665 137.997 66H113C113 90.3005 93.3005 110 69 110V135.997Z"
-					fill={colors[2]}
+					fill={hasMultipleColors ? colors[2] : colors[0]}
 					className={cn(
 						"origin-center transition-colors duration-300 cursor-pointer pointer-events-auto",
 					)}
 				/>
 				<path
 					d="M69 135.997C30.8464 135.728 0 104.717 0 66.5C0 66.3332 0.00175476 66.1665 0.00292969 66H25C25 90.3005 44.6995 110 69 110V135.997Z"
-					fill={colors[3]}
+					fill={hasMultipleColors ? colors[3] : colors[0]}
 					className={cn(
 						"origin-center transition-colors duration-300 cursor-pointer pointer-events-auto",
 					)}

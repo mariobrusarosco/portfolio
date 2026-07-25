@@ -8,7 +8,7 @@ const experience = Object.values(EXPERIENCES).map((item) => ({
 	endDate: item.endDate ?? "Present",
 	mode: item.mode,
 	location: item.location,
-	description: item.description.flat(),
+	highlights: item.highlights,
 	stack: item.stack,
 	tools: item.tools ?? [],
 	efforts: item.efforts,

@@ -8,7 +8,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
 	return (
 		<div data-ui="main-layout" className="min-h-screen relative flex">
 			<AppSidebar />
-			<main className="flex-1">{children}</main>
+			<main className="relative min-w-0 flex-1">{children}</main>
 		</div>
 	);
 };

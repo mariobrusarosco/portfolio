@@ -44,9 +44,9 @@ export const Wheel = ({
 					d="M69 0C30.8464 0.268824 0 31.2801 0 69.4971C0 69.6639 0.00175476 69.8305 0.00292969 69.9971H25C25 45.6965 44.6995 25.9971 69 25.9971V0Z"
 					fill={colors[1]}
 					className="origin-center transition-colors duration-300 cursor-pointer pointer-events-auto"
-					onMouseEnter={() => handleWhellHover("projects")}
+					onMouseEnter={() => handleWhellHover("about")}
 					onMouseLeave={handleWhellLeave}
-					onClick={() => navigate({ to: "/projects" })}
+					onClick={() => navigate({ to: "/about" })}
 				/>
 				<path
 					d="M69 0C107.154 0.268824 138 31.2801 138 69.4971C138 69.6639 137.998 69.8305 137.997 69.9971H113C113 45.6965 93.3005 25.9971 69 25.9971V0Z"
@@ -68,16 +68,11 @@ export const Wheel = ({
 					d="M69 135.997C30.8464 135.728 0 104.717 0 66.5C0 66.3332 0.00175476 66.1665 0.00292969 66H25C25 90.3005 44.6995 110 69 110V135.997Z"
 					fill={colors[3]}
 					className="origin-center transition-colors duration-300 cursor-pointer pointer-events-auto"
-					onMouseEnter={() => handleWhellHover("about")}
+					onMouseEnter={() => handleWhellHover("projects")}
 					onMouseLeave={handleWhellLeave}
-					onClick={() => navigate({ to: "/about" })}
+					onClick={() => navigate({ to: "/projects" })}
 				/>
 			</svg>
-
-			{/* <span className="absolute left-[30px] -top-[30px]">home</span>
-			<span className="absolute left-[100px]">experience</span>
-			<span className="absolute top-[95px]">projects</span>
-			<span className="absolute left-[-40px]">skills</span> */}
 
 			<div
 				onClick={() => navigate({ to: "/" })}

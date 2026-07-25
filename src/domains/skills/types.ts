@@ -1,9 +1,15 @@
-import type { SKILLS_ASPECTS_LIST } from "@/domains/skills/constants";
+import type { LucideIcon } from "lucide-react";
+import { SKILLS_ASPECTS_LIST } from "@/domains/skills/constants";
+
+export type SkillsAspect = (typeof SKILLS_ASPECTS_LIST)[number];
 
 export interface Skill {
 	level: number;
 	label: string;
-	recent_usage: number;
+	recentUsage: number;
+	icon: LucideIcon;
 }
 
-export type SkillsAspect = (typeof SKILLS_ASPECTS_LIST)[number];
+export type SkillsFilters = Record<SkillsAspect, boolean> & {
+	mostRecent: boolean;
+};

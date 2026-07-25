@@ -11,7 +11,7 @@ export const PageHeading = ({
 		<div
 			data-ui="page-heading"
 			className={cn(
-				"fixed top-0 left-1/2 -translate-x-1/2 px-12 py-3 text-background ",
+				"absolute top-0 left-1/2 z-10 -translate-x-1/2 px-12 py-3 text-background",
 				className,
 			)}
 		>

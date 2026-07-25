@@ -1,72 +1,86 @@
-import { Link } from "@tanstack/react-router";
-import { useLayoutEffect, useRef, useState } from "react";
 import { Wheel } from "@/domains/experience/components/whell";
-import { SKILLS_ASPECTS_LIST } from "@/domains/skills/constants";
-import type { SkillsAspect } from "@/domains/skills/types";
+import type { SkillsAspect, SkillsFilters } from "@/domains/skills/types";
 import { cn } from "@/lib/utils";
 
+const CATEGORIES = [
+	{ value: "product", label: "Product" },
+	{ value: "front-end", label: "Front End" },
+	{ value: "back-end", label: "Back End" },
+] satisfies Array<{
+	value: SkillsAspect;
+	label: string;
+}>;
+
 interface SkillsNavigationBarProps {
-	selectedAspect: SkillsAspect;
+	filters: SkillsFilters;
+	onChange: (filter: keyof SkillsFilters, checked: boolean) => void;
+	onAllChange: (checked: boolean) => void;
 }
 
 export const SkillsNavigationBar = ({
-	selectedAspect,
+	filters,
+	onChange,
+	onAllChange,
 }: SkillsNavigationBarProps) => {
-	const activeAspectRef = useRef<HTMLAnchorElement>(null);
-	const [offset, setOffset] = useState({ left: 0, top: 0 });
-
-	useLayoutEffect(() => {
-		if (!selectedAspect || !activeAspectRef.current) return;
-
-		setOffset(() => calculateWheelOffset(activeAspectRef.current!));
-	}, [selectedAspect]);
+	const allSelected = CATEGORIES.every(({ value }) => filters[value]);
 
 	return (
-		<div className="relative">
-			<Wheel
-				className={cn(
-					"w-7 h-7 absolute left-[88px] transition-all duration-300 ease-in-out",
-					{ "opacity-0": !activeAspectRef.current },
-				)}
-				style={{
-					left: `${offset.left}px`,
-					top: `-${offset.top}px`,
-				}}
-				hideCenterDot
-			/>
+		<nav aria-label="Skills filters" className="font-display text-background">
+			<fieldset className="flex items-center gap-10 uppercase">
+				<legend className="sr-only">Filter skills</legend>
 
-			<ul className="grid grid-cols-4 gap-20 uppercase text-background font-display">
-				{SKILLS_ASPECTS_LIST.map((aspect) => (
-					<li key={aspect}>
-						<Link
-							to="/skills"
-							search={{ aspect }}
-							className={cn("flex gap-4 flex-col items-center", {
-								"font-bold": selectedAspect === aspect,
-							})}
-							ref={aspect === selectedAspect ? activeAspectRef : undefined}
-						>
-							<div
-								data-ui="aspect-item-dot"
-								className="w-1 h-1 rounded-full bg-background"
-							/>
-							{aspect}
-						</Link>
-					</li>
+				<FilterCheckbox
+					label="All"
+					checked={allSelected}
+					onChange={onAllChange}
+				/>
+
+				{CATEGORIES.map(({ value, label }) => (
+					<FilterCheckbox
+						key={value}
+						label={label}
+						checked={filters[value]}
+						onChange={(checked) => onChange(value, checked)}
+					/>
 				))}
-			</ul>
-
-			<span
-				data-ui="skills-navigation-bar-line"
-				className="absolute top-[2px] left-[105px] h-[1px] w-[calc(100%-210px)] bg-background/40"
-			/>
-		</div>
+			</fieldset>
+		</nav>
 	);
 };
 
-const calculateWheelOffset = (node: HTMLAnchorElement) => {
-	return {
-		left: node.offsetLeft + node.offsetWidth / 2 - 14,
-		top: node.offsetTop + 12,
-	};
-};
+interface FilterCheckboxProps {
+	label: string;
+	checked: boolean;
+	onChange: (checked: boolean) => void;
+}
+
+const FilterCheckbox = ({ label, checked, onChange }: FilterCheckboxProps) => (
+	<label className="relative flex cursor-pointer items-center gap-2 py-2 font-semibold">
+		<input
+			type="checkbox"
+			className="peer sr-only"
+			checked={checked}
+			onChange={(event) => onChange(event.currentTarget.checked)}
+		/>
+		<span
+			aria-hidden="true"
+			className="grid h-5 w-5 shrink-0 place-items-center"
+		>
+			<Wheel
+				colors={["#254441"]}
+				className={cn(
+					"h-5 w-5 transition-opacity duration-200",
+					checked ? "opacity-100" : "opacity-25",
+				)}
+			/>
+		</span>
+		<span
+			className={cn(
+				"block border-b-2 border-transparent px-1 transition-opacity",
+				checked ? "opacity-100" : "opacity-45",
+			)}
+		>
+			{label}
+		</span>
+	</label>
+);

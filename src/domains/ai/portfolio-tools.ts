@@ -11,7 +11,12 @@ const experienceSchema = z.object({
 	endDate: z.string(),
 	mode: z.string(),
 	location: z.string(),
-	description: z.array(z.string()),
+	highlights: z.array(
+		z.object({
+			title: z.string(),
+			description: z.string(),
+		}),
+	),
 	stack: z.array(z.string()),
 	tools: z.array(z.string()),
 	efforts: z.array(
@@ -45,7 +50,7 @@ export const getProfileToolDef = toolDefinition({
 export const getExperienceToolDef = toolDefinition({
 	name: "getExperience",
 	description:
-		"Get Mario's career experience, including companies, roles, dates, work mode, descriptions, stack, tools, and effort split.",
+		"Get Mario's career experience, including companies, roles, dates, work mode, highlights, stack, tools, and effort split.",
 	inputSchema: z.object({}),
 	outputSchema: z.array(experienceSchema),
 });
@@ -105,7 +110,7 @@ export const getProfile = getProfileToolDef.server(() => ({
 export const getExperience = getExperienceToolDef.server(() =>
 	PORTFOLIO_PROFILE.experience.map((item) => ({
 		...item,
-		description: [...item.description],
+		highlights: item.highlights.map((highlight) => ({ ...highlight })),
 		stack: [...item.stack],
 		tools: [...item.tools],
 		efforts: item.efforts.map((effort) => ({ ...effort })),
@@ -166,7 +171,10 @@ export const searchPortfolio = searchPortfolioToolDef.server(({ query }) => {
 			item.company,
 			item.role,
 			item.location,
-			...item.description,
+			...item.highlights.flatMap((highlight) => [
+				highlight.title,
+				highlight.description,
+			]),
 			...item.stack,
 			...item.tools,
 		]
@@ -177,7 +185,9 @@ export const searchPortfolio = searchPortfolioToolDef.server(({ query }) => {
 			matches.push({
 				section: "experience",
 				title: `${item.role} at ${item.company}`,
-				snippet: item.description.join(" "),
+				snippet: item.highlights
+					.map((highlight) => highlight.description)
+					.join(" "),
 			});
 		}
 	}
