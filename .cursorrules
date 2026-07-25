@@ -1,0 +1,34 @@
+# Cursor Rules
+
+You are an expert AI assistant working on a project with a strict **Domain-Driven Architecture**.
+
+## 🛑 CRITICAL RULE: Architecture Compliance
+
+Before creating any new file or suggesting code changes, you **MUST** read and follow the architectural rules defined in:
+`docs/ARCHITECTURE_RULES.md`
+
+### Quick Summary of Rules:
+1.  **NO Root Components**: specific components must go into `src/domains/[domain-name]/components`.
+2.  **NO Root Hooks**: Hooks must go into `src/domains/[domain-name]/hooks`.
+3.  **Domain Structure**: Every domain folder must strictly follow this structure:
+    -   `api/`
+    -   `components/`
+    -   `hooks/`
+    -   `schemas/`
+    -   `types/`
+4.  **Global vs. Library**:
+    -   Use `src/domains/global` for app-wide shared business logic/UI.
+    -   Use `src/domains/components-library` for generic UI design system components (buttons, cards, etc.).
+
+## 🔍 Context Awareness
+-   Always check internal constraints in `docs/` before answering architectural questions.
+-   When creating a new feature, first propose the **Domain** it belongs to.
+
+## ⚡ Tech Stack
+-   **Framework**: TanStack Start (Vite)
+-   **Styling**: Tailwind CSS v4
+-   **Language**: TypeScript
+-   **Package Manager**: npm
+
+---
+*If you are unsure where a file belongs, ASK the user instead of guessing.*

@@ -1,0 +1,391 @@
+
+@import 'tailwindcss';
+
+@plugin "tailwindcss-animate";
+
+/* ==========================================================================
+   Self-hosted Font Declarations
+   Only first-viewport font files are preloaded in __root.tsx.
+   ========================================================================== */
+
+/* Afacad Flux - Primary body font */
+/* afacad-flux-100 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Afacad Flux';
+  font-style: normal;
+  font-weight: 100;
+  src: url('/fonts/afacad-flux-v4-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* afacad-flux-200 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Afacad Flux';
+  font-style: normal;
+  font-weight: 200;
+  src: url('/fonts/afacad-flux-v4-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* afacad-flux-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Afacad Flux';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/afacad-flux-v4-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* afacad-flux-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Afacad Flux';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/afacad-flux-v4-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* afacad-flux-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Afacad Flux';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/afacad-flux-v4-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* afacad-flux-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Afacad Flux';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/afacad-flux-v4-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* afacad-flux-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Afacad Flux';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/afacad-flux-v4-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* afacad-flux-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Afacad Flux';
+  font-style: normal;
+  font-weight: 800;
+  src: url('/fonts/afacad-flux-v4-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* afacad-flux-900 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Afacad Flux';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/fonts/afacad-flux-v4-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* Barlow Condensed - Display/heading font */
+/* barlow-condensed-100 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 100;
+  src: url('/fonts/barlow-condensed-v13-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-100italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: italic;
+  font-weight: 100;
+  src: url('/fonts/barlow-condensed-v13-latin-100italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-200 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 200;
+  src: url('/fonts/barlow-condensed-v13-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-200italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: italic;
+  font-weight: 200;
+  src: url('/fonts/barlow-condensed-v13-latin-200italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/barlow-condensed-v13-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-300italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: italic;
+  font-weight: 300;
+  src: url('/fonts/barlow-condensed-v13-latin-300italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/barlow-condensed-v13-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: italic;
+  font-weight: 400;
+  src: url('/fonts/barlow-condensed-v13-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/barlow-condensed-v13-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-500italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: italic;
+  font-weight: 500;
+  src: url('/fonts/barlow-condensed-v13-latin-500italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/barlow-condensed-v13-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-600italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: italic;
+  font-weight: 600;
+  src: url('/fonts/barlow-condensed-v13-latin-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/barlow-condensed-v13-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-700italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: italic;
+  font-weight: 700;
+  src: url('/fonts/barlow-condensed-v13-latin-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 800;
+  src: url('/fonts/barlow-condensed-v13-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-800italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: italic;
+  font-weight: 800;
+  src: url('/fonts/barlow-condensed-v13-latin-800italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-900 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/fonts/barlow-condensed-v13-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* barlow-condensed-900italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barlow Condensed';
+  font-style: italic;
+  font-weight: 900;
+  src: url('/fonts/barlow-condensed-v13-latin-900italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+@custom-variant dark (&:is(.dark *));
+
+body {
+  @apply m-0;
+  font-family: 'Afacad Flux', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+:root {
+  --primary: #A1CFCB;
+  --secondary: #6A9b96;
+  --background: #254441;
+  --surface: #5B98A5;
+  --neutral-white: #fff;
+  --light-gray: #D8D8D8;
+
+  /* Warm cream for cards */
+  --card: oklch(0.17 0.015 55);
+  --card-foreground: oklch(0.93 0.02 85);
+
+  /* Muted warm tones */
+  --muted: oklch(0.22 0.02 55);
+  --muted-foreground: oklch(0.65 0.03 85);
+
+  /* Accent - rich copper */
+  --accent: oklch(0.55 0.15 45);
+  --accent-foreground: oklch(0.95 0.02 85);
+
+  /* Destructive */
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.95 0.02 85);
+
+  /* Borders and inputs */
+  --border: oklch(0.28 0.03 55);
+  --input: oklch(0.22 0.02 55);
+  --ring: oklch(0.65 0.14 55);
+
+  /* Chart colors - pastry inspired */
+  --chart-1: oklch(0.65 0.14 55);
+  --chart-2: oklch(0.72 0.12 85);
+  --chart-3: oklch(0.55 0.15 45);
+  --chart-4: oklch(0.6 0.1 30);
+  --chart-5: oklch(0.5 0.08 150);
+
+  --radius: 0.625rem;
+
+  /* Popover */
+  --popover: oklch(0.17 0.015 55);
+  --popover-foreground: oklch(0.93 0.02 85);
+
+  /* Sidebar */
+  --sidebar: oklch(0.15 0.01 55);
+  --sidebar-foreground: oklch(0.93 0.02 85);
+  --sidebar-primary: oklch(0.65 0.14 55);
+  --sidebar-primary-foreground: oklch(0.95 0.02 85);
+  --sidebar-accent: oklch(0.22 0.02 55);
+  --sidebar-accent-foreground: oklch(0.93 0.02 85);
+  --sidebar-border: oklch(0.28 0.03 55);
+  --sidebar-ring: oklch(0.65 0.14 55);
+}
+
+@theme inline {
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Afacad Flux', sans-serif;
+  --font-secondary: 'Afacad Flux', sans-serif;
+
+  --color-neutral-white: var(--neutral-white);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-light-gray: var(--light-gray);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    scrollbar-color: var(--background) var(--light-gray);
+    scrollbar-width: thin;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--light-gray);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--background);
+    border: 2px solid var(--light-gray);
+    border-radius: 999px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--surface);
+  }
+
+  body {
+    @apply bg-neutral-white text-background;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom utilities for the theme */
+.font-display {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.font-body {
+  font-family: 'Afacad Flux', sans-serif;
+}
+
+
+@layer utilities {
+  .trim-boundary {
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+  }
+}
