@@ -5,14 +5,6 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { AiChatWidget } from "@/domains/global/components/ai-chat-widget";
 import appCss from "../styles.css?url";
 
-// Preload only the critical fonts used in the first viewport.
-// TODO Ex:
-// preload("/fonts/afacad-flux-v4-latin-regular.woff2", {
-// 	as: "font",
-// 	type: "font/woff2",
-// 	crossOrigin: "anonymous",
-// });
-
 export const Route = createRootRoute({
 	head: () => ({
 		meta: [
@@ -28,6 +20,27 @@ export const Route = createRootRoute({
 			},
 		],
 		links: [
+			{
+				rel: "preload",
+				href: "/fonts/barlow-condensed-v13-latin-600.woff2",
+				as: "font",
+				type: "font/woff2",
+				crossOrigin: "anonymous",
+			},
+			{
+				rel: "preload",
+				href: "/fonts/barlow-condensed-v13-latin-regular.woff2",
+				as: "font",
+				type: "font/woff2",
+				crossOrigin: "anonymous",
+			},
+			{
+				rel: "preload",
+				href: "/fonts/barlow-condensed-v13-latin-300.woff2",
+				as: "font",
+				type: "font/woff2",
+				crossOrigin: "anonymous",
+			},
 			{
 				rel: "stylesheet",
 				href: appCss,
